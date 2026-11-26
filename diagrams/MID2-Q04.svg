@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" style="max-width: 720px; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="gradRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="720" height="290" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+
+  <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">DIGITAL VIDEO REPRESENTATION &amp; GROUP OF PICTURES (GOP)</text>
+  
+  <!-- GOP Timeline -->
+  <g transform="translate(30, 55)">
+    <rect width="660" height="125" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="330" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">Group of Pictures (GOP) Frame Structure</text>
+    
+    <!-- Frames -->
+      <g filter="url(#shadow)">
+    <rect x="30" y="40" width="75" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="67.5" y="63.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">I-Frame</text>
+    <text x="67.5" y="80.5" font-size="11" fill="#94a3b8" text-anchor="middle">Intra (Key)</text>
+    <rect x="30" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="65" y="44" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Anchor</text>
+  </g>
+      <g filter="url(#shadow)">
+    <rect x="130" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="162.5" y="63.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">B1</text>
+    <text x="162.5" y="80.5" font-size="11" fill="#94a3b8" text-anchor="middle">Bi-dir</text>
+    
+  </g>
+      <g filter="url(#shadow)">
+    <rect x="215" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="247.5" y="63.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">B2</text>
+    <text x="247.5" y="80.5" font-size="11" fill="#94a3b8" text-anchor="middle">Bi-dir</text>
+    
+  </g>
+      <g filter="url(#shadow)">
+    <rect x="300" y="40" width="75" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="337.5" y="63.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">P-Frame</text>
+    <text x="337.5" y="80.5" font-size="11" fill="#94a3b8" text-anchor="middle">Forward</text>
+    <rect x="300" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="335" y="44" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Pred</text>
+  </g>
+      <g filter="url(#shadow)">
+    <rect x="395" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="427.5" y="63.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">B3</text>
+    <text x="427.5" y="80.5" font-size="11" fill="#94a3b8" text-anchor="middle">Bi-dir</text>
+    
+  </g>
+      <g filter="url(#shadow)">
+    <rect x="480" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="512.5" y="63.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">B4</text>
+    <text x="512.5" y="80.5" font-size="11" fill="#94a3b8" text-anchor="middle">Bi-dir</text>
+    
+  </g>
+      <g filter="url(#shadow)">
+    <rect x="565" y="40" width="75" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="602.5" y="63.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">I-Frame</text>
+    <text x="602.5" y="80.5" font-size="11" fill="#94a3b8" text-anchor="middle">Next GOP</text>
+    <rect x="565" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="600" y="44" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Anchor</text>
+  </g>
+
+    <!-- Prediction arrows -->
+    <path d="M 105 55 C 160 10 250 10 300 55" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
+    <text x="200" y="20" font-size="9" fill="#fbbf24">Forward Motion Prediction</text>
+
+    <path d="M 105 75 L 130 75" fill="none" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrCyan)"/>
+    <path d="M 300 75 L 280 75" fill="none" stroke="#c084fc" stroke-width="1.5" marker-end="url(#arrCyan)"/>
+  </g>
+
+  <rect x="30" y="195" width="660" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="50" y="218" font-size="11" font-weight="bold" fill="#34d399">Video Redundancy Reduction Mechanics:</text>
+  <text x="50" y="238" font-size="10" fill="#cbd5e1">1. Progressive Scan: 1080p60 avoids interlaced comb distortion</text>
+  <text x="50" y="254" font-size="10" fill="#cbd5e1">2. YCbCr 4:2:0: Cuts raw uncompressed pixels from 24 bpp to 12 bpp</text>
+  <text x="380" y="238" font-size="10" fill="#cbd5e1">3. Motion Vectors: Transmits displacement (dx, dy) instead of pixels</text>
+  <text x="380" y="254" font-size="10" fill="#cbd5e1">4. 100:1 Compression: Only small residuals e[x, y] are coded</text>
+
+</svg>

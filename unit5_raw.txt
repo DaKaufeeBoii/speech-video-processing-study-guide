@@ -1,0 +1,589 @@
+1. By Using Global Motion Detection
+Frame differences (sum of absolute differences):
+Region A = 120
+Region B = 45
+Region C = 200
+Threshold = 100
+Identify regions with motion
+Determine dominant motion region
+Given:
+Frame differences are calculated using the Sum of Absolute Differences (SAD).
+Threshold = 100
+1. Identify Regions with Motion
+Condition:
+If SAD > Threshold → Motion detected.
+If SAD ≤ Threshold → No significant motion detected.
+Step-by-step calculation:
+Region A:
+[ 120 > 100 ]
+Therefore, Motion Detected.
+Region B:
+[ 45 < 100 ]
+Therefore, No Motion Detected.
+Region C:
+[ 200 > 100 ]
+Therefore, Motion Detected.
+2. Determine Dominant Motion Region
+The dominant motion region is identified by selecting the region with the highest SAD value.
+= 200
+Therefore, Region C has dominant motion because it has the highest frame difference.
+3. Final Answer
+Final Results
+Regions with motion: A and C.
+Region without significant motion: B.
+Dominant motion region: Region C (SAD = 200).
+Interpretation: Region C exhibits the highest intensity of frame-to-frame change, indicating the strongest detected motion among the three regions.
+Note: SAD-based thresholding detects changes between frames. It does not independently establish the direction of motion or distinguish object motion from camera movement.
+2. A)  Particle Weight Normalization
+Given particle weights: [0.2,0.3,0.1,0.4]
+Tasks:
+Normalize weights
+Identify most likely particle
+Explain robustness to uncertainty
+B)  State Update (Kalman Filter)
+Given:
+Predicted state  x−=50
+Measurement  z=60
+Kalman Gain  K=0.6
+Compute updated state:
+Interpret motion correction
+Answer;
+A) Particle Weight Normalization
+Given:
+Particle weights:
+[ W=[0.2, 0.3, 0.1, 0.4] ]
+Tasks:
+Normalize weights.
+Identify the most likely particle.
+Explain robustness to uncertainty
+1. Normalize the Weights
+The normalized weight is calculated using:
+Step 1: Calculate the sum of all weights.
+[ =1.0 ]
+Step 2: Calculate normalized weights.
+- Particle 1:
+- Particle 2:
+- Particle 3:
+- Particle 4:
+Final normalized weights:
+Identify the Most Likely Particle
+The particle with the highest normalized weight represents the most likely state.
+[max(0.2,0.3,0.1,0.4)=0.4 ]
+Therefore,
+Its probability weight is 0.4 or 40%.
+Explain Robustness to Uncertainty
+Particle filtering is robust to uncertainty because:
+It maintains multiple possible object positions.
+Each particle represents a possible motion state.
+Weights indicate the likelihood of each particle.
+It can handle nonlinear motion and non-Gaussian noise.
+It reduces dependence on a single uncertain measurement.
+Example: In video surveillance, if an object is temporarily hidden, particle filtering can estimate its possible location using multiple particle hypotheses.
+B) State Update Using Kalman Filter
+Given:
+Predicted state: (x^-=50)
+Measurement: (z=60)
+Kalman Gain: (K=0.6)
+Tasks:
+Compute updated state.
+Interpret motion correction.
+1. Compute the Updated State
+The Kalman Filter state update equation is:
+Step 2: Calculate measurement error [ 60-50=10 ]
+Step 3: Multiply by Kalman Gain.
+Step 4: Calculate updated state.
+2. Interpret Motion Correction
+Predicted position = 50
+Measured position = 60
+Measurement error = 10
+Kalman Gain = 0.6
+Updated position = 56
+Interpretation:
+The Kalman Filter adjusts the predicted position from 50 to 56 based on the new measurement of 60.
+Since the Kalman Gain is 0.6, the filter accepts 60% of the measurement error and corrects the predicted state accordingly.
+This balances the predicted motion and the observed measurement.
+Summary
+Particle filtering handles uncertainty by maintaining multiple possible states, while the Kalman Filter corrects predicted motion using new measurements. Both techniques improve object tracking accuracy in video processing and motion estimation.
+3. Define image segmentation and classify its major categories based on region-based and boundary-based approaches.
+Image segmentation is the process of dividing a digital image into multiple meaningful regions or segments based on similar properties such as colour, intensity, texture, and boundaries.
+The main objective is to simplify image representation and identify important objects or regions for further image analysis.
+Major Categories of Image Segmentation
+Image segmentation is broadly classified into two major approaches:
+A. Region-Based Segmentation
+Region-based segmentation groups neighbouring pixels that have similar characteristics, such as intensity, colour, or texture.
+Techniques:
+Region Growing: Starts with a seed pixel and adds neighbouring pixels with similar intensity values.
+Region Splitting: Divides an image into smaller regions when the pixels do not satisfy a homogeneity condition.
+Region Merging: Combines adjacent regions having similar propertie
+\
+Example: Separating a green leaf from the background based on similar colour and intensity values.
+B. Boundary-Based Segmentation
+Boundary-based segmentation identifies object boundaries by detecting sudden changes in image intensity or colour.
+Techniques:
+Edge Detection: Identifies boundaries using intensity changes.
+Sobel Operator: Detects horizontal and vertical edges using gradient masks.
+Canny Edge Detection: Detects strong and weak edges while reducing noise.
+Laplacian Operator: Detects edges using second-order intensity derivatives.
+Example: Identifying the boundary of a vehicle in a traffic surveillance image.
+Difference Between Region-Based and Boundary-Based Segmentation
+Applications
+Medical image analysis – identifying organs and tumours.
+Remote sensing – land-use and land-cover classification.
+Autonomous vehicles – road and object detection.
+Face recognition – identifying facial regions.
+Agriculture – detecting crop diseases.
+Image segmentation divides an image into meaningful regions for effective image analysis. Region-based approaches group pixels with similar properties, whereas boundary-based approaches identify object boundaries using intensity changes. Both approaches are important in computer vision and digital image processing.
+4. Explain the principles of change detection in video sequences and interpret its role in dynamic scene analysis.
+Change detection is a computer vision technique used to identify differences between consecutive video frames or between a reference frame and the current frame.
+It detects changes in object positions, movement, appearance, and environmental conditions.
+Main objective: To identify moving objects and analyse dynamic changes in a video scene.
+Principles of Change Detection
+The major principles involved in change detection are:
+A. Frame Differencing
+Frame differencing identifies changes by subtracting two consecutive video frames.
+Mathematical equation:
+B. Background Subtraction
+Background subtraction compares the current frame with a background model to identify moving objects.
+Mathematical equation:
+C. Thresholding
+Thresholding converts the difference image into a binary image.
+Where (T) is the threshold value.
+1 = Motion or change detected.
+0 = No significant change detected.
+D. Optical Flow
+Optical flow estimates the apparent movement of pixels between consecutive frames.
+It provides information about the direction and speed of object movement.
+Role in Dynamic Scene Analysis
+Change detection plays an important role in analysing dynamic environments.
+Moving Object Detection: Identifies moving vehicles, people, and animals.
+Traffic Monitoring: Detects vehicle movement and traffic congestion.
+Video Surveillance: Identifies suspicious activities and unauthorized movement.
+Activity Recognition: Analyses human actions and behaviour.
+Environmental Monitoring: Detects changes such as floods, fires, and other environmental events.
+Practical Example
+Consider a CCTV camera monitoring a parking area.
+Frame 1: The parking area is empty.
+Frame 2: A car enters the parking area.
+Frame 3: Frame differencing identifies changes in pixel values.
+Thresholding separates the moving car from unchanged regions.
+The system detects and tracks the vehicle.
+Change detection identifies variations between video frames using frame differencing, background subtraction, thresholding, and optical flow. It helps detect moving objects, analyse dynamic scenes, and understand object behaviour. It is widely used in video surveillance, traffic monitoring, robotics, and intelligent transportation systems.
+5. Implement motion tracking algorithms and demonstrate object trajectory estimation in a temporal video sequence.
+Motion tracking is a computer vision technique used to identify and follow the movement of an object across consecutive video frames.
+Object trajectory estimation determines the path followed by an object over time by recording its position in each frame.
+Objective: To detect moving objects, track their positions, and estimate their movement trajectory in a video sequence.
+Motion Tracking Algorithms
+The major motion tracking algorithms are:
+A. Optical Flow Tracking
+Optical flow estimates the apparent movement of pixels between consecutive frames.
+Detects pixel movement.
+Calculates motion direction and magnitude.
+Tracks moving objects across frames.
+B. Kalman Filter Tracking
+The Kalman filter predicts the next position of an object based on its previous position and velocity.
+Prediction equation:
+Measurement update:
+C. Particle Filter Tracking
+Particle filtering uses multiple particles to represent possible object positions.
+Generates possible object locations.
+Assigns weights based on measurement likelihood.
+Selects the most probable object position.
+Implementation of Object Trajectory Estimation
+Consider a moving vehicle tracked across four consecutive video frames.
+Given object positions:
+Step 1: Calculate displacement
+Similarly, the motion vector between each consecutive frame is (5,5).
+Step 3: Estimate object trajectory
+The trajectory is represented as:
+[ T={(10,20),(15,25),(20,30),(25,35)} ]
+The object moves diagonally in the positive X and Y directions.
+Applications
+Vehicle tracking in intelligent transportation systems.
+Human activity recognition and surveillance.
+Sports player movement analysis.
+Robot navigation and object tracking.
+Autonomous driving and collision avoidance.
+Motion tracking algorithms such as Optical Flow, Kalman Filter, and Particle Filter identify and track moving objects across video frames. Trajectory estimation determines the object's movement path using its coordinates over time. These techniques are essential for surveillance, autonomous vehicles, robotics, and video analysis.
+6. Analyze image and video matting techniques and evaluate their effectiveness in foreground extraction under complex backgrounds.
+Image and video matting is a computer vision technique used to separate foreground objects from their backgrounds by estimating the transparency (alpha value) of each pixel.
+Unlike simple image segmentation, which classifies pixels as foreground or background, matting estimates the degree of transparency of pixels, especially around object boundaries such as hair, fur, glass, and transparent objects.
+Main objective: To extract foreground objects accurately while preserving fine details and transparency under complex background conditions.
+Mathematical Model of Image Matting
+The basic image matting equation is:
+Where:
+(I(x,y)) = Observed image pixel.
+(F(x,y)) = Foreground colour.
+(B(x,y)) = Background colour.
+\(\alpha(x,y)\) = Transparency value.
+The alpha value ranges between 0 and 1:
+Image Matting Techniques
+Image matting techniques estimate the foreground and background contributions at each pixel.
+A. Chroma Key Matting
+Uses a green or blue background.
+Identifies pixels having a predefined background colour.
+Removes the background and retains the foreground object.
+Advantages:
+Simple and computationally efficient.
+Suitable for studio environments.
+Widely used in film production.
+Limitations:
+Requires a uniform background.
+Difficult when foreground objects contain similar colours.
+May produce unwanted edges around hair and transparent objects.
+B. Bayesian Matting
+Bayesian matting estimates foreground, background, and alpha values using probability distributions.
+It considers the colour distributions of foreground and background pixels.
+Working steps:
+Identify known foreground and background regions.
+Estimate colour distributions.
+Calculate the probability of foreground and background colours.
+Estimate the alpha value.
+Generate the final foreground matte.
+Advantages: Handles complex colour variations and produces accurate transparency estimates.
+Limitations: Computationally expensive and dependent on accurate initial foreground/background information.
+C. Closed-Form Matting
+Closed-form matting estimates alpha values by minimizing a mathematical cost function based on local colour consistency.
+Advantages:
+Preserves fine image details.
+Produces smooth foreground boundaries.
+Effective for hair and fine structures.
+Limitations:
+Can be computationally expensive for large images.
+May struggle with highly complex textures and colour similarities.
+D. Deep Learning-Based Matting
+Deep learning techniques use convolutional neural networks (CNNs) and encoder-decoder architectures to predict alpha mattes.
+Working steps:
+Input the original image.
+Extract important visual features using CNN layers.
+Learn foreground and background characteristics.
+Predict pixel-wise alpha values.
+Generate the foreground object with transparency information.
+Advantages:
+Handles complex backgrounds.
+Preserves fine details.
+Provides high-quality foreground extraction.
+Limitations:
+Requires large training datasets.
+High computational requirements.
+Performance may decrease on unfamiliar backgrounds.
+Video Matting Techniques
+Video matting extends image matting to consecutive video frames. It extracts foreground objects while maintaining temporal consistency.
+A. Background Subtraction-Based Matting
+This technique compares each video frame with a reference background.
+Working steps:
+Capture the background frame.
+Compare the current frame with the background.
+Identify moving foreground objects.
+Calculate foreground transparency.
+Extract the moving object.
+Advantages: Simple, fast, and suitable for static-camera surveillance.
+Limitations: Sensitive to lighting changes, shadows, and background movement.
+B. Optical Flow-Based Video Matting
+Optical flow estimates pixel movement between consecutive frames.
+Working steps:
+Identify foreground objects in the initial frame.
+Calculate optical flow between consecutive frames.
+Track pixel movements.
+Propagate alpha values to subsequent frames.
+Refine the matte to maintain smooth boundaries.
+Advantages:
+Maintains object movement information.
+Reduces frame-to-frame inconsistency.
+Useful for tracking moving objects.
+Limitations:
+Sensitive to fast motion and occlusion.
+Incorrect optical flow may produce inaccurate boundaries.
+C. Deep Learning-Based Video Matting
+Deep learning models use CNNs, recurrent neural networks (RNNs), and temporal attention mechanisms to estimate alpha mattes across video frames.
+Working steps:
+Input consecutive video frames.
+Extract spatial features using CNNs.
+Learn temporal relationships between frames.
+Estimate alpha mattes.
+Refine foreground boundaries and maintain temporal consistency.
+Advantages:
+Handles complex backgrounds.
+Preserves hair and fine object details.
+Produces smoother foreground extraction.
+Limitations:
+Requires high computational resources.
+Needs large video training datasets.
+May introduce temporal flickering under difficult conditions.
+Comparison of Image and Video Matting Techniques
+Note: Accuracy depends on the dataset, implementation, and scene conditions.
+Effectiveness Under Complex Backgrounds
+Complex backgrounds include changing illumination, similar foreground and background colours, shadows, overlapping objects, and transparent objects.
+The effectiveness of matting techniques can be evaluated using the following factors:
+Edge Preservation: Ability to retain fine details such as hair, fur, and object boundaries.
+Background Complexity: Ability to separate foreground objects from textured and changing backgrounds.
+Transparency Estimation: Ability to identify partially transparent objects such as glass and smoke.
+Temporal Consistency: Ability to maintain stable foreground extraction across consecutive video frames.
+Computational Efficiency: Ability to perform matting within acceptable processing time.
+Performance Evaluation Metrics
+The following metrics are used to evaluate matting performance:
+A. Sum of Absolute Differences (SAD)
+Measures the absolute difference between the estimated alpha matte and ground-truth alpha matte.
+Lower SAD indicates better matting accuracy.
+B. Mean Squared Error (MSE)
+Lower MSE indicates less estimation error.
+C. Gradient Error
+Measures differences in edge details between estimated and ground-truth alpha mattes.
+D. Temporal Consistency
+Measures how consistently foreground objects are extracted across consecutive video frames.
+Real-World Example
+Example: Extracting a Person from a Video with a Complex Background
+Consider a video containing a person walking in a crowded street.
+The video frames are captured.
+Deep learning-based matting identifies the person.
+The system estimates alpha values for each pixel.
+Hair, clothing, and body boundaries are preserved.
+Optical flow maintains consistency across consecutive frames.
+The background is removed while retaining the foreground person.
+Result: The person can be extracted accurately even when the background contains moving vehicles, pedestrians, shadows, and complex textures.
+Applications
+Film production and visual effects.
+Video conferencing and virtual backgrounds.
+Augmented Reality (AR) and Virtual Reality (VR).
+Medical image processing.
+Object tracking and video surveillance.
+Background replacement in photography.
+Image and video matting techniques play an important role in accurate foreground extraction. Chroma key, Bayesian, and closed-form matting are useful for image processing, whereas background subtraction, optical flow, and deep learning techniques support video matting. Deep learning-based approaches generally provide better results under complex backgrounds by preserving fine details and maintaining temporal consistency. However, computational requirements and processing time remain important challenges.
+7.Design a video segmentation and tracking framework by integrating change detection and motion analysis for real-time applications.
+Video segmentation and tracking are important computer vision techniques used to identify, separate, and continuously track moving objects in video sequences.
+Video segmentation: Divides video frames into meaningful regions, such as foreground objects and background.
+Change detection: Identifies differences between consecutive video frames to detect moving objects.
+Motion analysis: Estimates the direction, speed, and movement of objects.
+Object tracking: Follows the detected objects across consecutive frames.
+Objective: To develop an integrated framework that combines change detection, video segmentation, and motion analysis for accurate and real-time object tracking.
+Proposed Framework Architecture
+The proposed framework consists of the following stages:
+Video acquisition.
+Preprocessing and noise removal.
+Change detection.
+Foreground segmentation.
+Motion estimation.
+Object detection and feature extraction.
+Object tracking.
+Trajectory estimation and visualization.
+Change Detection Techniques
+Change detection identifies moving objects by comparing consecutive video frames.
+A. Frame Differencing
+Frame differencing calculates the difference between two consecutive frames.
+Mathematical equation:
+Steps:
+Capture consecutive video frames.
+Calculate pixel-wise differences.
+Apply a threshold.
+Identify changed regions.
+Generate a binary motion mask.
+B. Background Subtraction
+Background subtraction separates moving objects from a stationary background.
+Where (B(x,y)) represents the background model.
+If the difference exceeds a threshold, the pixel is classified as foreground.
+Advantages:
+Simple implementation.
+Fast processing.
+Suitable for surveillance applications.
+Limitations:
+Sensitive to illumination changes.
+Difficult when the background itself moves.
+Video Segmentation Techniques
+Video segmentation separates foreground objects from the background.
+A. Threshold-Based Segmentation
+Converts the difference image into a binary foreground mask.
+Where \(T\) is the threshold value.
+B. Region-Based Segmentation
+Groups neighbouring pixels with similar properties such as colour, intensity, and texture.
+C. Morphological Operations
+Morphological operations improve the quality of segmented objects.
+Erosion: Removes small unwanted foreground regions.
+Dilation: Fills gaps and expands foreground regions.
+Opening: Removes small noise.
+Closing: Fills small holes in objects.
+Motion Analysis Techniques
+Motion analysis determines how objects move between consecutive frames.
+A. Optical Flow
+Optical flow estimates apparent pixel movement between consecutive video frames.
+The optical flow constraint equation is:
+B. Kalman Filter
+The Kalman filter predicts and updates the position of a moving object.
+Prediction:
+Measurement update:
+Integration of Change Detection and Motion Analysis
+The proposed framework integrates all techniques to improve tracking performance.
+Integration process:
+Input video is captured frame by frame.
+Change detection identifies regions containing possible motion.
+Segmentation separates foreground objects.
+Optical flow calculates the direction and magnitude of movement.
+Kalman filtering predicts the next object position.
+Detected positions are associated with existing tracked objects.
+The system generates object trajectories and displays tracking results.
+Real-Time Implementation Example
+Example: Vehicle Tracking in Traffic Surveillance
+Consider a CCTV camera monitoring vehicles on a busy road.
+Step 1: Capture continuous video frames.
+Step 2: Apply frame differencing to detect changes caused by moving vehicles.
+Step 3: Use background subtraction to separate vehicles from the road background.
+Step 4: Apply morphological operations to remove noise.
+Step 5: Use optical flow to estimate vehicle movement direction.
+Step 6: Apply a Kalman filter to predict vehicle positions.
+Step 7: Track vehicles and estimate their trajectories.
+Result: The system continuously identifies and tracks vehicles, estimates their movement, and supports traffic monitoring.
+Performance Evaluation
+The effectiveness of the proposed framework can be evaluated using:
+The Intersection over Union (IoU) is calculated as:
+Where (A) represents the predicted region and (B) represents the ground-truth region.
+Higher IoU indicates better segmentation overlap.
+Optimization for Real-Time Applications
+To improve computational efficiency:
+Use lightweight segmentation algorithms.
+Apply region-of-interest processing.
+Use GPU-based parallel processing.
+Reduce unnecessary frame processing.
+Use adaptive thresholds for changing illumination.
+Combine optical flow with Kalman filtering for efficient tracking.
+Applications
+Intelligent traffic monitoring.
+Video surveillance and security.
+Autonomous vehicles.
+Human activity recognition.
+Sports player tracking.
+Industrial monitoring and robotics.
+The proposed video segmentation and tracking framework integrates change detection, background subtraction, morphological operations, optical flow, and Kalman filtering. Change detection identifies moving regions, segmentation extracts foreground objects, and motion analysis estimates their movement. Kalman filtering improves tracking stability by predicting object positions. The integration provides an efficient solution for real-time applications such as traffic surveillance, autonomous navigation, and intelligent video monitoring.
+8. Develop and Optimize a Performance Evaluation Model for Video Segmentation and Tracking Using Metrics Such as IoU, Precision, Recall, and F1-Score.
+Performance evaluation is an important process in video segmentation and object tracking. It measures how accurately a computer vision system identifies, segments, and tracks objects across consecutive video frames.
+A performance evaluation model uses different metrics to compare predicted results with ground-truth annotations.
+The four important evaluation metrics are:
+Intersection over Union (IoU).
+Precision.
+Recall.
+F1-score.
+Objective: To develop an evaluation model that measures segmentation accuracy, object detection performance, and tracking reliability while optimizing computational efficiency.
+Proposed Performance Evaluation Framework
+The proposed evaluation framework consists of the following stages:
+Input video acquisition.
+Ground-truth annotation.
+Video segmentation.
+Object detection and tracking.
+Comparison with ground-truth results.
+Calculation of evaluation metrics.
+Performance analysis and optimization.
+Important Performance Evaluation Metrics
+A. Intersection over Union (IoU)
+IoU measures the overlap between the predicted object region and the actual ground-truth region.
+Mathematical equation:
+Example:
+Suppose:
+Predicted area = 100 pixels.
+Ground-truth area = 80 pixels.
+Overlapping area = 60 pixels.
+Then:
+Interpretation: The predicted object region overlaps 50% with the actual object region.
+B. Precision
+Precision measures the proportion of correctly detected foreground pixels or objects among all predicted foreground pixels.
+Where:
+TP = True Positives.
+FP = False Positives.
+Example:
+Given:
+TP = 80
+FP = 20
+Interpretation: 80% of the predicted foreground pixels or detections are correct.
+C. Recall
+Recall measures the proportion of actual foreground pixels or objects correctly detected by the system.
+Example:
+Given:
+TP = 80
+FN = 20
+Interpretation: The system successfully identifies 80% of the actual foreground pixels or objects.
+D. F1-Score
+F1-score is the harmonic mean of precision and recall. It provides a balanced measure of detection performance.
+Mathematical equation:
+Interpretation: The system achieves an overall balanced detection performance of 80%. Numerical Example – Performance Evaluation
+Consider a video segmentation system with the following results:
+Performance Evaluation Summary
+Optimization Techniques for Improved Performance
+The performance evaluation model can be optimized using the following techniques:
+Additional tracking evaluation: Tracking systems should also use IDF1, which evaluates the consistency of object identities across video frames, and FPS to measure real-time processing speed.
+Real-World Application: Traffic Surveillance
+Consider an intelligent traffic surveillance system.
+A camera captures continuous traffic video.
+The segmentation algorithm identifies vehicles.
+The tracking algorithm follows each vehicle across frames.
+Predicted vehicle regions are compared with ground-truth annotations.
+IoU measures segmentation overlap.
+Precision measures correct vehicle detections.
+Recall measures the number of actual vehicles detected.
+F1-score evaluates the balance between precision and recall.
+Result: The evaluation model identifies segmentation errors and tracking weaknesses, helping improve the reliability of traffic monitoring.
+The proposed performance evaluation model uses IoU, precision, recall, and F1-score to measure the accuracy and effectiveness of video segmentation and tracking systems. IoU evaluates region overlap, precision measures detection correctness, recall measures detection completeness, and F1-score provides a balanced performance measure. By combining these metrics with adaptive thresholding, deep learning, Kalman filtering, and GPU acceleration, the system can achieve improved accuracy and computational efficiency for real-time video applications.
+Region | Frame Difference (SAD)
+Region A | 120
+Region B | 45
+Region C | 200
+Region | SAD Value | Comparison | Result
+A | 120 | 120 > 100 | Motion
+B | 45 | 45 < 100 | No Motion
+C | 200 | 200 > 100 | Motion
+Parameter | Result
+Sum of particle weights | 1.0
+Normalized weights | [0.2, 0.3, 0.1, 0.4]
+Most likely particle | Particle 4
+Highest particle weight | 0.4 (40%)
+Predicted state | 50
+Measurement | 60
+Kalman Gain | 0.6
+Updated state | 56
+Region-Based | Boundary-Based
+Groups similar neighbouring pixels. | Detects object boundaries.
+Uses colour, intensity and texture. | Uses intensity gradients and edge changes.
+Produces connected regions. | Produces edge or contour information.
+Example: Region growing. | Example: Canny edge detection.
+Frame | X-coordinate | Y-coordinate
+F1 | 10 | 20
+F2 | 15 | 25
+F3 | 20 | 30
+F4 | 25 | 35
+Technique | Accuracy | Computational cost | Major limitation
+Chroma Key | High with uniform backgrounds | Low | Requires green/blue screen
+Bayesian Matting | High | High | Requires foreground/background information
+Closed-Form Matting | High | Medium–High | Expensive for large images
+Background Subtraction | Moderate | Low | Sensitive to illumination changes
+Optical Flow Matting | Moderate–High | Medium–High | Struggles with occlusion
+Deep Learning Matting | High | High | Requires training data and GPU resources
+Stage | Technique | Function
+1 | Frame acquisition | Capture video frames
+2 | Frame differencing | Identify changes
+3 | Background subtraction | Detect foreground objects
+4 | Thresholding | Generate binary masks
+5 | Morphological operations | Remove noise
+6 | Optical flow | Estimate motion direction
+7 | Kalman filter | Predict object position
+8 | Object tracking | Track objects across frames
+9 | Trajectory estimation | Determine movement path
+Metric | Purpose
+Detection accuracy | Measures correct object detection
+Precision | Measures correctness of detected objects
+Recall | Measures the ability to detect actual objects
+F1-score | Balances precision and recall
+IoU | Measures overlap between predicted and actual regions
+FPS | Measures real-time processing speed
+Tracking accuracy | Evaluates object tracking performance
+Parameter | Value
+True Positive (TP) | 80
+False Positive (FP) | 20
+False Negative (FN) | 20
+True Negative (TN) | 80
+Evaluation metric | Calculated result
+IoU | 66.7%
+Precision | 80%
+Recall | 80%
+F1-score | 80%
+Optimization technique | Purpose
+Adaptive thresholding | Improves foreground detection under changing illumination
+Morphological operations | Removes noise and improves object boundaries
+Deep learning segmentation | Improves segmentation accuracy
+Kalman filtering | Improves object tracking stability
+GPU acceleration | Reduces processing time
+Multi-scale processing | Improves detection of objects of different sizes

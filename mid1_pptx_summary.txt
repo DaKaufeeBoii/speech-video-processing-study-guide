@@ -1,0 +1,172 @@
+=== Lecture 1-Speech Production Mechanism.pptx (Slides: 24) ===
+Slide 1: Speech Production Mechanism // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Opening Question // Which organs are involved in speech production? // Options:A) Heart, Kidney, LiverB) Lungs, Vocal cords, Tongue, LipsC) Brain, Stomach, IntestineD) Eyes, Ears, Nose
+Slide 3: Reflection on Opening Question // Which organs are involved in speech production? // Options:A) Heart, Kidney, LiverB) Lungs, Vocal cords, Tongue, LipsC) Brain, Stomach, IntestineD) Eyes, Ears, Nose
+Slide 4: Overview of Speech Production & Mechanism // Communication is essential for human interaction Speech production helps us express thoughts and ideas It is a complex, multi-step process Involves coordination of brain and speech organs. // Levels of Speech Production // Conceptualization // Planning what to say
+Slide 5: Overview of Speech Production & Mechanism // Speech production is a remarkable process that involves multiple intricate levels. // From the initial conceptualization of ideas to their formulation into linguistic forms and the precise articulation of sounds, each stage plays a vital role in effective communication. // Understanding these levels helps us appreciate the complexity of human speech and the incredible coordination between the brain and the vocal tract. By honing our speech production skills, // we can become more effective communicators and forge stronger connections with others.
+Slide 6: Conceptualization // Conceptualization (First Stage of Speech Production) // It is the first step in speech production // Ideas and thoughts are formed in the mind. // What happens in this stage?
+Slide 7: Conceptualization // Example // While preparing a presentation: // Decide what to say // Arrange main ideas clearly
+Slide 8: Formulation Stage // Comes after conceptualization (after ideas are formed) // Converts ideas into language (words & sentences) // What happens in this stage? // Brain changes ideas into meaningful sentences
+Slide 9: Formulation Stage // Common Difficulties // Word-finding problems // Grammatical mistakes // These can improve with practice and exposure Example
+Slide 10: Formulation Stage // Common Difficulties // Word-finding problems // Grammatical mistakes // These can improve with practice and exposure Example
+Slide 11: Articulation // Articulation // Articulation is the final stage of speech production // It is where speech is actually spoken (output stage) // What happens in this stage?
+Slide 12: Articulation // Why is articulation important? // Helps in clear and correct pronunciation // Makes speech easy to understand (intelligible) // Important for effective communication
+Slide 13: Activity 1: Think Pair Share // Think:Why do we sometimes know what to say but cannot express it clearly? // Pair:Discuss which level of speech production may be affected. // Share:Share your reasoning with the class.
+Slide 14: Reflection on Activity 1: Think Pair Share // Think: // Why do we sometimes know what to say but cannot express it clearly? // Because the idea is clear in the brain, but it is not properly converted into speech. // Pair:
+Slide 15: Speech Production Systems // The speech mechanism is a complex and intricate process that enables us to produce and comprehend speech. // The speech mechanism involves a coordinated effort of speech subsystems working together seamlessly.
+Slide 16: Scenerio Based // A speech recognition system fails to recognize a speaker due to unclear pronunciation. // Question: Which stage of speech production should be improved for better recognition? // 2.Two speakers deliver the same content: // Speaker A speaks clearly
+Slide 17: Reflection on Scenerio Based // 1. Articulation is the stage where speech sounds are physically produced // It involves organs like: // Tongue // Lips
+Slide 18: Reflection on Scenerio Based // 2. The difference between Speaker A (clear) and Speaker B (unclear) mainly lies in the following stages of speech production: // Articulation (Major Difference) // Speaker A: // Proper movement of tongue, lips, and jaw
+Slide 19: Reflection on Scenerio Based // 2.  Phonation // Speaker A: // Stable and controlled vocal cord vibration // Proper pitch and voice quality
+Slide 20: Reflection on Scenerio Based // 4. Formulation (Possible Minor Factor) // Speaker A: // Well-structured sentences // Speaker B:
+Slide 21: Reference // Raphael, L. J., Borden, G. J., & Harris, K. S. (2007). Speech science primer: Physiology, acoustics, and perception of speech. Lippincott Williams & Wilkins. // Van Riper, C. G., & Erickson, R. L. (1984). Speech correction: An introduction to speech pathology and audiology. (No Title). https://baslpcourse.com/overview-of-speech-production-and-speech-mechanism/
+Slide 22: Post Assessment // Which sequence is correct?A) Articulation → Formulation → ConceptualizationB) Conceptualization → Formulation → ArticulationC) Formulation → Conceptualization → ArticulationD) Respiration → Conceptualization → Articulation
+Slide 23: Reflection on Post Assessment // Which sequence is correct?A) Articulation → Formulation → ConceptualizationB) Conceptualization → Formulation → ArticulationC) Formulation → Conceptualization → ArticulationD) Respiration → Conceptualization → Articulation
+Slide 24: Thank You
+=== Lecture 10-Evaluation of Vector Quantization (VQ) Models in Speech Recognition.pptx (Slides: 13) ===
+Slide 1: Evaluation of Vector Quantization (VQ) Models in Speech Recognition // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Evaluation of Vector Quantization (VQ) Models in Speech Recognition // Vector Quantization (VQ) is a classical technique used in speech recognition to compress feature vectors (such as MFCCs) into a finite set of representative vectors called codewords, forming a codebook.
+Slide 3: Performance Evaluation of VQ Models // 1. The performance of VQ-based speech recognition systems can be analyzed using the following aspects: // a) Recognition Accuracy // VQ maps continuous feature space into discrete symbols. // Works reasonably well for small vocabulary and speaker-dependent systems.
+Slide 4: Performance Evaluation of VQ Models // b) Computational Efficiency // VQ is computationally simple and fast. // Matching is done using distance measures (e.g., Euclidean distance). // Suitable for real-time and low-resource systems.
+Slide 5: Limitations of VQ in Speech Recognition // 2. Limitations of VQ in Speech Recognition // Hard clustering (each vector assigned to one codeword) // Loss of fine spectral details // Poor modeling of temporal variations
+Slide 6: Codebook Optimization Strategies // 3. Codebook Optimization Strategies // Optimizing the codebook is critical for improving VQ performance. // a) Linde–Buzo–Gray (LBG) Algorithm // Iterative clustering algorithm
+Slide 7: Codebook Optimization Strategies // b) Codebook Size Selection // Small codebook → high distortion (poor accuracy) // Large codebook → high computation and overfitting // Optimal size balances accuracy and efficiency.
+Slide 8: Codebook Optimization Strategies // c) Training Data Selection // Use diverse and representative speech samples // Include variations in: // Speakers
+Slide 9: Codebook Optimization Strategies // d) Distance Measure Optimization // Common: Euclidean distance // Alternatives: Mahalanobis distance (accounts for variance) Better similarity measurement → improved classification.
+Slide 10: Codebook Optimization Strategies // e) Split and Merge Techniques // Dynamically adjust codewords: // Split high-error clusters // Merge similar clusters Reduces distortion and improves efficiency.
+Slide 11: Codebook Optimization Strategies // f) Initialization Methods // Random initialization may lead to poor convergence // Use: // K-means++
+Slide 12: Overall Evaluation // VQ is simple, fast, and memory-efficient, making it suitable for: // Embedded systems // Small-scale applications // However, due to:
+Slide 13: Thank You
+=== Lecture 11-Distance Measures in Speech Pattern Matching and Recognition.pptx (Slides: 10) ===
+Slide 1: Distance Measures in Speech Pattern Matching and Recognition // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Distance Measures in Speech Pattern Matching and Recognition // Distance measures quantify the similarity between speech feature vectors (e.g., MFCCs). // The choice of distance metric directly affects recognition accuracy, robustness, and computational cost.
+Slide 3: Euclidean Distance // Definition: The simplest and most commonly used distance measure:
+Slide 4: Euclidean Distance // Role in Speech Recognition // Used in Vector Quantization (VQ) and simple template matching // Measures straight-line distance between two feature vectors // Evaluation
+Slide 5: Mahalanobis Distance // Accounts for feature correlation and variance:
+Slide 6: Mahalanobis Distance // Role in Speech Recognition // Used in statistical models like Gaussian-based classifiers // Helps in modeling feature distribution more accurately // Evaluation
+Slide 7: Dynamic Time Warping (DTW) // A time-alignment technique that finds the optimal match between two sequences:
+Slide 8: Dynamic Time Warping (DTW) // Role in Speech Recognition // Aligns sequences of different lengths or speaking speeds // Widely used in isolated word recognition systems // Evaluation
+Slide 9: Comparative Analysis
+Slide 10: Thank You
+=== Lecture 12-Design of Gaussian Mixture Model (GMM) for Speech Feature Distribution.pptx (Slides: 4) ===
+Slide 1: Design of Gaussian Mixture Model (GMM) for Speech Feature Distribution // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Design of Gaussian Mixture Model (GMM) for Speech Feature Distribution // A Gaussian Mixture Model (GMM) is a probabilistic model used to represent the distribution of speech features as a combination of multiple Gaussian distributions.
+Slide 3: GMM Representation // A GMM models the probability density function as:
+Slide 4: Design Steps for GMM in Speech Recognition
+=== Lecture 2-Discrete time speech signals.pptx (Slides: 35) ===
+Slide 1: Discrete Time Speech Signals // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Opening Question // 1. The process of converting an analog speech signal into digital form is called:A) ModulationB) SamplingC) ConvolutionD) Prediction
+Slide 3: Opening Question // 1. The process of converting an analog speech signal into digital form is called:A) ModulationB) SamplingC) ConvolutionD) Prediction
+Slide 4: Signals-Introduction // Speech signals are naturally continuous-time signals that vary smoothly over time. // For digital processing, these signals must be converted into discrete-time signals through sampling. // Discrete-time representation enables efficient analysis, storage, and transmission of speech. // Applications:
+Slide 5: Continuous and Discrete Signals
+Slide 6: Continuous and Discrete Signals
+Slide 7: Continuous and Discrete Signals // Relation Between Both // Continuous signal → Sampling → Discrete signal // Sampling picks specific points from the continuous waveform // Time gap between samples = Sampling interval (T)
+Slide 8: Difference Between Continuous and Discrete Signals
+Slide 9: Sampling // Sampling is the process of converting a continuous-time signal into a discrete-time signal Done by taking samples at regular time intervals.
+Slide 10: How It Works
+Slide 11: Mathematical Representation
+Slide 12: Sampling Theorem (Nyquist Theorem)
+Slide 13: Sampling Theorem (Nyquist Theorem) // Key Idea // Sampling at at least twice the highest frequency ensures: // No loss of information // Accurate signal reconstruction
+Slide 14: Sampling Theorem (Nyquist Theorem) // Exam Point : Nyquist rate = 2 × maximum frequency
+Slide 15: Aliasing
+Slide 16: Aliasing
+Slide 17: Anti-Aliasing Filter // An Anti-Aliasing Filter is a low-pass filter used before sampling. // Why It is Needed // Real signals may contain high-frequency components // These components can cause aliasing during sampling
+Slide 18: Anti-Aliasing Filter // Real-Life Example // In voice recording: // Microphone captures signal // Anti-aliasing filter removes noise
+Slide 19: Sampling Rates in Speech // Common Sampling Rates: // 8 kHz → Telephone SpeechCaptures basic speech frequencies (up to ~4 kHz). Suitable for voice calls but lacks richness and clarity. // 16 kHz → High-Quality SpeechProvides better clarity and intelligibility. Widely used in speech recognition systems and modern communication apps. // 44.1 kHz → Audio CD QualityCaptures full human hearing range (~20 kHz). Used in music and high-fidelity audio recordings.
+Slide 20: Quantization // Quantization in Speech Processing // Converts Sampled Values into Finite LevelsAfter sampling, continuous amplitude values are approximated to discrete levels. // Introduces Quantization ErrorThe difference between actual signal value and quantized value creates small distortion (noise). // Step After SamplingQuantization is the second stage in analog-to-digital conversion (ADC), following sampling.
+Slide 21: Digital Representation of Speech
+Slide 22: Digital Representation of Speech
+Slide 23: Time Domain Representation // Time domain shows “how the signal changes over time”, but not the frequency content (which is analyzed in the frequency domain).
+Slide 24: Frequency Domain Representation // Time domain → “when signal changes”Frequency domain → “what frequencies are present” Both are essential for speech processing and recognition systems.
+Slide 25: Frame-Based Processing // Speech signals continuously change over time (non-stationary), but over very short durations, they behave like stationary signals. // Speech is non-stationaryThe characteristics of speech (pitch, amplitude, frequency) keep changing as we speak. // Processed in short frames (20–30 ms)Instead of analyzing the entire signal at once, it is divided into small segments called frames (typically 20–30 milliseconds long). // Assumed stationary within each frameWithin these short frames, the signal properties are considered constant (stationary), making analysis easier.
+Slide 26: Frame-Based Processing
+Slide 27: Advantages of Discrete-Time Signals // Easy storage and transmissionSignals are represented as numbers (samples), which can be easily stored in memory and transmitted over digital networks without degradation. // Robust to noiseDigital signals are less affected by noise compared to analog signals. Even if noise is introduced, error detection and correction techniques can recover the original signal. // Enables digital signal processing techniquesDiscrete-time signals allow the use of powerful algorithms such as: // Fast Fourier Transform (FFT)
+Slide 28: Applications // Speech processing technologies are widely used in real-world systems to enable human–machine interaction and efficient communication. // Automatic Speech Recognition (ASR)Converts spoken language into text. Used in dictation systems, transcription tools, and voice-based search. // Speaker IdentificationRecognizes who is speaking based on voice characteristics. Common in security systems and user authentication. // Speech Coding (MP3, VoIP)Compresses speech signals to reduce storage and bandwidth while maintaining quality. Used in audio files and internet calling.
+Slide 29: Applications // Why It Matters: // These applications make technology more natural, accessible, and efficient by allowing users to interact using speech instead of traditional input methods.
+Slide 30: Activity 1-Scenerio based // An engineer samples a speech signal at a very low sampling rate (e.g., 4 kHz). // Question: What problem might occur in the discrete-time signal? Explain using the concept of sampling theorem and its impact on speech quality.
+Slide 31: Reflection on Activity 1-Scenerio based // Answer: Sampling at a Very Low Rate (4 kHz). // Problem that Occurs:The main issue is aliasing (distortion) due to undersampling. // Explanation Using Sampling Theorem: // According to the Nyquist Sampling Theorem:
+Slide 32: Reflection on Activity 1-Scenerio based // What Happens (Aliasing Effect): // High-frequency components of speech get misinterpreted as lower frequencies // Different frequency components overlap (folding effect) // Original signal cannot be reconstructed correctly
+Slide 33: Post Assessment -MCQ // Q1. The process of converting a continuous speech signal into discrete form is called:A) QuantizationB) SamplingC) EncodingD) ModulationQ2. According to the Nyquist theorem, the sampling frequency should be:A) Equal to signal frequencyB) Half of signal frequencyC) At least twice the highest frequencyD) Less than signal frequency
+Slide 34: Reflection on Post Assessment -MCQ // Q1. The process of converting a continuous speech signal into discrete form is called:A) QuantizationB) SamplingC) EncodingD) ModulationQ2. According to the Nyquist theorem, the sampling frequency should be:A) Equal to signal frequencyB) Half of signal frequencyC) At least twice the highest frequencyD) Less than signal frequency
+Slide 35: Thank You
+=== Lecture 3-Pole-Zero modeling of speech.pptx (Slides: 18) ===
+Slide 1: Pole-Zero modeling of speech // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Pole–Zero Modeling of Speech // Pole–zero modeling is a fundamental technique in speech signal processing used to represent the speech production system as a digital filter. // It helps explain how raw sound from the vocal cords is shaped into intelligible speech.
+Slide 3: Pole–Zero Modeling of Speech // Overall Flow in the Image // Speech = Source (Excitation) → Filter (Vocal Tract) → Output (Speech Signal) // Left → Excitation Generator // Middle → LTI System (Vocal Tract Filter)
+Slide 4: Pole–Zero Modeling of Speech // Filter (Vocal Tract) // Includes throat, mouth, nasal cavity // Acts as an LTI (Linear Time-Invariant) system // Shapes the sound into meaningful speech
+Slide 5: Pole–Zero Modeling of Speech
+Slide 6: Pole–Zero Modeling of Speech
+Slide 7: Pole–Zero Modeling of Speech
+Slide 8: Pole–Zero Modeling of Speech
+Slide 9: Connecting to Pole–Zero Model
+Slide 10: Poles and Zeros
+Slide 11: Poles
+Slide 12: Poles // Why Poles Create Peaks? // When frequency is near a pole: // Denominator becomes very small // Output becomes large
+Slide 13: Zeros
+Slide 14: Zeros // Physical Interpretation // Occurs when: // Sound waves interfere destructively // Or airflow splits (oral + nasal paths)
+Slide 15: Physical Interpretation // The vocal tract (mouth, tongue, throat) behaves like a tube // Different shapes → different resonances → different speech sounds // These resonances are mathematically modeled as poles // Airflow restrictions (like nasal coupling) introduce zeros
+Slide 16: Why It Matters // Pole-zero modeling is widely used in: // 🎤 Speech synthesis (text-to-speech) // 🧠 Speech recognition systems // 📡 Speech compression (e.g., LPC codecs)
+Slide 17: Simple Intuition // Think of it like: // Poles = Amplifiers (boost certain frequencies) // Zeros = Suppressors (reduce certain frequencies) // Together, they shape raw sound into recognizable speech.
+Slide 18: Thank You
+=== Lecture 4-Fast Fourier Transform (FFT).pptx (Slides: 17) ===
+Slide 1: Fast Fourier Transform (FFT) // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Opening Question // “How do smartphones analyze your voice or music in real time within milliseconds?”
+Slide 3: Opening Question-Reflection // How smartphones do it so fast // When you speak or play music, the signal is first captured in the time domain (sound vs time). But smartphones need to understand the frequency components (pitch, tone, voice features). // To do this quickly: // The audio signal is first sampled by the microphone.
+Slide 4: Fast Fourier Transform (FFT) // Speech signals are continuous, time-varying signals that carry information in both time and frequency domains. // The Fast Fourier Transform (FFT) converts speech signals from the time domain to the frequency domain efficiently. // This transformation helps in analyzing important speech features such as pitch, formants, and signal energy distribution. // FFT is widely used as a fundamental step in speech recognition and feature extraction techniques .
+Slide 5: Why FFT in Speech Recognition // Speech signals consist of multiple overlapping frequency components // FFT is used to convert speech into the frequency (spectral) domain for analysis // Key Functions of FFT: // Identifies dominant frequency components in speech signals
+Slide 6: Property 1 – Linearity // FFT is a linear transformation, meaning it preserves addition and scaling of signals . // Mathematical Representation: // If two signals are combined in time domain:x₁(t) + x₂(t)then their FFT becomes:X₁(f) + X₂(f) // Key Idea:
+Slide 7: Property 2 – Symmetry // Speech signals are real-valued signals in the time domain // The FFT of a real signal exhibits conjugate symmetry in the frequency domain // Key Property: // The spectrum satisfies: Positive frequencies are the complex conjugate mirror of negative frequencies
+Slide 8: Property 3 – Time Shifting // When a speech signal is shifted in time, its frequency characteristics follow a specific behavior . // Key Property: // If a signal is delayed or advanced in time: // The magnitude spectrum remains unchanged
+Slide 9: Property 4 – Frequency Resolution // Frequency resolution refers to the ability of FFT to distinguish closely spaced frequency components // It is directly dependent on the number of FFT points (N) // Key Relationship: // Higher FFT size (N) → better frequency resolution
+Slide 10: Property 5 – Energy Conservation (Parseval’s Theorem) // Parseval’s Theorem states that energy is preserved in both time and frequency domains // The total energy of a signal remains constant after applying FFT // Key Concept: // Energy in time domain = Energy in frequency domain
+Slide 11: Property 6 – Periodicity Assumption // FFT assumes that the input signal is periodic and continuous in nature // However, real-world speech signals are non-periodic and time-varying // Key Issue: // Direct FFT on speech may cause spectral discontinuities (edge effects)
+Slide 12: Applications in Speech Recognition // FFT plays a key role in converting speech signals into useful frequency-domain features // Major Applications: // Feature Extraction // Used in generating MFCC and Spectrogram features
+Slide 13: Think–Pair–Share // A music streaming app needs to quickly detect whether a user is listening to classical music, rock, or speech in real time. // The audio signal is continuously changing and must be analyzed within milliseconds to provide recommendations and visual effects.
+Slide 14: Think–Pair–Share // Think (Individual) // How can the system quickly convert the incoming sound signal into meaningful frequency information to identify music type or speech? // Pair (Discussion) // Discuss with your partner:
+Slide 15: Expected Learning Outcome // Students will understand that FFT enables fast frequency analysis of signals, making real-time audio classification and processing possible.
+Slide 16: Conclusion // FFT is a fundamental signal processing tool widely used in speech analysis // Its key properties enable efficient and accurate feature extraction from speech signals // It forms the foundation for modern speech recognition systems and audio processing techniques
+Slide 17: Thank You
+=== Lecture 5 -convolution, linear and non linear filter banks.pptx (Slides: 8) ===
+Slide 1: Convolution, linear and non linear filter banks // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Evaluate the performance of linear and non-linear filter banks in speech signal decomposition with respect to frequency resolution and distortion. // To evaluate the performance of linear vs non-linear filter banks in speech signal decomposition, we mainly compare them using two critical factors: // Frequency Resolution // Distortion (Signal Preservation)
+Slide 3: Frequency Resolution // Linear Filter Banks // Provide well-defined and fixed frequency bands // Designed using FIR/IIR filters or perceptual scales (e.g., Mel filter banks) // High control over bandwidth and overlap
+Slide 4: Frequency Resolution // Non-Linear Filter Banks // Frequency decomposition is adaptive and data-dependent // Often based on: // Wavelets
+Slide 5: Distortion Analysis // Linear Filter Banks // Distortion mainly due to: // Filter design imperfections // Aliasing (in subband processing)
+Slide 6: Distortion Analysis // Non-Linear Filter Banks // Introduce distortion due to: // Non-linear transformations // Adaptive decomposition errors
+Slide 7: Comparative Summary
+Slide 8: Thank You
+=== Lecture 6 -Linear Predictive Coding (LPC).pptx (Slides: 11) ===
+Slide 1: Linear Predictive Coding (LPC): Formulation and Evaluation // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Linear Predictive Coding (LPC): Formulation and Evaluation-Introduction // Linear Predictive Coding (LPC) is a widely used speech analysis technique that models a speech signal by estimating the current sample as a linear combination of its past samples. // It provides an efficient representation of speech using a small number of parameters and is extensively used in speech coding, synthesis, and recognition.
+Slide 3: LPC Formulation
+Slide 4: LPC Formulation // Predicted Speech Signal // The current speech sample is estimated (predicted) using past speech samples. // Remember  : // Instead of storing the full speech signal, we predict it using previous values.
+Slide 5: Prediction Error Equation // This equation measures the difference between actual and predicted speech.
+Slide 6: Prediction Error Equation // If prediction is good → error is small // If prediction is bad → error is large // So:
+Slide 7: LPC Coefficient Estimation // In LPC, we want the prediction error to be as small as possible // To achieve this, we use autocorrelation analysis // This leads to a system of equations called Yule-Walker equations
+Slide 8: Evaluation of LPC for Speech Modeling // Advantages // Provides efficient speech representation with fewer parameters // Captures vocal tract characteristics effectively // Suitable for speech compression and transmission
+Slide 9: Limitations // Poor modeling of unvoiced sounds (e.g., fricatives) // Assumes speech is linear and short-time stationary // Sensitive to background noise and distortions // Does not capture non-linear speech behavior
+Slide 10: Applications // Speech coding (e.g., VoIP, mobile communication) // Speech synthesis systems // Speaker recognition systems // Formant analysis and speech enhancement
+Slide 11: Thank You
+=== Lecture 7 -Role of Static and Dynamic Features in Speech Processing.pptx (Slides: 8) ===
+Slide 1: Role of Static and Dynamic Features in Speech Processing // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Role of Static and Dynamic Features in Speech Processing // In speech processing, features are extracted from speech signals to represent useful information for tasks like speech recognition and speaker identification. // These features are broadly classified into static and dynamic features.
+Slide 3: Static Features // Static features represent the instantaneous characteristics of the speech signal at a particular time frame. They capture the spectral properties of speech. // Examples: MFCC (Mel-Frequency Cepstral Coefficients), LPC (Linear Predictive Coefficients) // Provide information about vocal tract shape // Useful for identifying phonemes (basic sound units)
+Slide 4: Dynamic Features // Dynamic features represent the temporal variations of speech over time. They are derived from static features. // Types: // Delta (Δ) features – First-order derivative (rate of change) // Delta-Delta (Δ²) features – Second-order derivative (acceleration)
+Slide 5: Role and Importance // Static features alone cannot capture speech variations over time // Dynamic features add contextual and temporal information // Combined use enhances accuracy in systems like Automatic Speech Recognition (ASR) // Both static and dynamic features are essential. Static features describe what the speech is, while dynamic features describe how speech changes over time, leading to better performance in speech processing applications.
+Slide 6: Comparison Table
+Slide 8: Thank You
+=== Lecture 8 -Key Stages of a Speech Feature Extraction Pipeline.pptx (Slides: 6) ===
+Slide 1: Key Stages of a Speech Feature Extraction Pipeline // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Speech feature extraction converts raw speech signals into compact, informative representations for tasks like speech recognition. // 1. Pre-emphasis // A high-pass filtering step applied to the speech signal // Boosts high-frequency components // Improves signal-to-noise ratio and balances the spectrum
+Slide 3: 3. Windowing // Applies a window function (e.g., Hamming window) to each frame // Reduces discontinuities at frame edges // Minimizes spectral leakage // 4. Fourier Transform (FFT)
+Slide 4: 5. Feature Extraction (Cepstral Analysis) // Extracts features like MFCC, LPC, LPCC // Captures perceptually relevant characteristics of speech // 6. Dynamic Features (Optional but important) // Computes Delta (Δ) and Delta-Delta (Δ²) features
+Slide 5: Key Stages of a Speech Feature Extraction
+Slide 6: Thank You
+=== Lecture 9-LPCC and MFCC.pptx (Slides: 7) ===
+Slide 1: LPCC and MFCC // Presented By // Dr.Sandeep Kumar M // Department of Computer Science and Engineering-AI & ML
+Slide 2: Comparison of LPCC and MFCC Features (Speech Recognition Applications) // LPCC captures speech based on the vocal tract production model, while MFCC captures features based on human hearing perception. MFCC is generally preferred in speech recognition due to its better robustness and higher accuracy in real-world conditions.
+Slide 3: Comparison of LPCC and MFCC Features (Speech Recognition Applications)
+Slide 4: Comparison of LPCC and MFCC Features (Speech Recognition Applications) // LPCC (Linear Predictive Cepstral Coefficients) and MFCC (Mel-Frequency Cepstral Coefficients) are two widely used feature representations in speech processing. // They differ mainly in how they model the speech spectrum and their robustness in real-world conditions.
+Slide 5: Comparison of LPCC and MFCC Features (Speech Recognition Applications)
+Slide 6: Comparison of LPCC and MFCC Features (Speech Recognition Applications) // LPCC focuses on modeling the speech production system, while MFCC focuses on modeling the human perception system. // Due to better noise robustness and perceptual relevance, MFCC is more widely used in modern speech recognition applications.
+Slide 7: Thank You
