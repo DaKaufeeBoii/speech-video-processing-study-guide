@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+*.tmp
+svp_study_suite/__pycache__/

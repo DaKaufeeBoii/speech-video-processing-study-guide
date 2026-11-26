@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" style="max-width: 720px; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="gradRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="720" height="270" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+
+  <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">TRANSFORM-DOMAIN MOTION ESTIMATION: PHASE CORRELATION</text>
+    <g filter="url(#shadow)">
+    <rect x="25" y="55" width="130" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="90.0" y="78.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Frame f1(x, y)</text>
+    <text x="90.0" y="95.5" font-size="11" fill="#94a3b8" text-anchor="middle">Reference Frame</text>
+    
+  </g>
+    <line x1="155" y1="82" x2="185" y2="82" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="185" y="55" width="100" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="235.0" y="78.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2D-FFT</text>
+    <text x="235.0" y="95.5" font-size="11" fill="#94a3b8" text-anchor="middle">F1(u, v)</text>
+    
+  </g>
+  
+    <g filter="url(#shadow)">
+    <rect x="25" y="125" width="130" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="90.0" y="148.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Frame f2(x, y)</text>
+    <text x="90.0" y="165.5" font-size="11" fill="#94a3b8" text-anchor="middle">f1(x - x0, y - y0)</text>
+    
+  </g>
+    <line x1="155" y1="152" x2="185" y2="152" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="185" y="125" width="100" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="235.0" y="148.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2D-FFT</text>
+    <text x="235.0" y="165.5" font-size="11" fill="#94a3b8" text-anchor="middle">F2(u, v)</text>
+    
+  </g>
+
+    <line x1="285" y1="82" x2="325" y2="115" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
+  
+    <line x1="285" y1="152" x2="325" y2="115" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
+  
+
+    <g filter="url(#shadow)">
+    <rect x="325" y="75" width="190" height="80" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="420.0" y="111.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Cross-Power Spectrum</text>
+    <text x="420.0" y="128.0" font-size="11" fill="#94a3b8" text-anchor="middle">R(u,v) = (F1·F2*) / |F1·F2*|\n= e^-j2π(ux0 + vy0)</text>
+    <rect x="440" y="66" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="475" y="79" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Normalized</text>
+  </g>
+    <line x1="515" y1="115" x2="550" y2="115" stroke="#c084fc" stroke-width="2" marker-end="url(#arrAmber)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="550" y="75" width="145" height="80" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="622.5" y="111.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Inverse 2D-FFT</text>
+    <text x="622.5" y="128.0" font-size="11" fill="#94a3b8" text-anchor="middle">r(x, y) = δ(x-x0, y-y0)\nSharp Dirac Spike!</text>
+    <rect x="620" y="66" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="655" y="79" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Delta Peak</text>
+  </g>
+
+  <rect x="25" y="195" width="670" height="60" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="360" y="218" font-size="11" fill="#f8fafc" text-anchor="middle">100% Robust to Illumination Changes (Magnitude normalization removes lighting variations)</text>
+  <text x="360" y="236" font-size="10" fill="#94a3b8" text-anchor="middle">Sub-pixel displacement estimation via 2D parabolic peak interpolation around the Dirac delta peak</text>
+
+</svg>

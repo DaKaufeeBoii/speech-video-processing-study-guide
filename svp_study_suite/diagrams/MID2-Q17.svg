@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" style="max-width: 720px; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="gradRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="720" height="270" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+
+  <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">IMAGE &amp; VIDEO MATTING: TRIMAP &amp; ALPHA BLENDING</text>
+  
+  <!-- Left: Trimap -->
+  <g transform="translate(40, 55)">
+    <rect width="310" height="195" rx="8" fill="#090d16" stroke="#64748b" stroke-width="2"/>
+    <text x="155" y="22" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">User-Defined Trimap</text>
+    <!-- Outer Background: Black -->
+    <text x="45" y="55" font-size="9" fill="#94a3b8">Background (α = 0)</text>
+    <!-- Unknown Gray Band -->
+    <path d="M 60 70 C 90 40 220 40 250 70 C 270 120 270 150 250 180 C 220 200 90 200 60 180 Z" fill="#334155" stroke="#94a3b8" stroke-width="1.5"/>
+    <text x="155" y="85" font-size="10" fill="#fbbf24" font-weight="bold" text-anchor="middle">UNKNOWN BAND (0 &lt; α &lt; 1)</text>
+    <!-- Known Foreground: White -->
+    <path d="M 90 100 C 110 85 200 85 220 100 C 230 130 230 145 220 160 C 200 170 110 170 90 160 Z" fill="#f8fafc"/>
+    <text x="155" y="130" font-size="10" fill="#090d16" font-weight="bold" text-anchor="middle">FOREGROUND (α = 1)</text>
+  </g>
+
+  <!-- Right: Matting Equation & Laplacian -->
+    <g filter="url(#shadow)">
+    <rect x="375" y="55" width="310" height="65" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="530.0" y="83.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">The Fundamental Matting Equation</text>
+    <text x="530.0" y="100.5" font-size="11" fill="#94a3b8" text-anchor="middle">I = α·F + (1 - α)·B\n3 Known RGB Equations vs 7 Unknowns (Ill-posed!)</text>
+    <rect x="610" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Equation</text>
+  </g>
+    <g filter="url(#shadow)">
+    <rect x="375" y="125" width="310" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="530.0" y="151.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Closed-Form Matting (Levin)</text>
+    <text x="530.0" y="168.0" font-size="11" fill="#94a3b8" text-anchor="middle">Minimizes αᵀ L α via Matting Laplacian\nExact global sparse linear solution</text>
+    <rect x="610" y="116" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="129" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Laplacian</text>
+  </g>
+    <g filter="url(#shadow)">
+    <rect x="375" y="190" width="310" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="530.0" y="216.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Video Matting & Coherence</text>
+    <text x="530.0" y="233.0" font-size="11" fill="#94a3b8" text-anchor="middle">Optical flow consistency penalty prevents alpha flickering across frames</text>
+    <rect x="610" y="181" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="194" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Video</text>
+  </g>
+
+</svg>

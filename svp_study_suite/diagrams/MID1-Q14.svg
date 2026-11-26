@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" style="max-width: 720px; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="gradRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="720" height="280" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+
+  <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">VECTOR QUANTIZATION (VQ) &amp; LBG ALGORITHM</text>
+  
+  <!-- Voronoi Cells -->
+  <g transform="translate(40, 55)">
+    <rect width="280" height="205" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="140" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">Voronoi Tessellation of Feature Space</text>
+    <!-- Voronoi lines -->
+    <line x1="40" y1="40" x2="140" y2="105" stroke="#475569" stroke-width="1.5"/>
+    <line x1="140" y1="105" x2="240" y2="60" stroke="#475569" stroke-width="1.5"/>
+    <line x1="140" y1="105" x2="130" y2="195" stroke="#475569" stroke-width="1.5"/>
+    <!-- Centroids -->
+    <circle cx="85" cy="70" r="5" fill="#38bdf8"/>
+    <text x="95" y="70" font-size="10" fill="#38bdf8" font-weight="bold">y1 (R1)</text>
+    <circle cx="190" cy="80" r="5" fill="#34d399"/>
+    <text x="200" y="80" font-size="10" fill="#34d399" font-weight="bold">y2 (R2)</text>
+    <circle cx="80" cy="155" r="5" fill="#fbbf24"/>
+    <text x="90" y="155" font-size="10" fill="#fbbf24" font-weight="bold">y3 (R3)</text>
+    <circle cx="195" cy="155" r="5" fill="#c084fc"/>
+    <text x="205" y="155" font-size="10" fill="#c084fc" font-weight="bold">y4 (R4)</text>
+    <text x="140" y="195" font-size="9" fill="#94a3b8" text-anchor="middle">Maps 39-D vector x to nearest codevector y_k</text>
+  </g>
+
+  <!-- LBG Flowchart -->
+    <g filter="url(#shadow)">
+    <rect x="350" y="55" width="335" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="517.5" y="73.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Initial Global Centroid (K=1)</text>
+    <text x="517.5" y="90.5" font-size="11" fill="#94a3b8" text-anchor="middle">Average of all training speech vectors</text>
+    
+  </g>
+    <line x1="517" y1="100" x2="517" y2="115" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="350" y="115" width="335" height="45" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="517.5" y="133.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. Centroid Splitting (K ──► 2K)</text>
+    <text x="517.5" y="150.5" font-size="11" fill="#94a3b8" text-anchor="middle">y+ = y(1 + ε), y- = y(1 - ε)</text>
+    <rect x="610" y="106" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="119" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Split</text>
+  </g>
+    <line x1="517" y1="160" x2="517" y2="175" stroke="#c084fc" stroke-width="2" marker-end="url(#arrAmber)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="350" y="175" width="335" height="45" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="517.5" y="193.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. K-Means Nearest Assignment</text>
+    <text x="517.5" y="210.5" font-size="11" fill="#94a3b8" text-anchor="middle">Classify vectors into Voronoi cells R_i</text>
+    
+  </g>
+    <line x1="517" y1="220" x2="517" y2="235" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="350" y="235" width="335" height="45" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="517.5" y="253.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">4. Iterate until Distortion Converges</text>
+    <text x="517.5" y="270.5" font-size="11" fill="#94a3b8" text-anchor="middle">Generates optimal codebook (K=64-256)</text>
+    <rect x="610" y="226" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="239" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Done</text>
+  </g>
+
+</svg>

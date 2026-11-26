@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" style="max-width: 720px; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="gradRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="720" height="270" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+
+  <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">VISUAL MOTION TRACKING: KALMAN FILTER &amp; MEAN-SHIFT</text>
+  
+  <!-- Left: Mean-Shift -->
+  <g transform="translate(30, 55)">
+    <rect width="320" height="195" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="160" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">1. Mean-Shift Kernel Mode Seeking</text>
+    <!-- Hill contours -->
+    <ellipse cx="170" cy="115" rx="90" ry="50" fill="none" stroke="#334155" stroke-width="1.5"/>
+    <ellipse cx="170" cy="115" rx="60" ry="35" fill="none" stroke="#475569" stroke-width="1.5"/>
+    <ellipse cx="170" cy="115" rx="30" ry="18" fill="none" stroke="#64748b" stroke-width="1.5"/>
+    <!-- Mean shift vector -->
+    <circle cx="100" cy="140" r="4" fill="#fbbf24"/>
+    <text x="100" y="155" font-size="9" fill="#fbbf24">Start y0</text>
+    <line x1="100" y1="140" x2="140" y2="125" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
+    <line x1="140" y1="125" x2="170" y2="115" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
+    <circle cx="170" cy="115" r="5" fill="#34d399"/>
+    <text x="170" y="105" font-size="9" fill="#34d399" font-weight="bold" text-anchor="middle">Mode Peak (Target)</text>
+    <text x="160" y="180" font-size="9" fill="#94a3b8" text-anchor="middle">Climbs color probability gradient via Bhattacharyya</text>
+  </g>
+
+  <!-- Right: Kalman Trajectory -->
+  <g transform="translate(370, 55)">
+    <rect width="320" height="195" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="160" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">2. Kalman Trajectory Estimation</text>
+    <!-- Trajectory curve -->
+    <path d="M 40 160 Q 120 120 180 80 T 280 50" fill="none" stroke="#34d399" stroke-width="3"/>
+    <circle cx="40" cy="160" r="4" fill="#38bdf8"/>
+    <circle cx="110" cy="125" r="4" fill="#38bdf8"/>
+    <circle cx="180" cy="80" r="4" fill="#38bdf8"/>
+    <circle cx="280" cy="50" r="5" fill="#34d399"/>
+    <!-- Measurement noise vs state -->
+    <circle cx="195" cy="70" r="3" fill="#f43f5e"/>
+    <line x1="180" y1="80" x2="195" y2="70" stroke="#f43f5e" stroke-width="1" stroke-dasharray="2 2"/>
+    <text x="215" y="72" font-size="9" fill="#f43f5e">Sensor z</text>
+
+    <text x="160" y="160" font-size="10" fill="#f8fafc" text-anchor="middle">State x = [x, y, vx, vy]ᵀ</text>
+    <text x="160" y="180" font-size="9" fill="#94a3b8" text-anchor="middle">Predict-Update loop filters measurement noise</text>
+  </g>
+
+</svg>

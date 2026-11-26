@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 280" width="100%" height="auto" style="max-width: 740px; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="gradRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="740" height="280" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+
+  <text x="370" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">3D STRUCTURE FROM MOTION (SfM) PIPELINE</text>
+    <g filter="url(#shadow)">
+    <rect x="15" y="55" width="100" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="65.0" y="78.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. SIFT / ORB</text>
+    <text x="65.0" y="95.5" font-size="11" fill="#94a3b8" text-anchor="middle">Feature Points</text>
+    
+  </g>
+    <line x1="115" y1="82" x2="135" y2="82" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="135" y="55" width="105" height="55" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
+    <text x="187.5" y="78.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. RANSAC</text>
+    <text x="187.5" y="95.5" font-size="11" fill="#94a3b8" text-anchor="middle">Outlier Filter</text>
+    <rect x="165" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="200" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Consensus</text>
+  </g>
+    <line x1="240" y1="82" x2="260" y2="82" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrAmber)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="260" y="55" width="115" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="317.5" y="78.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. 8-Point SVD</text>
+    <text x="317.5" y="95.5" font-size="11" fill="#94a3b8" text-anchor="middle">Essential Matrix E</text>
+    <rect x="300" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="335" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">E=[t]xR</text>
+  </g>
+    <line x1="375" y1="82" x2="395" y2="82" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="395" y="55" width="105" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
+    <text x="447.5" y="78.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">4. Pose (R, t)</text>
+    <text x="447.5" y="95.5" font-size="11" fill="#94a3b8" text-anchor="middle">Camera Motion</text>
+    
+  </g>
+    <line x1="500" y1="82" x2="520" y2="82" stroke="#c084fc" stroke-width="2" marker-end="url(#arrAmber)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="520" y="55" width="95" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="567.5" y="78.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">5. Triangulate</text>
+    <text x="567.5" y="95.5" font-size="11" fill="#94a3b8" text-anchor="middle">3D Points P</text>
+    
+  </g>
+    <line x1="615" y1="82" x2="635" y2="82" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
+  
+    <g filter="url(#shadow)">
+    <rect x="635" y="55" width="90" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="680.0" y="78.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">6. Bundle Adj</text>
+    <text x="680.0" y="95.5" font-size="11" fill="#94a3b8" text-anchor="middle">Levenberg-M</text>
+    <rect x="650" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="685" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Optimized</text>
+  </g>
+
+  <rect x="15" y="130" width="710" height="135" rx="8" fill="#1e293b" stroke="#334155"/>
+  <text x="35" y="155" font-size="12" font-weight="bold" fill="#38bdf8">Epipolar Geometry Fundamentals:</text>
+  <text x="35" y="178" font-size="11" fill="#cbd5e1">• Essential Matrix: E = [t]× R (5 DOF for calibrated cameras: x2ᵀ E x1 = 0)</text>
+  <text x="35" y="198" font-size="11" fill="#cbd5e1">• Fundamental Matrix: F = K2⁻ᵀ E K1⁻¹ (7 DOF for uncalibrated cameras)</text>
+  <text x="35" y="218" font-size="11" fill="#cbd5e1">• Bundle Adjustment: Minimizes 2D re-projection error: min Σ ||p_ij - π(K, R, t, P_j)||²</text>
+  <text x="35" y="238" font-size="11" fill="#34d399">Recovers both 3D sparse scene point cloud and 3D camera motion trajectory!</text>
+
+</svg>

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" style="max-width: 720px; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gradCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+    <linearGradient id="gradEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="gradAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="gradPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#9333ea"/>
+    </linearGradient>
+    <linearGradient id="gradRose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fb7185"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrEmerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+  <rect width="720" height="290" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+
+  <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">HUMAN VISUAL SYSTEM (HVS) PROPERTIES &amp; COMPRESSION</text>
+  
+  <!-- Left: CSF Curve -->
+  <g transform="translate(35, 55)">
+    <rect width="310" height="210" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="155" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">Contrast Sensitivity Function (CSF)</text>
+    <!-- Axis -->
+    <line x1="30" y1="180" x2="280" y2="180" stroke="#64748b" stroke-width="1.5"/>
+    <line x1="30" y1="180" x2="30" y2="40" stroke="#64748b" stroke-width="1.5"/>
+    <text x="155" y="198" font-size="9" fill="#94a3b8" text-anchor="middle">Spatial Frequency (cycles/degree)</text>
+    <!-- CSF Bandpass curve -->
+    <path d="M 35 150 C 60 70 85 45 110 50 C 145 60 200 130 270 178" fill="none" stroke="#38bdf8" stroke-width="3"/>
+    <text x="110" y="40" font-size="9" fill="#fbbf24" font-weight="bold" text-anchor="middle">Peak (3-5 cpd)</text>
+    <!-- High Freq Dropoff -->
+    <rect x="180" y="90" width="95" height="40" rx="4" fill="#f43f5e" fill-opacity="0.2" stroke="#f43f5e"/>
+    <text x="227" y="106" font-size="8" fill="#f43f5e" font-weight="bold" text-anchor="middle">Drop-off to 0:</text>
+    <text x="227" y="120" font-size="8" fill="#f43f5e" text-anchor="middle">Heavy Quantization!</text>
+  </g>
+
+  <!-- Right: Color Subsampling -->
+  <g transform="translate(375, 55)">
+    <rect width="310" height="210" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="155" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">Luminance vs. Chrominance (4:2:0)</text>
+      <g filter="url(#shadow)">
+    <rect x="20" y="38" width="270" height="42" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="155.0" y="55.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Rods (120M) vs Cones (6M)</text>
+    <text x="155.0" y="72.0" font-size="11" fill="#94a3b8" text-anchor="middle">Eye is far more sensitive to Light than Color</text>
+    
+  </g>
+      <g filter="url(#shadow)">
+    <rect x="20" y="90" width="270" height="48" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="155.0" y="110.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">YCbCr Color Transform</text>
+    <text x="155.0" y="127.0" font-size="11" fill="#94a3b8" text-anchor="middle">Y = Luminance (Keep high bandwidth)\nCb, Cr = Chroma (Downsample by 2)</text>
+    
+  </g>
+      <g filter="url(#shadow)">
+    <rect x="20" y="148" width="270" height="48" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="155.0" y="168.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">4:2:0 Chroma Subsampling</text>
+    <text x="155.0" y="185.0" font-size="11" fill="#94a3b8" text-anchor="middle">Discards 50% raw video data with ZERO visible loss!</text>
+    <rect x="215" y="139" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="250" y="152" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">50% Save</text>
+  </g>
+  </g>
+
+</svg>
