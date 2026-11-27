@@ -204,6 +204,8 @@ def generate_html_handbook():
             <option value="stream_fluxfm">🎧 FluxFM ChillHop (Berlin 24/7)</option>
             <option value="stream_radioco">📻 24/7 Lo-Fi Cafe Radio</option>
             <option value="stream_lautfm">🏙️ Berlin Lo-Fi Lounge</option>
+            <option value="stream_japan">🌸 Tokyo Lo-Fi Aesthetic</option>
+            <option value="stream_anime">🏮 Anime &amp; Chill Lofi</option>
           </optgroup>
           <optgroup label="🎮 NINTENDO &amp; VIDEO GAME LO-FI">
             <option value="stream_vgm_covers">🍄 Live: Nintendo &amp; Game Remixes</option>
@@ -213,9 +215,6 @@ def generate_html_handbook():
           </optgroup>
           <optgroup label="🌌 VAPORWAVE &amp; DOWNTEMPO">
             <option value="stream_nightwave">🌌 Nightwave Plaza (Vaporwave &amp; Lofi)</option>
-            <option value="stream_groovesalad">🥗 SomaFM Groove Salad (Downtempo)</option>
-            <option value="stream_lush">🌸 SomaFM Lush (Mellow Vocals &amp; Chill)</option>
-            <option value="stream_dronezone">🚀 SomaFM Drone Zone (Deep Space)</option>
             <option value="stream_chillout">🍃 Ambient Chillout Lounge</option>
           </optgroup>
           <optgroup label="🌧️ AMBIENT FOCUS SOUNDSCAPES">
@@ -448,12 +447,14 @@ def generate_html_handbook():
   </div>
   <div class="yt-stream-chips" id="ytStreamChips">
     <button class="yt-chip active" data-vid="5qap5aO4i9A" data-title="Lofi Girl — 24/7 Study Beats">🎧 Lofi Girl</button>
-    <button class="yt-chip" data-vid="zzpFiazS-Bk" data-title="Coffee Shop Radio — 24/7 Jazzy Lo-Fi">☕ Coffee Shop</button>
-    <button class="yt-chip" data-vid="1fueZCTYkpA" data-title="Nintendo Lofi Beats — Zelda &amp; Mario">🍄 Nintendo</button>
-    <button class="yt-chip" data-vid="x_7sXb_x228" data-title="Animal Crossing Lofi — 24/7 Study">🍃 Animal Crossing</button>
-    <button class="yt-chip" data-vid="jfKfPfyJRdk" data-title="Chillhop Radio — Jazzy &amp; Lofi Hip Hop">🦝 Chillhop</button>
-    <button class="yt-chip" data-vid="4xDzrJKXOOY" data-title="Synthwave Boy — Beats to Chill/Game">🌆 Synthwave</button>
-    <button class="yt-chip" data-vid="lTRiuFIWV54" data-title="Cozy Rainy Cafe — Deep Ambient Focus">🌧️ Rainy Cafe</button>
+    <button class="yt-chip" data-vid="nsoEPmdC-t0" data-title="Zelda BOTW — Lofi of the Wild">🗡️ Zelda BOTW</button>
+    <button class="yt-chip" data-vid="rJlY1uKL87k" data-title="Zelda &amp; Chill 2 — GameChops">🛡️ Zelda &amp; Chill</button>
+    <button class="yt-chip" data-vid="-GAr6XkB35k" data-title="Zelda &amp; Nintendo Piano — 24/7 Live">🌙 Nintendo Piano</button>
+    <button class="yt-chip" data-vid="h3AMUun9tHk" data-title="Video Game Study Lounge — 24/7 Live">📚 VGM Lounge</button>
+    <button class="yt-chip" data-vid="s_LfS8OaChE" data-title="Nintendo Beats — Lofi Cafe">☕ Nintendo Beats</button>
+    <button class="yt-chip" data-vid="2DVpys50LVE" data-title="Nintendo — Poké &amp; Chill">🍄 Poké &amp; Chill</button>
+    <button class="yt-chip" data-vid="Ac5rVi8Gg_k" data-title="Super Nintendo Lofi World — Mario &amp; DK">🎮 Super Lofi World</button>
+    <button class="yt-chip" data-vid="4xDzrJKXOOY" data-title="Synthwave Boy — 24/7 Live">🌆 Synthwave</button>
   </div>
   <div class="yt-iframe-wrap">
     <iframe id="ytIframe" src="" title="YouTube Lofi Player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -463,8 +464,8 @@ def generate_html_handbook():
 <button id="backToTopBtn" class="fab-top" title="Back to Top" aria-label="Back to Top">↑</button>
 
 <!-- SCRIPTS: Clean separation matching Deep Learning StudyMode -->
-<script src="audio.js?v=20261127_05"></script>
-<script src="app.js?v=20261127_05"></script>
+<script src="audio.js?v=20261127_06"></script>
+<script src="app.js?v=20261127_06"></script>
 </body>
 </html>
 """)

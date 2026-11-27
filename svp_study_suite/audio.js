@@ -32,7 +32,7 @@ class StudyAudioManager {
     this.streamAudio.crossOrigin = "anonymous";
     this.streamAudio.preload = "none";
     
-    // Live 24/7 Internet Radio Streams (All verified HTTPS)
+    // Live 24/7 Internet Radio Streams (All verified HTTPS 200 OK)
     this.streamStations = {
       'stream_chillhop': {
         name: '☕ Live: 24/7 Chillhop & Lofi',
@@ -50,17 +50,21 @@ class StudyAudioManager {
         name: '🏙️ Live: Berlin Lo-Fi Lounge',
         url: 'https://lofi.stream.laut.fm/lofi'
       },
-      'stream_berlin': {
-        name: '🏙️ Live: Berlin Lo-Fi Lounge',
-        url: 'https://lofi.stream.laut.fm/lofi'
+      'stream_japan': {
+        name: '🌸 Live: Tokyo Lo-Fi Aesthetic',
+        url: 'https://stream.zeno.fm/0r0xa792kwzuv'
       },
-      'stream_vgm_all': {
-        name: '🎮 Live: Video Game Lofi & VGM',
-        url: 'https://relay.rainwave.cc/all.mp3'
+      'stream_anime': {
+        name: '🏮 Live: Anime & Chill Lofi',
+        url: 'https://stream.zeno.fm/f3wvbbqmdg8uv'
       },
       'stream_vgm_covers': {
         name: '🍄 Live: Nintendo & Game Remixes',
         url: 'https://relay.rainwave.cc/covers.mp3'
+      },
+      'stream_vgm_all': {
+        name: '🎮 Live: Video Game Lofi & VGM',
+        url: 'https://relay.rainwave.cc/all.mp3'
       },
       'stream_vgm_ocremix': {
         name: '⚔️ Live: OverClocked ReMix (VGM)',
@@ -77,34 +81,20 @@ class StudyAudioManager {
       'stream_chillout': {
         name: '🍃 Live: Ambient Chillout Lounge',
         url: 'https://hirschmilch.de:7000/chillout.mp3'
-      },
-      'stream_cafe': {
-        name: '☕ Live: Cafe Lofi Beats',
-        url: 'https://play.streamafrica.net/lofiradio'
-      },
-      'stream_groovesalad': {
-        name: '🥗 Live: SomaFM Groove Salad',
-        url: 'https://ice2.somafm.com/groovesalad-128-mp3'
-      },
-      'stream_lush': {
-        name: '🌸 Live: SomaFM Lush',
-        url: 'https://ice2.somafm.com/lush-128-mp3'
-      },
-      'stream_dronezone': {
-        name: '🚀 Live: SomaFM Drone Zone',
-        url: 'https://ice2.somafm.com/dronezone-128-mp3'
       }
     };
 
-    // YouTube Live Streams catalog for the Visual Lounge
+    // YouTube Live Streams catalog for the Visual Lounge (All verified working embeds)
     this.youtubeStreams = [
-      { id: '5qap5aO4i9A', title: 'Lofi Girl — Beats to Relax/Study to', icon: '🎧' },
-      { id: 'zzpFiazS-Bk', title: 'Coffee Shop Radio — 24/7 Jazzy Lo-Fi', icon: '☕' },
-      { id: '1fueZCTYkpA', title: 'Nintendo Lofi Beats — Zelda & Mario', icon: '🍄' },
-      { id: 'x_7sXb_x228', title: 'Animal Crossing Lofi — 24/7 Study', icon: '🍃' },
-      { id: 'jfKfPfyJRdk', title: 'Chillhop Radio — Jazzy & Lofi Hip Hop', icon: '🦝' },
-      { id: '4xDzrJKXOOY', title: 'Synthwave Boy — Beats to Chill/Game', icon: '🌆' },
-      { id: 'lTRiuFIWV54', title: 'Cozy Rainy Cafe — Deep Ambient Focus', icon: '🌧️' }
+      { id: '5qap5aO4i9A', title: 'Lofi Girl — 24/7 Study Beats', icon: '🎧' },
+      { id: 'nsoEPmdC-t0', title: 'Zelda BOTW — Lofi of the Wild', icon: '🗡️' },
+      { id: 'rJlY1uKL87k', title: 'Zelda & Chill 2 — GameChops', icon: '🛡️' },
+      { id: '-GAr6XkB35k', title: 'Zelda & Nintendo Piano — 24/7 Live', icon: '🌙' },
+      { id: 'h3AMUun9tHk', title: 'Video Game Study Lounge — 24/7 Live', icon: '📚' },
+      { id: 's_LfS8OaChE', title: 'Nintendo Beats — Lofi Cafe', icon: '☕' },
+      { id: '2DVpys50LVE', title: 'Nintendo — Poké & Chill', icon: '🍄' },
+      { id: 'Ac5rVi8Gg_k', title: 'Super Nintendo Lofi World — Mario & DK', icon: '🎮' },
+      { id: '4xDzrJKXOOY', title: 'Synthwave Boy — 24/7 Live', icon: '🌆' }
     ];
     
     this.volume = 0.85;
