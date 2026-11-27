@@ -592,6 +592,28 @@ header.sticky-header {
   box-shadow: 0 0 12px rgba(124, 58, 237, 0.45);
 }
 
+.filter-chip.chip-unit {
+  border-color: #0284c7;
+  color: #7dd3fc;
+  font-weight: 700;
+}
+.filter-chip.chip-unit.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #38bdf8 !important;
+}
+
+.unit-hub-card:hover {
+  border-color: #64748b !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+.unit-hub-card.active-unit-card {
+  background: #1e3a8a !important;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
 .container {
   max-width: 920px;
   margin: 0 auto;

@@ -286,6 +286,9 @@ header {
 .filter-btn[data-filter="tier3"] { border-color: #7c3aed; color: #c4b5fd; }
 .filter-btn[data-filter="tier3"].active { background: #7c3aed; color: #fff; }
 
+.filter-btn[data-filter^="u"] { border-color: #0284c7; color: #7dd3fc; }
+.filter-btn[data-filter^="u"].active { background: #0284c7; color: #fff; }
+
 /* Main Arena */
 main {
   flex: 1;
@@ -1168,6 +1171,13 @@ html.modal-open, body.modal-open {
 <div class="filter-strip">
   <div class="filter-strip-inner">
     <button class="filter-btn active" data-filter="all">All 40 (Ranked)</button>
+    <button class="filter-btn" data-filter="u1" style="border-color:#38bdf8; color:#7dd3fc; font-weight:700;">📚 Unit 1 (8)</button>
+    <button class="filter-btn" data-filter="u2" style="border-color:#38bdf8; color:#7dd3fc; font-weight:700;">📚 Unit 2 (8)</button>
+    <button class="filter-btn" data-filter="u3" style="border-color:#38bdf8; color:#7dd3fc; font-weight:700;">📚 Unit 3 (8)</button>
+    <button class="filter-btn" data-filter="u4" style="border-color:#38bdf8; color:#7dd3fc; font-weight:700;">📚 Unit 4 (8)</button>
+    <button class="filter-btn" data-filter="u5" style="border-color:#38bdf8; color:#7dd3fc; font-weight:700;">📚 Unit 5 (8)</button>
+    <button class="filter-btn" data-filter="mid1">Mid-I (20)</button>
+    <button class="filter-btn" data-filter="mid2">Mid-II (20)</button>
     <button class="filter-btn filter-btn-important" data-filter="important">🔥 Free Marks (10)</button>
     <button class="filter-btn" data-filter="5m">⚡ 5M Questions (20)</button>
     <button class="filter-btn" data-filter="10m">⚔️ 10M Questions (20)</button>
@@ -1175,8 +1185,6 @@ html.modal-open, body.modal-open {
     <button class="filter-btn" data-filter="tier2">⚔️ Tier 2: Core Scoring (12)</button>
     <button class="filter-btn" data-filter="tier3">🛡️ Tier 3: High-Value 10M (12)</button>
     <button class="filter-btn" data-filter="tier4">🧩 Tier 4: Deep Dive (6)</button>
-    <button class="filter-btn" data-filter="mid1">Mid-I (20)</button>
-    <button class="filter-btn" data-filter="mid2">Mid-II (20)</button>
     <button class="filter-btn" data-filter="missed" id="btnFilterMissed" style="display:none; border-color:#f43f5e; color:#fda4af;">Weak Spots (0)</button>
   </div>
 </div>
@@ -1487,6 +1495,16 @@ function buildDeck(filter) {
     list = RAW_QUESTIONS.filter(q => q.mid === 'Mid-I');
   } else if (filter === 'mid2') {
     list = RAW_QUESTIONS.filter(q => q.mid === 'Mid-II');
+  } else if (filter === 'u1') {
+    list = RAW_QUESTIONS.filter(q => (q.unit || '').includes('1')).sort((a,b) => a.qno - b.qno);
+  } else if (filter === 'u2') {
+    list = RAW_QUESTIONS.filter(q => (q.unit || '').includes('2')).sort((a,b) => a.qno - b.qno);
+  } else if (filter === 'u3') {
+    list = RAW_QUESTIONS.filter(q => (q.unit || '').includes('3')).sort((a,b) => (a.mid === b.mid ? a.qno - b.qno : (a.mid === 'Mid-I' ? -1 : 1)));
+  } else if (filter === 'u4') {
+    list = RAW_QUESTIONS.filter(q => (q.unit || '').includes('4')).sort((a,b) => a.qno - b.qno);
+  } else if (filter === 'u5') {
+    list = RAW_QUESTIONS.filter(q => (q.unit || '').includes('5')).sort((a,b) => a.qno - b.qno);
   } else if (filter === 'missed') {
     list = [...missedDeck];
   }

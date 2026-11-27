@@ -260,6 +260,13 @@ def generate_html_handbook():
 
 <div class="filter-bar" id="filterBar">
   <button class="filter-chip active" data-filter="all">All (40)</button>
+  <button class="filter-chip chip-unit" data-filter="u1">📚 Unit 1 (8)</button>
+  <button class="filter-chip chip-unit" data-filter="u2">📚 Unit 2 (8)</button>
+  <button class="filter-chip chip-unit" data-filter="u3">📚 Unit 3 (8)</button>
+  <button class="filter-chip chip-unit" data-filter="u4">📚 Unit 4 (8)</button>
+  <button class="filter-chip chip-unit" data-filter="u5">📚 Unit 5 (8)</button>
+  <button class="filter-chip" data-filter="mid1">Mid-I (20)</button>
+  <button class="filter-chip" data-filter="mid2">Mid-II (20)</button>
   <button class="filter-chip chip-important" data-filter="important">🔥 Free Marks &amp; Numericals (10)</button>
   <button class="filter-chip chip-keypoints" data-filter="keypoints">🎯 Key Points Only (Shortest)</button>
   <button class="filter-chip" data-filter="5m">⚡ 5 Marks (20)</button>
@@ -268,20 +275,60 @@ def generate_html_handbook():
   <button class="filter-chip" data-filter="tier2">⚔️ Tier 2: Core Scoring ({tier_counts[2]})</button>
   <button class="filter-chip" data-filter="tier3">🛡️ Tier 3: High-Value 10M ({tier_counts[3]})</button>
   <button class="filter-chip" data-filter="tier4">🧩 Tier 4: Deep Dive ({tier_counts[4]})</button>
-  <button class="filter-chip" data-filter="mid1">Mid-I (20)</button>
-  <button class="filter-chip" data-filter="mid2">Mid-II (20)</button>
-  <button class="filter-chip" data-filter="u1">Unit 1</button>
-  <button class="filter-chip" data-filter="u2">Unit 2</button>
-  <button class="filter-chip" data-filter="u3">Unit 3</button>
-  <button class="filter-chip" data-filter="u4">Unit 4</button>
-  <button class="filter-chip" data-filter="u5">Unit 5</button>
 </div>
 
 <div class="container">
+  <!-- Unit-Wise Preparation Hub -->
+  <div class="unit-hub-container" id="unitHubContainer" style="margin-bottom: 18px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+      <div style="font-size:0.95rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:6px;">
+        <span>📚</span> <span>Syllabus Unit-Wise Preparation (8 Questions Each):</span>
+      </div>
+      <div style="font-size:0.78rem; color:#94a3b8;">Click any unit to isolate its 8 questions in syllabus order (Q1 → Q8)</div>
+    </div>
+    <div class="unit-pills-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
+      <div class="unit-hub-card" onclick="filterByTier('u1')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #38bdf8; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 1</span> <span style="color:#38bdf8; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">Speech Production &amp; Acoustics</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-I Q1 – Q8</div>
+      </div>
+      <div class="unit-hub-card" onclick="filterByTier('u2')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #34d399; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 2</span> <span style="color:#34d399; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">Feature Extraction &amp; MFCC/LPC</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-I Q9 – Q16</div>
+      </div>
+      <div class="unit-hub-card" onclick="filterByTier('u3')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #fbbf24; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 3</span> <span style="color:#fbbf24; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">2D Signals, DFT &amp; 2D-DCT</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-I Q17-20 &amp; Mid-II Q1-4</div>
+      </div>
+      <div class="unit-hub-card" onclick="filterByTier('u4')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #f43f5e; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 4</span> <span style="color:#f43f5e; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">Video Motion &amp; Optical Flow</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-II Q5 – Q12</div>
+      </div>
+      <div class="unit-hub-card" onclick="filterByTier('u5')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #c084fc; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 5</span> <span style="color:#c084fc; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">Segmentation &amp; Video Tracking</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-II Q13 – Q20</div>
+      </div>
+    </div>
+  </div>
+
   <!-- Emergency Triage Banner -->
   <div class="triage-banner">
     <div class="triage-header">
-      <div class="triage-title">🚀 Cramming Triage: Disregard Units, Follow the Tiers!</div>
+      <div class="triage-title">🚀 Fast Cramming Triage: Score-Ranked Priority Pathway</div>
     </div>
     <div class="triage-desc">
       When short on time, do <strong>NOT</strong> study in syllabus order (Unit 1 to 5). Study in order of <strong>Rank 1 to 40</strong> below.
@@ -388,6 +435,7 @@ def generate_html_handbook():
          data-marks="{marks_class}"
          data-tier="{tier_class}"
          data-rank="{q['rank']}"
+         data-qno="{q['qno']}"
          data-time="{time_clean}"
          data-orig="{q['mid']}-{q['qno']:02d}"
          data-important="{is_important}">

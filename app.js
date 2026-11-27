@@ -85,6 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
       if (mode === 'priority') {
         return parseInt(a.getAttribute('data-rank') || '99') - parseInt(b.getAttribute('data-rank') || '99');
       } else if (mode === 'unit') {
+        const uA = parseInt((a.getAttribute('data-unit') || 'u0').replace('u', '')) || 0;
+        const uB = parseInt((b.getAttribute('data-unit') || 'u0').replace('u', '')) || 0;
+        if (uA !== uB) return uA - uB;
+        const midA = a.getAttribute('data-mid') === 'mid1' ? 1 : 2;
+        const midB = b.getAttribute('data-mid') === 'mid1' ? 1 : 2;
+        if (midA !== midB) return midA - midB;
+        const qA = parseInt(a.getAttribute('data-qno') || '0');
+        const qB = parseInt(b.getAttribute('data-qno') || '0');
+        if (qA !== qB) return qA - qB;
         return (a.getAttribute('data-orig') || '').localeCompare(b.getAttribute('data-orig') || '');
       } else if (mode === 'marks') {
         const mA = a.getAttribute('data-marks') === '10m' ? 0 : 1;
@@ -116,8 +125,27 @@ document.addEventListener('DOMContentLoaded', () => {
   window.filterByTier = function(tier) {
     filterChips.forEach(c => c.classList.remove('active'));
     const targetChip = document.querySelector(`.filter-chip[data-filter="${tier}"]`);
-    if (targetChip) targetChip.classList.add('active');
+    if (targetChip) {
+      targetChip.classList.add('active');
+      try {
+        targetChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      } catch (e) {}
+    }
     activeFilter = tier;
+
+    // Highlight active unit hub card if any
+    document.querySelectorAll('.unit-hub-card').forEach(c => c.classList.remove('active-unit-card'));
+    const hubCard = document.querySelector(`.unit-hub-card[onclick*="'${tier}'"]`);
+    if (hubCard) hubCard.classList.add('active-unit-card');
+
+    // Auto-sort into natural question sequence if a unit or mid filter is chosen
+    if (tier.startsWith('u') || tier === 'mid1' || tier === 'mid2') {
+      if (sortSelect && sortSelect.value !== 'unit') {
+        sortSelect.value = 'unit';
+        sortCards('unit');
+      }
+    }
+
     applyFilters();
   };
 
@@ -126,6 +154,20 @@ document.addEventListener('DOMContentLoaded', () => {
       filterChips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       activeFilter = chip.getAttribute('data-filter') || 'all';
+
+      // Highlight active unit hub card if any
+      document.querySelectorAll('.unit-hub-card').forEach(c => c.classList.remove('active-unit-card'));
+      const hubCard = document.querySelector(`.unit-hub-card[onclick*="'${activeFilter}'"]`);
+      if (hubCard) hubCard.classList.add('active-unit-card');
+
+      // Auto-sort into natural question sequence if a unit or mid filter is chosen
+      if (activeFilter.startsWith('u') || activeFilter === 'mid1' || activeFilter === 'mid2') {
+        if (sortSelect && sortSelect.value !== 'unit') {
+          sortSelect.value = 'unit';
+          sortCards('unit');
+        }
+      }
+
       applyFilters();
     });
   });
