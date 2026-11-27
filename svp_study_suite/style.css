@@ -1001,7 +1001,6 @@ header.sticky-header {
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
   margin-bottom: 10px;
-  text-align: center;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 [data-theme="light"] .visual-diagram-wrap {
@@ -1011,14 +1010,15 @@ header.sticky-header {
 
 .visual-diagram-wrap svg {
   width: 100%;
-  max-width: 100%;
+  max-width: 740px;
   height: auto;
   display: block;
   margin: 0 auto;
 }
-@media (min-width: 769px) {
+@media (max-width: 640px) {
   .visual-diagram-wrap svg {
-    max-width: 740px;
+    min-width: 560px;
+    margin: 0;
   }
 }
 

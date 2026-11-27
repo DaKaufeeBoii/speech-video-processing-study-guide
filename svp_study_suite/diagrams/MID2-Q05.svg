@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -67,14 +67,14 @@
       <g filter="url(#shadow)">
     <rect x="25" y="40" width="265" height="42" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="157.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Illumination L(x, y)</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="157.5" y="74">Light from Sun / Lamp source</tspan></text>
+    <text x="157.5" y="73" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Light from Sun / Lamp source</text>
     
   </g>
     <text x="157" y="98" font-size="14" fill="#cbd5e1" font-weight="bold" text-anchor="middle">×</text>
       <g filter="url(#shadow)">
     <rect x="25" y="105" width="265" height="42" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="157.5" y="123" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Surface Reflectance R(x, y)</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="157.5" y="139">Material properties (0 ≤ R ≤ 1)</tspan></text>
+    <text x="157.5" y="138" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Material properties (0 ≤ R ≤ 1)</text>
     
   </g>
     <text x="157" y="162" font-size="14" fill="#cbd5e1" font-weight="bold" text-anchor="middle">=</text>

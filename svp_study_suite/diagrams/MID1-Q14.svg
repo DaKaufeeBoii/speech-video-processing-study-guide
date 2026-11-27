@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -66,7 +66,7 @@
     <g filter="url(#shadow)">
     <rect x="350" y="55" width="335" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="517.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Initial Global Centroid (K=1)</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="517.5" y="89">Average of all training speech vectors</tspan></text>
+    <text x="517.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Average of all training speech vectors</text>
     
   </g>
     <line x1="517" y1="100" x2="517" y2="115" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
@@ -74,7 +74,7 @@
     <g filter="url(#shadow)">
     <rect x="350" y="115" width="335" height="45" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="517.5" y="133" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. Centroid Splitting (K ──► 2K)</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="517.5" y="149">y+ = y(1 + ε), y- = y(1 - ε)</tspan></text>
+    <text x="517.5" y="148" font-size="10.5" fill="#cbd5e1" text-anchor="middle">y+ = y(1 + ε), y- = y(1 - ε)</text>
     <rect x="610" y="106" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="645" y="119" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Split</text>
   </g>
     <line x1="517" y1="160" x2="517" y2="175" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
@@ -82,7 +82,7 @@
     <g filter="url(#shadow)">
     <rect x="350" y="175" width="335" height="45" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="517.5" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. K-Means Nearest Assignment</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="517.5" y="209">Classify vectors into Voronoi cells R_i</tspan></text>
+    <text x="517.5" y="208" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Classify vectors into Voronoi cells R_i</text>
     
   </g>
     <line x1="517" y1="220" x2="517" y2="235" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
@@ -90,7 +90,7 @@
     <g filter="url(#shadow)">
     <rect x="350" y="235" width="335" height="45" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="517.5" y="253" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. Iterate until Distortion Converges</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="517.5" y="269">Generates optimal codebook (K=64-256)</tspan></text>
+    <text x="517.5" y="268" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Generates optimal codebook (K=64-256)</text>
     <rect x="610" y="226" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="645" y="239" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Done</text>
   </g>
 
