@@ -703,6 +703,8 @@ kbd {{
   padding: 12px;
   margin-bottom: 14px;
   overflow-x: auto;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
 }}
 
 .diagram-block pre {{
@@ -710,6 +712,15 @@ kbd {{
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
   font-size: 0.78rem;
   line-height: 1.35;
+  white-space: pre;
+}}
+
+.katex-display {{
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  max-width: 100% !important;
+  padding: 6px 0;
+  -webkit-overflow-scrolling: touch;
 }}
 
 .answer-content {{
@@ -940,6 +951,11 @@ kbd {{
 
 /* Mobile Responsive Media Queries */
 @media (max-width: 768px) {{
+  html, body {{
+    overflow-x: hidden !important;
+    width: 100%;
+    max-width: 100vw;
+  }}
   header {{
     padding: calc(8px + var(--sat)) calc(12px + var(--sar)) 8px calc(12px + var(--sal));
   }}
@@ -968,8 +984,9 @@ kbd {{
     max-width: none;
     font-size: 0.74rem;
   }}
-  .audio-vol-slider {{
-    width: 40px;
+  .audio-vol-slider,
+  .audio-layer-btn {{
+    display: none !important;
   }}
   .controls-top {{
     display: grid;
@@ -1006,9 +1023,14 @@ kbd {{
   main {{
     padding: 10px calc(10px + var(--sar)) 16px calc(10px + var(--sal));
     gap: 10px;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }}
   .drill-card {{
     border-radius: 12px;
+    max-width: 100%;
+    overflow: hidden;
   }}
   .card-top {{
     padding: 10px 12px;
@@ -1036,6 +1058,8 @@ kbd {{
   }}
   .revealed-content {{
     padding: 14px 12px;
+    max-width: 100%;
+    box-sizing: border-box;
   }}
   .hook-grid {{
     gap: 8px;
@@ -1053,10 +1077,36 @@ kbd {{
   .hook-analogy p {{
     font-size: 0.84rem;
   }}
+  .diagram-block {{
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px;
+  }}
+  .diagram-block pre, #diagramContent {{
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.70rem;
+    line-height: 1.25;
+  }}
+  .katex-display {{
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 0;
+  }}
   .answer-content {{
     max-height: none !important;
     overflow-y: visible !important;
     padding-right: 0 !important;
+  }}
+  .answer-content table {{
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
   }}
   .grading-bar {{
     grid-template-columns: 1fr 1fr 1.15fr;
@@ -1069,7 +1119,7 @@ kbd {{
     font-size: 0.82rem;
   }}
   .btn-grade span.key-hint {{
-    font-size: 0.68rem;
+    display: none !important;
   }}
   
   /* Mobile Full-Screen Cheat Sheet Modal */

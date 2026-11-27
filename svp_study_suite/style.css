@@ -1177,6 +1177,10 @@ tr:last-child td { border-bottom: none; }
 }
 
 @media (max-width: 640px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
   header.sticky-header {
     padding: calc(8px + var(--sat)) calc(12px + var(--sar)) 8px calc(12px + var(--sal));
   }
@@ -1202,10 +1206,17 @@ tr:last-child td { border-bottom: none; }
     gap: 8px;
     width: 100%;
   }
+  .audio-vol-slider,
+  .audio-layer-btn,
+  .yt-lounge-btn {
+    display: none !important; /* Hide secondary sliders on mobile to prevent crowding */
+  }
   .audio-widget {
     width: 100%;
-    justify-content: space-between;
-    padding: 6px 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
     box-sizing: border-box;
   }
   .audio-mode-select {
@@ -1214,14 +1225,36 @@ tr:last-child td { border-bottom: none; }
     max-width: none;
     font-size: 0.74rem;
   }
-  .audio-vol-slider {
-    width: 40px;
-  }
   .header-actions {
     display: grid;
-    grid-template-columns: 42px 1fr 1fr 60px;
+    grid-template-columns: repeat(4, 1fr);
     gap: 6px;
     width: 100%;
+  }
+  .header-actions a[href*="speedrun"] {
+    grid-column: span 4;
+    min-height: 38px;
+    font-size: 0.85rem;
+    justify-content: center;
+  }
+  pre, pre.ascii-pre {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    white-space: pre !important;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.70rem;
+  }
+  .katex-display {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 0 !important;
+  }
+  .table-wrapper {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
   }
   .btn-icon {
     padding: 6px 4px;
