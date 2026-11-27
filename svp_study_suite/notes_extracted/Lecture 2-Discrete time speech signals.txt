@@ -1,0 +1,137 @@
+Discrete Time Speech Signals Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Opening Question 1. The process of converting an analog speech signal into digital form is called: A) Modulation B) Sampling C) Convolution D) Prediction
+
+---
+
+Opening Question 1. The process of converting an analog speech signal into digital form is called: A) Modulation B) Sampling C) Convolution D) Prediction
+
+---
+
+Signals- Introduction Speech signals are naturally  continuous-time signals  that vary smoothly over time. For digital processing, these signals must be converted into  discrete-time signals  through sampling. Discrete-time representation enables efficient analysis, storage, and transmission of speech. Applications: Speech Recognition Speech Compression Voice Assistants (e.g., Siri, Alexa)
+
+---
+
+Continuous and Discrete Signals Continuous-Time Signal: Defined for all time  𝑡 Smooth and continuous waveform  Example:  Analog speech signal   Discrete-Time Signal: Defined only at specific time intervals  Represented as  𝑥 𝑛 Obtained by  sampling  continuous signal  Key Difference: Continuous → Infinite values in time  Discrete → Finite sampled values  
+
+---
+
+Continuous and Discrete Signals Continous signal  Signal is  smooth and continuous  (no gaps).  Defined at  every instant of time  𝑡 .  The curve shows  infinite values between any two points .  Represents  real-world natural signals .  Example:  Human voice, temperature variation. Mathematically written as  𝑥 𝑡 .   Discrete Signal  Signal consists of  separate points (samples) .  Defined only at  specific time intervals .  No values exist between the samples.  Obtained by  sampling the continuous signal .  Represented as  𝑥 𝑛 .  Example: Digital audio, recorded speech.  
+
+---
+
+Continuous and Discrete Signals Relation Between Both Continuous signal →  Sampling  → Discrete signal  Sampling picks  specific points from the continuous waveform   Time gap between samples =  Sampling interval (T)
+
+---
+
+Difference Between Continuous and Discrete Signals Feature Continuous-Time Signal Discrete-Time Signal Definition Defined for all time  𝑡 Defined only at specific time intervals Representation 𝑥 𝑡 𝑥 𝑛 Nature Smooth and continuous Sequence of sampled values Values Infinite number of values Finite/Countable values Processing Analog systems Digital systems Example Human speech (analog) Digital audio signal Conversion Not required Obtained by sampling Feature Continuous-Time Signal Discrete-Time Signal Definition Defined only at specific time intervals Representation Nature Smooth and continuous Sequence of sampled values Values Infinite number of values Finite/Countable values Processing Analog systems Digital systems Example Human speech (analog) Digital audio signal Conversion Not required Obtained by sampling
+
+---
+
+Sampling Sampling is the  process of converting a continuous-time signal into a discrete-time signal  Done by taking  samples at regular time intervals.
+
+---
+
+How It Works 1. Select Points from Continuous Waveform Start with a smooth continuous signal  𝑥 𝑡 Pick specific points along the curve  2.Maintain Equal Spacing Between Samples Samples are taken at  uniform intervals  𝑇 Ensures proper signal representation  3. Convert into Sequence of Values Sampled points become a sequence: 𝑥 𝑛 = 𝑥 0 𝑥 𝑇 𝑥 2 𝑇 𝑥 3 𝑇 ... This forms the  discrete-time signal  
+
+---
+
+Mathematical Representation Mathematical Representation 𝑥 𝑛 = 𝑥 𝑛𝑇 𝑇 = Sampling period  𝑛 = Sample index (0, 1, 2, …) Real-Life Example Microphone captures  continuous voice   ADC samples it → Stores as  digital audio (MP3, WAV)  
+
+---
+
+Sampling Theorem (Nyquist Theorem) It defines the  minimum sampling rate  required to accurately represent a signal. Condition 𝑓 𝑠 ≥2 𝑓 𝑚𝑎𝑥 𝑓 𝑠 → Sampling frequency  𝑓 𝑚𝑎𝑥 → Maximum frequency of the signal  
+
+---
+
+Sampling Theorem (Nyquist Theorem) Key Idea Sampling at  at least twice  the highest frequency ensures:  No loss of information  Accurate signal reconstruction  If Condition is NOT Satisfied Leads to  aliasing (distortion)   Original signal cannot be recovered
+
+---
+
+Sampling Theorem (Nyquist Theorem) Example 1. Given Maximum frequency of signal:  𝑓 𝑚𝑎𝑥 =4   kHz Step 1: Apply Nyquist Theorem Formula:  𝑓 𝑠 ≥2 𝑓 𝑚𝑎𝑥 Step 2: Substitute Value =  𝑓 𝑠 ≥2×4   kHz Step 3: Calculate   𝑓 𝑠 ≥8   kHz Final Answer   Minimum sampling frequency = 8 kHz   Better Understanding If  𝑓 𝑠 =8 kHz → Signal is  perfectly reconstructed  ✅  If  𝑓 𝑠 <8 kHz →  Aliasing occurs (distortion)  ❌  If  𝑓 𝑠 >8 kHz →  Better quality (more accurate)  👍   Exam Point : Nyquist rate = 2 × maximum frequency
+
+---
+
+Aliasing Aliasing occurs when the  sampling frequency is too low. Condition 𝑓 𝑠 <2 𝑓 𝑚𝑎𝑥 𝑓 𝑠 → Sampling frequency  𝑓 𝑚𝑎𝑥 → Maximum signal frequency What Happens Frequency components  overlap with each other   High-frequency signals appear as  lower frequencies   Original signal information is  lost  
+
+---
+
+Aliasing Effect on Speech Signal Distorted audio  Loss of clarity  Wrong frequency representation Simple Example Required:  𝑓 𝑠 =8 kHz  Used:  𝑓 𝑠 =5 kHz ❌ Result: Aliasing occurs → Distorted speech. Point to remember: Aliasing is under Sampling   
+
+---
+
+Anti-Aliasing Filter An  Anti-Aliasing Filter  is a  low-pass filter  used  before sampling. Why It is Needed Real signals may contain  high-frequency components   These components can cause  aliasing  during sampling Function Allows  low-frequency signals  to pass  Removes  high-frequency components (noise/unwanted signals) Process Flow   Analog Signal → Low-Pass Filter → Sampler (ADC) → Digital Signal
+
+---
+
+Anti-Aliasing Filter Real-Life Example In voice recording:  Microphone captures signal  Anti-aliasing filter removes noise  ADC samples clean signal
+
+---
+
+Sampling Rates in Speech Common Sampling Rates: 8 kHz → Telephone Speech Captures basic speech frequencies (up to ~4 kHz). Suitable for voice calls but lacks richness and clarity.  16 kHz → High-Quality Speech Provides better clarity and intelligibility. Widely used in speech recognition systems and modern communication apps.  44.1 kHz → Audio CD Quality Captures full human hearing range (~20 kHz). Used in music and high-fidelity audio recordings. Higher sampling rates capture more details of the speech signal, resulting in better quality—but require more storage and processing power.
+
+---
+
+Quantization Quantization in Speech Processing Converts Sampled Values into Finite Levels After sampling, continuous amplitude values are approximated to discrete levels.  Introduces Quantization Error The difference between actual signal value and quantized value creates small distortion (noise).  Step After Sampling Quantization is the second stage in analog-to-digital conversion (ADC), following sampling. More quantization levels (bits) → less error → better signal quality, but higher data size.
+
+---
+
+Digital Representation of Speech  Speech Signal Stored As: Sequence of Numbers After sampling and quantization, the speech signal is represented as a  series of numerical values .  Discrete-Time Digital Signal Each number corresponds to the  amplitude of the signal at a specific time instant .  Example: 𝑥 𝑛 =2,5,3,7,… (Each value represents one sampled and quantized point of the speech waveform) Digital speech =  numbers in a sequence  → easy to  store, transmit, and process  using computers (e.g., in speech recognition, compression, and synthesis).  
+
+---
+
+Digital Representation of Speech  Speech Signal Stored As: Sequence of Numbers After sampling and quantization, the speech signal is represented as a  series of numerical values .  Discrete-Time Digital Signal Each number corresponds to the  amplitude of the signal at a specific time instant .  Example: 𝑥 𝑛 =2,5,3,7,… (Each value represents one sampled and quantized point of the speech waveform) Digital speech =  numbers in a sequence  → easy to  store, transmit, and process  using computers (e.g., in speech recognition, compression, and synthesis).  
+
+---
+
+Time Domain Representation Time Domain Representation: Shows Amplitude vs Time Index (n) The speech signal is represented as  𝑥 𝑛 , where:  𝑛 → discrete time index (sample number)  𝑥 𝑛 → amplitude at that time  Waveform Visualization Displays the  shape of the signal  over time (peaks, valleys, patterns of speech).  Useful For:   Signal Analysis  → Understanding loudness, pauses, and temporal patterns  Waveform Visualization  → Observing how speech varies with time   Time domain shows “how the signal changes over time”, but not the frequency content (which is analyzed in the frequency domain).
+
+---
+
+Frequency Domain Representation Frequency Domain Representation: Obtained using DFT / FFT The time-domain signal  𝑥 𝑛 is transformed into frequency domain using:  DFT (Discrete Fourier Transform)   FFT (Fast Fourier Transform – efficient implementation of DFT)   Shows Frequency Components of Speech Represents how much of each  frequency  is present in the signal. Output:  Magnitude vs Frequency plot  (spectrum)  Important for Feature Extraction Helps extract key features like:  Pitch (fundamental frequency)  Formants (resonant frequencies)  Spectral energy   Time domain  → “when signal changes” Frequency domain  → “what frequencies are present”   Both are essential for speech processing and recognition systems.
+
+---
+
+Frame-Based Processing Speech signals continuously change over time (non-stationary), but over very short durations, they behave like stationary signals.   Speech is non-stationary The characteristics of speech (pitch, amplitude, frequency) keep changing as we speak.    Processed in short frames (20–30 ms) Instead of analyzing the entire signal at once, it is divided into small segments called  frames  (typically 20–30 milliseconds long).  Assumed stationary within each frame Within these short frames, the signal properties are considered constant (stationary), making analysis easier.  Why Frame-Based Processing? Enables use of mathematical tools like FFT ( Fast Fourier Transform)  and feature extraction  Improves accuracy in speech recognition systems  Forms the basis for techniques like MFCC ( Mel-Frequency Cepstral Coefficients)   and spectrogram analysis  Think of speech like a movie  a movie is a sequence of frames. Each frame looks static, but when combined, they show motion. Similarly, speech is analyzed frame by frame.
+
+---
+
+Frame-Based Processing
+
+---
+
+Advantages of Discrete-Time Signals Easy storage and transmission Signals are represented as numbers (samples), which can be easily stored in memory and transmitted over digital networks without degradation.    Robust to noise Digital signals are less affected by noise compared to analog signals. Even if noise is introduced, error detection and correction techniques can recover the original signal.  Enables digital signal processing techniques Discrete-time signals allow the use of powerful algorithms such as:  Fast Fourier Transform (FFT)  Filtering and feature extraction  Speech and image processing methods Why It Matters in Speech Processing: Most modern systems like speech recognition, audio compression, and voice assistants rely on discrete-time signals for accurate and efficient processing.
+
+---
+
+Applications Speech processing technologies are widely used in real-world systems to enable human–machine interaction and efficient communication. Automatic Speech Recognition (ASR) Converts spoken language into text. Used in dictation systems, transcription tools, and voice-based search.  Speaker Identification Recognizes  who  is speaking based on voice characteristics. Common in security systems and user authentication.  Speech Coding (MP3, VoIP) Compresses speech signals to reduce storage and bandwidth while maintaining quality. Used in audio files and internet calling.  Voice Assistants (e.g., Amazon Alexa, Apple Siri) Enable hands-free interaction with devices for tasks like setting reminders, searching information, and controlling smart homes.
+
+---
+
+Applications Why It Matters: These applications make technology more natural, accessible, and efficient by allowing users to interact using speech instead of traditional input methods.
+
+---
+
+Activity 1-Scenerio based An engineer samples a speech signal at a very low sampling rate (e.g., 4 kHz).  Question:  What problem might occur in the discrete-time signal? Explain using the concept of sampling theorem and its impact on speech quality. 
+
+---
+
+Reflection on Activity 1-Scenerio based Answer:  Sampling at a Very Low Rate (4 kHz). Problem that Occurs: The main issue is  aliasing (distortion)  due to  undersampling . Explanation Using Sampling Theorem: According to the  Nyquist Sampling Theorem : A signal must be sampled at  at least twice its highest frequency component  to be accurately reconstructed. Typical speech signals contain frequencies up to  ~8 kHz   Required sampling rate ≥  16 kHz   Given sampling rate =  4 kHz  ❌ (too low)  This violates the sampling theorem.
+
+---
+
+Reflection on Activity 1-Scenerio based What Happens (Aliasing Effect): High-frequency components of speech get  misinterpreted as lower frequencies   Different frequency components  overlap (folding effect)   Original signal  cannot be reconstructed correctly Impact on Speech Quality: Speech becomes  distorted and unclear   Loss of important sounds (especially consonants like  s, f, t )  Reduced intelligibility (hard to understand words)  Sounds may appear  muffled or unnatural Sampling at  4 kHz is insufficient  for speech signals and leads to  aliasing , violating the Nyquist criterion and significantly degrading speech quality.
+
+---
+
+Post Assessment -MCQ Q1.  The process of converting a continuous speech signal into discrete form is called: A) Quantization B) Sampling C) Encoding D) Modulation Q2.  According to the Nyquist theorem, the sampling frequency should be: A) Equal to signal frequency B) Half of signal frequency C) At least twice the highest frequency D) Less than signal frequency  
+
+---
+
+Reflection on Post Assessment -MCQ Q1.  The process of converting a continuous speech signal into discrete form is called: A) Quantization B) Sampling C) Encoding D) Modulation Q2.  According to the Nyquist theorem, the sampling frequency should be: A) Equal to signal frequency B) Half of signal frequency C) At least twice the highest frequency D) Less than signal frequency  
+
+---
+
+                                                        Thank You 

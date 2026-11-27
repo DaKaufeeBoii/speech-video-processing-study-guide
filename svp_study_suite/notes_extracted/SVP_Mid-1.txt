@@ -1,0 +1,24 @@
+
+Speech & Video Processing — Question Bank
+Unit 1
+Discuss about the speech production mechanism. Identify the roles of excitation source, vocal tract system in speech generation.
+Discrete time representation of speech signal and interpret the effects of sampling, signal reconstruction.
+Analyze pole-zero modeling to represent the speech signals and computer system functions.
+Analyze the properties of Fast Fourier Transform (FFT) relevant to the speech signal.
+Discuss about the convolution operations in speech processing. Examine the rules in system response and filter mechanism.
+Discuss the performance of linear and non-linear filter banks in speech signal decomposition with respect to frequency, resolution, and distortion.
+Discuss the LPC, linear predictive coding equations, and evaluate its effectiveness in modeling speech signals for efficient parameter estimation.
+Unit 2
+Discuss the key stages of speech features extraction pipeline and the purpose of each stage in converting speech signal into feature representation.
+Elaborately discuss about the role of static and dynamic features in speech processing.
+Differentiate between LPCC and MFCC features in terms of spectral representation and robustness for each recognition application.
+Analyze the different distance measures and their roles in speech pattern matching and recognition system.
+Analyze the performance of vector models in speech recognition and justify codebook optimization strategy.
+Discuss about GMM for speech feature distribution.
+HMM model for continuous speech recognition and access its capability in modeling temporal variability of speech signal.
+
+Unit 3
+Discuss about the multidimensional signal processing framework for applications like images or video systems and justify the selected transforms and system models.
+Discuss about the multidimensional system models by analyzing their input and output relationships using the convolution and transform domain methods.
+Explain about the applications of multidimensional transform 2D DFT for analyzing signal representation in frequency domain.
+Discuss the characteristics and representation of multidimensional signal and examine their significance in advanced signal processing applications.x

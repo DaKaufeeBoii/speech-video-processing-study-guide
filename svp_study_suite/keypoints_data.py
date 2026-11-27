@@ -265,7 +265,7 @@ KEYPOINTS_DATA = {
         "**Intersection over Union (IoU):** $\\text{IoU} = \\frac{TP}{TP + FP + FN}$; standard overlap threshold is $\\text{IoU} \\ge 0.50$.",
         "**Precision & Recall:** $\\text{Precision} = \\frac{TP}{TP + FP}$ (purity); $\\text{Recall} = \\frac{TP}{TP + FN}$ (completeness).",
         "**F1-Score:** $F_1 = 2 \\times \\frac{P \\cdot R}{P + R} = \\frac{2TP}{2TP + FP + FN}$ (harmonic mean balancing precision and recall).",
-        "**Worked Example ($TP=800, FP=100, FN=200$):** $\\text{IoU} = 72.7\\%$, $\\text{Precision} = 88.9\\%$, $\\text{Recall} = 80.0\\%$, $F_1 = 84.2\\%$.",
+        "**Worked Example ($TP=80, FP=20, FN=20, TN=80$):** $\\text{Precision} = 80.0\\%$, $\\text{Recall} = 80.0\\%$, $F_1 = 80.0\\%$, $\\text{IoU} = 66.7\\%$.",
         "**CLEAR MOT Metrics:** $\\text{MOTA} = 1 - \\frac{\\sum (FN + FP + IDSW)}{\\sum GT}$; $\\text{MOTP}$ measures average bounding box overlap precision."
     ]
 }

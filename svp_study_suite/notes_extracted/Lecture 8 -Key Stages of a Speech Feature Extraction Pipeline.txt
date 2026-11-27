@@ -1,0 +1,21 @@
+Key Stages of a Speech Feature Extraction Pipeline Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Speech feature extraction converts raw speech signals into compact, informative representations for tasks like speech recognition. 1. Pre-emphasis A high-pass filtering step applied to the speech signal  Boosts high-frequency components  Improves signal-to-noise ratio and balances the spectrum 2. Framing Divides the continuous speech signal into short segments (frames)  Typical frame size: 20–30 ms  Assumes speech is stationary within each frame
+
+---
+
+3. Windowing Applies a window function (e.g., Hamming window) to each frame  Reduces discontinuities at frame edges  Minimizes spectral leakage  4. Fourier Transform (FFT) Converts time-domain signal into frequency domain  Provides spectral information of each frame
+
+---
+
+5. Feature Extraction (Cepstral Analysis) Extracts features like  MFCC, LPC, LPCC   Captures perceptually relevant characteristics of speech  6. Dynamic Features (Optional but important) Computes Delta (Δ) and Delta-Delta (Δ²) features  Captures temporal variations in speech These stages transform raw speech into meaningful feature vectors by capturing both  spectral  (static) and  temporal  (dynamic) information, enabling efficient speech processing.
+
+---
+
+Key Stages of a Speech Feature Extraction
+
+---
+
+                                                        Thank You 

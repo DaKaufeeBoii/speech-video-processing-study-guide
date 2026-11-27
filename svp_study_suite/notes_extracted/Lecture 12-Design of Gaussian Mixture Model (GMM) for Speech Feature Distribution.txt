@@ -1,0 +1,13 @@
+Design of Gaussian Mixture Model (GMM) for Speech Feature Distribution Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Design of Gaussian Mixture Model (GMM) for Speech Feature Distribution A  Gaussian Mixture Model (GMM)  is a probabilistic model used to represent the distribution of speech features as a combination of multiple Gaussian distributions.
+
+---
+
+GMM Representation A GMM models the probability density function as:
+
+---
+
+Design Steps for GMM in Speech Recognition

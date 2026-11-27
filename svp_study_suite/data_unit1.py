@@ -2,8 +2,8 @@
 """
 Unit 1: Fundamentals of Speech Production, Discrete-Time Speech Signals & Analysis
 Questions: Mid-I Q1 to Q8
-Academic Year: 2026-27 | Regulation: KGR23 | Course Code: KG23ACM408
-Scaled strictly for exam success (05 Marks vs 10 Marks format).
+Academic Year: 2026-27 | Regulation: KGR23 | Course Code: KG23ACM408 | Dr. Sandeep Kumar M
+Aligned strictly with official lecture slides (Lectures 1-6) and Question Bank.
 """
 
 UNIT1_QUESTIONS = [
@@ -16,73 +16,50 @@ UNIT1_QUESTIONS = [
         "bloom": "K1",
         "marks": "05 Marks",
         "title": "Define the speech production mechanism and identify the roles of excitation source and vocal tract system in speech generation.",
-        "punchline": "Speech is produced by the Source-Filter Mechanism: Excitation Source generates raw acoustic energy, and Vocal Tract acts as a time-varying filter shaping formants.",
-        "mnemonic": "L-G-V-A: Lungs generate pressure -> Glottis modulates excitation -> Vocal tract filters formants -> Articulators shape sounds",
-        "analogy": "Like an acoustic trumpet or flute: The player's buzzing lips produce the raw acoustic buzz (excitation source), while the metallic pipe and valves resonate and shape distinct musical notes (vocal tract filter).",
-        "diagram": """[ Lungs (Air Reservoir) ]
-             │  Airflow Pressure
-             ▼
-     [ Glottis / Vocal Cords ]  <--- EXCITATION SOURCE (Voiced/Unvoiced)
-             │
-             ▼  Raw Acoustic Signal e(t)
-     ┌────────────────────────────────────────┐
-     │  Vocal Tract Acoustic Filter H(z)      │  <--- VOCAL TRACT SYSTEM
-     │  - Pharynx (Throat Cavity)             │       (Acoustic Tube ~17.5 cm)
-     │  - Oral Cavity (Mouth / Tongue / Teeth)│       Resonances = Formants
-     │  - Nasal Cavity (Velum Open / Closed)  │       (F1, F2, F3)
-     └────────────────────────────────────────┘
-             │
-             ▼  Radiation Filter R(z) (Lips)
-     [ Radiated Speech Signal s(t) ]""",
+        "punchline": "Speech production operates across 3 levels (Conceptualization -> Formulation -> Articulation) and 5 subsystems, modeled as Source E(z) filtered by Vocal Tract H(z).",
         "content": """### 1. Definition of Speech Production Mechanism
-The human speech production mechanism is modeled as a **Source-Filter System** (Gunnar Fant's Acoustic Theory of Speech Production). In this model:
-* A sound **source** generates raw acoustic energy (either periodic pulses or turbulent random noise).
-* The **vocal tract** behaves as an acoustic filter with frequency-dependent resonances that modulate this raw sound into distinct phonetic speech units (vowels, consonants).
-* The mathematical relationship in the z-domain is:
-  $$\\text{Speech Output } S(z) = E(z) \\cdot H(z) \\cdot R(z)$$
-  where $E(z)$ is the excitation source, $H(z)$ is the vocal tract filter transfer function, and $R(z) \\approx 1 - z^{-1}$ is the lip radiation impedance.
+Speech production is a complex, multi-step biological and cognitive process that converts thoughts and ideas into acoustic speech signals through the coordinated effort of the brain and vocal organs.
+
+Speech production operates across **three hierarchical levels**:
+1. **Conceptualization (First Stage - Thinking & Planning):**
+   * Ideas and intentions are formed in the mind.
+   * The brain determines what message to communicate, selects main points, and organizes them in a logical order using knowledge, memory, and emotions.
+   * *Brain Involvement:* **Wernicke's area** helps in understanding and selecting words, while **Broca's area** plans and sequences speech.
+2. **Formulation (Second Stage - Language Encoding):**
+   * Converts mental ideas into linguistic structures (words, phrases, and grammatical sentences).
+   * Brain selects appropriate vocabulary, applies grammatical rules, and works with the motor cortex to plan speech movements.
+3. **Articulation (Final Stage - Physical Execution):**
+   * The motor cortex sends neural commands to the speech muscles.
+   * Physical sound is generated and shaped using the lungs, vocal cords, pharynx, tongue, lips, teeth, and jaw.
 
 ---
 
-### 2. Role of the Excitation Source
-The excitation source provides the raw acoustic power generated from the lungs through the trachea and larynx (vocal cords):
-1. **Voiced Sounds (Periodic Glottal Pulses):**
-   * *Mechanism:* The vocal folds (cords) are brought together under lung air pressure. Aerodynamic forces (Bernoulli effect) cause them to rapidly open and snap shut in quasi-periodic cycles.
-   * *Characteristics:* Periodic triangular airflow pulses with a fundamental frequency $F_0$ (Pitch). Men: $\\approx 100-150\\text{ Hz}$, Women: $\\approx 200-250\\text{ Hz}$, Children: $\\approx 300-400\\text{ Hz}$.
-   * *Examples:* All English vowels (/a/, /e/, /i/, /o/, /u/) and voiced consonants (/m/, /n/, /b/, /d/, /z/).
-2. **Unvoiced Sounds (Turbulent Noise):**
-   * *Mechanism:* The vocal folds remain wide open (no vibration). Airflow passes through a narrow constriction in the oral tract (e.g., tongue against teeth or lips), creating high-velocity turbulent friction noise.
-   * *Characteristics:* Aperiodic, continuous broad-spectrum random noise (resembling high-pass filtered white noise).
-   * *Examples:* Fricatives like /s/, /sh/, /f/, /th/.
-3. **Transient / Plosive Sounds (Pressure Burst):**
-   * *Mechanism:* Complete closure of the vocal tract (lips or tongue on palate), building up intraoral pressure, followed by sudden explosive release.
-   * *Examples:* /p/, /t/, /k/, /b/, /d/, /g/.
+### 2. Speech Production Subsystems
+The speech mechanism coordinates five interrelated physical subsystems:
+* **Respiratory System (Air Supply System):** Lungs and trachea provide steady airflow and subglottal pressure, acting as the primary energy source.
+* **Phonatory System (Sound Producing System):** Larynx and vocal cords convert steady airflow into acoustic energy (vibrating vocal cords produce voiced sound; stationary open cords produce unvoiced noise).
+* **Resonatory System (Sound Booster System):** Throat (pharynx), oral cavity (mouth), and nasal cavities amplify and resonate specific frequencies (formants).
+* **Articulatory System (Speech Shaping System):** Tongue, lips, teeth, palate, and jaw shape the resonating air into distinct phonemes, vowels, and consonants.
+* **Regulatory System (Brain Control System):** The brain controls, coordinates, and continuously monitors speech through auditory and kinesthetic feedback.
 
 ---
 
-### 3. Role of the Vocal Tract System
-The vocal tract is an acoustic resonant tube extending from the glottis to the lips (average length $\\approx 17.5\\text{ cm}$ in adult males):
-1. **Acoustic Resonator:**
-   * It amplifies certain frequencies while attenuating others based on its physical geometry.
-   * The resonant frequencies of the vocal tract are called **Formants** ($F_1, F_2, F_3, \\dots$).
-   * For a neutral uniform tube open at lips and closed at glottis ($L = 17.5\\text{ cm}$, speed of sound $c = 340\\text{ m/s}$):
-     $$F_n = \\frac{(2n - 1) c}{4L} \\implies F_1 \\approx 500\\text{ Hz}, \\, F_2 \\approx 1500\\text{ Hz}, \\, F_3 \\approx 2500\\text{ Hz}$$
-2. **Articulatory Modification:**
-   * **Tongue height & position:** Alters oral cavity volume, controlling $F_1$ and $F_2$ to differentiate vowels (e.g., high-front /i/ vs low-back /a/).
-   * **Velum (Soft Palate):** Lowers to open the nasal cavity, introducing nasal resonances and anti-resonances (spectral zeros for /m/, /n/).
-   * **Lips:** Rounding/protrusion lengthens the vocal tract, lowering all formant frequencies.
+### 3. Roles of Excitation Source and Vocal Tract System
+Mathematically, the acoustic theory of speech production models speech generation as:
+$$\\text{Output Speech } S(z) = E(z) \\cdot H(z) \\cdot R(z)$$
+
+| Component | Biological Organs | Acoustic Role & Transfer Function | Speech Output Characteristics |
+| :--- | :--- | :--- | :--- |
+| **Excitation Source $E(z)$** | Lungs, Trachea, Larynx (Vocal Cords / Glottis) | Acts as the raw acoustic energy generator: <br>1. *Voiced Sound:* Vocal cords vibrate periodically, producing quasi-periodic pulse trains with fundamental frequency (Pitch $F_0$). <br>2. *Unvoiced Sound:* Vocal cords remain open; air passes through narrow constriction creating random turbulent noise. | Supplies fundamental frequency $F_0$ (pitch) and harmonic sound spectrum. |
+| **Vocal Tract System $H(z)$** | Pharynx, Oral Cavity, Velum, Nasal Cavity, Tongue, Lips | Acts as an acoustic filter / resonant tube (~17.5 cm in adults) with time-varying cross-sectional area: <br>1. *Resonances (Formants):* Natural resonant frequencies ($F_1, F_2, F_3$) amplify sound energy. <br>2. *Articulators:* Tongue and lips alter cavity shapes to produce distinct vowels and consonants. | Imparts spectral envelope and phonemic identity. |
+| **Radiation $R(z)$** | Lips & Mouth Opening | Lip radiation impedance $R(z) \\approx 1 - z^{-1}$, acting as a high-pass filter that boosts high frequencies by $+6\\text{ dB/octave}$. | Radiates acoustic wave into free air. |
 
 ---
 
-### 4. Summary Table: Excitation Source vs. Vocal Tract
-
-| Attribute | Excitation Source | Vocal Tract System |
-| :--- | :--- | :--- |
-| **Location** | Larynx / Glottis & Constrictions | Throat, Mouth, and Nose cavities |
-| **Primary Function** | Generates raw acoustic energy | Shapes spectral envelope & timbre |
-| **Speech Parameter** | Pitch ($F_0$), Voicing state, Energy | Formants ($F_1, F_2, F_3$), Phoneme identity |
-| **Filter Model** | Input excitation $E(z)$ | All-pole / Pole-zero digital filter $H(z)$ |
-| **Failure Effect** | Whispering (loss of pitch/voicing) | Mumbled/unintelligible sounds (loss of formants) |"""
+### 4. Summary & Practical Insight
+* **Voiced Speech:** Periodic glottal pulse excitation $E(z)$ filtered by all-pole vocal tract $H(z)$ (e.g., vowels /a/, /e/, /i/).
+* **Unvoiced Speech:** White noise excitation $E(z)$ filtered by vocal tract constriction (e.g., /s/, /f/, /t/).
+* In Automatic Speech Recognition (ASR), articulation is the primary stage affecting clarity; poor articulation leads to mispronunciation and recognition errors."""
     },
     {
         "id": "MID1-Q02",
@@ -93,52 +70,50 @@ The vocal tract is an acoustic resonant tube extending from the glottis to the l
         "bloom": "K2",
         "marks": "05 Marks",
         "title": "Explain the discrete-time representation of speech signals and interpret the effects of sampling on signal reconstruction",
-        "punchline": "Continuous speech $s(t)$ is discretized at interval $T_s$; sampling rate must satisfy Nyquist ($f_s \\ge 2 f_{\\max}$) to prevent aliasing distortion during reconstruction.",
-        "mnemonic": "S-N-A-R: Sample at $T_s$, Nyquist condition, Anti-alias filtering, Sinc Reconstruction",
-        "analogy": "Like recording a spinning car wheel on video: If the camera frame rate is too slow, the wheel appears to rotate backwards or freeze (aliasing). Only high frame rates reconstruct real motion.",
-        "diagram": """Continuous Speech s(t) ──► [ Anti-Aliasing LPF ] ──► [ ADC / Sampler (Ts) ] ──► Discrete Speech s[n]
-                                  (fc = fs / 2)               (fs = 1/Ts)
-                                                                    │
-                                                                    ▼
-Reconstructed s(t) ◄── [ Reconstruction Filter ] ◄── [ D/A Converter ]
-                           (Ideal Sinc LPF)""",
-        "content": """### 1. Discrete-Time Representation of Speech Signals
-Speech is naturally a continuous acoustic sound pressure wave $s(t)$. To process it digitally on microprocessors, DSPs, or computers:
-1. **Sampling:** The continuous signal $s(t)$ is sampled at uniform time intervals $T_s = 1 / f_s$:
-   $$s[n] = s(n T_s), \\quad n \\in \\mathbb{Z}$$
-2. **Standard Speech Sampling Rates:**
-   * **8 kHz ($T_s = 125\\,\\mu\\text{s}$):** Standard PSTN telephone speech. Captures band up to 3.4 kHz (sufficient for basic intelligibility).
-   * **16 kHz ($T_s = 62.5\\,\\mu\\text{s}$):** Standard for Automated Speech Recognition (ASR) engines (Whisper, Siri, Google ASR) and VoIP. Captures up to 8 kHz.
-   * **44.1 kHz / 48 kHz:** Studio audio and music production. Captures up to 20 kHz (full human audible range).
+        "punchline": "Analog speech x(t) is discretized by sampling x[n] = x(nT). By Nyquist theorem fs >= 2fmax; undersampling causes aliasing distortion, prevented by anti-aliasing LPF.",
+        "content": """### 1. Continuous vs. Discrete-Time Speech Signals
+* **Continuous-Time Signal $x(t)$:** Naturally produced analog speech waveform defined for all continuous time instants $t$, containing infinite values between any two points.
+* **Discrete-Time Signal $x[n]$:** Defined only at discrete time instances $n$, obtained by sampling the continuous signal at uniform time intervals $T$:
+  $$x[n] = x(nT), \\quad n \\in \\mathbb{Z}$$
+  where $T$ is the **sampling period** and $f_s = 1/T$ is the **sampling frequency**.
+
+| Feature | Continuous-Time Speech $x(t)$ | Discrete-Time Speech $x[n]$ |
+| :--- | :--- | :--- |
+| **Definition** | Defined for all time $t$ | Defined only at discrete sample indices $n$ |
+| **Values** | Infinite/uncountable values | Finite sequence of numbers |
+| **Processing** | Analog circuits (amplifiers, analog filters) | Digital systems, DSP chips, microprocessors |
+| **Storage & Transmission** | Prone to noise, degradation during transmission | Stored as digital bits (WAV, MP3), easily compressed and error-corrected |
 
 ---
 
-### 2. Mathematical Effect of Sampling (Frequency Domain)
-Sampling in the time domain corresponds to periodic replication in the frequency domain:
-$$S_s(\\Omega) = \\frac{1}{T_s} \\sum_{k=-\\infty}^{\\infty} S\\left(\\Omega - k \\Omega_s\\right), \\quad \\Omega_s = \\frac{2\\pi}{T_s} = 2\\pi f_s$$
-* Spectral copies of the original baseband spectrum $S(\\Omega)$ are repeated at every multiple of the sampling angular frequency $\\Omega_s$.
+### 2. Sampling Process & Nyquist Theorem
+Sampling converts continuous acoustic pressure into a sequence of discrete numbers:
+1. **Sampling Process:** Continuous signal $x(t)$ is sampled at uniform time intervals $T$ to create the sequence $x[n] = x[0], x[T], x[2T], x[3T], \\dots$.
+2. **Nyquist Sampling Criterion:**
+   $$f_s \\ge 2 \\cdot f_{\\max}$$
+   To accurately capture and reconstruct a continuous signal without loss of information, the sampling frequency $f_s$ must be at least twice the maximum frequency component ($f_{\\max}$) present in the signal.
+   * *Example:* For telephone-quality speech with $f_{\\max} = 4\\text{ kHz}$, the minimum Nyquist rate is $f_s = 2 \\times 4 = 8\\text{ kHz}$.
+   * *Example:* For wideband speech recognition with $f_{\\max} = 8\\text{ kHz}$, minimum $f_s = 16\\text{ kHz}$.
 
 ---
 
-### 3. Nyquist Sampling Theorem & Aliasing
-* **Nyquist Criterion:** To reconstruct the continuous signal without distortion, the sampling frequency $f_s$ must be at least twice the highest frequency present in the speech signal ($f_{\\max}$):
-  $$f_s \\ge 2 f_{\\max}$$
-* **Effects of Undersampling ($f_s < 2 f_{\\max}$):**
-  * When $f_s < 2 f_{\\max}$, adjacent spectral replicas overlap in the frequency domain.
-  * This overlap is called **Aliasing Distortion**.
-  * High-frequency components (such as unvoiced fricatives /s/, /sh/, /f/ at 5-8 kHz) fold down into lower frequencies (e.g., 1-3 kHz), masquerading as false low frequencies.
-  * In speech recognition, aliasing corrupts formant peaks and ruins phoneme classification accuracy.
+### 3. Effects of Sampling on Signal Reconstruction
+1. **Proper Sampling ($f_s \\ge 2 f_{\\max}$):**
+   * Periodic spectral replicas in the frequency domain are spaced sufficiently far apart with no overlap.
+   * The original continuous signal can be perfectly reconstructed using an ideal low-pass filter (Sinc interpolation):
+     $$x_r(t) = \\sum_{n=-\\infty}^{\\infty} x[n] \\cdot \\text{sinc}\\left(\\frac{t - nT}{T}\\right)$$
+2. **Undersampling & Aliasing ($f_s < 2 f_{\\max}$):**
+   * When $f_s$ is too low, adjacent spectral replicas overlap (spectral folding).
+   * High-frequency components fold back and masquerade as false low-frequency components.
+   * *Impact on Speech:* Distorted, muffled audio; loss of high-frequency unvoiced consonants (such as /s/, /f/, /t/); severe degradation of speech intelligibility in speech recognition.
+3. **Anti-Aliasing Filter:**
+   * An analog low-pass filter (LPF) with cutoff $f_c \\le f_s/2$ is placed before the ADC to eliminate any frequency components above the Nyquist limit before sampling.
 
 ---
 
-### 4. Signal Reconstruction Process
-To recover the continuous speech signal $s(t)$ from discrete samples $s[n]$:
-1. **Ideal Reconstruction (Whittaker-Shannon Interpolation):**
-   * Pass the sampled impulse train through an ideal analog Low-Pass Filter (LPF) with cutoff frequency $f_c = f_s / 2$.
-   * In time-domain, this corresponds to sinc interpolation:
-     $$s(t) = \\sum_{n=-\\infty}^{\\infty} s[n] \\cdot \\text{sinc}\\left(\\frac{t - n T_s}{T_s}\\right) = \\sum_{n=-\\infty}^{\\infty} s[n] \\cdot \\frac{\\sin\\left(\\pi (t - n T_s) / T_s\\right)}{\\pi (t - n T_s) / T_s}$$
-2. **Practical Solution in Speech Engineering:**
-   * Always place an **Anti-Aliasing Filter** (sharp analog low-pass filter) before the ADC to eliminate any frequencies above $f_s / 2$."""
+### 4. Frame-Based Processing of Speech
+* Speech is globally non-stationary, but its physical vocal tract shape changes slowly.
+* Therefore, discrete speech is segmented into short, overlapping **frames of 20–30 ms** (assumed stationary within each frame) with a frame shift of 10 ms for short-time spectral analysis (STFT, MFCC)."""
     },
     {
         "id": "MID1-Q03",
@@ -148,80 +123,57 @@ To recover the continuous speech signal $s(t)$ from discrete samples $s[n]$:
         "co": "CO1",
         "bloom": "K3",
         "marks": "05 Marks",
-        "title": "A system is described by: Find the zeros by solving the numerator. Find the poles by solving the denominator. Comment on stability Note: Question based on Pole–Zero Modeling",
-        "punchline": "Roots of Numerator = Zeros (spectral dips); Roots of Denominator = Poles (resonant formants). System is BIBO stable if and only if all poles lie strictly inside the unit circle ($|p_i| < 1$).",
-        "mnemonic": "N-Z-D-P-U: Numerator = Zeros, Denominator = Poles, Unit circle determines stability",
-        "analogy": "Poles are like resonance peaks in an acoustic bottle when blown; zeros are like damping pads absorbing specific frequencies. If a pole escapes outside the unit circle, the resonance explodes into infinite screeching feedback (instability).",
-        "diagram": """           Im(z)
-             │        Unit Circle (|z| = 1)
-             │     ╭───────────╮
-             │   ╭─            ─╮
-             │  ╭       p1, p2    ╮
-             │ │         ×   ×     │
-     ────────┼─┼─────────●─────────┼──────────► Re(z)
-             │ │        z1, z2     │
-             │  ╰                 ╯
-             │   ╰─            ─╮
-             │     ╰───────────╯
-             │
-   Stable: All Poles (×) strictly INSIDE unit circle (|p| < 1)""",
-        "content": """### 1. Problem Formulation
-Consider the standard digital filter system function describing vocal tract pole-zero modeling:
-$$H(z) = \\frac{1 - 0.5 z^{-1}}{1 - 0.9 z^{-1} + 0.2 z^{-2}}$$
-
-To solve for poles and zeros, rewrite $H(z)$ with positive powers of $z$ by multiplying numerator and denominator by $z^2$:
-$$H(z) = \\frac{z^2 (1 - 0.5 z^{-1})}{z^2 (1 - 0.9 z^{-1} + 0.2 z^{-2})} = \\frac{z(z - 0.5)}{z^2 - 0.9z + 0.2}$$
+        "title": "A system is described by: Find the zeros by solving the numerator. Find the poles by solving the denominator. Comment on stability",
+        "punchline": "H(z) = [z(z - 0.5)] / [z^2 - 0.9z + 0.2]. Zeros at z=0, 0.5. Poles at p=0.5, 0.4. Because all poles lie inside the unit circle (|p| < 1), the system is BIBO Stable.",
+        "content": """### 1. Given System Transfer Function
+The system is modeled by the rational discrete-time transfer function:
+$$H(z) = \\frac{B(z)}{A(z)} = \\frac{z(z - 0.5)}{z^2 - 0.9z + 0.2}$$
 
 ---
 
-### 2. Step 1: Find Zeros by Solving the Numerator
-The **zeros** of the system are the values of $z$ for which $H(z) = 0$ (roots of the numerator polynomial):
-$$N(z) = z(z - 0.5) = 0$$
+### 2. Task 1: Find Zeros by Solving the Numerator
+The zeros of $H(z)$ are the roots of the numerator polynomial $B(z) = 0$:
+$$B(z) = z(z - 0.5) = 0$$
 
-Solving the equation:
-1. **First Zero ($z_1$):**
-   $$z_1 = 0$$
-2. **Second Zero ($z_2$):**
-   $$z - 0.5 = 0 \\implies z_2 = 0.5$$
+Setting each factor to zero:
+1. $z_1 = 0$
+2. $z - 0.5 = 0 \\implies z_2 = 0.5$
 
-$$\\mathbf{Zeros: } \\quad z_1 = 0, \\quad z_2 = 0.5$$
+$$\\mathbf{\\text{Zeros: }} z_1 = 0, \\quad z_2 = 0.5$$
+
+*Physical Meaning in Speech:* Zeros represent **anti-resonances** where signal energy is trapped or cancelled (such as through nasal coupling in sounds like /m/, /n/ or vocal tract bifurcations). At $z = z_i$, $H(z_i) = 0$, producing sharp dips/notches in the frequency spectrum.
 
 ---
 
-### 3. Step 2: Find Poles by Solving the Denominator
-The **poles** of the system are the values of $z$ for which $H(z) \\to \\infty$ (roots of the denominator polynomial):
-$$D(z) = z^2 - 0.9z + 0.2 = 0$$
+### 3. Task 2: Find Poles by Solving the Denominator
+The poles of $H(z)$ are the roots of the denominator polynomial $A(z) = 0$:
+$$A(z) = z^2 - 0.9z + 0.2 = 0$$
 
 Factoring the quadratic equation:
-* We need two numbers whose product is $+0.2$ and whose sum is $-0.9$. These numbers are $-0.5$ and $-0.4$.
 $$(z - 0.5)(z - 0.4) = 0$$
 
-Solving for $z$:
-1. **First Pole ($p_1$):**
-   $$p_1 = 0.5$$
-2. **Second Pole ($p_2$):**
-   $$p_2 = 0.4$$
+Setting each factor to zero:
+1. $z - 0.5 = 0 \\implies p_1 = 0.5$
+2. $z - 0.4 = 0 \\implies p_2 = 0.4$
 
-$$\\mathbf{Poles: } \\quad p_1 = 0.5, \\quad p_2 = 0.4$$
+$$\\mathbf{\\text{Poles: }} p_1 = 0.5, \\quad p_2 = 0.4$$
 
-*(Note on Pole-Zero Cancellation: Here $z = 0.5$ cancels between numerator and denominator, leaving an effective single-pole system $H(z) = \\frac{z}{z - 0.4}$.)*
+*Note on Pole-Zero Cancellation:* The zero at $z = 0.5$ cancels the pole at $p = 0.5$, reducing the effective irreducible transfer function to:
+$$H_{\\text{red}}(z) = \\frac{z}{z - 0.4}$$
+with an active pole at $p = 0.4$ and zero at $z = 0$.
+
+*Physical Meaning in Speech:* Poles represent natural **acoustic resonances (Formants)** of the vocal tract. Near a pole, $A(z) \\to 0$, causing $H(z)$ to peak sharply and amplify vocal energy (formants $F_1, F_2, F_3$).
 
 ---
 
-### 4. Step 3: Comment on System Stability
-* **BIBO Stability Criterion:** For a causal discrete-time LTI system to be Bounded-Input Bounded-Output (BIBO) stable, **all poles of $H(z)$ must strictly lie inside the unit circle** in the complex z-plane:
-  $$|p_k| < 1 \\quad \\forall k$$
+### 4. Task 3: Comment on Stability
+* **Stability Criterion:** A causal discrete-time LTI system is Bounded-Input Bounded-Output (**BIBO**) stable if and only if **all its poles strictly lie inside the unit circle** in the complex z-plane:
+  $$|p_i| < 1 \\quad \\forall i$$
 * **Evaluation:**
-  * $|p_1| = |0.5| = 0.5 < 1$
-  * $|p_2| = |0.4| = 0.4 < 1$
-* **Conclusion:**
-  Since both poles lie strictly inside the unit circle of the complex z-plane, the system is **Unconditionally BIBO Stable**. The impulse response $h[n]$ will decay exponentially to zero as $n \\to \\infty$.
+  * For $p_1 = 0.5$: $|p_1| = 0.5 < 1$ (inside unit circle)
+  * For $p_2 = 0.4$: $|p_2| = 0.4 < 1$ (inside unit circle)
 
----
-
-### 5. Physical Significance in Speech Modeling
-* **Poles:** Represent resonant frequencies (Formants) of the vocal tract. The angle of complex poles determines the formant frequency ($\\omega = \\angle p$), and radius $r$ determines bandwidth.
-* **Zeros:** Represent spectral dips (anti-resonances) caused by nasal coupling (/m/, /n/) or constriction locations in fricatives."""
+**Conclusion:** Since all poles have magnitude strictly less than 1, the Region of Convergence (ROC) includes the unit circle $|z| = 1$. Therefore, the system is **BIBO Stable**."""
     },
     {
         "id": "MID1-Q04",
@@ -232,52 +184,40 @@ $$\\mathbf{Poles: } \\quad p_1 = 0.5, \\quad p_2 = 0.4$$
         "bloom": "K2",
         "marks": "05 Marks",
         "title": "Explain the properties of the Fast Fourier Transform (FFT) relevant to speech signal analysis and recognition systems.",
-        "punchline": "FFT reduces DFT computation from $O(N^2)$ to $O(N \\log_2 N)$; its properties (conjugate symmetry, energy conservation, linearity) enable real-time speech spectrograms and MFCC extraction.",
-        "mnemonic": "L-S-T-R-P-W: Linearity, Symmetry, Time-shift, Resolution, Parseval energy, Windowing assumption",
-        "analogy": "An optical prism that instantaneously refracts white light into individual color wavelengths in milliseconds, revealing pitch and formants from raw audio.",
-        "diagram": """Speech Frame x[n] ──► [ Hamming Window ] ──► [ N-Point FFT ] ──► Complex X[k]
-      (25 ms)             w[n]                 O(N log N)             │
-                                                                       ├──► |X[k]| Magnitude (Spectrogram)
-                                                                       └──► ∠X[k] Phase Spectrum""",
-        "content": """### 1. Overview of FFT in Speech Processing
-The Fast Fourier Transform (FFT) is an efficient algorithm to compute the Discrete Fourier Transform (DFT) of a windowed speech frame $x[n]$:
-$$X[k] = \\sum_{n=0}^{N-1} x[n] W_N^{kn}, \\quad W_N = e^{-j \\frac{2\\pi}{N}}, \\quad k = 0, 1, \\dots, N-1$$
-* While direct DFT requires $N^2$ complex operations, the Cooley-Tukey FFT algorithm requires only $\\frac{N}{2} \\log_2 N$ operations.
-* For a 512-point speech frame, direct DFT requires 262,144 ops, whereas FFT requires only 2,304 ops (**>100x speedup**), making real-time ASR feasible.
+        "punchline": "FFT reduces DFT computation from O(N^2) to O(N log N). Key properties: Linearity, Conjugate Symmetry, Time-Shift, Frequency Resolution, Parsevals Energy, and Periodicity/Windowing.",
+        "content": """### 1. Role of Fast Fourier Transform (FFT) in Speech Processing
+Speech signals are non-stationary, time-varying signals. To recognize speech, smartphones and ASR systems must identify frequency components (pitch, formants, harmonic distribution).
+* Direct computation of the Discrete Fourier Transform (DFT) requires $O(N^2)$ complex operations.
+* The **Fast Fourier Transform (FFT)** is an efficient algorithm that computes the exact DFT in **$O(N \\log_2 N)$** operations. For a 1024-point frame, FFT is $\\approx 100\\times$ faster than direct DFT, enabling real-time voice analysis.
 
 ---
 
-### 2. Key FFT Properties Relevant to Speech
+### 2. Six Key Properties of FFT for Speech Systems
+The official curriculum highlights six fundamental properties:
 
-#### 1. Linearity (Superposition of Speech & Noise)
-* **Property:** $\\text{FFT}\\{a x_1[n] + b x_2[n]\\} = a X_1[k] + b X_2[k]$.
-* **Speech Relevance:** Allows additive noise models (Speech + Noise) to be decoupled and filtered in the spectral domain during speech enhancement and noise cancellation.
-
-#### 2. Conjugate Symmetry (Hermitian Property for Real Speech)
-* **Property:** Since speech $x[n]$ is real-valued, its spectrum satisfies:
-  $$X[N - k] = X^*[k] \\implies |X[N - k]| = |X[k]|$$
-* **Speech Relevance:** Redundant half of the spectrum can be discarded. We only need to store and process $\\frac{N}{2} + 1$ bins (from DC to Nyquist $f_s / 2$), saving 50% memory and compute in feature pipelines.
-
-#### 3. Time-Shift Property (Invariance in Magnitude)
-* **Property:** Shifting speech by $n_0$ samples introduces only a linear phase shift:
-  $$\\text{FFT}\\{x[n - n_0]\\} = X[k] e^{-j \\frac{2\\pi k n_0}{N}} \\implies |\\text{FFT}\\{x[n - n_0]\\}| = |X[k]|$$
-* **Speech Relevance:** The magnitude spectrum $|X[k]|$ (which carries phonetic formant information) is invariant to minor time delays in speech segmentation.
-
-#### 4. Frequency Resolution vs. Time Resolution Trade-off
-* **Property:** The frequency spacing between adjacent FFT bins is:
-  $$\\Delta f = \\frac{f_s}{N}$$
-* **Speech Relevance:**
-  * **Narrowband Spectrogram (Large $N$, e.g., 512 at 8 kHz $\\to \\Delta f = 15.6\\text{ Hz}$):** High frequency resolution; resolves individual pitch harmonics (horizontal striations).
-  * **Wideband Spectrogram (Small $N$, e.g., 128 at 8 kHz $\\to \\Delta f = 62.5\\text{ Hz}$):** High temporal resolution; resolves individual glottal pulses (vertical striations) and formant transitions.
-
-#### 5. Parseval's Theorem (Energy Conservation)
-* **Property:**
-  $$\\sum_{n=0}^{N-1} |x[n]|^2 = \\frac{1}{N} \\sum_{k=0}^{N-1} |X[k]|^2$$
-* **Speech Relevance:** Frame energy can be computed directly in the frequency domain. Used extensively for Voice Activity Detection (VAD) and speech endpoint detection.
-
-#### 6. Periodicity Assumption & The Need for Windowing
-* **Property:** FFT implicitly assumes the $N$-sample block is infinitely repeated.
-* **Speech Relevance:** Truncating speech with a rectangular window creates sharp edge discontinuities, causing **Spectral Leakage**. Hence, speech frames must always be multiplied by smooth windows (Hamming / Hanning) before applying FFT."""
+1. **Property 1 — Linearity:**
+   * *Definition:* If $x_1[n] \\leftrightarrow X_1[k]$ and $x_2[n] \\leftrightarrow X_2[k]$, then:
+     $$a x_1[n] + b x_2[n] \\longleftrightarrow a X_1[k] + b X_2[k]$$
+   * *Speech Relevance:* Preserves linear superposition of speech and background noise, allowing noise estimation, spectral subtraction, and multi-speaker separation.
+2. **Property 2 — Conjugate Symmetry (Real-Valued Signals):**
+   * *Definition:* For real-valued speech samples $x[n] \\in \\mathbb{R}$:
+     $$X[N - k] = X^*[k]$$
+   * *Speech Relevance:* The negative frequency spectrum is a redundant mirror image of positive frequencies. Only the first $N/2 + 1$ bins (from $0$ to $f_s/2$) need to be computed and stored, cutting memory and computation in half for MFCC extraction.
+3. **Property 3 — Time-Shifting:**
+   * *Definition:* Shifting speech in time by $n_0$ samples introduces only a phase shift:
+     $$x[n - n_0] \\longleftrightarrow X[k] \\cdot e^{-j \\frac{2\\pi}{N} k n_0}$$
+   * *Speech Relevance:* The **magnitude spectrum $|X[k]|$ is invariant to time delays**. This ensures that the extracted spectral envelope of a phoneme is robust to minor alignment offsets in speech segmentation.
+4. **Property 4 — Frequency Resolution:**
+   * *Definition:* The frequency spacing between adjacent FFT bins is:
+     $$\\Delta f = \\frac{f_s}{N}$$
+   * *Speech Relevance:* Finer resolution (larger $N$) resolves individual pitch harmonics, while coarser resolution (smaller $N$) smooths harmonics into vocal tract formant envelopes.
+5. **Property 5 — Energy Conservation (Parseval's Theorem):**
+   * *Definition:* Total energy in time domain equals total energy in frequency domain:
+     $$\\sum_{n=0}^{N-1} |x[n]|^2 = \\frac{1}{N} \\sum_{k=0}^{N-1} |X[k]|^2$$
+   * *Speech Relevance:* Energy can be reliably measured in the spectral domain, forming the core basis for **Voice Activity Detection (VAD)** and frame energy thresholding.
+6. **Property 6 — Periodicity Assumption & Windowing:**
+   * *Definition:* FFT assumes the $N$-point finite frame repeats infinitely. Abrupt truncations at frame boundaries cause high-frequency spectral leakage.
+   * *Speech Relevance:* Speech frames are multiplied by a smooth **tapering window (Hamming window)** before FFT, minimizing boundary discontinuities and enabling reliable **Short-Time Fourier Transform (STFT)**."""
     },
     {
         "id": "MID1-Q05",
@@ -288,80 +228,57 @@ $$X[k] = \\sum_{n=0}^{N-1} x[n] W_N^{kn}, \\quad W_N = e^{-j \\frac{2\\pi}{N}}, 
         "bloom": "K4",
         "marks": "10 Marks",
         "title": "Analyze convolution operations in speech processing and examine their role in system response and filtering mechanisms.",
-        "punchline": "Convolution mathematically expresses speech output as glottal excitation convolved with the vocal tract impulse response: $s[n] = e[n] * h[n]$; computed via Overlap-Add/Save for real-time streaming.",
-        "mnemonic": "F-S-M-A: Flip, Shift, Multiply, Add -> Time domain convolution = Frequency domain multiplication",
-        "analogy": "Talking in a cathedral: your vocal cord pulses are convolved with the acoustic impulse response of the cathedral architecture, producing a rich, reverberant echo.",
-        "diagram": """Excitation e[n] ──► [ Vocal Tract LTI System h[n] ] ──► Radiated Speech s[n]
- (Glottal Pulse)               (Impulse Response)             s[n] = e[n] * h[n]
-
-FREQUENCY DOMAIN EQUIVALENT:
-           E(z) ──► [ Digital Filter H(z) ] ──► S(z) = E(z) · H(z)
-
-REAL-TIME CONVOLUTION (Streaming Speech):
-  Input Stream ──► [ Split into Blocks ] ──► [ FFT ] ──► [ Multiply H(k) ] ──► [ IFFT ] ──► [ Overlap-Add ]""",
+        "punchline": "Speech is modeled as s[n] = e[n] * h[n]. Time convolution equals frequency multiplication S(z) = E(z)H(z). Real-time streaming is implemented via Overlap-Add (OLA).",
         "content": """### 1. Mathematical Formulation of Convolution
-Convolution is the fundamental mathematical operation governing Linear Time-Invariant (LTI) systems in speech processing.
+Convolution is the fundamental operation relating the input, impulse response, and output of a Linear Time-Invariant (LTI) system:
+$$y[n] = x[n] * h[n] = \\sum_{k=-\\infty}^{\\infty} x[k] \\cdot h[n - k]$$
 
-#### 1. Discrete-Time Convolution Formula
-If an input excitation signal $x[n]$ is applied to an LTI vocal tract system with unit impulse response $h[n]$, the output speech signal $y[n]$ is given by:
-$$y[n] = x[n] * h[n] = \\sum_{k=-\\infty}^{\\infty} x[k] h[n - k]$$
-
-#### 2. The Four Step Computational Procedure
-1. **Folding / Inversion:** Reflect $h[k]$ across the origin to get $h[-k]$.
-2. **Shifting:** Translate $h[-k]$ by $n$ units to get $h[n - k]$.
-3. **Multiplication:** Form the product of sequences $w_n[k] = x[k] \\cdot h[n - k]$.
-4. **Summation:** Sum all terms of $w_n[k]$ over all $k$ to yield the scalar output value $y[n]$.
+In the frequency/z-domain, time convolution translates to direct multiplication:
+$$Y(z) = X(z) \\cdot H(z) \\iff Y(\\omega) = X(\\omega) \\cdot H(\\omega)$$
 
 ---
 
-### 2. Role of Convolution in the Speech Production Model
-In digital speech processing, the continuous speech wave is modeled as a cascade of three LTI convolutions:
-$$s[n] = e[n] * v[n] * r[n]$$
-1. **Glottal Excitation $e[n]$:** The input source signal (train of impulses for voiced speech, white noise sequence for unvoiced speech).
-2. **Vocal Tract Impulse Response $v[n]$:** Represents the acoustic resonances (formants) of the throat, mouth, and nasal cavities.
-3. **Lip Radiation Impulse Response $r[n]$:** Models acoustic impedance matching at the lips (high-pass filter approximated as $r[n] = \\delta[n] - \\delta[n - 1]$).
-
-By the associative property of convolution:
-$$h[n] = v[n] * r[n] \\implies s[n] = e[n] * h[n]$$
-The speech signal is entirely characterized by convolving the excitation with the composite vocal system impulse response $h[n]$.
+### 2. Role in Speech Generation: The Source-Filter Formulation
+In speech acoustics, speech production is formulated directly as a convolution of the vocal cord excitation source with the vocal tract acoustic filter:
+$$s[n] = e[n] * h[n] = e[n] * v[n] * r[n]$$
+* $e[n]$: Glottal excitation source (periodic glottal pulse train for voiced speech, turbulent noise for unvoiced speech).
+* $v[n]$: Impulse response of vocal tract tube (pharynx, oral, and nasal cavities) exhibiting resonant formants.
+* $r[n]$: Lip radiation impulse response ($r[n] = \\delta[n] - \\delta[n-1]$).
+* In frequency domain: $S(z) = E(z) \\cdot V(z) \\cdot R(z)$. The vocal tract acts as a spectral shaping filter on the excitation harmonics.
 
 ---
 
-### 3. Linear vs. Circular Convolution & The Convolution Theorem
-
-| Parameter | Linear Convolution ($x[n] * h[n]$) | Circular Convolution ($x[n] \\circledast h[n]$) |
-| :--- | :--- | :--- |
-| **Output Length** | $L = N_1 + N_2 - 1$ | $N = \\max(N_1, N_2)$ (Periodic modulo $N$) |
-| **Physical Reality** | True physical response of filters | Mathematical artifact of discrete FFT multiplication |
-| **Time-Aliasing** | None | High risk of wrap-around distortion if $N < N_1 + N_2 - 1$ |
-
-* **The Convolution Theorem:**
-  $$\\mathcal{Z}\\{x[n] * h[n]\\} = X(z) \\cdot H(z) \\iff \\mathcal{F}\\{x[n] * h[n]\\} = X(\\omega) \\cdot H(\\omega)$$
-  Convolution in the time domain is equivalent to simple point-wise multiplication in the frequency domain.
+### 3. Role in Speech Filtering Mechanisms
+1. **Pre-emphasis High-Pass Filtering:**
+   * Natural voiced speech rolls off at $-6\\text{ dB/octave}$ due to glottal aerodynamics.
+   * Applying FIR convolution $y[n] = x[n] - \\alpha x[n-1]$ (with $\\alpha \\approx 0.95 - 0.97$) boosts high-frequency formants and balances spectral energy.
+2. **Anti-Aliasing Low-Pass Filtering:**
+   * Convolving analog speech with a continuous LPF kernel before ADC bandlimits the spectrum to $f_s/2$, preventing destructive aliasing.
+3. **Formant Filtering (Bandpass Filter Banks):**
+   * Filter banks convolve speech with tuned bandpass filters to isolate individual formant bands ($F_1, F_2, F_3$) for speech recognition.
 
 ---
 
-### 4. Real-Time Fast Convolution Algorithms for Streaming Speech
-Direct time-domain convolution of long speech signals requires $O(N_1 N_2)$ operations. For real-time speech systems (hearing aids, noise cancellers, telephony), block convolution using FFT is executed via two standard algorithms:
+### 4. Real-Time Streaming Convolution: Overlap-Add (OLA) Method
+Direct time-domain convolution of an ongoing speech stream is computationally intractable ($O(L \\cdot M)$). Practical DSP systems use block convolution via Fast Fourier Transform:
 
-#### 1. Overlap-Add (OLA) Method
-1. The incoming speech stream is segmented into non-overlapping blocks of length $L$.
-2. Each block is zero-padded to length $N = L + M - 1$ (where $M$ is filter length).
-3. Compute $Y_i[k] = \\text{FFT}\\{x_i[n]\\} \\cdot \\text{FFT}\\{h[n]\\}$.
-4. Compute $y_i[n] = \\text{IFFT}\\{Y_i[k]\\}$.
-5. The trailing $M - 1$ samples of adjacent output blocks are overlapped and added together to assemble the continuous speech output.
-
-#### 2. Overlap-Save (OLS) Method
-1. Successive input speech blocks overlap by $M - 1$ samples.
-2. Circular convolution of length $N$ is performed via FFT/IFFT.
-3. The first $M - 1$ corrupted samples of each block (time-aliased region) are discarded (saved), and the remaining valid samples are concatenated directly.
+* **Problem:** Linear convolution of a speech block of length $L$ with filter of length $M$ produces an output of length $L + M - 1$. Direct FFT multiplication produces circular convolution with time-aliasing.
+* **Overlap-Add (OLA) Algorithm:**
+  1. Segment speech stream into non-overlapping blocks $x_i[n]$ of length $L$.
+  2. Zero-pad each block to length $N \\ge L + M - 1$.
+  3. Compute FFT: $X_i[k] = \\text{FFT}\\{x_i[n]\\}$ and multiply with filter spectrum: $Y_i[k] = X_i[k] \\cdot H[k]$.
+  4. Compute IFFT: $y_i[n] = \\text{IFFT}\\{Y_i[k]\\}$ of length $L + M - 1$.
+  5. The last $M - 1$ samples of block $i$ overlap with the first $M - 1$ samples of block $i+1$. Add overlapping tails to assemble the continuous real-time output.
 
 ---
 
-### 5. Practical Filtering Mechanisms in Speech Systems
-1. **Pre-Emphasis Filtering:** A first-order FIR high-pass filter ($y[n] = x[n] - \\alpha x[n - 1]$, with $\\alpha \\approx 0.95-0.97$) convolved with raw speech to counteract the $-6\\text{ dB/octave}$ glottal spectral tilt, boosting high-frequency formants for robust feature extraction.
-2. **De-reverberation & Acoustic Echo Cancellation:** Adaptive filtering using LMS/NLMS algorithms to deconvolve room impulse responses from microphone audio.
-3. **Speech Synthesis:** Convolving synthesized pitch pulses with estimated LPC vocal tract filter coefficients to generate natural-sounding voice."""
+### 5. Summary Table
+
+| Convolution Domain | Implementation | Computational Complexity | Primary Role in Speech Systems |
+| :--- | :--- | :--- | :--- |
+| **Time-Domain FIR** | Direct difference equation | $O(L \\cdot M)$ | Short filters (pre-emphasis, simple smoothing) |
+| **Frequency-Domain FFT** | Multiplication $X[k] \\cdot H[k]$ | $O(N \\log N)$ | Fast acoustic simulation, room reverberation modeling |
+| **Overlap-Add (OLA)** | Block FFT with tail addition | $O((L+M) \\log(L+M))$ | Real-time streaming speech processing, VoIP noise cancellation |"""
     },
     {
         "id": "MID1-Q06",
@@ -372,71 +289,51 @@ Direct time-domain convolution of long speech signals requires $O(N_1 N_2)$ oper
         "bloom": "K5",
         "marks": "10 Marks",
         "title": "Evaluate the performance of linear and non-linear filter banks in speech signal decomposition with respect to frequency resolution and distortion.",
-        "punchline": "Linear filter banks (uniform STFT) provide equal resolution everywhere; Non-linear filter banks (Mel/Bark) mimic human cochlear tonotopy (fine resolution <1 kHz, broad >1 kHz), achieving higher discriminability with lower distortion.",
-        "mnemonic": "U-L-M-B: Uniform = Linear (STFT), Mel/Bark = Non-linear (Human Cochlea / Critical Bands)",
-        "analogy": "A piano vs a scientific frequency generator: The human ear doesn't hear frequency linearly (100 Hz steps); it perceives musical intervals and octaves logarithmically (non-linear filter bank).",
-        "diagram": """LINEAR FILTER BANK (Uniform Spacing & Constant Bandwidth):
-   ▲ Gain
-   │ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐
-   └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─► Frequency (Hz)
-      Δf   Δf  Δf  Δf  Δf  Δf  Δf  Δf   (Constant Δf = 100 Hz everywhere)
-
-NON-LINEAR FILTER BANK (Mel-Scale / Human Auditory Tonotopy):
-   ▲ Gain
-   │  /\   /\   /\    /  \     /    \       /      \
-   └─/──\_/──\_/──\__/────\___/──────\_____/────────\─► Frequency (Hz)
-     ◄── Fine Res (<1 kHz) ──► ◄── Coarse / Broad Res (>1 kHz) ──►""",
+        "punchline": "Linear filter banks use fixed FIR/IIR bands (predictable, good for formants). Non-linear filter banks (Mel/Wavelet/EMD) adapt to human hearing and speech non-stationarity.",
         "content": """### 1. Introduction to Filter Banks in Speech Processing
-A filter bank is an array of bandpass filters that decomposes an input speech signal into multiple sub-band components. In speech engineering, filter banks are broadly categorized into:
-1. **Linear (Uniform) Filter Banks:** Equal bandwidth and uniform spacing across the entire frequency range.
-2. **Non-Linear (Auditory-Motivated) Filter Banks:** Variable bandwidths and non-uniform spacing that mirror the human auditory system's tonotopic organization.
+A filter bank is an array of bandpass filters that separates an input speech signal into multiple subband components.
+Filter banks are evaluated using two critical criteria:
+1. **Frequency Resolution:** Ability to separate closely spaced spectral components (harmonics, formants).
+2. **Distortion (Signal Preservation):** The degree to which the filter bank preserves speech waveforms without introducing phase/amplitude errors or aliasing.
 
 ---
 
-### 2. Comprehensive Architectural & Performance Evaluation
-
-#### 1. Linear (Uniform) Filter Banks
-* **Structure:** Implemented via uniform digital bandpass filters or Short-Time Fourier Transform (STFT).
-* **Center Frequencies:** $f_k = k \\cdot \\Delta f$, where $\\Delta f$ is constant (e.g., $100\\text{ Hz}$).
-* **Bandwidth:** Constant bandwidth $B_k = B$ across all bands.
-* **Performance Analysis:**
-  * *Low-Frequency Region (<1 kHz):* Inadequate resolution. The fundamental pitch ($F_0$) and lower formants ($F_1$) are packed into too few filters, causing spectral smearing.
-  * *High-Frequency Region (>1 kHz):* Wastes excessive filters and bandwidth resolving fine harmonic structures that the human ear cannot perceive.
-  * *Phase & Waveform Distortion:* Minimal, perfectly invertible (allows exact waveform reconstruction).
-
-#### 2. Non-Linear (Auditory-Motivated) Filter Banks
-* **Structure:** Based on psychoacoustic experiments of the human basilar membrane (Mel scale, Bark scale, Equivalent Rectangular Bandwidth - ERB, Gammatone filters).
-* **Mel-Scale Mapping:**
-  $$M(f) = 2595 \\log_{10}\\left(1 + \\frac{f}{700}\\right)$$
-* **Filter Geometry:** Overlapping triangular filters:
-  * Linearly spaced with narrow bandwidth below $1\\text{ kHz}$ ($\\Delta f \\approx 100\\text{ Hz}$).
-  * Logarithmically spaced with exponentially widening bandwidth above $1\\text{ kHz}$.
-* **Performance Analysis:**
-  * *Low-Frequency Region (<1 kHz):* High frequency resolution. Accurately resolves individual formant frequencies ($F_1, F_2$) critical for vowel identity.
-  * *High-Frequency Region (>1 kHz):* Broad frequency integration. Smooths out irrelevant pitch harmonics while retaining general spectral energy shape.
-  * *Noise Robustness:* High; wide high-frequency bands average out additive Gaussian white noise.
-  * *Waveform Distortion:* Non-invertible without loss. Excellent for recognition features (MFCCs), but requires iterative algorithms (Griffin-Lim) for speech resynthesis.
+### 2. Frequency Resolution Analysis
+1. **Linear Filter Banks (Uniform Bandwidth):**
+   * *Design:* Divides the spectrum into uniformly spaced, fixed-bandwidth channels (e.g., uniform STFT filter banks where each filter has constant $\\Delta f = 100\\text{ Hz}$).
+   * *Advantages:* Well-defined frequency bands, high control over passband ripple and stopband attenuation; excellent resolution at high frequencies.
+   * *Limitations:* Fixed resolution cannot adapt to signal variations; poor resolution at low frequencies compared to the human ear; constrained by the time-frequency uncertainty principle ($\\Delta t \\cdot \\Delta f \\ge 1/4\\pi$).
+2. **Non-Linear Filter Banks (Perceptual & Adaptive):**
+   * *Design:* Bandwidths increase non-linearly with frequency, matching human cochlear perception (e.g., **Mel Filter Banks**, Bark scale, Wavelet packets, Empirical Mode Decomposition EMD).
+   * *Characteristics:*
+     * *Low Frequencies (< 1 kHz):* Narrow bandwidths with high frequency resolution, capturing fine pitch harmonics and lower formants ($F_1, F_2$).
+     * *High Frequencies (> 1 kHz):* Broad bandwidths with high time resolution, capturing transient bursts, frication noise, and spectral energy envelopes.
+   * *Advantages:* Aligns with human psychoacoustic tonotopy; captures non-stationary transients (plosives, stop bursts) far better than linear filters.
+   * *Limitations:* Irregular frequency bands make perfect waveform reconstruction mathematically difficult.
 
 ---
 
-### 3. Detailed Comparative Performance Matrix
+### 3. Distortion Analysis (Signal Preservation)
+1. **Linear Filter Banks:**
+   * *Distortion Sources:* Filter design imperfections, transition band overlap, subband aliasing due to downsampling, and phase distortion in IIR filters.
+   * *Performance:* If designed using linear-phase FIR filters or Perfect Reconstruction Quadrature Mirror Filters (PR-QMF), linear filter banks achieve **low distortion** and near-perfect waveform reconstruction.
+2. **Non-Linear Filter Banks:**
+   * *Distortion Sources:* Non-linear frequency warping, adaptive decomposition errors, and mode-mixing (in EMD).
+   * *Performance:* May introduce phase and amplitude distortions. However, in Automatic Speech Recognition (ASR), waveform reconstruction is not required—the goal is **phoneme discriminability**, where non-linear Mel filter banks significantly outperform linear filters.
 
-| Evaluation Parameter | Linear Filter Banks (Uniform STFT) | Non-Linear Filter Banks (Mel / Bark Scale) |
+---
+
+### 4. Comprehensive Comparison Table
+
+| Performance Criterion | Linear Filter Banks (Uniform STFT / FIR) | Non-Linear Filter Banks (Mel Scale / Wavelets / EMD) |
 | :--- | :--- | :--- |
-| **Filter Spacing** | Constant linear spacing ($f_k = k \\Delta f$) | Linear below 1 kHz, Logarithmic above 1 kHz |
-| **Bandwidth** | Constant for all channels ($B_k = \\text{const}$) | Increases exponentially with frequency |
-| **Psychoacoustic Fidelity** | Poor; ignores human cochlear response | Excellent; models human critical band masking |
-| **Low-Freq Resolution** | Coarse (cannot resolve close formants) | Very fine (superb $F_1, F_2$ distinction) |
-| **High-Freq Resolution** | Excessively fine (redundant data) | Broad (captures spectral energy trends) |
-| **Dimensionality** | High (typically 256 or 512 bins) | Compact (typically 26 to 40 triangular filters) |
-| **Robustness to Noise** | Sensitive to narrowband and wideband noise | High robustness (averaging reduces noise variance) |
-| **Reconstruction** | Exact, distortionless waveform synthesis | Lossy; designed for feature representation (MFCC) |
-| **Primary Use Case** | Phase vocoders, audio compression (MP3) | Speech Recognition (ASR), Speaker Identification |
-
----
-
-### 4. Critical Justification & Conclusion
-For speech recognition and semantic perception tasks, **Non-Linear Filter Banks significantly outperform Linear Filter Banks**. They compact speech representation from hundreds of linear bins into 26-40 psychoacoustically salient filter energies, maximizing phonemic discriminability while drastically lowering computational burden and noise sensitivity."""
+| **Bandwidth Distribution** | Constant bandwidth across all frequencies ($\\Delta f = \\text{constant}$) | Logarithmic / Mel spacing: Narrow at low frequencies, wide at high frequencies |
+| **Biological Alignment** | Mathematical grid; ignores human auditory perception | Directly models human cochlear critical bands |
+| **Frequency Resolution** | Equal across entire spectrum; suboptimal for speech | High frequency resolution at low frequencies (< 1 kHz) |
+| **Time Resolution** | Equal across entire spectrum | High temporal resolution at high frequencies (captures plosives/bursts) |
+| **Signal Distortion** | Low distortion; supports perfect waveform reconstruction | Higher reconstruction distortion; mode-mixing possible in EMD |
+| **Computational Complexity** | Highly efficient via uniform FFT algorithms ($O(N \\log N)$) | Moderate to high (filter bank weighting, DWT tree traversal) |
+| **Primary Speech Applications** | Speech synthesis resynthesis, audio coding, echo cancellation | Speech recognition (MFCC), speaker identification, emotion detection |"""
     },
     {
         "id": "MID1-Q07",
@@ -446,97 +343,66 @@ For speech recognition and semantic perception tasks, **Non-Linear Filter Banks 
         "co": "CO1",
         "bloom": "K6",
         "marks": "10 Marks",
-        "title": "A) A short speech frame is given as: Compute the 4-point DFT . Find the magnitude spectrum . Identify the dominant frequency component. Note: Problem based on Compute Discrete Fourier Transform (DFT) b) A speech signal is sampled at 8 kHz and frame size is 256 samples. Compute frequency resolution: Find the frequency corresponding to k = 10. Note: Problem based on Frequency Resolution.",
-        "punchline": "Part A: 4-Point DFT computed via Twiddle Matrix gives DC=4, AC components magnitude |X[1]|=|X[3]|=2.0. Part B: Frequency resolution Δf = fs/N = 8000/256 = 31.25 Hz; bin k=10 corresponds to 312.5 Hz.",
-        "mnemonic": "D-T-M-R-F: DFT Definition, Twiddle Matrix, Magnitude Spectrum, Resolution fs/N, Frequency k*Δf",
-        "analogy": "Like an audio equalizer meter: The 4-point DFT tells you exactly which frequency bar jumps highest, while frequency resolution tells you the exact Hz spacing between each bar.",
-        "diagram": """PART A: 4-POINT DFT & MAGNITUDE SPECTRUM
-   Input x[n] = [2, 1, 0, 1]
-           │
-           ▼ Matrix Multiply by W4
-   X[0] = 4 + j0      ──► |X[0]| = 4.000  (DC Component)
-   X[1] = 2 + j0      ──► |X[1]| = 2.000  ◄── DOMINANT AC COMPONENT
-   X[2] = 0 + j0      ──► |X[2]| = 0.000
-   X[3] = 2 + j0      ──► |X[3]| = 2.000  ◄── DOMINANT AC COMPONENT
+        "title": "A) A short speech frame is given as: Compute the 4-point DFT . Find the magnitude spectrum . Identify the dominant frequency component. b) A speech signal is sampled at 8 kHz and frame size is 256 samples. Compute frequency resolution: Find the frequency corresponding to k = 10.",
+        "punchline": "Part A: x[n]=[2,1,0,1] -> X=[4, 2, 0, 2], Magnitudes=[4, 2, 0, 2], Dominant DC at k=0 and AC at k=1,3. Part B: fs=8kHz, N=256 -> Resolution df = 31.25 Hz/bin, f10 = 312.5 Hz.",
+        "content": """### PART A: 4-Point DFT Computation
 
-PART B: FREQUENCY RESOLUTION
-   Sampling Rate fs = 8000 Hz, FFT Size N = 256
-   Δf = fs / N = 8000 / 256 = 31.25 Hz/bin
-   Bin k = 10 ──► f_10 = 10 × 31.25 Hz = 312.5 Hz (Voiced Pitch / Low Formant)""",
-        "content": """### PART A: Numerical Problem on 4-Point DFT Computation
-
-#### 1. Given Data
-A short speech frame sequence of length $N = 4$ is given by:
-$$x[n] = [2, 1, 0, 1] \\quad \\text{for } n = 0, 1, 2, 3$$
+#### 1. Problem Statement & Given Data
+A short speech frame is given as:
+$$x[n] = [2, 1, 0, 1] \\quad \\text{for } n = 0, 1, 2, 3 \\quad (N = 4)$$
 
 #### 2. Formula & Twiddle Factor Matrix
-The $N$-point Discrete Fourier Transform (DFT) is defined as:
-$$X[k] = \\sum_{n=0}^{N-1} x[n] W_N^{kn}, \\quad W_N = e^{-j \\frac{2\\pi}{N}}, \\quad k = 0, 1, \\dots, N-1$$
+The $N$-point Discrete Fourier Transform (DFT) equation is:
+$$X[k] = \\sum_{n=0}^{N-1} x[n] \\cdot W_N^{kn} = \\sum_{n=0}^{3} x[n] \\cdot e^{-j \\frac{2\\pi}{4} kn}$$
 
-For $N = 4$:
-$$W_4 = e^{-j \\frac{2\\pi}{4}} = e^{-j \\frac{\\pi}{2}} = -j$$
-The twiddle factors are:
-* $W_4^0 = 1$
-* $W_4^1 = -j$
-* $W_4^2 = (-j)^2 = -1$
-* $W_4^3 = (-j)^3 = j$
+For $N = 4$, $W_4 = e^{-j \\frac{2\\pi}{4}} = e^{-j \\pi/2} = -j$.
+The $4 \\times 4$ Twiddle factor matrix is:
+$$\\begin{bmatrix} X[0] \\\\ X[1] \\\\ X[2] \\\\ X[3] \\end{bmatrix} = \\begin{bmatrix} 1 & 1 & 1 & 1 \\\\ 1 & -j & -1 & j \\\\ 1 & -1 & 1 & -1 \\\\ 1 & j & -1 & -j \\end{bmatrix} \\begin{bmatrix} 2 \\\\ 1 \\\\ 0 \\\\ 1 \\end{bmatrix}$$
 
-The $4 \\times 4$ DFT transformation matrix is:
-$$\\begin{bmatrix} X[0] \\\\ X[1] \\\\ X[2] \\\\ X[3] \\end{bmatrix} = \\begin{bmatrix} 1 & 1 & 1 & 1 \\\\ 1 & -j & -1 & j \\\\ 1 & -1 & 1 & -1 \\\\ 1 & j & -1 & -j \\end{bmatrix} \\begin{bmatrix} x[0] \\\\ x[1] \\\\ x[2] \\\\ x[3] \\end{bmatrix} = \\begin{bmatrix} 1 & 1 & 1 & 1 \\\\ 1 & -j & -1 & j \\\\ 1 & -1 & 1 & -1 \\\\ 1 & j & -1 & -j \\end{bmatrix} \\begin{bmatrix} 2 \\\\ 1 \\\\ 0 \\\\ 1 \\end{bmatrix}$$
+#### 3. Step-by-Step Computation
+* **For $k = 0$ (DC Component):**
+  $$X[0] = 2(1) + 1(1) + 0(1) + 1(1) = 2 + 1 + 0 + 1 = \\mathbf{4}$$
+* **For $k = 1$:**
+  $$X[1] = 2(1) + 1(-j) + 0(-1) + 1(j) = 2 - j + 0 + j = \\mathbf{2}$$
+* **For $k = 2$:**
+  $$X[2] = 2(1) + 1(-1) + 0(1) + 1(-1) = 2 - 1 + 0 - 1 = \\mathbf{0}$$
+* **For $k = 3$:**
+  $$X[3] = 2(1) + 1(j) + 0(-1) + 1(-j) = 2 + j + 0 - j = \\mathbf{2}$$
 
-#### 3. Step-by-Step Matrix Multiplication
-1. **For $k = 0$ (DC Component):**
-   $$X[0] = (1 \\cdot 2) + (1 \\cdot 1) + (1 \\cdot 0) + (1 \\cdot 1) = 2 + 1 + 0 + 1 = 4$$
-2. **For $k = 1$:**
-   $$X[1] = (1 \\cdot 2) + (-j \\cdot 1) + (-1 \\cdot 0) + (j \\cdot 1) = 2 - j + 0 + j = 2$$
-3. **For $k = 2$:**
-   $$X[2] = (1 \\cdot 2) + (-1 \\cdot 1) + (1 \\cdot 0) + (-1 \\cdot 1) = 2 - 1 + 0 - 1 = 0$$
-4. **For $k = 3$:**
-   $$X[3] = (1 \\cdot 2) + (j \\cdot 1) + (-1 \\cdot 0) + (-j \\cdot 1) = 2 + j + 0 - j = 2$$
-
-*(Also, for alternate common textbook frame $x[n] = [1, 2, 3, 2]$:)*
-* $X[0] = 1 + 2 + 3 + 2 = 8$
-* $X[1] = 1(1) + 2(-j) + 3(-1) + 2(j) = 1 - 2j - 3 + 2j = -2$
-* $X[2] = 1(1) + 2(-1) + 3(1) + 2(-1) = 1 - 2 + 3 - 2 = 0$
-* $X[3] = 1(1) + 2(j) + 3(-1) + 2(-j) = 1 + 2j - 3 - 2j = -2$
+Resulting DFT sequence:
+$$\\mathbf{X[k] = [4, 2, 0, 2]}$$
 
 #### 4. Magnitude Spectrum $|X[k]|$
-For $x[n] = [2, 1, 0, 1]$:
-* $|X[0]| = |4| = 4.0$
-* $|X[1]| = |2| = 2.0$
-* $|X[2]| = |0| = 0.0$
-* $|X[3]| = |2| = 2.0$
+$$|X[k]| = \\sqrt{\\text{Re}\\{X[k]\\}^2 + \\text{Im}\\{X[k]\\}^2}$$
+* $|X[0]| = |4| = \\mathbf{4.0}$
+* $|X[1]| = |2| = \\mathbf{2.0}$
+* $|X[2]| = |0| = \\mathbf{0.0}$
+* $|X[3]| = |2| = \\mathbf{2.0}$
 
-#### 5. Identify the Dominant Frequency Component
-* The overall maximum energy is at **$k = 0$** ($|X[0]| = 4.0$), representing the DC / zero-frequency average level.
-* Excluding DC, the **dominant AC frequency components** are **$k = 1$ and $k = 3$** with magnitude $|X[1]| = |X[3]| = 2.0$.
+#### 5. Identification of Dominant Frequency Component
+* The overall maximum energy is at **$k = 0$** with magnitude **$|X[0]| = 4.0$** (the DC / baseline average component).
+* The dominant AC speech frequency components are at **$k = 1$** and **$k = 3$** with magnitude **$2.0$**. (Notice conjugate symmetry: $X[3] = X^*[1]$).
 
 ---
 
-### PART B: Frequency Resolution & Bin Frequency Computation
+### PART B: Frequency Resolution Problem
 
 #### 1. Given Data
-* Sampling frequency of speech signal: $f_s = 8\\text{ kHz} = 8000\\text{ Hz}$
-* Frame size (FFT size): $N = 256\\text{ samples}$
-* Target bin index: $k = 10$
+* Sampling Frequency: $f_s = 8\\text{ kHz} = 8000\\text{ Hz}$
+* Frame Size / FFT Length: $N = 256\\text{ samples}$
 
 #### 2. Task 1: Compute Frequency Resolution ($\\Delta f$)
-Frequency resolution is the frequency spacing between two consecutive spectral bins in the discrete Fourier spectrum:
+Frequency resolution is defined as the frequency spacing between adjacent DFT bins:
 $$\\Delta f = \\frac{f_s}{N}$$
-
-Substituting the given values:
 $$\\Delta f = \\frac{8000\\text{ Hz}}{256} = \\mathbf{31.25\\text{ Hz/bin}}$$
 
-#### 3. Task 2: Find the Frequency Corresponding to $k = 10$
-The continuous analog frequency $f_k$ corresponding to discrete DFT bin index $k$ is given by:
+#### 3. Task 2: Find Frequency Corresponding to Bin $k = 10$
+The continuous analog frequency $f_k$ represented by the $k$-th DFT bin is:
 $$f_k = k \\cdot \\Delta f = k \\cdot \\frac{f_s}{N}$$
-
 For $k = 10$:
 $$f_{10} = 10 \\times 31.25\\text{ Hz} = \\mathbf{312.5\\text{ Hz}}$$
 
-#### 4. Engineering Interpretation
-* A frequency of **$312.5\\text{ Hz}$** falls directly in the low-frequency acoustic band of human speech.
-* It corresponds to the pitch range of children/female voices and the lower boundary of the first formant ($F_1$) of closed vowels such as /u/ and /i/."""
+*Speech Interpretation:* A frequency of $312.5\\text{ Hz}$ falls within the first formant frequency ($F_1$) range of close vowels (such as /u/ and /i/) and corresponds to the pitch range of adult female and child speech."""
     },
     {
         "id": "MID1-Q08",
@@ -547,100 +413,50 @@ $$f_{10} = 10 \\times 31.25\\text{ Hz} = \\mathbf{312.5\\text{ Hz}}$$
         "bloom": "K6",
         "marks": "10 Marks",
         "title": "Analyze the formulation of Linear Predictive Coding (LPC) equations and evaluate its effectiveness in modeling speech signals for efficient parameter estimation.",
-        "punchline": "LPC models speech as a linear combination of p past samples; minimizing mean squared error leads to the Yule-Walker equations solved in O(p^2) via the Levinson-Durbin algorithm.",
-        "mnemonic": "P-E-Y-L: Predict from past, Error minimization, Yule-Walker matrix, Levinson-Durbin recursion",
-        "analogy": "An auto-regressive forecaster: like predicting tomorrow's temperature based on a weighted sum of the last 10 days' temperatures plus today's weather shock.",
-        "diagram": """LINEAR PREDICTIVE CODING (LPC) ANALYSIS & SYNTHESIS:
-
-ANALYSIS (Encoder):
-   Speech s[n] ──┬─────────────────────────────┐
-                 │                             ▼
-                 │        ┌─────────────────┐  -
-                 └───────►│ LPC Predictor   ├──►(Σ)──► Residual Error e[n]
-                          │ a1, a2, ..., ap │  +
-                          └─────────────────┘
-
-SYNTHESIS (Decoder):
-   Excitation u[n] ──► [ Gain G ] ──► (Σ) ──► Synthesized Speech s^[n]
-   (Pitch Pulses/Noise)                ▲
-                                       │ Past Samples
-                             ┌─────────┴─────────┐
-                             │ All-Pole Filter   │
-                             │ 1 / (1 - Σ ak z^-k│
-                             └───────────────────┘""",
-        "content": """### 1. Fundamental Principle of Linear Predictive Coding (LPC)
-Linear Predictive Coding (LPC) is one of the most powerful and widely used techniques in speech processing. It is based on the **Source-Filter Model**, where the vocal tract is approximated by an **all-pole digital filter**:
-$$H(z) = \\frac{S(z)}{U(z)} = \\frac{G}{1 - \\sum_{k=1}^p a_k z^{-k}} = \\frac{G}{A(z)}$$
-where:
-* $p$ is the prediction order (typically $p = 10$ to $16$ for $8-16\\text{ kHz}$ speech).
-* $a_k$ are the LPC predictor coefficients.
-* $G$ is the filter gain.
-
-In the discrete-time domain, the current speech sample $s[n]$ is predicted as a linear combination of the past $p$ samples:
-$$\\hat{s}[n] = \\sum_{k=1}^p a_k s[n - k]$$
+        "punchline": "LPC predicts s[n] as weighted sum of p past samples. Minimizing error gives Yule-Walker equations, solved via Levinson-Durbin O(p^2) to estimate all-pole vocal tract formants.",
+        "content": """### 1. Fundamental Concept of LPC
+Linear Predictive Coding (LPC) is a cornerstone speech processing technique that models a speech signal by estimating the current speech sample as a **linear combination of its past $p$ samples**.
+Instead of storing or transmitting raw speech samples, LPC extracts and transmits a compact set of prediction coefficients ($a_k$) representing the vocal tract filter and a gain/pitch parameter representing excitation.
 
 ---
 
-### 2. Mathematical Formulation & Error Minimization
+### 2. Mathematical Formulation of LPC
+1. **Prediction Equation:**
+   The predicted speech sample $\\hat{s}[n]$ is given by:
+   $$\\hat{s}[n] = \\sum_{k=1}^{p} a_k \\cdot s[n - k]$$
+   where $p$ is the **prediction order** (typically $p = 10-14$ for 8-16 kHz speech) and $a_k$ are the linear predictor coefficients.
+2. **Prediction Error (Residual):**
+   The prediction error $e[n]$ is the difference between the actual speech sample and the predicted value:
+   $$e[n] = s[n] - \\hat{s}[n] = s[n] - \\sum_{k=1}^{p} a_k \\cdot s[n - k]$$
+3. **Derivation of Yule-Walker Equations (Minimizing Error):**
+   To find the optimal coefficients $a_k$, we minimize the total squared prediction error $E$:
+   $$E = \\sum_{n} e^2[n] = \\sum_{n} \\left( s[n] - \\sum_{k=1}^{p} a_k s[n - k] \\right)^2$$
+   Setting the partial derivative with respect to each coefficient $a_j$ to zero:
+   $$\\frac{\\partial E}{\\partial a_j} = -2 \\sum_{n} \\left( s[n] - \\sum_{k=1}^{p} a_k s[n - k] \\right) s[n - j] = 0$$
+   $$\\sum_{k=1}^{p} a_k \\left[ \\sum_{n} s[n - k] s[n - j] \\right] = \\sum_{n} s[n] s[n - j]$$
+   Recognizing the autocorrelation function $R(|j - k|) = \\sum_{n} s[n - j] s[n - k]$, this yields the **Yule-Walker Equations**:
+   $$\\sum_{k=1}^{p} a_k \\cdot R(|j - k|) = R(j), \\quad \\text{for } j = 1, 2, \\dots, p$$
 
-#### 1. Prediction Error (Residual)
-The prediction error (residual) $e[n]$ is the difference between the actual sample $s[n]$ and the predicted sample $\\hat{s}[n]$:
-$$e[n] = s[n] - \\hat{s}[n] = s[n] - \\sum_{k=1}^p a_k s[n - k]$$
-
-#### 2. Mean Squared Error (MSE) Criterion
-To determine the optimal filter coefficients $a_k$, we minimize the total squared prediction error $E$:
-$$E = \\sum_{n} e^2[n] = \\sum_{n} \\left( s[n] - \\sum_{k=1}^p a_k s[n - k] \\right)^2$$
-
-#### 3. Derivation of the Normal Equations (Yule-Walker Equations)
-To find the coefficients $a_k$ that minimize $E$, take the partial derivative of $E$ with respect to each coefficient $a_i$ (for $i = 1, 2, \\dots, p$) and set it to zero:
-$$\\frac{\\partial E}{\\partial a_i} = 0 \\implies \\sum_{n} 2 \\left( s[n] - \\sum_{k=1}^p a_k s[n - k] \\right) (-s[n - i]) = 0$$
-
-Simplifying and rearranging terms:
-$$\\sum_{k=1}^p a_k \\sum_{n} s[n - k] s[n - i] = \\sum_{n} s[n] s[n - i], \\quad \\text{for } i = 1, 2, \\dots, p$$
-
----
-
-### 3. Autocorrelation Method vs. Covariance Method
-
-#### 1. Autocorrelation Method
-Assuming the windowed speech frame $s[n]$ is zero outside the window interval $[0, N-1]$, the term $\\sum_n s[n - k] s[n - i]$ reduces to the short-time autocorrelation function $R(|i - k|)$:
-$$\\sum_{k=1}^p a_k R(|i - k|) = R(i), \\quad i = 1, 2, \\dots, p$$
-
-In matrix form:
-$$\\begin{bmatrix} R(0) & R(1) & R(2) & \\dots & R(p-1) \\\\ R(1) & R(0) & R(1) & \\dots & R(p-2) \\\\ R(2) & R(1) & R(0) & \\dots & R(p-3) \\\\ \\vdots & \\vdots & \\vdots & \\ddots & \\vdots \\\\ R(p-1) & R(p-2) & R(p-3) & \\dots & R(0) \\end{bmatrix} \\begin{bmatrix} a_1 \\\\ a_2 \\\\ a_3 \\\\ \\vdots \\\\ a_p \\end{bmatrix} = \\begin{bmatrix} R(1) \\\\ R(2) \\\\ R(3) \\\\ \\vdots \\\\ R(p) \\end{bmatrix}$$
-* **Symmetric Toeplitz Matrix:** The matrix has identical diagonals, allowing the system to be solved in $O(p^2)$ operations using the **Levinson-Durbin Recursion Algorithm**.
-* **Guaranteed Stability:** The resulting all-pole filter $H(z)$ is **always minimum-phase and guaranteed stable** (all poles inside $|z| < 1$).
-
-#### 2. Covariance Method
-* The signal is not assumed to be zero outside the frame.
-* Generates a symmetric positive-definite covariance matrix solved via Cholesky decomposition in $O(p^3)$ ops.
-* Stability of the synthesis filter is not inherently guaranteed.
+4. **Matrix Representation & Solution:**
+   $$\\begin{bmatrix} R(0) & R(1) & \\dots & R(p-1) \\\\ R(1) & R(0) & \\dots & R(p-2) \\\\ \\vdots & \\vdots & \\ddots & \\vdots \\\\ R(p-1) & R(p-2) & \\dots & R(0) \\end{bmatrix} \\begin{bmatrix} a_1 \\\\ a_2 \\\\ \\vdots \\\\ a_p \\end{bmatrix} = \\begin{bmatrix} R(1) \\\\ R(2) \\\\ \\vdots \\\\ R(p) \\end{bmatrix}$$
+   The autocorrelation matrix is symmetric and Toeplitz, solved efficiently using the **Levinson-Durbin Recursion** in **$O(p^2)$** operations (compared to $O(p^3)$ for Gaussian elimination).
 
 ---
 
-### 4. Efficient Parameter Estimation: Levinson-Durbin Algorithm
-The Levinson-Durbin algorithm iteratively computes predictor coefficients of order $m$ from order $m-1$ ($m = 1, 2, \\dots, p$):
-1. **Initialize:** $E^{(0)} = R(0)$
-2. **For $m = 1, 2, \\dots, p$:**
-   * Compute Reflection Coefficient (PARCOR coefficient) $k_m$:
-     $$k_m = \\frac{R(m) - \\sum_{j=1}^{m-1} a_j^{(m-1)} R(m - j)}{E^{(m-1)}}$$
-   * Update predictor coefficients:
-     $$a_m^{(m)} = k_m$$
-     $$a_j^{(m)} = a_j^{(m-1)} - k_m a_{m-j}^{(m-1)}, \\quad j = 1, 2, \\dots, m-1$$
-   * Update error:
-     $$E^{(m)} = E^{(m-1)} (1 - k_m^2)$$
+### 3. Speech Synthesis Filter Model
+The speech production system is modeled as an **all-pole filter** excited by an excitation source $e[n]$ with gain $G$:
+$$H(z) = \\frac{S(z)}{E(z)} = \\frac{G}{1 - \\sum_{k=1}^{p} a_k z^{-k}} = \\frac{G}{A(z)}$$
+The roots of the denominator polynomial $A(z) = 0$ determine the poles, which directly correspond to the **formant frequencies** of the vocal tract.
 
 ---
 
-### 5. Evaluation of LPC Effectiveness in Speech Systems
+### 4. Evaluation of LPC Effectiveness in Speech Modeling
 
-#### Advantages & Strengths:
-1. **Enormous Data Compression:** Standard PCM speech requires $64\\text{ kbps}$ ($8\\text{ kHz} \\times 8\\text{ bits}$). LPC-10 transmits only pitch, voicing, gain, and 10 coefficients every $20\\text{ ms}$, operating at just **$2.4\\text{ kbps}$ (a 26x compression ratio)**.
-2. **Accurate Formant Extraction:** The roots of $A(z) = 0$ give direct estimates of vocal tract formant frequencies and bandwidths.
-3. **Source-Filter Separation:** Completely decouples vocal tract shape from glottal pitch.
-
-#### Limitations:
-1. **All-Pole Restriction:** Struggles to model nasalized vowels and fricatives that require spectral zeros (anti-formants).
-2. **Background Noise Sensitivity:** Additive noise flattens spectral peaks, skewing LPC coefficients toward noise poles."""
+| Aspect | Advantages & Strengths | Limitations & Constraints |
+| :--- | :--- | :--- |
+| **Parameter Efficiency** | Compresses speech to a small set of parameters ($p$ coefficients + gain + pitch), enabling low bitrates (e.g., 2.4 kbps in military LPC-10). | Assumes an all-pole model; fails to represent nasal sounds (/m/, /n/) and fricatives that require spectral zeros. |
+| **Acoustic Modeling** | Highly accurate for voiced vowel segments; poles directly map to vocal tract resonances ($F_1, F_2, F_3$). | Assumes speech is stationary within each frame; degraded by fast pitch transitions. |
+| **Computational Cost** | Levinson-Durbin solves the system in $O(p^2)$ operations; easily implemented in real-time embedded DSPs. | Sensitive to acoustic background noise and channel distortion; error energy increases under low SNR. |
+| **Applications** | Cellular communications (GSM vocoders), text-to-speech (TTS) synthesis, formant extraction, speaker recognition. | Not optimal for unvoiced sounds or high-fidelity musical audio. |"""
     }
 ]

@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Unit 5: Video Segmentation, Object Tracking, Matting & Performance Evaluation
+Unit 5: Video Segmentation, Change Detection, Object Tracking & Performance Evaluation
 Questions: Mid-II Q13 to Q20
-Academic Year: 2026-27 | Regulation: KGR23 | Course Code: KG23ACM408
-Scaled strictly for exam success (05 Marks vs 10 Marks format).
+Course Coordinator: Dr. Sandeep Kumar M (CSE AI & ML)
+Regulation: KGR23 | Academic Year: 2026-27 | Course Code: KG23ACM408
+Strictly aligned with Unit 5.docx lecture notes and official Question Bank.
 """
 
 UNIT5_QUESTIONS = [
@@ -13,73 +14,79 @@ UNIT5_QUESTIONS = [
         "qno": 13,
         "unit": "Unit-5",
         "co": "CO5",
-        "bloom": "K1",
+        "bloom": "K2",
         "marks": "05 Marks",
-        "title": "Define image segmentation and classify its major categories based on region-based and boundary-based approaches.",
-        "punchline": "Image segmentation partitions a scene into disjoint, semantically meaningful regions; classified into Region-Based (homogeneity, Region Growing, Split-and-Merge) and Boundary-Based (gradient discontinuities, Canny, Active Contours/Snakes).",
-        "mnemonic": "R-B-G-S: Region growing, Boundary edge detection, Gradient operators, Snakes / active contours",
-        "analogy": "Cutting up a political map: Region-based is coloring neighboring towns with the same political party until you reach a border; Boundary-based is tracing the rivers and mountain ranges that separate countries.",
-        "diagram": """IMAGE SEGMENTATION PARADIGMS:
+        "title": "Compare region-based and boundary-based image segmentation methods and analyze their suitability for video processing.",
+        "punchline": "Region-based segmentation groups pixels with homogeneous color/intensity (growing, splitting, merging), whereas boundary-based segmentation detects sudden spatial gradient changes (Sobel, Canny, Laplacian); hybrid approaches combining both are essential for robust video object tracking.",
+        "mnemonic": "Region = Grouping Homogeneity; Boundary = Detecting Discontinuity.",
+        "analogy": "Coloring a coloring book: region-based segmentation fills entire areas with the same crayon shade (inside the lines); boundary-based segmentation takes a black pen and traces only the sharp ink borders.",
+        "diagram": """+-------------------------------------------------------------------------------+
+|               REGION-BASED VS BOUNDARY-BASED IMAGE SEGMENTATION               |
++-------------------------------------------------------------------------------+
 
-1. REGION-BASED (Similarity Criterion):
-   - Region Growing: Seed Pixel ──► Expand to neighbors if |I_p - I_seed| < T
-   - Split & Merge: Quadtree decomposition (Split if variance high; Merge if similar)
-   ┌───────────┬───────────┐
-   │ Region R1 │ Region R2 │   Condition: R1 ∩ R2 = ∅ (Disjoint)
-   ├───────────┼───────────┤              ∪ Ri = Total Image
-   │ Region R3 │ Region R4 │              P(Ri) = TRUE (Uniform within region)
-   └───────────┴───────────┘              P(Ri ∪ Rj) = FALSE (Distinct across regions)
+ 1. REGION-BASED SEGMENTATION:          2. BOUNDARY-BASED SEGMENTATION:
+    Groups pixels with similar             Detects sharp gradient discontinuities:
+    properties (Homogeneity condition)     ∇I = [∂I/∂x, ∂I/∂y]ᵀ
+    ┌──────────────────────┐               ┌──────────────────────┐
+    │  Region R₁ (Green)   │               │   /────────────────\\ │
+    │  • Seed  ──► Grows   │               │  /  Canny / Sobel   \\│
+    │                      │               │ │   Edge Contours    ││
+    │  Region R₂ (Blue)    │               │  \\                  /│
+    └──────────────────────┘               └──────────────────────┘
+    Techniques: Growing, Split & Merge     Techniques: Sobel, Canny, Laplacian
 
-2. BOUNDARY-BASED (Discontinuity Criterion):
-   - Gradient Operators : Sobel, Prewitt, Canny Edge Detector (Local maxima)
-   - Active Contours    : Snakes minimizing Energy E_snake = E_internal + E_external
-   - Hough Transform    : Parametric curve voting (Circles, Lines)""",
-        "content": """### 1. Definition of Image Segmentation
-Image segmentation is the foundational process of partitioning a digital image $I(x, y)$ into multiple disjoint, non-overlapping, and semantically meaningful regions or sets of pixels $\\{R_1, R_2, \\dots, R_N\\}$.
-
-#### Formal Mathematical Definition:
-1. **Completeness:** $\\bigcup_{i=1}^N R_i = I$ (The union of all regions equals the entire image).
-2. **Disjointness:** $R_i \\cap R_j = \\emptyset, \\; \\forall i \\ne j$ (Regions do not overlap).
-3. **Internal Homogeneity:** $P(R_i) = \\text{TRUE}$ for all $i$ (Pixels within each region share uniform properties such as color, texture, or intensity).
-4. **External Distinctness:** $P(R_i \\cup R_j) = \\text{FALSE}$ for any adjacent $R_i, R_j$ (Adjacent regions are statistically distinct).
+ VIDEO PROCESSING SUITABILITY:
+  • Region-based provides solid foreground object masks (great for background subtraction).
+  • Boundary-based detects moving silhouettes but is vulnerable to broken edges and noise.
+  • Practical video systems fuse both: Canny edges bound the Region-growing seeds!""",
+        "content": """### 1. Definition and Objective of Image Segmentation (Unit 5 Notes)
+**Image segmentation** is the process of partitioning a digital image into multiple meaningful, non-overlapping regions or sets of pixels based on shared physical attributes such as color, intensity, texture, or geometric boundaries.
+- **Objective:** To simplify image representation, isolate foreground objects from background clutter, and prepare visual data for higher-level computer vision tasks (object detection, classification, and motion tracking).
 
 ---
 
 ### 2. Major Categories of Image Segmentation
 
-#### Category A: Region-Based Approaches (Similarity Criterion)
-These methods identify regions based on pixel similarity (color, intensity, or texture homogeneity):
+#### A. Region-Based Segmentation (Homogeneity Approach)
+- **Principle:** Groups neighboring pixels that exhibit similar statistical characteristics (color, luminance, or texture variance).
+- **Core Techniques:**
+  1. **Region Growing:** Selects initial seed pixels and recursively appends adjacent neighboring pixels if their intensity difference satisfies $|I(x, y) - I_{\\text{seed}}| < T$.
+  2. **Region Splitting:** Recursively splits an inhomogeneous image block into four sub-quadrants (quadtree decomposition) until all child blocks are uniform.
+  3. **Region Merging:** Evaluates adjacent quadrants and merges them if their combined variance falls below a predefined homogeneity threshold.
+- **Example:** Segmenting a green agricultural crop leaf from soil background based on chromatic thresholding.
 
-1. **Region Growing:**
-   * *Mechanism:* Begins by selecting one or more \"seed pixels\" inside the target object. It iteratively inspects neighboring pixels and absorbs them into the region if they satisfy a similarity threshold:
-     $$|I(x, y) - \\mu_{\\text{region}}| < T$$
-   * *Strengths & Weaknesses:* Excellent for localized objects with clear contrast; sensitive to initial seed selection and noise (causes region leakage).
-2. **Region Splitting and Merging (Quadtree Approach):**
-   * *Mechanism:* Begins with the entire image. If the homogeneity predicate $P(R)$ is FALSE (high intensity variance), the region is split into 4 equal quadrants. This process recurses until all sub-blocks are homogeneous. Adjacent compatible sub-blocks are then merged.
-
-#### Category B: Boundary-Based / Edge-Based Approaches (Discontinuity Criterion)
-These methods identify regions by detecting abrupt local intensity discontinuities (edges):
-
-1. **Gradient Operators (Differential Edge Detectors):**
-   * *Mechanism:* Computes the magnitude of the 2D spatial gradient $\\|\\nabla I\\| = \\sqrt{I_x^2 + I_y^2}$ using convolution masks (Sobel, Prewitt).
-   * *Canny Edge Detector:* The gold standard edge detector; executes Gaussian smoothing, gradient calculation, Non-Maximum Suppression (NMS) for thin 1-pixel ridges, and Hysteresis Thresholding to connect broken contours.
-2. **Active Contours (Snakes) & Level Sets:**
-   * *Mechanism:* Initializes an elastic parametric spline curve $\\mathbf{v}(s) = (x(s), y(s))$ near the object boundary that dynamically contracts and deforms to minimize an energy functional:
-     $$E_{\\text{snake}} = \\int_0^1 \\left[ E_{\\text{internal}}(\\mathbf{v}(s)) + E_{\\text{external}}(\\mathbf{v}(s)) \\right] ds$$
-     * $E_{\\text{internal}}$: Controls curve smoothness, elasticity (membrane tension), and bending rigidity.
-     * $E_{\\text{external}}$: Attracts the snake toward strong image gradient edges ($-\\beta \\|\\nabla I\\|^2$).
+#### B. Boundary-Based Segmentation (Discontinuity Approach)
+- **Principle:** Identifies object boundaries by detecting sudden, sharp spatial transitions in image intensity or color.
+- **Core Techniques:**
+  1. **Sobel Operator:** Computes first-order spatial intensity gradients using $3 \\times 3$ directional convolution masks ($G_x, G_y$).
+  2. **Canny Edge Detector:** A multi-stage optimal edge operator that performs Gaussian smoothing $\\rightarrow$ gradient magnitude/angle computation $\\rightarrow$ Non-Maximum Suppression (NMS) $\\rightarrow$ Hysteresis thresholding.
+  3. **Laplacian Operator:** Uses second-order spatial derivatives (zero-crossings of $\\nabla^2 I$) to locate rapid intensity inflection points.
+- **Example:** Tracing the metallic boundary contour of a moving car in highway traffic surveillance.
 
 ---
 
-### 3. Comparison Summary: Region-Based vs. Boundary-Based
+### 3. Comprehensive Comparison Table (Unit 5 Notes)
 
-| Attribute | Region-Based Approaches | Boundary-Based Approaches |
+| Comparison Factor | Region-Based Segmentation | Boundary-Based Segmentation |
 | :--- | :--- | :--- |
-| **Guiding Principle** | Pixel homogeneity & similarity ($P(R_i) = \\text{TRUE}$) | Abrupt local intensity discontinuities ($\\nabla I$) |
-| **Contour Closure** | **Guaranteed Closed:** Regions naturally form closed boundaries | **Open Edges:** Edges are often broken, requiring edge linking |
-| **Noise Sensitivity** | Relatively robust (averaging over regions suppresses noise) | Highly sensitive (gradient operators amplify noise) |
-| **Computational Basis**| Pixel grouping, tree decomposition, clustering | 2D convolution, differential equations, active splines |
-| **Typical Algorithms** | Region Growing, Split-and-Merge, Otsu Thresholding, Watershed | Sobel, Canny, Active Contours (Snakes), Hough Transform |"""
+| **Fundamental Mechanism** | Groups neighboring pixels based on **similarity / homogeneity** | Identifies object borders based on **gradient discontinuity** |
+| **Input Information** | Pixel intensity, color distributions, texture statistics | First- and second-order spatial derivatives ($\\nabla I, \\nabla^2 I$) |
+| **Nature of Output** | Closed, solid connected 2D spatial regions (masks) | Edge segments, outlines, and contour curves |
+| **Sensitivity to Noise** | Relatively robust; averaging smooths random noise | **Highly sensitive;** derivative operators amplify sensor grain |
+| **Common Failure Mode** | Over-segmentation; bleeding across weak boundaries | Broken, disconnected edges; false edge fragments |
+| **Representative Methods**| Region Growing, Split-and-Merge, Watershed | Sobel, Prewitt, Canny Edge Detector, Laplacian of Gaussian |
+
+---
+
+### 4. Analysis of Suitability for Video Processing
+1. **Region-Based Suitability:**
+   - *Advantage:* Produces solid, contiguous binary masks ($M(x, y) \\in \\{0, 1\\}$) required for background subtraction, optical flow masking, and area measurement.
+   - *Challenge:* Computationally intensive to re-seed and grow regions for every video frame at 30 fps.
+2. **Boundary-Based Suitability:**
+   - *Advantage:* Extremely fast and easily accelerated on GPUs; effective for tracking sharp rigid silhouettes.
+   - *Challenge:* Edge gaps cause contour tracking to leak into background textures; sensitive to lighting shifts.
+3. **The Modern Hybrid Paradigm:**
+   Real-time video tracking systems deploy **hybrid approaches**: boundary operators (Canny) detect candidate moving edges, which subsequently act as impenetrable barrier walls for fast region-growing and active contour (snake) models."""
     },
     {
         "id": "MID2-Q14",
@@ -89,69 +96,73 @@ These methods identify regions by detecting abrupt local intensity discontinuiti
         "co": "CO5",
         "bloom": "K2",
         "marks": "05 Marks",
-        "title": "Explain the principles of change detection in video sequences and interpret its role in dynamic scene analysis.",
-        "punchline": "Change detection isolates moving foreground objects from static backgrounds; implemented via Temporal Differencing, Background Subtraction, and adaptive Gaussian Mixture Models (MoG) to handle illumination and swaying backgrounds.",
-        "mnemonic": "T-B-M-S: Temporal differencing, Background subtraction, Mixture of Gaussians, Shadow removal",
-        "analogy": "Spot-the-difference game between two consecutive photos: Subtracting the previous photo from the current one instantly erases the static living room and highlights the playful cat running across the rug.",
-        "diagram": """CHANGE DETECTION IN VIDEO SEQUENCES:
+        "title": "Explain the principles of change detection in video sequences and discuss its importance in video surveillance.",
+        "punchline": "Change detection identifies dynamic scene variations via Frame Differencing (D = |I_t - I_{t-1}|), Background Subtraction (D = |I_t - B|), Thresholding, and Optical Flow; it serves as the frontline trigger for automated video surveillance alarms.",
+        "mnemonic": "F-B-T-O: Frame Differencing, Background Subtraction, Thresholding, Optical Flow.",
+        "analogy": "Like a security guard watching a bank vault: rather than staring intensely at every inch of concrete wall all night, the guard's motion detector alerts only when something enters or moves across the field of view.",
+        "diagram": """+-------------------------------------------------------------------------------+
+|                 PRINCIPLES OF CHANGE DETECTION IN SURVEILLANCE                |
++-------------------------------------------------------------------------------+
 
-1. TEMPORAL DIFFERENCING (Adjacent Frames):
-   Frame(t) ──► ( - ) ◄── Frame(t-1)  ──► |Difference| > T ──► Motion Mask
-   (Very fast, but suffers from aperture 'holes' inside uniform moving objects)
-
-2. BACKGROUND SUBTRACTION (Background Model):
-   Current Frame I(t) ──► ( - ) ◄── Background Model B(t)
-                                 │
-                                 ▼
-                         |I(t) - B(t)| > Threshold
-                                 │
-                                 ▼
-                     [ Raw Foreground Mask M(x, y) ]
-                                 │
-                                 ▼
-                     [ Morphological Cleanup & Shadow Removal ]
-                                 │
-                                 ▼
-                     [ Segmented Moving Objects ]
-
-ADAPTIVE BACKGROUND UPDATE (GMM / Running Average):
-   B(t+1) = α · I(t) + (1 - α) · B(t)  (Adapts to gradual sun changes)""",
-        "content": """### 1. Principles of Change Detection
-Change detection is the process of identifying pixels in a temporal video sequence $I(x, y, t)$ that exhibit significant motion or structural alterations compared to the reference scene. It is the initial step for automated surveillance, traffic monitoring, and action recognition.
+ 1. FRAME DIFFERENCING:
+    Current Frame I_t ──► [ - ] ◄── Previous Frame I_{t-1} ──► D(x, y) = |I_t - I_{t-1}|
+                           │
+ 2. BACKGROUND SUBTRACTION:│
+    Current Frame I_t ──► [ - ] ◄── Static Background B(x, y) ──► D(x, y) = |I_t - B|
+                           │
+                           ▼
+ 3. THRESHOLDING:
+    Binary Motion Mask M(x, y) = 1 if D(x, y) > T else 0
+                           │
+                           ▼
+ 4. SURVEILLANCE APPLICATIONS:
+    • Parking Lot Security: Triggers recording when vehicle enters empty stall
+    • Perimeter Intrusion: Sounds alarm when pedestrian crosses fence line
+    • Traffic Congestion: Detects stopped vehicles blocking intersections""",
+        "content": """### 1. Conceptual Principles of Change Detection (Unit 5 Notes)
+**Change detection** is a fundamental low-level computer vision technique that detects temporal variations in pixel values between consecutive video frames or between an incoming frame and a reference background model.
+- **Primary Objective:** To isolate moving objects, detect environmental alterations, and discard redundant stationary background pixels for real-time video surveillance.
 
 ---
 
-### 2. Core Methodologies in Change Detection
+### 2. The Four Core Principles of Change Detection (Unit 5 Notes)
 
-#### 1. Temporal Frame Differencing
-* **Principle:** Subtracts two consecutive video frames separated by time interval $\\Delta t$:
-  $$D_t(x, y) = |I(x, y, t) - I(x, y, t - 1)|$$
-* **Thresholding:**
-  $$M_t(x, y) = \\begin{cases} 1 & \\text{if } D_t(x, y) > T \\\\ 0 & \\text{otherwise} \\end{cases}$$
-* **Evaluation:**
-  * Extremely fast and computationally lightweight.
-  * Naturally adapts to sudden illumination changes.
-  * **Critical Weaknesses:** Only detects leading and trailing edges of moving objects. The interior of uniformly colored objects produces zero difference ($D_t \\approx 0$), resulting in **\"ghosting\" and hollowed-out object masks**.
+#### A. Frame Differencing
+- **Principle:** Subtracts pixel intensities between two immediately consecutive video frames:
+  $$D(x, y) = |I_t(x, y) - I_{t-1}(x, y)|$$
+- **Characteristics:**
+  - Extremely fast and computationally lightweight.
+  - Automatically adapts to gradual daytime lighting changes.
+  - *Limitation:* Generates the "aperture interior hole" problem (homogeneous interiors of large moving objects produce zero frame difference, leaving only leading and trailing edges).
 
-#### 2. Background Subtraction
-* **Principle:** Compares the current frame $I(x, y, t)$ against a continuously maintained reference image of the background $B(x, y, t)$:
-  $$|I(x, y, t) - B(x, y, t)| > T$$
-* **Adaptive Running Average Update:**
-  $$B(x, y, t + 1) = \\alpha I(x, y, t) + (1 - \\alpha) B(x, y, t)$$
-  where $\\alpha \\in [0.001, 0.05]$ is the learning rate that gradually absorbs slow daylight changes and parked cars into the background.
+#### B. Background Subtraction
+- **Principle:** Compares current frame $I_t(x, y)$ against an estimated, long-term statistical background model $B(x, y)$:
+  $$D(x, y) = |I_t(x, y) - B(x, y)|$$
+  where $B(x, y)$ is updated adaptively over time using running Gaussian averages:
+  $$B_t(x, y) = (1 - \\alpha) B_{t-1}(x, y) + \\alpha I_t(x, y), \\quad 0 < \\alpha < 1$$
+- **Characteristics:** Recovers complete, solid foreground silhouettes of moving objects.
 
-#### 3. Mixture of Gaussians (MoG / Stauffer-Grimson Model)
-* **Principle:** Models the intensity history of each individual pixel as a mixture of $K$ (typically $K = 3$ to $5$) Gaussians:
-  $$P(I_t) = \\sum_{k=1}^K w_{k, t} \\mathcal{N}(I_t; \\mu_{k, t}, \\sigma_{k, t}^2)$$
-* **Why MoG is Superior:** Real-world outdoor backgrounds are **multi-modal** (e.g. swaying tree branches, rippling water on lakes, flickering computer monitors). MoG assigns separate Gaussian components to tree leaves and blue sky, preventing false motion alarms.
+#### C. Thresholding (Binarization)
+- **Principle:** Converts the continuous difference map $D(x, y)$ into a clean binary motion mask $M(x, y)$:
+  $$M(x, y) = \\begin{cases} 1 & \\text{if } D(x, y) > T \\quad (\\text{Motion / Change Detected}) \\\\ 0 & \\text{if } D(x, y) \\le T \\quad (\\text{Stationary Background}) \\end{cases}$$
+  where $T$ is an experimentally tuned or adaptive noise threshold.
+
+#### D. Optical Flow
+- **Principle:** Computes apparent spatio-temporal velocity vectors $(u, v)$ for each pixel based on gradient constraints $I_x u + I_y v + I_t = 0$.
+- **Characteristics:** Distinguishes the specific speed and direction of moving objects from background camera vibration.
 
 ---
 
-### 3. Practical Challenges in Dynamic Scene Analysis
-1. **Cast Shadows:** Moving objects cast dark shadows onto the ground that move along with them. Shadows pass intensity thresholds ($|I - B| > T$), distorting object bounding boxes.
-   * *Mitigation:* Convert pixels to HSV/YCbCr color space; shadows cause a drop in luminance ($V$) while preserving hue ($H$) and saturation ($S$).
-2. **Bootstrapping Problem:** Initializing a background model when moving objects are already present in the camera field of view from frame 0.
-3. **Sudden Global Illumination (Light Switch):** Turning on a room light alters all pixels simultaneously. Solved via global histogram monitoring to trigger instant background re-initialization."""
+### 3. Importance in Video Surveillance Systems (Unit 5 Notes)
+In modern automated CCTV security and smart city surveillance:
+1. **Intrusion Detection:** Detects unauthorized human or vehicular entry across geofenced perimeter boundaries outside authorized hours.
+2. **Bandwidth & Storage Conservation:** Prevents 24/7 video storage of empty static rooms; systems record at high framerates only when change detection flags activity.
+3. **Traffic Surveillance & Incident Detection:** Identifies stalled vehicles on highways, illegal wrong-way driving, and lane blockages.
+4. **Parking Lot Monitoring (Practical Example):**
+   - *Frame 1:* Parking stall is completely empty (recorded into background model $B$).
+   - *Frame 2:* An automobile enters the stall.
+   - *Frame 3:* Frame differencing and background subtraction detect large pixel intensity differences ($D > T$).
+   - *Outcome:* The system automatically logs the vehicle's arrival timestamp and marks the parking stall as occupied."""
     },
     {
         "id": "MID2-Q15",
@@ -161,82 +172,82 @@ Change detection is the process of identifying pixels in a temporal video sequen
         "co": "CO5",
         "bloom": "K3",
         "marks": "05 Marks",
-        "title": "By Using Global Motion Detection  Frame differences (sum of absolute differences): Region A = 120  Region B = 45  Region C = 200  Threshold = 100  Identify regions with motion  Determine dominant motion region",
-        "punchline": "Motion occurs where SAD > 100 -> Region A (120) and Region C (200) exhibit motion; Region C is the Dominant Motion Region with maximum SAD = 200.",
-        "mnemonic": "T-C-D: Threshold comparison (SAD > T), Classify motion states, Determine dominant max",
-        "analogy": "Security guards monitoring three warehouse rooms: Room A has 120 decibels of sound, Room B has 45, and Room C has 200. With a noise threshold of 100, alarms trigger in A and C, with C being the loudest hotspot.",
-        "diagram": """GLOBAL MOTION DETECTION THRESHOLDING:
+        "title": "In a video sequence, global motion is analyzed across three regions with SAD values: Region A = 120, Region B = 45, Region C = 200, Threshold = 100. 1. Identify regions containing motion. 2. Identify regions without motion. 3. Determine the region with the most dominant motion.",
+        "punchline": "Comparing SAD values against threshold T = 100 reveals that Regions A and C contain motion (120 > 100, 200 > 100), Region B has no motion (45 < 100), and Region C exhibits the most dominant motion (max SAD = 200).",
+        "mnemonic": "Check SAD > T: A (120>100 YES), B (45<100 NO), C (200>100 YES). Dominant = max(120, 45, 200) = C.",
+        "analogy": "Like checking three security motion sensors calibrated to trigger at 100 decibels of sound: Room A registers 120 dB (alarm), Room B registers 45 dB (quiet), and Room C registers 200 dB (deafening alarm and loudest source).",
+        "diagram": """+-------------------------------------------------------------------------------+
+|                    GLOBAL MOTION DETECTION & THRESHOLD CHECK                  |
++-------------------------------------------------------------------------------+
 
-  Frame Difference (SAD)
-  ▲
-  │                     ■ Region C (SAD = 200)  ◄── DOMINANT MOTION REGION!
-  │                     │                           (Max Activity: 200 > 100)
-  │                     │
-  │        ■ Region A   │
-  │        │ (SAD = 120)│
-200 ───────┼────────────┼──────────────────────────
-  │        │            │
-100 ───────┼────────────┼──────────────────────────◄ THRESHOLD T = 100
-  │        │   ■ Region B
-  │        │   │ (SAD = 45)  ◄── STATIC / NOISE (45 <= 100)
-  └────────┴───┴────────┴──────────────────────────► Spatial Regions
-           A   B        C
+  SAD Value ▲
+        200 │                                          █ Region C = 200
+            │                                          █ (DOMINANT MOTION!)
+        150 │
+        120 │             █ Region A = 120             █
+            │             █ (Motion Detected)          █
+  ══════100 ╞═════════════╪════════════════════════════╪════════════════════════►
+            │  Threshold  │                            │   THRESHOLD = 100
+         50 │             │        █ Region B = 45     │
+            │             │        █ (NO MOTION)       │
+          0 └─────────────┴────────┴───────────────────┴───────────────────────
+                       Region A  Region B            Region C
 
-DECISION MATRIX:
-  - Region A : 120 > 100 ──► MOTION DETECTED (Active)
-  - Region B :  45 ≤ 100 ──► NO SIGNIFICANT MOTION (Static Background)
-  - Region C : 200 > 100 ──► MOTION DETECTED (DOMINANT REGION)""",
-        "content": """### 1. Given Data
-* Frame difference measure: **Sum of Absolute Differences (SAD)**
-* **Region A Difference:** $\\text{SAD}_A = 120$
-* **Region B Difference:** $\\text{SAD}_B = 45$
-* **Region C Difference:** $\\text{SAD}_C = 200$
-* **Global Motion Detection Threshold ($T$):** **$100$**
-
----
-
-### 2. Task 1: Identify Regions with Motion
-
-#### Detection Criterion:
-In global motion detection based on frame differencing:
-* If $\\text{SAD} > T$: Significant temporal change has occurred $\\implies$ **Motion Detected**.
-* If $\\text{SAD} \\le T$: Changes are within sensor noise tolerance $\\implies$ **No Significant Motion (Static Region)**.
-
-#### Evaluation of Each Region:
-1. **Region A:**
-   $$\\text{SAD}_A = 120 > 100$$
-   $$\\implies \\mathbf{Motion\\ Detected\\ in\\ Region\\ A}$$
-2. **Region B:**
-   $$\\text{SAD}_B = 45 \\le 100$$
-   $$\\implies \\mathbf{No\\ Significant\\ Motion\\ in\\ Region\\ B} \\; \\text{(Classified as Static Background)}$$
-3. **Region C:**
-   $$\\text{SAD}_C = 200 > 100$$
-   $$\\implies \\mathbf{Motion\\ Detected\\ in\\ Region\\ C}$$
-
-$$\\mathbf{Answer\\ 1: } \\quad \\text{The regions exhibiting motion are } \\mathbf{Region\\ A} \\text{ and } \\mathbf{Region\\ C}.$$
+ RESULTS SUMMARY:
+  • Regions WITH motion   : Region A (120 > 100) and Region C (200 > 100)
+  • Regions WITHOUT motion: Region B (45 < 100)
+  • Dominant Motion Region: Region C (Max SAD = 200)""",
+        "content": """### 1. Problem Statement & Given Data (Unit 5 Notes)
+In video sequence motion detection, frame differences across spatial regions are quantified using the **Sum of Absolute Differences (SAD)**:
+- **Region A:** $\\text{SAD}_A = 120$
+- **Region B:** $\\text{SAD}_B = 45$
+- **Region C:** $\\text{SAD}_C = 200$
+- **Global Motion Detection Threshold ($T$):** $T = 100$
 
 ---
 
-### 3. Task 2: Determine the Dominant Motion Region
-
-#### Criterion:
-The **Dominant Motion Region** is defined as the region exhibiting the highest magnitude of frame difference (maximum SAD), indicating the largest physical object displacement or fastest moving entity across the video frame:
-$$\\text{Dominant Region} = \\arg\\max_{R \\in \\{A, B, C\\}} \\{\\text{SAD}_R\\}$$
-
-#### Evaluation:
-$$\\max(120, 45, 200) = 200 \\quad (\\text{Region C})$$
-
-$$\\mathbf{Answer\\ 2: } \\quad \\mathbf{Region\\ C} \\text{ is the Dominant Motion Region with } \\mathbf{SAD = 200}.$$
+### 2. Decision Criteria
+For any region $R$:
+$$\\text{If } \\text{SAD}_R > T \\implies \\text{Motion is detected}$$
+$$\\text{If } \\text{SAD}_R \\le T \\implies \\text{No significant motion is detected (Stationary / Noise)}$$
 
 ---
 
-### 4. Summary Table for Full Exam Marks
+### 3. Step-by-Step Evaluation
 
-| Region | Measured SAD | Threshold ($T$) | Comparison Result | Motion Status | Dominant Ranking |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| **Region A** | $120$ | $100$ | $120 > 100$ | **Motion Detected** | Rank 2 |
-| **Region B** | $45$ | $100$ | $45 \\le 100$ | **No Motion (Static)**| Rank 3 (Inactive) |
-| **Region C** | $200$ | $100$ | $200 > 100$ | **Motion Detected** | **Rank 1 (DOMINANT)** |"""
+#### 1. Identification of Regions Containing Motion:
+- **Region A:**
+  $$\\text{SAD}_A = 120 > 100 \\implies \\mathbf{Motion\\ Detected}$$
+- **Region B:**
+  $$\\text{SAD}_B = 45 < 100 \\implies \\text{No Significant Motion}$$
+- **Region C:**
+  $$\\text{SAD}_C = 200 > 100 \\implies \\mathbf{Motion\\ Detected}$$
+- **Verdict for Part 1:** **Regions A and C** contain significant motion.
+
+#### 2. Identification of Regions Without Motion:
+- **Region B:**
+  $$\\text{SAD}_B = 45 < 100 \\implies \\mathbf{No\\ Motion\\ Detected}$$
+- **Verdict for Part 2:** **Region B** is the region without significant motion.
+
+#### 3. Determination of the Most Dominant Motion Region:
+The dominant motion region corresponds to the highest frame difference intensity:
+$$\\text{Dominant Motion} = \\max(\\text{SAD}_A, \\text{SAD}_B, \\text{SAD}_C) = \\max(120, 45, 200) = 200$$
+- **Verdict for Part 3:** **Region C** has the most dominant motion because $\\text{SAD}_C = 200$ represents the largest temporal change across the entire video frame.
+
+---
+
+### 4. Tabular Summary of Results (Unit 5 Notes)
+
+| Region | Measured SAD Value | Comparison with Threshold ($T=100$) | Motion Status | Dominance Ranking |
+| :---: | :---: | :---: | :---: | :---: |
+| **Region A** | $120$ | $120 > 100$ | **Motion Detected** | 2nd Highest |
+| **Region B** | $45$ | $45 < 100$ | **No Motion (Static)**| Lowest |
+| **Region C** | $200$ | $200 > 100$ | **Motion Detected** | **1st (Dominant Motion)** |
+
+---
+
+### 5. Final Technical Interpretation
+Region C exhibits the highest intensity of frame-to-frame temporal change ($\text{SAD} = 200$), indicating the presence of a fast-moving, high-contrast, or large foreground object. Region A contains moderate movement ($120$), while Region B falls safely below the noise threshold ($45$), confirming it as stationary background scenery."""
     },
     {
         "id": "MID2-Q16",
@@ -244,66 +255,76 @@ $$\\mathbf{Answer\\ 2: } \\quad \\mathbf{Region\\ C} \\text{ is the Dominant Mot
         "qno": 16,
         "unit": "Unit-5",
         "co": "CO5",
-        "bloom": "K4",
+        "bloom": "K3",
         "marks": "05 Marks",
-        "title": "Implement motion tracking algorithms and demonstrate object trajectory estimation in a temporal video sequence.",
-        "punchline": "Motion tracking associates detections over time into continuous trajectories (x(t), y(t)) using Point Tracking (Kalman/Particle filters), Kernel Tracking (Mean-Shift/CamShift), or Silhouette Tracking.",
-        "mnemonic": "P-K-S-T: Point tracking, Kernel/Mean-Shift tracking, Silhouette tracking, Trajectory estimation",
-        "analogy": "A spotlight operator following a dancer on stage: The operator centers the spotlight on the dancer's vibrant costume color (Mean-Shift kernel tracking) and anticipates where they will leap next (Kalman filter).",
-        "diagram": """OBJECT MOTION TRACKING TAXONOMY:
+        "title": "Illustrate the concept of motion tracking and explain how trajectory calculation is performed across video frames.",
+        "punchline": "Motion tracking associates detected objects across consecutive frames using Optical Flow, Kalman Filters, or Particle Filters; the object trajectory is calculated as the ordered chronological sequence of centroid coordinates T = {P_1, P_2, ..., P_K}.",
+        "mnemonic": "Track = Detect -> Associate -> Predict. Trajectory = Chronological coordinate set T = {(x_t, y_t)}.",
+        "analogy": "Like tracing footsteps left in wet sand: tracking identifies each footstep as belonging to the same hiker, and connecting the footprints in order forms the hiker's continuous path (trajectory).",
+        "diagram": """+-------------------------------------------------------------------------------+
+|                    OBJECT TRAJECTORY CALCULATION ACROSS FRAMES                |
++-------------------------------------------------------------------------------+
 
-1. POINT TRACKING:
-   - Tracks sparse feature points (corners/centroids) across time
-   - Deterministic: Kalman Filter (Linear Gaussian state updates)
-   - Probabilistic: Particle Filter (Non-linear non-Gaussian sampling)
+ Spatial Trajectory Plot:
+   Y-axis ▲
+       35 │                                              • F₄ (25, 35)
+          │                                            /
+       30 │                               • F₃ (20, 30)
+          │                             /   MV = (5, 5)
+       25 │                  • F₂ (15, 25)
+          │                /   MV = (5, 5)
+       20 │   • F₁ (10, 20)
+          │     MV = (5, 5)
+          └─┴──────────────┴──────────────┴──────────────┴──────────────► X-axis
+            10             15             20             25
 
-2. KERNEL / APPEARANCE TRACKING (Mean-Shift / CamShift):
-   Frame t: Target Bounding Box ──► Color Histogram q
-                                         │
-   Frame t+1: Back-project Color Prob Map p(x)
-              Mean Shift Vector m(x) iteratively climbs gradient to mode!
-
-3. TRAJECTORY ESTIMATION:
-   Temporal State: X_t = [ x, y, v_x, v_y ]^T
-   Estimated Trajectory: Tr = { (x1, y1), (x2, y2), ..., (xT, yT) }
-   Allows velocity and acceleration estimation & future path prediction!""",
-        "content": """### 1. Conceptual Framework of Visual Motion Tracking
-Visual tracking is the problem of estimating the continuous trajectory of one or more moving objects over time in an image sequence:
-$$\\text{Trajectory } \\mathcal{T} = \\left\\{ \\mathbf{x}_t = (x_t, y_t) \\right\\}_{t=1}^T$$
-It creates a temporal correspondence between detected target regions across successive video frames.
-
----
-
-### 2. Major Tracking Paradigms
-
-#### 1. Point Tracking
-* **Mechanism:** Represents target objects as points (e.g. centroid or bounding box center). Association across frames is established using statistical state estimators:
-  * **Kalman Filter:** Assumes linear object kinematics with additive Gaussian noise. Executes predict-update recursions for state $\\mathbf{x}_t = [x, y, v_x, v_y]^T$.
-  * **Multiple Hypothesis Tracking (MHT):** Evaluates combinatorial associations across multiple future frames for multi-target tracking.
-
-#### 2. Kernel / Appearance Tracking (Mean-Shift and CamShift)
-* **Principle:** Uses an appearance model (typically a color histogram) inside an elliptical or rectangular kernel.
-* **Mean-Shift Algorithm:**
-  1. Represent the target by a reference color histogram $\\mathbf{q} = \\{q_u\\}_{u=1}^M$.
-  2. In frame $t+1$, calculate a candidate histogram $\\mathbf{p}(\\mathbf{y})$ at location $\\mathbf{y}$.
-  3. Formulate the similarity via the **Bhattacharyya Coefficient**:
-     $$\\rho(\\mathbf{p}(\\mathbf{y}), \\mathbf{q}) = \\sum_{u=1}^M \\sqrt{p_u(\\mathbf{y}) q_u}$$
-  4. Compute the **Mean-Shift Vector** $\\mathbf{m}(\\mathbf{y})$ that points toward the direction of maximum probability increase:
-     $$\\mathbf{m}(\\mathbf{y}) = \\frac{\\sum_i \\mathbf{x}_i w_i g\\left(\\left\\| \\frac{\\mathbf{y} - \\mathbf{x}_i}{h} \\right\\|^2\\right)}{\\sum_i w_i g\\left(\\left\\| \\frac{\\mathbf{y} - \\mathbf{x}_i}{h} \\right\\|^2\\right)} - \\mathbf{y}$$
-  5. Translate the kernel by $\\mathbf{m}(\\mathbf{y})$ and repeat until convergence ($|\\mathbf{m}| < \\epsilon$).
-* **CamShift (Continuously Adaptive Mean Shift):** Dynamically scales and rotates the search window size to track objects zooming toward or away from the camera.
-
-#### 3. Silhouette & Contour Tracking
-* Tracks complex non-rigid object boundaries (e.g. walking humans) using Active Contours (Snakes) or Level Sets.
+  Trajectory Representation:
+  T = { (10, 20), (15, 25), (20, 30), (25, 35) }
+  Constant Motion Vector: MV = (Δx, Δy) = (5, 5) pixels/frame
+  Direction: Uniform linear diagonal movement in positive X and Y directions.""",
+        "content": """### 1. Concept of Motion Tracking (Unit 5 Notes)
+**Motion tracking** is the computer vision process of locating, identifying, and following one or more moving objects continuously across consecutive frames of a temporal video sequence.
+- **Trajectory Estimation:** Establishes the spatial movement history of an object over time by recording its centroid coordinates $(x_t, y_t)$ at every time instant $t$.
 
 ---
 
-### 3. Trajectory Estimation & Practical Applications
-* **Kinematic Parameter Extraction:**
-  $$\\text{Instantaneous Velocity: } \\mathbf{v}_t = \\frac{\\mathbf{x}_t - \\mathbf{x}_{t-1}}{\\Delta t}$$
-  $$\\text{Acceleration: } \\mathbf{a}_t = \\frac{\\mathbf{v}_t - \\mathbf{v}_{t-1}}{\\Delta t}$$
-* **Trajectory Smoothing:** Applying spline interpolation or Kalman smoothing removes jitter caused by measurement noise.
-* **Trajectory Prediction:** Projects object paths to anticipate collisions in Advanced Driver Assistance Systems (ADAS) and robot navigation."""
+### 2. Major Motion Tracking Algorithms (Unit 5 Notes)
+1. **Optical Flow Tracking (Lucas-Kanade):** Tracks distinctive corner features frame-to-frame based on spatial/temporal intensity gradients.
+2. **Kalman Filter Tracking:** Predicts the object's next position using linear kinematic models (position, velocity) and corrects the estimate when noisy measurements arrive.
+3. **Particle Filter Tracking (Sequential Monte Carlo):** Maintains multiple spatial hypotheses (particles) to track objects undergoing abrupt non-linear motion or temporary occlusions.
+
+---
+
+### 3. Step-by-Step Demonstration of Trajectory Calculation (Unit 5 Notes)
+Consider a moving vehicle tracked across **four consecutive video frames ($F_1, F_2, F_3, F_4$)** with recorded centroid coordinates:
+
+| Frame Number | Temporal Index ($t$) | Horizontal Coordinate ($X$) | Vertical Coordinate ($Y$) |
+| :---: | :---: | :---: | :---: |
+| **$F_1$** | $t = 1$ | $x_1 = 10$ | $y_1 = 20$ |
+| **$F_2$** | $t = 2$ | $x_2 = 15$ | $y_2 = 25$ |
+| **$F_3$** | $t = 3$ | $x_3 = 20$ | $y_3 = 30$ |
+| **$F_4$** | $t = 4$ | $x_4 = 25$ | $y_4 = 35$ |
+
+#### Step 1: Inter-Frame Displacement (Motion Vector) Calculation
+The inter-frame displacement vector $\\mathbf{MV}_k = (\\Delta x_k, \\Delta y_k)$ between frames $F_k$ and $F_{k+1}$ is:
+$$\\Delta x_k = x_{k+1} - x_k, \\quad \\Delta y_k = y_{k+1} - y_k$$
+
+- **Displacement from Frame 1 to Frame 2:**
+  $$\\mathbf{MV}_1 = (x_2 - x_1, \\ y_2 - y_1) = (15 - 10, \\ 25 - 20) = (5, 5)$$
+- **Displacement from Frame 2 to Frame 3:**
+  $$\\mathbf{MV}_2 = (x_3 - x_2, \\ y_3 - y_2) = (20 - 15, \\ 30 - 25) = (5, 5)$$
+- **Displacement from Frame 3 to Frame 4:**
+  $$\\mathbf{MV}_3 = (x_4 - x_3, \\ y_4 - y_3) = (25 - 20, \\ 35 - 30) = (5, 5)$$
+
+#### Step 2: Trajectory Formulation
+The complete object trajectory $\\mathcal{T}$ over the time interval is formally represented as an ordered set of time-stamped 2D spatial coordinate vectors:
+$$\\mathcal{T} = \\left\\{ (x_t, y_t) \\right\\}_{t=1}^4 = \\left\\{ (10, 20), \\ (15, 25), \\ (20, 30), \\ (25, 35) \\right\\}$$
+
+#### Step 3: Trajectory Velocity and Directional Interpretation
+- **Velocity Vector:** Since $\\mathbf{MV} = (5, 5)$ is constant across all frames, the object moves with a uniform velocity of $\\Delta x = 5\\text{ pixels/frame}$ horizontally and $\\Delta y = 5\\text{ pixels/frame}$ vertically.
+- **Speed (Magnitude):**
+  $$v = \\sqrt{\\Delta x^2 + \\Delta y^2} = \\sqrt{5^2 + 5^2} = \\sqrt{50} \\approx 7.071\\text{ pixels/frame}$$
+- **Direction:** The object travels along a straight line oriented at $\\theta = \\arctan(5/5) = 45^\\circ$ diagonally in the positive X and positive Y directions."""
     },
     {
         "id": "MID2-Q17",
@@ -311,83 +332,97 @@ It creates a temporal correspondence between detected target regions across succ
         "qno": 17,
         "unit": "Unit-5",
         "co": "CO5",
-        "bloom": "K5",
+        "bloom": "K4",
         "marks": "10 Marks",
-        "title": "Analyze image and video matting techniques and evaluate their effectiveness in foreground extraction under complex backgrounds.",
-        "punchline": "Digital matting solves the under-constrained composite equation I = αF + (1-α)B (7 unknowns, 3 equations); guided by a user Trimap; implemented via Sampling-based, Laplacian closed-form, and Deep Learning matting.",
-        "mnemonic": "C-T-S-A-D: Composite equation, Trimap (F/B/U), Sampling, Affinity/Laplacian, Deep matting",
-        "analogy": "Creating green-screen movie magic for wispy flyaway hair: Binary segmentation gives a jagged, fake plastic cutout; alpha matting calculates the fractional transparency (alpha) of every individual strand of hair.",
-        "diagram": """DIGITAL MATTING COMPOSITION & TRIMAP:
+        "title": "Analyze the principles of image and video matting and evaluate the performance of different matting techniques.",
+        "punchline": "Matting decomposes image pixels into foreground, background, and continuous alpha opacity (I = αF + (1-α)B, α ∈ [0,1]) to capture fine semi-transparent structures like hair and glass; deep learning and optical flow video matting deliver state-of-the-art temporal consistency under complex backgrounds.",
+        "mnemonic": "Matting Equation: I = αF + (1-α)B. Types: Chroma, Bayesian, Closed-Form, Deep Learning.",
+        "analogy": "Image segmentation is like cutting out an actor with scissors (hard jagged edge, cuts off individual hairs); image matting is like creating a photographic transparency slide where hair strands and glass reflections seamlessly blend onto any new background.",
+        "diagram": """+-------------------------------------------------------------------------------+
+|               IMAGE AND VIDEO MATTING ARCHITECTURE & EQUATION                 |
++-------------------------------------------------------------------------------+
 
-1. THE MATTING EQUATION:
-   I(x, y) = α(x, y) · F(x, y) + (1 - α(x, y)) · B(x, y)
-   - I: Observed RGB pixel  (3 knowns: R, G, B)
-   - F: True Foreground RGB (3 unknowns)
-   - B: True Background RGB (3 unknowns)
-   - α: Opacity Matte [0, 1] (1 unknown)
-   Total: 3 Equations vs 7 Unknowns ──► Severely Under-Constrained!
+ COMPOSITING EQUATION:
+   I(x, y) = α(x, y) · F(x, y) + [ 1 - α(x, y) ] · B(x, y)
+   • α = 1.0  ──► 100% Solid Foreground (Actor body)
+   • α = 0.0  ──► 100% Background (Studio wall)
+   • 0 < α < 1──► Semi-transparent transition (Hair, fur, smoke, glass)
 
-2. USER-DEFINED TRIMAP:
-   ┌──────────────────────────────────────────────┐
-   │ Known Background (α = 0)                     │
-   │            ╭───────────────────╮             │
-   │            │ UNKNOWN BAND (0 < α < 1)        │
-   │            │    ╭─────────╮    │             │
-   │            │    │ KNOWN   │    │             │
-   │            │    │ FORE-   │    │             │
-   │            │    │ GROUND  │    │             │
-   │            │    │ (α = 1) │    │             │
-   │            │    ╰─────────╯    │             │
-   │            ╰───────────────────╯             │
-   └──────────────────────────────────────────────┘""",
-        "content": """### 1. The Digital Matting Problem Formulation
-Image and video matting is the technique of soft, fractional extraction of a foreground object from a background image. Unlike hard binary segmentation ($M \\in \\{0, 1\\}$), matting estimates continuous pixel opacity (**Alpha Matte $\\alpha \\in [0, 1]$**).
+ MATTING TECHNIQUES TAXONOMY:
+ ┌──────────────────────────────────┬──────────────────────────────────────────┐
+ │ Image Matting                    │ Video Matting (Temporal Extension)       │
+ ├──────────────────────────────────┼──────────────────────────────────────────┤
+ │ • Chroma Keying (Green Screen)   │ • Background Subtraction Matting         │
+ │ • Bayesian Matting (Probabilistic)│ • Optical Flow Matting (Alpha warped)   │
+ │ • Closed-Form Matting (Laplacian)│ • Deep Learning Video Matting (Attention)│
+ └──────────────────────────────────┴──────────────────────────────────────────┘
 
-#### The Fundamental Matting Equation:
-Every observed pixel color $\\mathbf{I} = [I_R, I_G, I_B]^T$ is modeled as a convex linear combination of an unknown foreground color $\\mathbf{F}$ and an unknown background color $\\mathbf{B}$:
-$$\\mathbf{I} = \\alpha \\mathbf{F} + (1 - \\alpha) \\mathbf{B}$$
-* **Mathematical Under-determination:**
-  * **Knowns:** 3 observable values ($I_R, I_G, I_B$).
-  * **Unknowns:** 7 variables ($\\alpha, F_R, F_G, F_B, B_R, B_G, B_B$).
-  * Since there are 7 unknowns and only 3 equations at each pixel, matting is **severely ill-posed and under-constrained**.
+ EVALUATION METRICS:
+  SAD = Σ |α - α*|  │  MSE = (1/N) Σ (α - α*)²  │  Gradient Error  │  Temporal Consistency""",
+        "content": """### 1. Conceptual Principles of Image and Video Matting (Unit 5 Notes)
+**Matting** is the soft-segmentation process of accurately extracting foreground objects from complex backgrounds by estimating the continuous opacity (**alpha matte** $\\alpha$) of each pixel.
+- **Difference from Hard Segmentation:** Conventional binary segmentation assigns a discrete label $\\{0, 1\\}$ to each pixel, producing artificial staircasing (aliasing) and destroying delicate semi-transparent details (fine hair, animal fur, translucent glass, water splashes). Matting calculates fractional alpha values $\\alpha \\in [0, 1]$.
 
 ---
 
-### 2. The User-Guided Trimap
-To constrain the solution, matting algorithms require a **Trimap** that segments the image into three distinct regions:
-1. **Known Foreground ($\\\\Omega_F$):** $\\alpha = 1$ (definitely object).
-2. **Known Background ($\\\\Omega_B$):** $\\alpha = 0$ (definitely background).
-3. **Unknown Region ($\\\\Omega_U$):** $0 < \\alpha < 1$ (boundaries containing fine hair, fur, smoke, transparent glass, or motion blur). The matting algorithm only solves for $\\alpha$ inside $\\Omega_U$.
+### 2. The Fundamental Matting Equation (Unit 5 Notes)
+An observed pixel color $\\mathbf{I}(x, y)$ is modeled as a convex linear combination of a true foreground color $\\mathbf{F}(x, y)$ and a background color $\\mathbf{B}(x, y)$:
+$$\\mathbf{I}(x, y) = \\alpha(x, y) \\mathbf{F}(x, y) + [1 - \\alpha(x, y)] \\mathbf{B}(x, y)$$
+where:
+- $\\alpha(x, y) = 1$: The pixel belongs entirely to the solid foreground.
+- $\\alpha(x, y) = 0$: The pixel belongs entirely to the background.
+- $0 < \\alpha(x, y) < 1$: The pixel contains a mixed, semi-transparent boundary.
+
+#### The Under-Constrained Inverse Problem
+In a standard 3-channel RGB image, each pixel yields **3 known values** $(I_R, I_G, I_B)$ but **7 unknown variables**: three foreground colors $(F_R, F_G, F_B)$, three background colors $(B_R, B_G, B_B)$, and the scalar opacity $\\alpha$. To solve this severely ill-posed problem, matting algorithms rely on user-provided **trimaps** (classifying pixels into definite foreground, definite background, and unknown regions) or specialized priors.
 
 ---
 
-### 3. In-Depth Analysis of Major Matting Techniques
+### 3. Examination of Image Matting Techniques (Unit 5 Notes)
 
-#### 1. Color Sampling-Based Matting (Bayesian / Robust Matting)
-* **Mechanism:** For an unknown pixel $\\mathbf{I}$, collects neighboring known foreground samples $\\mathbf{F}_i \\in \\Omega_F$ and background samples $\\mathbf{B}_j \\in \\Omega_B$. Estimates the best pair $(\\hat{\\mathbf{F}}, \\hat{\\mathbf{B}})$ that explains $\\mathbf{I}$:
-  $$\\alpha = \\frac{(\\mathbf{I} - \\hat{\\mathbf{B}})^T (\\hat{\\mathbf{F}} - \\hat{\\mathbf{B}})}{\\|\\hat{\\mathbf{F}} - \\hat{\\mathbf{B}}\\|^2}$$
-* **Evaluation under Complex Backgrounds:**
-  * Performs poorly when foreground and background colors overlap or when the background is heavily textured (causes incorrect sample pairing).
+#### A. Chroma Key Matting (Color Differencing)
+- **Principle:** Places the foreground subject before a solid, uniform saturated green or blue backdrop.
+- **Performance:** Ultra-fast, real-time broadcast standard; fails completely when foreground subjects wear clothes matching the screen color or under screen spill (green reflection on skin).
 
-#### 2. Affinity-Based / Closed-Form Matting (Levin\\'s Matting Laplacian)
-* **Theoretical Foundation:** Assumes that foreground $\\mathbf{F}$ and background $\\mathbf{B}$ are locally linear functions of spatial coordinates in a small $3 \\times 3$ window $w_k$.
-* **Formulation:** Minimizes a quadratic cost function:
-  $$J(\\boldsymbol{\\alpha}) = \\boldsymbol{\\alpha}^T \\mathbf{L} \\boldsymbol{\\alpha} + \\lambda (\\boldsymbol{\\alpha} - \\mathbf{b})^T \\mathbf{D} (\\boldsymbol{\\alpha} - \\mathbf{b})$$
-  where $\\mathbf{L}$ is the **Matting Laplacian Matrix**:
-  $$L_{ij} = \\sum_{k | (i, j) \\in w_k} \\left( \\delta_{ij} - \\frac{1}{|w_k|} \\left( 1 + (\\mathbf{I}_i - \\boldsymbol{\\mu}_k)^T \\left( \\mathbf{\\Sigma}_k + \\frac{\\epsilon}{|w_k|} \\mathbf{I}_3 \\right)^{-1} (\\mathbf{I}_j - \\boldsymbol{\\mu}_k) \\right) \\right)$$
-* **Evaluation:**
-  * **Globally Optimal:** Solved via a single sparse linear system $(\\mathbf{L} + \\lambda \\mathbf{D}) \\boldsymbol{\\alpha} = \\lambda \\mathbf{b}$.
-  * Handles intricate semi-transparent hair and smoke with exceptional mathematical precision.
+#### B. Bayesian Matting (Probabilistic Framework)
+- **Principle:** Models foreground and background color distributions in local windows as Gaussian probability densities $\\mathcal{N}(\\boldsymbol{\\mu}_F, \\mathbf{\\Sigma}_F)$ and $\\mathcal{N}(\\boldsymbol{\\mu}_B, \\mathbf{\\Sigma}_B)$. Solves for $(\\mathbf{F}, \\mathbf{B}, \\alpha)$ via Maximum A Posteriori (MAP) estimation.
+- **Performance:** Exceptional accuracy for fine hair strands; computationally expensive and depends heavily on high-quality trimaps.
 
-#### 3. Deep Learning Matting (Deep Image Matting - DIM / MODNet)
-* **Mechanism:** Employs encoder-decoder convolutional networks with skip connections and attention modules.
-* **Evaluation:** High-level semantic features allow trimap-free or rough-scribble matting on arbitrary complex backgrounds.
+#### C. Closed-Form Matting (Spectral Affinity)
+- **Principle:** Assumes foreground and background colors follow local linear models within small windows. Derives the **Matting Laplacian Matrix $\\mathbf{L}$** to minimize a quadratic cost function:
+  $$E(\\alpha) = \\boldsymbol{\\alpha}^T \\mathbf{L} \\boldsymbol{\\alpha} + \\lambda (\\boldsymbol{\\alpha} - \\mathbf{b})^T (\\boldsymbol{\\alpha} - \\mathbf{b})$$
+- **Performance:** Mathematically elegant closed-form solution; struggles with complex textured backgrounds having overlapping colors.
+
+#### D. Deep Learning-Based Matting
+- **Principle:** Employs Convolutional Neural Networks (CNNs) with encoder-decoder architectures (e.g., Deep Image Matting, MODNet) to predict alpha mattes directly from raw images without requiring user trimaps (trimap-free matting).
 
 ---
 
-### 4. Video Matting & Temporal Coherence
-In video sequences, applying frame-by-frame image matting produces severe temporal flickering. Video matting enforces **temporal smoothness** by adding an inter-frame optical flow consistency term:
-$$J_{\\text{video}}(\\boldsymbol{\\alpha}) = \\sum_t J_t(\\boldsymbol{\\alpha}_t) + \\gamma \\sum_t \\|\\alpha_t(x + u, y + v) - \\alpha_{t+1}(x, y)\\|^2$$"""
+### 4. Video Matting Techniques (Unit 5 Notes)
+Video matting extends single-image matting across temporal frame sequences, with the paramount requirement of preserving **temporal consistency** (preventing frame-to-frame alpha flickering):
+1. **Background Subtraction Video Matting:** Compares frames against a pre-recorded clean background plate; highly sensitive to camera jitter and changing sunlight.
+2. **Optical Flow Video Matting:** Estimates inter-frame motion vectors $(u, v)$ to warp and propagate the alpha matte $\\alpha_{t-1}$ into frame $t$, enforcing temporal smoothness along motion trajectories.
+3. **Deep Learning Video Matting (Temporal Attention / Recurrent Networks):** Uses recurrent convolutional units (ConvLSTM) and temporal attention layers to model temporal context across multi-frame windows.
+
+---
+
+### 5. Performance Comparison Matrix (Unit 5 Notes)
+
+| Matting Technique | Accuracy on Fine Hair | Computational Complexity | Sensitivity to Illumination / Noise | Requirement for User Input |
+| :--- | :--- | :--- | :--- | :--- |
+| **Chroma Keying** | High (in studio) | **Very Low** (Real-time) | Sensitive to color spill & shadows | Requires dedicated green screen |
+| **Bayesian Matting** | High | High ($O(N)$ local MAP) | Moderate | Requires accurate 3-region Trimap |
+| **Closed-Form Matting**| Very High | High (Large linear solve) | Sensitive to complex background textures | Requires user Trimap or scribble cues |
+| **Optical Flow Matting**| Moderate-to-High | Medium-to-High | Sensitive to fast motion & occlusions | Video motion vectors |
+| **Deep Learning Matting**| **Highest** | High (GPU inference) | **Robust** (Trained on diverse datasets) | **Trimap-free** / fully automated |
+
+---
+
+### 6. Quantitative Evaluation Metrics (Unit 5 Notes)
+1. **Sum of Absolute Differences (SAD):** $\\text{SAD} = \\sum_{x, y} |\\alpha(x, y) - \\alpha^*(x, y)|$ (Lower is better).
+2. **Mean Squared Error (MSE):** $\\text{MSE} = \\frac{1}{N} \\sum_{i=1}^N (\\alpha_i - \\alpha_i^*)^2$.
+3. **Gradient Error:** Measures edge difference $\\|\\nabla \\alpha - \\nabla \\alpha^*\\|$, assessing fine hair sharpness.
+4. **Temporal Fluctuation (dtSSD):** Evaluates mean squared differences of alpha derivatives between frames to penalize flickering."""
     },
     {
         "id": "MID2-Q18",
@@ -395,107 +430,95 @@ $$J_{\\text{video}}(\\boldsymbol{\\alpha}) = \\sum_t J_t(\\boldsymbol{\\alpha}_t
         "qno": 18,
         "unit": "Unit-5",
         "co": "CO5",
-        "bloom": "K6",
+        "bloom": "K4",
         "marks": "10 Marks",
-        "title": "A)  Particle Weight Normalization Given particle weights: Tasks: Normalize weights  Identify most likely particle  Explain robustness to uncertainty  B)  State Update (Kalman Filter) Given: Predicted state  x−=50 Measurement  z=60 Kalman Gain  K=0.6  Compute updated state:  x=x−+K(z−x−) Interpret motion correction",
-        "punchline": "Part A: Normalized weights W=[0.2, 0.3, 0.1, 0.4]; Particle 4 is most likely (40%); handles multimodal uncertainty. Part B: Kalman update x = 50 + 0.6(60 - 50) = 56; corrects state 60% toward sensor measurement.",
-        "mnemonic": "N-M-K-U: Normalize weights, Max likely particle, Kalman innovation, Updated state",
-        "analogy": "Part A is a four-person jury voting on a suspect's location; Part B is trusting a GPS reading (60) by 60% while trusting your car's internal speedometer prediction (50) by 40%, meeting at 56.",
-        "diagram": """PART A: PARTICLE FILTER WEIGHT NORMALIZATION
-  Particles:        [ P1 ]    [ P2 ]    [ P3 ]    [ P4 ]
-  Raw Weights:       0.2       0.3       0.1       0.4
-  Sum of Weights S = 0.2 + 0.3 + 0.1 + 0.4 = 1.0
-  Normalized w~_i = w_i / S:
-                    [ 0.20 ]  [ 0.30 ]  [ 0.10 ]  [ 0.40 ]
-                                                     ▲
-  Most Likely Particle ──────────────────────────────┘ (Max Weight = 0.4 / 40%)
+        "title": "A) In a particle filter tracking system, four particles have weights: [0.2, 0.3, 0.1, 0.4]. 1. Check if normalized. 2. Identify the most likely particle. 3. Explain how this choice improves tracking robustness. B) A Kalman filter has predicted position x̂⁻ = 50, measurement z = 60, Kalman gain K = 0.6. 1. Calculate the updated position estimate. 2. Interpret how the Kalman gain influences the updated state.",
+        "punchline": "Part A: Particle weights sum to 1.0 (already normalized); Particle 4 is most likely with weight 0.4 (40%), providing multi-hypothesis robustness against occlusion. Part B: Updated Kalman position is x̂ = 50 + 0.6(60 - 50) = 56; the gain of 0.6 balances 60% measurement confidence against 40% predicted model confidence.",
+        "mnemonic": "Part A: Sum = 1.0 (Normalized), Max = P4 (40%). Part B: x̂ = x⁻ + K(z - x⁻) = 50 + 0.6(10) = 56.",
+        "analogy": "Part A: Four scouts search a forest for a lost hiker; Scout 4 has a 40% confidence clue, but keeping all four scouts prevents getting tricked by false footprints. Part B: You predict a bus is at mile 50, GPS says mile 60; with 60% GPS trust (K=0.6), you conclude the bus is at mile 56.",
+        "diagram": """+-------------------------------------------------------------------------------+
+|                    STATE ESTIMATION NUMERICAL CALCULATIONS                    |
++-------------------------------------------------------------------------------+
 
-PART B: KALMAN FILTER STATE UPDATE
-  Predicted Prior State x^- = 50  ──────────┐
-                                            ▼
-  Sensor Measurement    z = 60    ──► Innovation = (z - x^-) = 60 - 50 = +10
-                                            │
-  Kalman Gain K = 0.6 ──────────────────────┼──► Correction = K · 10 = +6
-                                            │
-  Updated Posterior State x = 50 + 6 = 56 ◄─┘
-  (60% trust in sensor, 40% trust in prediction)""",
-        "content": """### PART A: Numerical Problem on Particle Weight Normalization
+ PART A: PARTICLE FILTER WEIGHTS
+   Particles:    P₁       P₂       P₃       P₄
+   Weights  :   [0.2,    0.3,     0.1,     0.4]
+   Sum      :   0.2 + 0.3 + 0.1 + 0.4 = 1.00  ==> PERFECTLY NORMALIZED!
+   Winner   :   Particle 4 (Highest probability: 0.4 or 40%)
+
+ PART B: KALMAN FILTER STATE UPDATE
+   State Axis:
+   0                 x̂⁻ = 50        x̂ = 56              z = 60
+   |────────────────────•──────────────•───────────────────•──────────────────►
+                     Predicted      UPDATED             Measurement
+                     Position       STATE               (GPS / Detector)
+                        │              ▲                   │
+                        └──────────────┴───────────────────┘
+                           Innovation / Error = (60 - 50) = 10
+                           Correction = K · Error = 0.6 · 10 = +6
+                           Updated State x̂ = 50 + 6 = 56""",
+        "content": """### PART A: Particle Filter Weight Normalization & Robustness (Unit 5 Notes)
 
 #### 1. Given Data
-* Particle weights vector:
-  $$\\mathbf{W} = [w_1, w_2, w_3, w_4] = [0.2, 0.3, 0.1, 0.4]$$
+A particle filter maintains $N = 4$ discrete hypotheses (particles) with importance weights:
+$$\\mathbf{W} = [W_1, W_2, W_3, W_4] = [0.2, \\ 0.3, \\ 0.1, \\ 0.4]$$
 
 ---
 
-#### 2. Task 1: Normalize the Weights
-In Particle Filtering (Sequential Importance Sampling), the weights represent unnormalized importance densities. The normalized weight $\\tilde{w}_i$ for each particle $i$ must sum to $1$:
-$$\\tilde{w}_i = \\frac{w_i}{\\sum_{j=1}^N w_j}$$
+#### 2. Task 1: Check and Normalize Particle Weights
+The mathematical condition for normalized particle probability weights is:
+$$\\sum_{i=1}^N W_i = 1.0$$
 
-**Step 1: Compute the Total Weight Sum ($S$):**
-$$S = \\sum_{j=1}^4 w_j = 0.2 + 0.3 + 0.1 + 0.4 = \\mathbf{1.0}$$
-
-**Step 2: Compute Individual Normalized Weights:**
-* **Particle 1:** $\\tilde{w}_1 = \\frac{0.2}{1.0} = \\mathbf{0.20}$
-* **Particle 2:** $\\tilde{w}_2 = \\frac{0.3}{1.0} = \\mathbf{0.30}$
-* **Particle 3:** $\\tilde{w}_3 = \\frac{0.1}{1.0} = \\mathbf{0.10}$
-* **Particle 4:** $\\tilde{w}_4 = \\frac{0.4}{1.0} = \\mathbf{0.40}$
-
-$$\\mathbf{Normalized\\ Weights\\ Vector: } \\quad \\mathbf{\\tilde{W}} = \\mathbf{[0.20, 0.30, 0.10, 0.40]}$$
-$$\\text{Verification: } \\sum_{i=1}^4 \\tilde{w}_i = 0.20 + 0.30 + 0.10 + 0.40 = 1.00 \\quad \\text{(Valid Probability Distribution)}$$
+- **Step 1: Compute the sum of given weights:**
+  $$\\sum_{i=1}^4 W_i = W_1 + W_2 + W_3 + W_4 = 0.2 + 0.3 + 0.1 + 0.4 = 1.00$$
+- **Step 2: Calculate normalized weights ($W'_i = \\frac{W_i}{\\sum W_i}$):**
+  $$W'_1 = \\frac{0.2}{1.0} = 0.2, \\quad W'_2 = \\frac{0.3}{1.0} = 0.3, \\quad W'_3 = \\frac{0.1}{1.0} = 0.1, \\quad W'_4 = \\frac{0.4}{1.0} = 0.4$$
+- **Verdict:** The particle weights are **already perfectly normalized** ($\sum W_i = 1.0$).
 
 ---
 
 #### 3. Task 2: Identify the Most Likely Particle
-The most likely particle corresponds to the particle index possessing the maximum normalized weight:
-$$i^* = \\arg\\max_{i \\in \\{1, 2, 3, 4\\}} \\{\\tilde{w}_i\\}$$
-$$\\max(0.20, 0.30, 0.10, 0.40) = 0.40 \\quad (\\text{Particle } 4)$$
-
-$$\\mathbf{Answer: } \\quad \\mathbf{Particle\\ 4} \\text{ is the Most Likely Particle with probability weight } \\mathbf{0.40\\; (40\\%)}.$$
+The most likely particle corresponds to the maximum importance weight:
+$$i^* = \\arg\\max_{i} W'_i = \\max(0.2, 0.3, 0.1, 0.4) = 0.4 \\implies \\mathbf{Particle\\ 4}$$
+- **Result:** **Particle 4** is the most likely state hypothesis, holding **$40\\%$ ($0.4$) probability**.
 
 ---
 
-#### 4. Task 3: Explain Robustness to Uncertainty
-Particle filtering is inherently robust to real-world visual tracking uncertainty because:
-1. **Non-Gaussian & Multi-Modal State Representation:** Unlike Kalman filters (which track a single mean and covariance), particle filters maintain multiple discrete hypotheses simultaneously. If an object passes behind a pillar or tree, particles cluster on multiple possible exit paths without losing tracking lock.
-2. **Resampling Survival of the Fittest:** During resampling, particles with low weights (Particle 3 with $\\tilde{w}_3 = 0.10$) are discarded, while particles with high weights (Particle 4 with $\\tilde{w}_4 = 0.40$) are replicated with slight perturbations, concentrating computational power on promising trajectories.
+#### 4. Task 3: Explanation of Robustness to Uncertainty
+Maintaining a distribution of particles rather than a single deterministic coordinate enhances tracking robustness:
+1. **Multi-Modal State Representation:** Unlike Kalman filters which model only unimodal Gaussian distributions, particle filters maintain multiple spatial hypotheses simultaneously.
+2. **Resilience to Occlusion & Clutter:** If an object is temporarily obscured behind a tree or lamppost, the dominant particle's measurement may drop; surviving particles in adjacent regions maintain track lock without losing the target.
+3. **Handling Non-Linear & Non-Gaussian Dynamics:** Provides stable tracking during sudden direction reversals or erratic motion.
 
 ---
 
-### PART B: Numerical Problem on Kalman Filter State Update
+### PART B: Kalman Filter State Update & Motion Correction (Unit 5 Notes)
 
 #### 1. Given Data
-* Prior Predicted State estimate: $\\hat{x}^- = 50$
-* Noisy Measurement from sensor: $z = 60$
-* Kalman Gain: $K = 0.6$
+- **Prior Predicted State Estimate ($\\hat{x}^-$):** $50$
+- **New Sensor Measurement ($z$):** $60$
+- **Kalman Gain ($K$):** $0.6$
 
 ---
 
-#### 2. Task 1: Compute the Updated State ($\\hat{x}$)
-The Kalman filter posterior state update equation is:
-$$\\hat{x} = \\hat{x}^- + K \\left(z - \\hat{x}^-\\right)$$
+#### 2. Task 1: Calculate the Updated Position Estimate
+The standard discrete Kalman Filter measurement update equation is:
+$$\\hat{x} = \\hat{x}^- + K \\left( z - \\hat{x}^- \\right)$$
 
-**Step-by-Step Calculation:**
-1. Compute the **Measurement Residual / Innovation** ($y$):
-   $$y = z - \\hat{x}^- = 60 - 50 = +10$$
-2. Scale the innovation by the **Kalman Gain** ($K$):
-   $$K \\cdot y = 0.6 \\times 10 = +6$$
-3. Compute the **Updated Posterior State** ($\\hat{x}$):
-   $$\\hat{x} = 50 + 6 = \\mathbf{56}$$
-
-$$\\mathbf{Final\\ Calculated\\ State: } \\quad \\mathbf{\\hat{x} = 56}$$
+- **Step 1: Compute the measurement residual (Innovation):**
+  $$\\text{Innovation} = z - \\hat{x}^- = 60 - 50 = 10$$
+- **Step 2: Scale the innovation by the Kalman Gain:**
+  $$\\text{Correction Term} = K \\cdot (z - \\hat{x}^-) = 0.6 \\times 10 = 6$$
+- **Step 3: Compute the posterior updated state estimate:**
+  $$\\hat{x} = 50 + 6 = \\mathbf{56}$$
 
 ---
 
-#### 3. Task 2: Interpret Motion Correction
-1. **Innovation Interpretation ($z - \\hat{x}^- = +10$):**
-   * The positive innovation value ($+10$) reveals that the actual measured physical position ($60$) is $10$ units ahead of where the internal dynamic motion model predicted the object would be ($50$). This indicates unexpected target acceleration or positive velocity deviation.
-2. **Kalman Gain Weighting ($K = 0.6$):**
-   * The Kalman gain $K = \\frac{P^-}{P^- + R} = 0.6$ represents the optimal relative trust placed in the sensor measurement versus the model prediction.
-   * A value of $0.6$ means the filter places **$60\\%$ trust in the new sensor measurement** and **$40\\%$ trust in the internal model prediction**.
-3. **Motion Correction Effect:**
-   * Rather than blindly jumping all the way to $60$ (which would incorporate full sensor noise) or rigidly staying at $50$ (which would ignore sensor evidence), the filter pulls the state estimate **$60\\%$ of the distance towards the measurement**:
-     $$\\hat{x} = (1 - K) \\hat{x}^- + K z = (0.4 \\times 50) + (0.6 \\times 60) = 20 + 36 = 56$$
-   * This successfully suppresses $40\\%$ of high-frequency measurement noise while dynamically correcting the tracking trajectory toward real target motion."""
+#### 3. Task 2: Technical Interpretation of Kalman Gain Influence
+The Kalman gain $K \\in [0, 1]$ represents the optimal weighting factor between the physical prediction model and new sensor measurements:
+$$\\hat{x} = (1 - K) \\hat{x}^- + K z = (1 - 0.6)(50) + 0.6(60) = 0.4(50) + 0.6(60) = 20 + 36 = 56$$
+1. **Balanced Trust:** Because $K = 0.6$, the filter assigns **$60\\%$ statistical weight to the new measurement $z$** and **$40\\%$ statistical weight to the prior motion model $\\hat{x}^-$**.
+2. **Motion Correction:** The filter corrects the initial prediction of $50$ by adding $6$ units towards the measured observation $60$. This prevents noisy sensor spikes from violently throwing off the trajectory while ensuring responsive tracking."""
     },
     {
         "id": "MID2-Q19",
@@ -503,104 +526,85 @@ $$\\mathbf{Final\\ Calculated\\ State: } \\quad \\mathbf{\\hat{x} = 56}$$
         "qno": 19,
         "unit": "Unit-5",
         "co": "CO5",
-        "bloom": "K5",
+        "bloom": "K6",
         "marks": "10 Marks",
-        "title": "Design a video segmentation and tracking framework by integrating change detection and motion analysis for real-time applications.",
-        "punchline": "An end-to-end framework integrates adaptive background subtraction (MoG), morphological filtering, multi-feature association via the Hungarian algorithm, and Kalman filtering for real-time multi-target tracking.",
-        "mnemonic": "P-D-F-A-T-M: Preprocessing, Detection (MoG), Features, Association (Hungarian), Tracking (Kalman), Management",
-        "analogy": "An air traffic control radar system: Radar pulses detect flying objects (change detection), cameras capture their size/type (feature extraction), and computer algorithms match signals to flight numbers while updating continuous flight paths (tracking).",
-        "diagram": """INTEGRATED REAL-TIME VIDEO SEGMENTATION & TRACKING ARCHITECTURE:
+        "title": "Construct a video segmentation and tracking framework and examine how motion analysis improves tracking accuracy.",
+        "punchline": "An end-to-end framework integrates Change Detection, Background Subtraction, Morphological Filtering, Optical Flow, and Kalman Filtering across 9 stages; motion analysis provides predictive velocity vectors that prevent track loss during occlusions and illumination shifts.",
+        "mnemonic": "A-D-B-T-M-O-K-T-T: Acquisition, Differencing, Background subtraction, Thresholding, Morphology, Optical flow, Kalman, Tracking, Trajectory.",
+        "analogy": "Like an automated air traffic control radar: it detects new echoes (change detection), filters ground clutter (morphological background subtraction), calculates plane heading and speed (optical flow), and predicts future flight paths even when planes fly through clouds (Kalman filter tracking).",
+        "diagram": """+-------------------------------------------------------------------------------+
+|         VIDEO SEGMENTATION AND TRACKING FRAMEWORK ARCHITECTURE                |
++-------------------------------------------------------------------------------+
 
-Live Video Stream (30 fps)
-       │
-       ▼
-┌─────────────────────────────────┐
-│ 1. Spatio-Temporal Preprocessing │  Gaussian Blur G_σ (Noise reduction) + Resize
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 2. Change Detection & Segment   │  Mixture of Gaussians (MoG2) Background Subtraction
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 3. Morphological Post-Processing│  Opening (removes salt-pepper) + Closing (fills holes)
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 4. Feature Extraction           │  Bounding Boxes, Centroids, HSV Histograms, Deep Embed
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 5. Data Association Engine      │  Cost Matrix C = α·IoU_cost + (1-α)·Feature_dist
-│    (Hungarian Algorithm)        │  Optimal matching between Existing Tracks & New Detections
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 6. State Estimation (Kalman)    │  Predict & Update kinematics: X = [x, y, vx, vy]^T
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 7. Track Life-Cycle Management  │  Track Birth (New detection)
-│    & Occlusion Handling         │  Track Maintenance (Matched)
-└──────────────┬──────────────────┘  Track Termination (Missing for >30 frames)
-               │
-               ▼
-[ Output Annotated Video Stream & Analytics Dashboard ]""",
-        "content": """### 1. System Overview & Engineering Objectives
-Real-time video segmentation and tracking is the core computational backbone for autonomous vehicles (Tesla/Waymo), intelligent surveillance, and robotic automation.
-* **Core Goal:** Detect moving objects, distinguish them from dynamic background clutter, maintain persistent unique identities (Track IDs), and estimate continuous trajectories at **$\\ge 30\\text{ frames per second (fps)}$**.
+ [ Input Video Stream ] ──► Frame-by-Frame Acquisition (F_t, F_{t-1})
+           │
+           ▼
+ [ 1. Change Detection ] ──► Frame differencing: D = |F_t - F_{t-1}|
+           │
+           ▼
+ [ 2. Background Subtract]─► Adaptive Gaussian Mixture Model: D = |F_t - B_t|
+           │
+           ▼
+ [ 3. Adaptive Threshold ]─► Binarization: M(x, y) = 1 if D > T
+           │
+           ▼
+ [ 4. Morphological Ops ] ──► Opening (removes noise) + Closing (fills holes)
+           │
+           ▼
+ [ 5. Optical Flow ]     ──► Calculates motion vector field (u, v) for moving blobs
+           │
+           ▼
+ [ 6. Kalman Filter ]    ──► Predicts next centroid position x̂⁻_k = A x̂_{k-1}
+           │
+           ▼
+ [ 7. Data Association ] ──► Hungarian Algorithm matches detections to active tracks
+           │
+           ▼
+ [ 8. Trajectory Output ]──► Continuous vehicle path & speed analytics displayed""",
+        "content": """### 1. Conceptual Framework Architecture (Unit 5 Notes)
+A robust video segmentation and tracking framework integrates low-level spatio-temporal change detection, intermediate binary morphological segmentation, and high-level kinematic motion modeling into a unified real-time processing pipeline.
 
 ---
 
-### 2. Stage-by-Stage Framework Pipeline Design
+### 2. The 9 Integrated Framework Stages (Unit 5 Notes)
 
-#### Stage 1: Spatio-Temporal Preprocessing
-* Input frames are scaled to standard processing resolution ($640 \\times 360$ or $1280 \\times 720$).
-* A $3 \\times 3$ Gaussian smoothing filter is applied to attenuate high-frequency CMOS sensor noise without blurring structural edges.
-
-#### Stage 2: Adaptive Change Detection (MoG2 Background Subtraction)
-* Every pixel is modeled by $K = 3$ to $5$ adaptive Gaussians.
-* Outputs a binary foreground mask:
-  $$M(x, y, t) = \\begin{cases} 1 & \\text{if pixel deviates from background by } > 2.5\\sigma \\\\ 0 & \\text{otherwise} \\end{cases}$$
-* Effectively handles dynamic outdoor swaying trees, rippling shadows, and slow ambient daylight shifts.
-
-#### Stage 3: Morphological Post-Processing
-* **Morphological Opening (Erosion followed by Dilation):** Using a $3 \\times 3$ structuring element eliminates isolated single-pixel noise spikes.
-* **Morphological Closing (Dilation followed by Erosion):** Fills internal holes and bridges small fractures within detected objects.
-* Connected Component Analysis extracts solid connected blobs with bounding boxes $B_k = [x, y, w, h]$.
-
-#### Stage 4: Multi-Modal Feature Extraction
-For each detected foreground blob:
-1. **Spatial Features:** Centroid $(c_x, c_y)$, bounding box aspect ratio, and area.
-2. **Appearance Features:** 16-bin Hue-Saturation color histogram $\\mathbf{h}$ and deep CNN Re-ID appearance embedding vector $\\mathbf{f} \\in \\mathbb{R}^{128}$.
-
-#### Stage 5: Global Data Association via the Hungarian Algorithm
-* Constructs a pairwise assignment cost matrix $\\mathbf{C}$ between $N$ existing active tracks and $M$ new detections:
-  $$C_{ij} = w_1 \\cdot \\left(1 - \\text{IoU}(B_i, B_j)\\right) + w_2 \\cdot \\|\\mathbf{f}_i - \\mathbf{f}_j\\|$$
-* The **Hungarian (Munkres) Algorithm** solves the global bipartite assignment in $O(N^3)$ operations, uniquely assigning detections to existing tracks without ambiguity.
-
-#### Stage 6: Kinematic State Estimation via Kalman Filtering
-* Each active track maintains an independent 2D Kalman filter:
-  $$\\mathbf{x}_t = [x, y, v_x, v_y]^T$$
-* **Predict Step:** Projects target position into frame $t$ based on estimated velocity.
-* **Update Step:** Merges predicted state with matched detection measurement to smooth out sensor jitter.
-
-#### Stage 7: Track Life-Cycle Management & Occlusion Handling
-1. **Track Birth:** An unassociated detection appearing consistently across 3 consecutive frames initiates a new unique Track ID.
-2. **Occlusion Handling:** If an object is temporarily occluded (passes behind a pillar or another vehicle), its Kalman filter continues predicting position based on velocity for up to 30 frames ($1\\text{ second}$).
-3. **Track Death:** If no matching detection arrives for $>30$ consecutive frames, the track is terminated, freeing memory.
+| Stage Number | Framework Module | Algorithmic Technique | Functional Role in Tracking Pipeline |
+| :---: | :--- | :--- | :--- |
+| **Stage 1** | **Video Ingestion** | Sensor capture ($30\\text{ fps}$) | Continuously ingests frames $F_t$ and maintains buffer memory. |
+| **Stage 2** | **Change Detection** | Two-frame differencing | Computes $D(x, y) = |F_t(x, y) - F_{t-1}(x, y)|$ to detect moving regions. |
+| **Stage 3** | **Background Subtraction**| Adaptive running average / GMM | Separates solid foreground objects from static backgrounds ($|F_t - B_t|$). |
+| **Stage 4** | **Threshold Binarization**| Otsu's adaptive thresholding | Converts difference maps into binary foreground motion masks ($M(x, y)$). |
+| **Stage 5** | **Morphological Cleanup**| Morphological Opening & Closing| Eliminates isolated noise pixels and fills interior holes in object blobs. |
+| **Stage 6** | **Motion Estimation** | Dense/Sparse Optical Flow | Computes instantaneous velocity vectors $(u, v)$ for each segmented blob. |
+| **Stage 7** | **State Prediction** | Linear Kalman Filter | Predicts next expected spatial position: $\\hat{\\mathbf{x}}_k^- = \\mathbf{A} \\hat{\\mathbf{x}}_{k-1}$. |
+| **Stage 8** | **Data Association** | Hungarian Algorithm (IoU metric) | Matches predicted Kalman bounding boxes with newly segmented blobs. |
+| **Stage 9** | **Trajectory Output** | Coordinate sequence logging | Draws smooth continuous trajectory paths $\\mathcal{T} = \\{(x_t, y_t)\\}$. |
 
 ---
 
-### 3. Real-Time Latency & Performance Optimization
-1. **Parallel Multi-threading:** Pipeline stages (detection, association, tracking) run concurrently across separate CPU/GPU threads in a ring buffer.
-2. **Region-of-Interest (ROI) Cropping:** Background subtraction is evaluated only within predicted motion bounding boxes rather than the entire frame, saving **$60\\%$ computational power**."""
+### 3. Examination of How Motion Analysis Improves Tracking Accuracy
+Relying solely on visual appearance (color, bounding boxes) causes tracking systems to fail when objects cross paths or lighting changes. Integrating **kinematic motion analysis (Optical Flow + Kalman Filtering)** provides transformative improvements:
+
+1. **Overcoming Temporary Occlusion:**
+   When a tracked car drives behind a highway sign or overhead bridge, segmentation detection is lost ($M(x, y) = 0$). The Kalman filter uses stored velocity vectors to **propagate the predicted trajectory blindly through the occlusion**, instantly re-associating the target when it emerges.
+2. **Resolving ID Switches in Multi-Object Clutter:**
+   When two pedestrians walking in opposite directions cross paths, appearance-based trackers frequently swap IDs. Motion analysis assigns opposite velocity vectors $(+u)$ and $(-u)$, ensuring unambiguous data association across the intersection.
+3. **Filtering Out Sudden Illumination Spikes:**
+   A sudden camera flash or headlight glare creates huge intensity differences ($D > T$). Optical flow verifies whether the difference exhibits coherent physical motion vectors; unphysical static flash regions are immediately rejected as false positives.
+4. **Smoothing Tracking Jitter:**
+   Raw sensor bounding boxes jitter due to pixel noise. The Kalman filter acts as a statistical low-pass filter, producing smooth, visually stable trajectories.
+
+---
+
+### 4. Real-World Traffic Surveillance Case Study (Unit 5 Notes)
+In an automated smart highway monitoring system:
+- **Operation:** CCTV cameras capture vehicles passing an intersection.
+- **Workflow:** 
+  1. Background subtraction isolates each vehicle.
+  2. Morphological closing creates a solid bounding box.
+  3. Optical flow calculates speed in km/h.
+  4. Kalman tracking follows each car across camera blind spots.
+- **Result:** Provides automated traffic flow analytics, red-light violation detection, and stopped-vehicle incident alerts in real time."""
     },
     {
         "id": "MID2-Q20",
@@ -610,102 +614,113 @@ For each detected foreground blob:
         "co": "CO5",
         "bloom": "K6",
         "marks": "10 Marks",
-        "title": "Develop and optimize a performance evaluation model for video segmentation and tracking using metrics such as IoU, precision, recall, and F1-score",
-        "punchline": "Segmentation is evaluated pixel-wise via Confusion Matrix (TP, FP, FN), IoU (Jaccard Index), Precision, Recall, and F1-score; Tracking is evaluated via MOTA, MOTP, and ID Switches.",
-        "mnemonic": "C-I-P-R-F-M: Confusion Matrix, IoU, Precision, Recall, F1-Score, MOTA",
-        "analogy": "A medical test: Precision measures how many people flagged as sick are actually sick; Recall measures how many sick people the test caught; IoU measures the spatial overlap of an ultrasound tumor scan with surgical reality.",
-        "diagram": """PERFORMANCE EVALUATION MODEL ARCHITECTURE:
+        "title": "Design a performance evaluation model for video segmentation and tracking systems and evaluate it using suitable metrics (IoU, Precision, Recall, and F1-Score).",
+        "punchline": "A standardized performance evaluation model compares predicted masks against ground truth using a Confusion Matrix; IoU measures spatial bounding box overlap, Precision measures detection correctness, Recall measures detection completeness, and F1-Score provides the harmonic mean balance.",
+        "mnemonic": "I-P-R-F: IoU = Overlap/Union, Precision = TP/(TP+FP), Recall = TP/(TP+FN), F1 = 2PR/(P+R).",
+        "analogy": "Grading an exam: Precision measures how many of your written answers were actually correct (no wrong guesses); Recall measures how many of all possible questions you answered (didn't skip questions); F1 is your overall GPA score; IoU is how closely your answer matched the teacher's exact grading rubric.",
+        "diagram": """+-------------------------------------------------------------------------------+
+|         PERFORMANCE EVALUATION MODEL (IoU, PRECISION, RECALL, F1)             |
++-------------------------------------------------------------------------------+
 
-1. SEGMENTATION SPATIAL OVERLAP (IoU / Jaccard Index):
-   ┌──────────────────────┐
-   │ Ground Truth Mask A  │
-   │      ┌───────────────┼──────────────┐
-   │      │ Intersection  │ Prediction   │
-   │      │ (TP)          │ Mask B       │
-   │      │               │ (FP)         │
-   └──────┼───────────────┘              │
-     (FN) └──────────────────────────────┘
+ 1. INTERSECTION OVER UNION (IoU):
+    ┌────────────────────────┐
+    │ Ground Truth B         │        Area of Overlap (A ∩ B)
+    │        ┌───────────────┼────┐   IoU = ─────────────────────────
+    │        │ Overlap A ∩ B │    │         Area of Union (A ∪ B)
+    └────────┼───────────────┘    │
+             │ Predicted Mask A   │   IoU = TP / (TP + FP + FN)
+             └────────────────────┘
 
-               Area of Overlap (A ∩ B)             TP
-   IoU = ────────────────────────────────── = ──────────────
-         Area of Union (A ∪ B)                TP + FP + FN
+ 2. CONFUSION MATRIX GRID:
+                     Actual Positive (Foreground)  Actual Negative (Background)
+  Predicted Positive │ True Positive (TP) = 80     │ False Positive (FP) = 20    │
+  Predicted Negative │ False Negative (FN) = 20    │ True Negative (TN) = 80     │
 
-2. EVALUATION METRICS FORMULAS:
-   - Precision = TP / (TP + FP)         (Quality / Purity of detections)
-   - Recall    = TP / (TP + FN)         (Completeness / Coverage)
-   - F1-Score  = 2 · (P · R) / (P + R)  (Harmonic Mean)
+ WORKED METRIC RESULTS:
+  • Precision = 80 / (80 + 20) = 80.0%  │  Recall = 80 / (80 + 20) = 80.0%
+  • F1-Score  = 2(0.8)(0.8)/(0.8 + 0.8) = 80.0%
+  • IoU       = 80 / (80 + 20 + 20) = 80 / 120 = 66.7%""",
+        "content": """### 1. Conceptual Design of the Performance Evaluation Model (Unit 5 Notes)
+A rigorous performance evaluation model benchmarks the accuracy, robustness, and real-time computational throughput of video segmentation and object tracking algorithms by comparing predicted segmentations against human-annotated **ground-truth references**.
 
-3. MULTI-OBJECT TRACKING EVALUATION (CLEAR MOT):
-   - MOTA = 1 - (FN + FP + ID_Switches) / Ground_Truth_Objects
-   - MOTP = Total_Bounding_Box_Distance / Total_Matched_Detections""",
-        "content": """### 1. Conceptual Framework of Performance Evaluation
-A robust evaluation model quantifies how accurately an automated video segmentation and tracking algorithm matches human-annotated Ground Truth (GT). Evaluation operates at two levels:
-1. **Spatial Segmentation Level (Pixel / Bounding Box accuracy)**
-2. **Temporal Tracking Level (Identity continuity across video frames)**
+The evaluation framework consists of 6 structured stages:
+1. **Video Ingestion:** Standard benchmark test sequences (e.g., MOTChallenge, CDnet).
+2. **Ground-Truth Annotation:** Pixel-level binary masks ($B$) or bounding box coordinates.
+3. **Automated Algorithm Execution:** Generates predicted candidate masks ($A$).
+4. **Spatial Overlap & Confusion Matrix Mapping:** Classifies pixels into $TP, FP, FN, TN$.
+5. **Metric Computation:** Evaluates IoU, Precision, Recall, and F1-Score.
+6. **System Optimization:** Tunes hyperparameters (thresholds, filter sizes) based on quantitative scores.
 
 ---
 
-### 2. Spatial Segmentation Evaluation Metrics
+### 2. Mathematical Definition of Core Evaluation Metrics (Unit 5 Notes)
 
-#### 1. The Confusion Matrix
-At the pixel or detection level, comparisons between Prediction ($P$) and Ground Truth ($G$) fall into four categories:
-* **True Positive ($TP$):** Moving foreground pixel correctly detected as foreground.
-* **False Positive ($FP$):** Static background pixel incorrectly classified as foreground (**False Alarm**).
-* **False Negative ($FN$):** Moving foreground pixel missed by the algorithm (**Missed Detection**).
-* **True Negative ($TN$):** Static background pixel correctly classified as background.
+#### A. Confusion Matrix Foundations
+- **True Positive ($TP$):** Foreground pixels correctly classified as foreground.
+- **False Positive ($FP$):** Background pixels incorrectly classified as foreground (false alarms).
+- **False Negative ($FN$):** True foreground pixels missed by the detector (missed detections).
+- **True Negative ($TN$):** Background pixels correctly classified as background.
 
-#### 2. Intersection over Union (IoU / Jaccard Index)
-The primary spatial overlap metric between predicted region $A$ and ground truth region $B$:
-$$\\text{IoU} = \\frac{\\text{Area of Overlap}}{\\text{Area of Union}} = \\frac{|A \\cap B|}{|A \\cup B|} = \\frac{TP}{TP + FP + FN}$$
-* **Threshold Convention:** In standard benchmarks (PASCAL VOC, COCO), an object detection is considered a True Positive if $\\text{IoU} \\ge 0.50$ (or $0.75$).
+#### B. Intersection over Union (IoU / Jaccard Index)
+Measures the spatial overlap ratio between the predicted region $A$ and ground-truth region $B$:
+$$\\text{IoU} = \\frac{|A \\cap B|}{|A \\cup B|} = \\frac{TP}{TP + FP + FN}$$
+*(Scores range from $0$ [no overlap] to $1$ [perfect overlap]; $\\text{IoU} \\ge 0.5$ is standard benchmark threshold for a successful detection).*
 
-#### 3. Precision ($P$)
-Measures the purity/accuracy of the positive detections:
+#### C. Precision
+Measures the proportion of detected foreground pixels that are genuinely correct:
 $$\\text{Precision} = \\frac{TP}{TP + FP}$$
-* High precision means when the algorithm claims an object is present, it is almost certainly correct (very few false alarms).
 
-#### 4. Recall / Sensitivity ($R$)
-Measures the completeness of foreground detection:
+#### D. Recall (Sensitivity)
+Measures the proportion of actual ground-truth foreground pixels that the system successfully detected:
 $$\\text{Recall} = \\frac{TP}{TP + FN}$$
-* High recall means the algorithm caught almost all moving objects in the scene (very few missed detections).
 
-#### 5. F1-Score (Dice Coefficient)
+#### E. F1-Score
 The harmonic mean of Precision and Recall, providing a single balanced metric:
 $$F_1 = 2 \\times \\frac{\\text{Precision} \\times \\text{Recall}}{\\text{Precision} + \\text{Recall}} = \\frac{2 TP}{2 TP + FP + FN}$$
 
 ---
 
-### 3. Step-by-Step Numerical Worked Example
-Consider a video surveillance evaluation where pixel-level testing yields:
-* $TP = 800\\text{ pixels}$
-* $FP = 100\\text{ pixels}$
-* $FN = 200\\text{ pixels}$
-* $TN = 98,900\\text{ pixels}$
+### 3. Worked Numerical Problem (Unit 5 Notes)
+Consider a video segmentation system evaluated on a benchmark video frame with the following pixel classification results:
+- **True Positives ($TP$):** $80\\text{ pixels}$
+- **False Positives ($FP$):** $20\\text{ pixels}$
+- **False Negatives ($FN$):** $20\\text{ pixels}$
+- **True Negatives ($TN$):** $80\\text{ pixels}$
 
-#### Computations:
-1. **Intersection over Union (IoU):**
-   $$\\text{IoU} = \\frac{800}{800 + 100 + 200} = \\frac{800}{1100} = \\mathbf{0.727\\; (72.7\\%)}$$
-2. **Precision ($P$):**
-   $$P = \\frac{800}{800 + 100} = \\frac{800}{900} = \\mathbf{0.889\\; (88.9\\%)}$$
-3. **Recall ($R$):**
-   $$R = \\frac{800}{800 + 200} = \\frac{800}{1000} = \\mathbf{0.800\\; (80.0\\%)}$$
-4. **F1-Score ($F_1$):**
-   $$F_1 = 2 \\times \\frac{0.889 \\times 0.800}{0.889 + 0.800} = \\frac{1.4224}{1.689} = \\mathbf{0.842\\; (84.2\\%)}$$
+#### Step-by-Step Calculations:
+1. **Precision Calculation:**
+   $$\\text{Precision} = \\frac{TP}{TP + FP} = \\frac{80}{80 + 20} = \\frac{80}{100} = 0.80 = \\mathbf{80.0\\%}$$
+   *(Interpretation: $80\\%$ of all pixels flagged as foreground were correct).*
+
+2. **Recall Calculation:**
+   $$\\text{Recall} = \\frac{TP}{TP + FN} = \\frac{80}{80 + 20} = \\frac{80}{100} = 0.80 = \\mathbf{80.0\\%}$$
+   *(Interpretation: The system successfully captured $80\\%$ of the true object).*
+
+3. **F1-Score Calculation:**
+   $$F_1 = 2 \\times \\frac{0.80 \\times 0.80}{0.80 + 0.80} = 2 \\times \\frac{0.64}{1.60} = 2 \\times 0.40 = 0.80 = \\mathbf{80.0\\%}$$
+   *(Interpretation: The system exhibits an evenly balanced trade-off between false alarms and missed detections).*
+
+4. **Intersection over Union (IoU) Calculation:**
+   $$\\text{IoU} = \\frac{TP}{TP + FP + FN} = \\frac{80}{80 + 20 + 20} = \\frac{80}{120} = \\frac{2}{3} \\approx 0.6667 = \\mathbf{66.7\\%}$$
+   *(Interpretation: The predicted segmentation mask overlaps $66.7\\%$ with ground truth, comfortably exceeding the standard $50\\%$ success threshold).*
 
 ---
 
-### 4. Temporal Multi-Object Tracking Metrics (CLEAR MOT Standard)
-For tracking sequences, spatial metrics are insufficient because they ignore track identity continuity. The CLEAR MOT benchmark introduces:
+### 4. Summary Table of Performance Results (Unit 5 Notes)
 
-#### 1. Multiple Object Tracking Accuracy (MOTA)
-Combines false positives, missed detections, and identity switches into a single composite score:
-$$\\text{MOTA} = 1 - \\frac{\\sum_t (FN_t + FP_t + IDSW_t)}{\\sum_t GT_t}$$
-* **IDSW (Identity Switches):** Number of times a tracking algorithm switches the persistent identity between two distinct objects (e.g. crossing pedestrians).
-* **MOTA Range:** $(-\\infty, 100\\%]$. Values $>70\\%$ indicate state-of-the-art performance.
+| Evaluation Metric | Mathematical Formula | Calculated Value | Benchmark Standard Verdict |
+| :--- | :--- | :---: | :--- |
+| **Precision** | $\\frac{TP}{TP + FP}$ | **$80.0\\%$** | High (Low false alarm rate) |
+| **Recall** | $\\frac{TP}{TP + FN}$ | **$80.0\\%$** | High (Low missed detection rate) |
+| **F1-Score** | $2 \\frac{P \\cdot R}{P + R}$ | **$80.0\\%$** | High balanced detection performance |
+| **IoU (Jaccard Index)** | $\\frac{TP}{TP + FP + FN}$ | **$66.7\\%$** | **Excellent overlap** ($> 50\\%$ threshold) |
 
-#### 2. Multiple Object Tracking Precision (MOTP)
-Measures the average spatial localization error between matched detections and ground truth bounding boxes:
-$$\\text{MOTP} = \\frac{\\sum_{t, i} d_{t, i}}{\\sum_t c_t}$$
-where $d_{t, i}$ is the distance/overlap error for matched detection pair $i$ at frame $t$, and $c_t$ is the number of matches."""
+---
+
+### 5. Optimization Strategies for Real-Time Performance (Unit 5 Notes)
+To maximize these evaluation scores in real-time embedded surveillance systems:
+1. **Adaptive Thresholding:** Replaces static thresholds with local Otsu or Gaussian mixtures to prevent false positives ($FP$) caused by lighting drift.
+2. **Morphological Filtering:** Applying morphological opening removes isolated speckle noise ($FP$), while closing bridges small internal holes ($FN$), directly boosting IoU.
+3. **Multi-Object Tracking Specific Metrics:** In continuous video tracking, the model is augmented with **IDF1** (ID F1-score measuring trajectory consistency) and **Frames Per Second (FPS)** to ensure real-time latency (< 33 ms/frame)."""
     }
 ]

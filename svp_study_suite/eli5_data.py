@@ -213,8 +213,8 @@ ELI5_DATA = {
         'draw': "Complete multi-stage pipeline flowchart: Camera -> Preprocess -> MoG2 -> Morphology -> Feature Extraction -> Hungarian Association -> Kalman State Filter -> Track Manager -> Analytics"
     },
     'MID2-Q20': {
-        'plain': "Grading video AI: IoU measures mask overlap; Precision measures purity (no false alarms); Recall measures completeness (no misses); F1 is the balanced grade; MOTA grades tracking.",
-        'keywords': "Performance Evaluation, Confusion Matrix (TP, FP, FN, TN), Intersection over Union (IoU = TP/(TP+FP+FN)), Precision (TP/(TP+FP)), Recall (TP/(TP+FN)), F1-Score (2PR/(P+R)), CLEAR MOT (MOTA, MOTP, ID Switches)",
-        'draw': "Venn diagram of Prediction vs Ground Truth showing TP overlap, FP, and FN regions, with worked numerical formulas (IoU=72.7%, P=88.9%, R=80.0%, F1=84.2%)"
+        'plain': "Grading video AI: IoU measures mask overlap; Precision measures purity (no false alarms); Recall measures completeness (no misses); F1 is the balanced grade.",
+        'keywords': "Performance Evaluation, Confusion Matrix (TP, FP, FN, TN), Intersection over Union (IoU = TP/(TP+FP+FN)), Precision (TP/(TP+FP)), Recall (TP/(TP+FN)), F1-Score (2PR/(P+R))",
+        'draw': "Venn diagram of Prediction vs Ground Truth showing TP overlap, FP, and FN regions, with worked numerical formulas (IoU=66.7%, P=80.0%, R=80.0%, F1=80.0%)"
     }
 }

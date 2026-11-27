@@ -1,0 +1,93 @@
+Speech Production Mechanism  Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Opening Question Which organs are involved in speech production? Options: A) Heart, Kidney, Liver B) Lungs, Vocal cords, Tongue, Lips C) Brain, Stomach, Intestine D) Eyes, Ears, Nose
+
+---
+
+Reflection on Opening Question Which organs are involved in speech production? Options: A) Heart, Kidney, Liver B) Lungs, Vocal cords, Tongue, Lips C) Brain, Stomach, Intestine D) Eyes, Ears, Nose
+
+---
+
+Overview of Speech Production & Mechanism Communication is essential for human interaction Speech production helps us express thoughts and ideas It is a  complex, multi-step process  Involves coordination of brain and speech organs.  Levels of Speech Production Conceptualization   Planning what to say  Ideas are formed in the brain  Formulation   Organizing ideas into words and sentences  Grammar and structure are applied  Articulation   Producing speech using vocal organs  Involves tongue, lips, and vocal cords 
+
+---
+
+Overview of Speech Production & Mechanism Speech production is a remarkable process that involves multiple intricate levels.  From the initial conceptualization of ideas to their formulation into linguistic forms and the precise articulation of sounds, each stage plays a vital role in effective communication.  Understanding these levels helps us appreciate the complexity of human speech and the incredible coordination between the brain and the vocal tract. By honing our speech production skills,  we can become more effective communicators and forge stronger connections with others.
+
+---
+
+Conceptualization   Conceptualization (First Stage of Speech Production) It is the  first step  in speech production  Ideas and thoughts are  formed in the mind. What happens in this stage? Decide  what message to communicate   Identify  main points   Organize ideas in a  logical order   Use:  Knowledge  Memory  Emotions Brain Involvement Broca’s area  Helps in  planning and sequencing speech   Wernicke’s area  Helps in  understanding and selecting words  
+
+---
+
+Conceptualization   Example While preparing a presentation:  Decide  what to say   Arrange  main ideas clearly   Choose  tone and purpose   Key Point Conceptualization =  Thinking + Planning before speaking
+
+---
+
+Formulation Stage Comes  after conceptualization  (after ideas are formed)  Converts  ideas into language (words & sentences)   What happens in this stage? Brain changes ideas into  meaningful sentences   Selects  appropriate words   Arranges words in the  correct order   Applies  grammar and sentence rules   Brain Involvement Involves  language areas of the brain   Works with the  motor cortex  to plan speech movements 
+
+---
+
+Formulation Stage Common Difficulties Word-finding problems  Grammatical mistakes  These can improve with  practice and exposure   Example While giving a  presentation :  Ideas are converted into  clear spoken sentences   Ensures speech is  easy to understand and well-structured  
+
+---
+
+Formulation Stage Common Difficulties Word-finding problems  Grammatical mistakes  These can improve with  practice and exposure   Example While giving a  presentation :  Ideas are converted into  clear spoken sentences   Ensures speech is  easy to understand and well-structured  
+
+---
+
+Articulation Articulation   Articulation is the  final stage of speech production   It is where speech is  actually spoken (output stage)   What happens in this stage? Brain sends signals through the  motor cortex   Speech muscles start moving  Sound is produced using:  Tongue  Lips  Jaw  Vocal cords 
+
+---
+
+Articulation Why is articulation important? Helps in  clear and correct pronunciation   Makes speech  easy to understand (intelligible)   Important for  effective communication   If articulation is poor: Leads to  mispronunciation   May cause  speech disorders   Communication becomes difficult Key Idea Brain continuously  monitors and adjusts speech   Ensures  smooth and fluent speaking   Example During a presentation, articulation helps:  Speak words  clearly   Deliver sentences  correctly
+
+---
+
+Activity 1: Think Pair Share Think: Why do we sometimes know what to say but cannot express it clearly? Pair: Discuss which level of speech production may be affected. Share: Share your reasoning with the class.
+
+---
+
+Reflection on Activity 1: Think Pair Share Think: Why do we sometimes know what to say but cannot express it clearly?  Because the  idea is clear in the brain , but it is not properly converted into speech. Pair: Discuss which level of speech production may be affected.  Possible answers: Formulation  → unable to organize ideas into correct words/sentences  Articulation  → unable to pronounce words clearly  Share: Share your reasoning with the class. If a person knows the idea but struggles to form sentences →  Formulation problem   If sentences are correct but speech is unclear →  Articulation problem  
+
+---
+
+Speech Production Systems The speech mechanism is a complex and intricate process that enables us to produce and comprehend speech.  The speech mechanism involves a coordinated effort of speech subsystems working together seamlessly .  System Meaning Respiratory System  (Air Supply System) Provides airflow from lungs (energy source for speech) Phonatory System  (Sound Producing System)  Produces sound using larynx and vocal cords Resonatory System  (Sound Booster System) Amplifies sound using throat, mouth, nasal cavities Articulatory System  (Speech Shaping System) Shapes sound into words using tongue, lips, teeth, jaw Regulatory System  (Brain Control System) Controls and coordinates speech using the brain
+
+---
+
+Scenerio Based   A speech recognition system fails to recognize a speaker due to unclear pronunciation.  Question:  Which stage of speech production should be improved for better recognition? 2.Two speakers deliver the same content: Speaker A speaks clearly  Speaker B speaks unclearly  Question: Analyze which stages of speech production might differ between them.
+
+---
+
+Reflection on Scenerio Based   1. Articulation is the stage where  speech sounds are physically produced   It involves organs like:  Tongue  Lips  Teeth  Vocal cords  Why this stage matters here Unclear pronunciation =  poor articulation   Speech recognition systems depend on  clear and correct sound patterns   If articulation is weak:  Words are not formed properly  System cannot identify them correctly  Improving  articulation  will make speech  clear, accurate, and easy to recognize
+
+---
+
+Reflection on Scenerio Based   2. The difference between Speaker A (clear) and Speaker B (unclear) mainly lies in the following  stages of speech production : Articulation (Major Difference) Speaker A:   Proper movement of tongue, lips, and jaw  Clear pronunciation of words  Speaker B:   Poor coordination of speech organs  Mispronunciation or unclear sounds  Conclusion:  Articulation is the  primary stage affecting clarity
+
+---
+
+Reflection on Scenerio Based   2.  Phonation Speaker A:   Stable and controlled vocal cord vibration  Proper pitch and voice quality  Speaker B:   Weak or irregular voice production  May sound dull, shaky, or unclear 3. Resonance Speaker A:   Proper use of oral and nasal cavities  Balanced and natural sound  Speaker B:   Improper resonance (too nasal or muffled voice)
+
+---
+
+Reflection on Scenerio Based   4. Formulation (Possible Minor Factor) Speaker A:   Well-structured sentences  Speaker B:   May hesitate or form unclear sentences  Conclusion The  main difference  is in  Articulation   Other contributing stages:  Phonation  Resonance  Clear speech =  Good articulation + proper voice + balanced resonance
+
+---
+
+Reference Raphael, L. J., Borden, G. J., & Harris, K. S. (2007).  Speech science primer: Physiology, acoustics, and perception of speech . Lippincott Williams & Wilkins. Van Riper, C. G., & Erickson, R. L. (1984). Speech correction: An introduction to speech pathology and audiology.  (No Title) .  https://baslpcourse.com/overview-of-speech-production-and-speech-mechanism/  
+
+---
+
+Post Assessment Which sequence is correct? A) Articulation → Formulation → Conceptualization B) Conceptualization → Formulation → Articulation C) Formulation → Conceptualization → Articulation D) Respiration → Conceptualization → Articulation
+
+---
+
+Reflection on Post Assessment Which sequence is correct? A) Articulation → Formulation → Conceptualization B)  Conceptualization → Formulation → Articulation C) Formulation → Conceptualization → Articulation D) Respiration → Conceptualization → Articulation
+
+---
+
+                                                        Thank You 
