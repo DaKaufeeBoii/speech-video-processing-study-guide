@@ -4,51 +4,30 @@
 
 ---
 
-## COURSE STRUCTURE & GRADING BREAKDOWN
-> Scaled strictly by marks (**05 Marks vs 10 Marks**). Contains 100% of questions across **Mid-I and Mid-II (40 Questions Total)**.
-> Includes full mathematical derivations, ASCII block blueprints, ELI5 summaries, high-yield bullet points, and 40 technical vector diagrams.
+## COURSE STRUCTURE & SYLLABUS BREAKDOWN
+> Scaled strictly by marks (**05 Marks vs 10 Marks**). Contains 100% of syllabus questions across **Mid-I and Mid-II (40 Questions Total)**.
+> Includes full mathematical derivations, step-by-step algorithms, comparisons, and detailed solutions.
 
 ---
 
 
 # UNIT-1 (CO1)
 
-## MID1-Q01: Define the speech production mechanism and identify the roles of excitation source and vocal tract system in speech generation. 🔥 [FREE MARKS / NUMERICAL]
+## MID1-Q01: Q1. Define the speech production mechanism and identify the roles of excitation source and vocal tract system in speech generation.
 **Mid:** Mid-I | **QNo:** 1 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K1 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #6 of 40 | **Prep Time:** 4 min
 
-> 🧠 **30-Second Exam Anchor:** Speech is produced by the Source-Filter Mechanism: Excitation Source generates raw acoustic energy, and Vocal Tract acts as a time-varying filter shaping formants.
+> 🧠 **Core Anchor:** Speech is produced by the Source-Filter Mechanism: Excitation Source generates raw acoustic energy, and Vocal Tract acts as a time-varying filter shaping formants.
 
 > 🐣 **In Plain English:** Human speech is made like a trumpet: lungs and vocal cords make raw buzzy sound, and the mouth/throat tubes shape it into words.
-> 🔑 **Magic Exam Keywords:** `Source-Filter Model, Gunnar Fant, Glottis/Vocal Cords, Fundamental Frequency (F0), Vocal Tract acoustic tube (17.5 cm), Formants (F1, F2, F3), S(z) = E(z)·H(z)·R(z)`
-> 📝 **What to Draw / Write:** Flowchart: Lungs -> Glottis (Source E(z)) -> Vocal Tract Filter H(z) -> Lip Radiation R(z) -> Speech s(t)
+> 🔑 **Key Exam Terms:** `Source-Filter Model, Gunnar Fant, Glottis/Vocal Cords, Fundamental Frequency (F0), Vocal Tract acoustic tube (17.5 cm), Formants (F1, F2, F3), S(z) = E(z)·H(z)·R(z)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Source-Filter Model:** Speech output is $S(z) = E(z) \cdot H(z) \cdot R(z)$ where $E(z)$ is glottal source, $H(z)$ is vocal tract filter, and $R(z) \approx 1 - z^{-1}$ is lip radiation.
 - **Excitation Source Roles:** Lungs generate airflow; glottis modulates voiced periodic pitch pulses ($F_0$), unvoiced turbulent noise (fricatives /s/), or transient bursts (plosives /p/).
 - **Vocal Tract Roles:** Acoustic resonator tube of length $\approx 17.5\text{ cm}$ whose physical shape creates resonant frequencies called **Formants** ($F_1, F_2, F_3$) that identify phonemes.
 - **Articulators:** Tongue position, jaw height, velum (nasal coupling), and lip rounding continuously alter formant positions.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-[ Lungs (Air Reservoir) ]
-             │  Airflow Pressure
-             ▼
-     [ Glottis / Vocal Cords ]  <--- EXCITATION SOURCE (Voiced/Unvoiced)
-             │
-             ▼  Raw Acoustic Signal e(t)
-     ┌────────────────────────────────────────┐
-     │  Vocal Tract Acoustic Filter H(z)      │  <--- VOCAL TRACT SYSTEM
-     │  - Pharynx (Throat Cavity)             │       (Acoustic Tube ~17.5 cm)
-     │  - Oral Cavity (Mouth / Tongue / Teeth)│       Resonances = Formants
-     │  - Nasal Cavity (Velum Open / Closed)  │       (F1, F2, F3)
-     └────────────────────────────────────────┘
-             │
-             ▼  Radiation Filter R(z) (Lips)
-     [ Radiated Speech Signal s(t) ]
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Definition of Speech Production Mechanism
 The human speech production mechanism is modeled as a **Source-Filter System** (Gunnar Fant's Acoustic Theory of Speech Production). In this model:
 * A sound **source** generates raw acoustic energy (either periodic pulses or turbulent random noise).
@@ -101,33 +80,21 @@ The vocal tract is an acoustic resonant tube extending from the glottis to the l
 
 ---
 
-## MID1-Q02: Explain the discrete-time representation of speech signals and interpret the effects of sampling on signal reconstruction 
+## MID1-Q02: Q2. Explain the discrete-time representation of speech signals and interpret the effects of sampling on signal reconstruction
 **Mid:** Mid-I | **QNo:** 2 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K2 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #14 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** Continuous speech $s(t)$ is discretized at interval $T_s$; sampling rate must satisfy Nyquist ($f_s \ge 2 f_{\max}$) to prevent aliasing distortion during reconstruction.
+> 🧠 **Core Anchor:** Continuous speech $s(t)$ is discretized at interval $T_s$; sampling rate must satisfy Nyquist ($f_s \ge 2 f_{\max}$) to prevent aliasing distortion during reconstruction.
 
 > 🐣 **In Plain English:** Converting smooth sound into computer numbers by snapping photos of the wave at regular intervals, which must be twice the fastest frequency or sound gets ruined.
-> 🔑 **Magic Exam Keywords:** `Uniform Sampling (Ts = 1/fs), Nyquist Rate (fs >= 2·fmax), Aliasing Distortion, Anti-Aliasing Low-Pass Filter, Sinc Interpolation Reconstruction, 8 kHz Telephone, 16 kHz ASR`
-> 📝 **What to Draw / Write:** Block diagram: s(t) -> Anti-Aliasing LPF -> Sampler (fs) -> s[n] -> D/A Converter -> Sinc Reconstruction LPF -> s(t)
+> 🔑 **Key Exam Terms:** `Uniform Sampling (Ts = 1/fs), Nyquist Rate (fs >= 2·fmax), Aliasing Distortion, Anti-Aliasing Low-Pass Filter, Sinc Interpolation Reconstruction, 8 kHz Telephone, 16 kHz ASR`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Discrete Representation:** Continuous speech $s(t)$ is sampled at discrete time intervals $T_s = 1/f_s$ to yield discrete sequence $s[n] = s(n T_s)$.
 - **Standard Sampling Rates:** 8 kHz for PSTN telephone speech (captures up to 3.4 kHz); 16 kHz for modern ASR engines like Whisper/Siri (captures up to 8 kHz).
 - **Nyquist Criterion:** $f_s \ge 2 f_{\max}$. If violated, high-frequency energy folds over into low frequencies as irreversible **Aliasing Distortion**.
 - **Reconstruction:** Analog anti-aliasing low-pass filter must precede ADC; ideal continuous reconstruction is achieved via **Sinc Interpolation**.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-Continuous Speech s(t) ──► [ Anti-Aliasing LPF ] ──► [ ADC / Sampler (Ts) ] ──► Discrete Speech s[n]
-                                  (fc = fs / 2)               (fs = 1/Ts)
-                                                                    │
-                                                                    ▼
-Reconstructed s(t) ◄── [ Reconstruction Filter ] ◄── [ D/A Converter ]
-                           (Ideal Sinc LPF)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Discrete-Time Representation of Speech Signals
 Speech is naturally a continuous acoustic sound pressure wave $s(t)$. To process it digitally on microprocessors, DSPs, or computers:
 1. **Sampling:** The continuous signal $s(t)$ is sampled at uniform time intervals $T_s = 1 / f_s$:
@@ -168,40 +135,21 @@ To recover the continuous speech signal $s(t)$ from discrete samples $s[n]$:
 
 ---
 
-## MID1-Q03: A system is described by: Find the zeros by solving the numerator. Find the poles by solving the denominator. Comment on stability Note: Question based on Pole–Zero Modeling 🔥 [FREE MARKS / NUMERICAL]
+## MID1-Q03: Q3. A system is described by: Find the zeros by solving the numerator. Find the poles by solving the denominator. Comment on stability Note: Question based on Pole–Zero Modeling
 **Mid:** Mid-I | **QNo:** 3 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K3 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #5 of 40 | **Prep Time:** 3 min
 
-> 🧠 **30-Second Exam Anchor:** Roots of Numerator = Zeros (spectral dips); Roots of Denominator = Poles (resonant formants). System is BIBO stable if and only if all poles lie strictly inside the unit circle ($|p_i| < 1$).
+> 🧠 **Core Anchor:** Roots of Numerator = Zeros (spectral dips); Roots of Denominator = Poles (resonant formants). System is BIBO stable if and only if all poles lie strictly inside the unit circle ($|p_i| < 1$).
 
 > 🐣 **In Plain English:** Solving numerator gives zeros (quiet dips); solving denominator gives poles (resonances); if all poles stay inside the circle of radius 1, sound stays stable.
-> 🔑 **Magic Exam Keywords:** `Transfer Function H(z) = N(z)/D(z), Zeros (N(z)=0: z=0, 0.5), Poles (D(z)=0: p=0.5, 0.4), BIBO Stability (|p| < 1), Unit Circle, Vocal Tract Resonances (Formants)`
-> 📝 **What to Draw / Write:** Complex z-plane circle of radius 1, showing poles (x) at 0.5 and 0.4 strictly inside the circle, and zeros (o) at 0 and 0.5
+> 🔑 **Key Exam Terms:** `Transfer Function H(z) = N(z)/D(z), Zeros (N(z)=0: z=0, 0.5), Poles (D(z)=0: p=0.5, 0.4), BIBO Stability (|p| < 1), Unit Circle, Vocal Tract Resonances (Formants)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **System Formulation:** Given $H(z) = \frac{1 - 0.5z^{-1}}{1 - 0.9z^{-1} + 0.2z^{-2}} = \frac{z(z - 0.5)}{(z - 0.5)(z - 0.4)}$.
 - **Zeros Calculation:** Set numerator $N(z) = 0 \implies z(z - 0.5) = 0 \implies z_1 = 0, z_2 = 0.5$.
 - **Poles Calculation:** Set denominator $D(z) = 0 \implies (z - 0.5)(z - 0.4) = 0 \implies p_1 = 0.5, p_2 = 0.4$.
 - **BIBO Stability Comment:** A causal LTI system is unconditionally BIBO stable if all poles lie strictly inside the unit circle ($|p_k| < 1$). Since $|0.5| < 1$ and $|0.4| < 1$, the system is **Unconditionally Stable**.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-           Im(z)
-             │        Unit Circle (|z| = 1)
-             │     ╭───────────╮
-             │   ╭─            ─╮
-             │  ╭       p1, p2    ╮
-             │ │         ×   ×     │
-     ────────┼─┼─────────●─────────┼──────────► Re(z)
-             │ │        z1, z2     │
-             │  ╰                 ╯
-             │   ╰─            ─╮
-             │     ╰───────────╯
-             │
-   Stable: All Poles (×) strictly INSIDE unit circle (|p| < 1)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Problem Formulation
 Consider the standard digital filter system function describing vocal tract pole-zero modeling:
 $$H(z) = \frac{1 - 0.5 z^{-1}}{1 - 0.9 z^{-1} + 0.2 z^{-2}}$$
@@ -262,32 +210,22 @@ $$\mathbf{Poles: } \quad p_1 = 0.5, \quad p_2 = 0.4$$
 
 ---
 
-## MID1-Q04: Explain the properties of the Fast Fourier Transform (FFT) relevant to speech signal analysis and recognition systems. 
+## MID1-Q04: Q4. Explain the properties of the Fast Fourier Transform (FFT) relevant to speech signal analysis and recognition systems.
 **Mid:** Mid-I | **QNo:** 4 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K2 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #12 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** FFT reduces DFT computation from $O(N^2)$ to $O(N \log_2 N)$; its properties (conjugate symmetry, energy conservation, linearity) enable real-time speech spectrograms and MFCC extraction.
+> 🧠 **Core Anchor:** FFT reduces DFT computation from $O(N^2)$ to $O(N \log_2 N)$; its properties (conjugate symmetry, energy conservation, linearity) enable real-time speech spectrograms and MFCC extraction.
 
 > 🐣 **In Plain English:** A high-speed prism that splits complex audio waves into individual rainbow frequency colors in a millisecond.
-> 🔑 **Magic Exam Keywords:** `Cooley-Tukey algorithm, O(N log N) speedup, Conjugate Symmetry (Hermitian), Time-Shift phase invariance, Frequency Resolution (Δf = fs/N), Parseval's Energy Conservation, Windowing`
-> 📝 **What to Draw / Write:** Box: Speech frame x[n] -> Hamming Window -> FFT -> Complex X[k] splitting into Magnitude |X[k]| (Spectrogram) and Phase ∠X[k]
+> 🔑 **Key Exam Terms:** `Cooley-Tukey algorithm, O(N log N) speedup, Conjugate Symmetry (Hermitian), Time-Shift phase invariance, Frequency Resolution (Δf = fs/N), Parseval's Energy Conservation, Windowing`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Computational Speedup:** FFT computes the $N$-point DFT in $O(N \log_2 N)$ complex operations instead of direct DFT's $O(N^2)$ (over 100x faster for $N=512$).
 - **Hermitian Symmetry:** For real speech $x[n]$, $X[N-k] = X^*[k]$. Only $\frac{N}{2} + 1$ frequency bins (DC to Nyquist) need to be stored or processed.
 - **Magnitude Invariance:** Time shifts $x[n - n_0]$ alter only spectral phase, leaving the phonetic magnitude spectrum $|X[k]|$ unchanged.
 - **Parseval's Theorem:** Frame energy in time domain equals energy in frequency domain; used for Voice Activity Detection (VAD).
 - **Periodicity & Windowing:** Rectangular truncation causes spectral leakage; windowing (Hamming) smooths boundaries before FFT.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-Speech Frame x[n] ──► [ Hamming Window ] ──► [ N-Point FFT ] ──► Complex X[k]
-      (25 ms)             w[n]                 O(N log N)             │
-                                                                       ├──► |X[k]| Magnitude (Spectrogram)
-                                                                       └──► ∠X[k] Phase Spectrum
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Overview of FFT in Speech Processing
 The Fast Fourier Transform (FFT) is an efficient algorithm to compute the Discrete Fourier Transform (DFT) of a windowed speech frame $x[n]$:
 $$X[k] = \sum_{n=0}^{N-1} x[n] W_N^{kn}, \quad W_N = e^{-j \frac{2\pi}{N}}, \quad k = 0, 1, \dots, N-1$$
@@ -330,35 +268,21 @@ $$X[k] = \sum_{n=0}^{N-1} x[n] W_N^{kn}, \quad W_N = e^{-j \frac{2\pi}{N}}, \qua
 
 ---
 
-## MID1-Q05: Analyze convolution operations in speech processing and examine their role in system response and filtering mechanisms. 
+## MID1-Q05: Q5. Analyze convolution operations in speech processing and examine their role in system response and filtering mechanisms.
 **Mid:** Mid-I | **QNo:** 5 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K4 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 4 (Deep Dive) | **Global Rank:** #36 of 40 | **Prep Time:** 7 min
 
-> 🧠 **30-Second Exam Anchor:** Convolution mathematically expresses speech output as glottal excitation convolved with the vocal tract impulse response: $s[n] = e[n] * h[n]$; computed via Overlap-Add/Save for real-time streaming.
+> 🧠 **Core Anchor:** Convolution mathematically expresses speech output as glottal excitation convolved with the vocal tract impulse response: $s[n] = e[n] * h[n]$; computed via Overlap-Add/Save for real-time streaming.
 
 > 🐣 **In Plain English:** Mathematically blending two signals together: glottal pulses sliding through vocal tract filters to create speech sound.
-> 🔑 **Magic Exam Keywords:** `Discrete Convolution y[n] = x[n] * h[n], Flip-Shift-Multiply-Sum, Source-Filter cascade, Linear vs Circular Convolution, Overlap-Add (OLA), Overlap-Save (OLS), Pre-emphasis filter`
-> 📝 **What to Draw / Write:** Impulse train e[n] entering Vocal Tract LTI System h[n] to produce speech s[n] = e[n] * h[n], plus Overlap-Add block diagram
+> 🔑 **Key Exam Terms:** `Discrete Convolution y[n] = x[n] * h[n], Flip-Shift-Multiply-Sum, Source-Filter cascade, Linear vs Circular Convolution, Overlap-Add (OLA), Overlap-Save (OLS), Pre-emphasis filter`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Discrete Convolution:** $y[n] = x[n] * h[n] = \sum_{k=-\infty}^\infty x[k] h[n-k]$, executed via Flip, Shift, Multiply, and Sum.
 - **Source-Filter Speech Convolution:** Speech output is glottal pulse $e[n]$ convolved with vocal tract impulse response $v[n]$ and radiation $r[n]$: $s[n] = e[n] * v[n] * r[n]$.
 - **Convolution Theorem:** Time-domain convolution equals frequency-domain point-wise multiplication: $\mathcal{F}\{x[n] * h[n]\} = X(\omega) \cdot H(\omega)$.
 - **Streaming Fast Convolution:** Computed via FFT using **Overlap-Add (OLA)** or **Overlap-Save (OLS)** to filter continuous speech without infinite latency.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-Excitation e[n] ──► [ Vocal Tract LTI System h[n] ] ──► Radiated Speech s[n]
- (Glottal Pulse)               (Impulse Response)             s[n] = e[n] * h[n]
-
-FREQUENCY DOMAIN EQUIVALENT:
-           E(z) ──► [ Digital Filter H(z) ] ──► S(z) = E(z) · H(z)
-
-REAL-TIME CONVOLUTION (Streaming Speech):
-  Input Stream ──► [ Split into Blocks ] ──► [ FFT ] ──► [ Multiply H(k) ] ──► [ IFFT ] ──► [ Overlap-Add ]
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Mathematical Formulation of Convolution
 Convolution is the fundamental mathematical operation governing Linear Time-Invariant (LTI) systems in speech processing.
 
@@ -425,37 +349,21 @@ Direct time-domain convolution of long speech signals requires $O(N_1 N_2)$ oper
 
 ---
 
-## MID1-Q06: Evaluate the performance of linear and non-linear filter banks in speech signal decomposition with respect to frequency resolution and distortion. 
+## MID1-Q06: Q6. Evaluate the performance of linear and non-linear filter banks in speech signal decomposition with respect to frequency resolution and distortion.
 **Mid:** Mid-I | **QNo:** 6 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K5 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 4 (Deep Dive) | **Global Rank:** #35 of 40 | **Prep Time:** 7 min
 
-> 🧠 **30-Second Exam Anchor:** Linear filter banks (uniform STFT) provide equal resolution everywhere; Non-linear filter banks (Mel/Bark) mimic human cochlear tonotopy (fine resolution <1 kHz, broad >1 kHz), achieving higher discriminability with lower distortion.
+> 🧠 **Core Anchor:** Linear filter banks (uniform STFT) provide equal resolution everywhere; Non-linear filter banks (Mel/Bark) mimic human cochlear tonotopy (fine resolution <1 kHz, broad >1 kHz), achieving higher discriminability with lower distortion.
 
 > 🐣 **In Plain English:** Linear filters give equal spacing everywhere like a ruler; Mel filters give lots of detail to low pitches and bundle high pitches together, just like human ears.
-> 🔑 **Magic Exam Keywords:** `Linear Filter Bank (Uniform STFT, constant Δf), Non-linear Mel Filter Bank (Mel(f) = 2595 log10(1 + f/700)), Human Cochlea tonotopy, Critical Bands, Formants F1/F2 resolution`
-> 📝 **What to Draw / Write:** Two graphs: 1. Uniformly spaced rectangles (Linear); 2. Overlapping triangles that are narrow at low Hz and widen logarithmically at high Hz (Mel scale)
+> 🔑 **Key Exam Terms:** `Linear Filter Bank (Uniform STFT, constant Δf), Non-linear Mel Filter Bank (Mel(f) = 2595 log10(1 + f/700)), Human Cochlea tonotopy, Critical Bands, Formants F1/F2 resolution`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Linear Filter Banks:** Constant bandwidth and uniform spacing across all frequencies; implemented via uniform STFT; poor resolution at low frequencies (<1 kHz).
 - **Non-Linear Mel Filter Banks:** Narrow linear bandwidth below 1 kHz ($\\Delta f \approx 100\text{ Hz}$); exponentially widening logarithmic bandwidth above 1 kHz.
 - **Cochlear Tonotopy:** Human auditory system resolves frequencies along the Mel scale: $\text{Mel}(f) = 2595 \log_{10}(1 + f/700)$.
 - **Acoustic Trade-off:** Linear filter banks preserve exact phase for audio resynthesis; Mel filter banks discard redundant phase and compact 256 FFT bins into 26-40 robust acoustic features.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-LINEAR FILTER BANK (Uniform Spacing & Constant Bandwidth):
-   ▲ Gain
-   │ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐ ┌─┐
-   └─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─┴─► Frequency (Hz)
-      Δf   Δf  Δf  Δf  Δf  Δf  Δf  Δf   (Constant Δf = 100 Hz everywhere)
-
-NON-LINEAR FILTER BANK (Mel-Scale / Human Auditory Tonotopy):
-   ▲ Gain
-   │  /\   /\   /\    /  \     /    \       /         └─/──\_/──\_/──\__/────\___/──────\_____/────────\─► Frequency (Hz)
-     ◄── Fine Res (<1 kHz) ──► ◄── Coarse / Broad Res (>1 kHz) ──►
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Introduction to Filter Banks in Speech Processing
 A filter bank is an array of bandpass filters that decomposes an input speech signal into multiple sub-band components. In speech engineering, filter banks are broadly categorized into:
 1. **Linear (Uniform) Filter Banks:** Equal bandwidth and uniform spacing across the entire frequency range.
@@ -510,40 +418,21 @@ For speech recognition and semantic perception tasks, **Non-Linear Filter Banks 
 
 ---
 
-## MID1-Q07: A) A short speech frame is given as: Compute the 4-point DFT . Find the magnitude spectrum . Identify the dominant frequency component. Note: Problem based on Compute Discrete Fourier Transform (DFT) b) A speech signal is sampled at 8 kHz and frame size is 256 samples. Compute frequency resolution: Find the frequency corresponding to k = 10. Note: Problem based on Frequency Resolution. 
+## MID1-Q07: Q7. A) A short speech frame is given as: Compute the 4-point DFT . Find the magnitude spectrum . Identify the dominant frequency component. Note: Problem based on Compute Discrete Fourier Transform (DFT) b) A speech signal is sampled at 8 kHz and frame size is 256 samples. Compute frequency resolution: Find the frequency corresponding to k = 10. Note: Problem based on Frequency Resolution.
 **Mid:** Mid-I | **QNo:** 7 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #11 of 40 | **Prep Time:** 6 min
 
-> 🧠 **30-Second Exam Anchor:** Part A: 4-Point DFT computed via Twiddle Matrix gives DC=4, AC components magnitude |X[1]|=|X[3]|=2.0. Part B: Frequency resolution Δf = fs/N = 8000/256 = 31.25 Hz; bin k=10 corresponds to 312.5 Hz.
+> 🧠 **Core Anchor:** Part A: 4-Point DFT computed via Twiddle Matrix gives DC=4, AC components magnitude |X[1]|=|X[3]|=2.0. Part B: Frequency resolution Δf = fs/N = 8000/256 = 31.25 Hz; bin k=10 corresponds to 312.5 Hz.
 
 > 🐣 **In Plain English:** Part A: Multiplying 4 numbers by the twiddle factor matrix to get frequency energy. Part B: Dividing 8000 Hz by 256 samples gives 31.25 Hz per bar, so bin 10 is 312.5 Hz.
-> 🔑 **Magic Exam Keywords:** `4-Point DFT, Twiddle Matrix W4 (1, -j, -1, j), Magnitude Spectrum |X[k]|, Dominant AC Component, Frequency Resolution Δf = fs/N = 31.25 Hz, fk = k·Δf = 312.5 Hz`
-> 📝 **What to Draw / Write:** Matrix multiplication: [W4] · [2, 1, 0, 1]^T = [4, 2, 0, 2]^T, with frequency bar chart showing peak at DC (4) and AC peaks at k=1, 3
+> 🔑 **Key Exam Terms:** `4-Point DFT, Twiddle Matrix W4 (1, -j, -1, j), Magnitude Spectrum |X[k]|, Dominant AC Component, Frequency Resolution Δf = fs/N = 31.25 Hz, fk = k·Δf = 312.5 Hz`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Part A (4-Point DFT):** For speech frame $x[n] = [2, 1, 0, 1]$, multiplying by $W_4$ matrix yields $X[0] = 4, X[1] = 2, X[2] = 0, X[3] = 2$.
 - **Magnitude Spectrum:** $|X[0]| = 4.0$ (DC level); Dominant AC components are bins $k=1$ and $k=3$ with magnitude $|X[1]| = |X[3]| = 2.0$.
 - **Part B (Frequency Resolution):** $\Delta f = \frac{f_s}{N} = \frac{8000\text{ Hz}}{256} = \mathbf{31.25\text{ Hz/bin}}$.
 - **Bin Frequency ($k=10$):** $f_{10} = k \cdot \Delta f = 10 \times 31.25\text{ Hz} = \mathbf{312.5\text{ Hz}}$ (corresponds to female/child pitch or closed vowel $F_1$ formant).
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-PART A: 4-POINT DFT & MAGNITUDE SPECTRUM
-   Input x[n] = [2, 1, 0, 1]
-           │
-           ▼ Matrix Multiply by W4
-   X[0] = 4 + j0      ──► |X[0]| = 4.000  (DC Component)
-   X[1] = 2 + j0      ──► |X[1]| = 2.000  ◄── DOMINANT AC COMPONENT
-   X[2] = 0 + j0      ──► |X[2]| = 0.000
-   X[3] = 2 + j0      ──► |X[3]| = 2.000  ◄── DOMINANT AC COMPONENT
-
-PART B: FREQUENCY RESOLUTION
-   Sampling Rate fs = 8000 Hz, FFT Size N = 256
-   Δf = fs / N = 8000 / 256 = 31.25 Hz/bin
-   Bin k = 10 ──► f_10 = 10 × 31.25 Hz = 312.5 Hz (Voiced Pitch / Low Formant)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### PART A: Numerical Problem on 4-Point DFT Computation
 
 #### 1. Given Data
@@ -621,45 +510,21 @@ $$f_{10} = 10 \times 31.25\text{ Hz} = \mathbf{312.5\text{ Hz}}$$
 
 ---
 
-## MID1-Q08: Analyze the formulation of Linear Predictive Coding (LPC) equations and evaluate its effectiveness in modeling speech signals for efficient parameter estimation. 
+## MID1-Q08: Q8. Analyze the formulation of Linear Predictive Coding (LPC) equations and evaluate its effectiveness in modeling speech signals for efficient parameter estimation.
 **Mid:** Mid-I | **QNo:** 8 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #27 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** LPC models speech as a linear combination of p past samples; minimizing mean squared error leads to the Yule-Walker equations solved in O(p^2) via the Levinson-Durbin algorithm.
+> 🧠 **Core Anchor:** LPC models speech as a linear combination of p past samples; minimizing mean squared error leads to the Yule-Walker equations solved in O(p^2) via the Levinson-Durbin algorithm.
 
 > 🐣 **In Plain English:** Predicting the next audio sample as a weighted sum of the last 10 samples, compressing voice data 26 times into tiny parameters.
-> 🔑 **Magic Exam Keywords:** `All-pole model H(z) = G / (1 - Σ ak z^-k), Autoregressive prediction, Mean Squared Error minimization, Yule-Walker Normal Equations, Toeplitz Matrix, Levinson-Durbin recursion (O(p^2))`
-> 📝 **What to Draw / Write:** Block diagram: Speech s[n] compared against LPC Predictor ak to produce Error e[n]; Synthesis filter 1/A(z) excited by pitch pulses
+> 🔑 **Key Exam Terms:** `All-pole model H(z) = G / (1 - Σ ak z^-k), Autoregressive prediction, Mean Squared Error minimization, Yule-Walker Normal Equations, Toeplitz Matrix, Levinson-Durbin recursion (O(p^2))`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **All-Pole Model:** $H(z) = \frac{G}{1 - \sum_{k=1}^p a_k z^{-k}}$; current sample is predicted from past $p$ samples: $\hat{s}[n] = \sum_{k=1}^p a_k s[n-k]$.
 - **MSE Minimization:** Minimizing total squared residual $E = \sum e^2[n]$ yields the **Yule-Walker Normal Equations**: $\sum_{k=1}^p a_k R(|i - k|) = R(i)$.
 - **Toeplitz Matrix:** Autocorrelation matrix has identical diagonals, allowing solution in $O(p^2)$ operations via the **Levinson-Durbin Algorithm**.
 - **Massive Compression:** Compresses 64 kbps PCM speech into 2.4 kbps (LPC-10), separating vocal tract formants from glottal pitch.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-LINEAR PREDICTIVE CODING (LPC) ANALYSIS & SYNTHESIS:
-
-ANALYSIS (Encoder):
-   Speech s[n] ──┬─────────────────────────────┐
-                 │                             ▼
-                 │        ┌─────────────────┐  -
-                 └───────►│ LPC Predictor   ├──►(Σ)──► Residual Error e[n]
-                          │ a1, a2, ..., ap │  +
-                          └─────────────────┘
-
-SYNTHESIS (Decoder):
-   Excitation u[n] ──► [ Gain G ] ──► (Σ) ──► Synthesized Speech s^[n]
-   (Pitch Pulses/Noise)                ▲
-                                       │ Past Samples
-                             ┌─────────┴─────────┐
-                             │ All-Pole Filter   │
-                             │ 1 / (1 - Σ ak z^-k│
-                             └───────────────────┘
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Fundamental Principle of Linear Predictive Coding (LPC)
 Linear Predictive Coding (LPC) is one of the most powerful and widely used techniques in speech processing. It is based on the **Source-Filter Model**, where the vocal tract is approximated by an **all-pole digital filter**:
 $$H(z) = \frac{S(z)}{U(z)} = \frac{G}{1 - \sum_{k=1}^p a_k z^{-k}} = \frac{G}{A(z)}$$
@@ -740,52 +605,21 @@ The Levinson-Durbin algorithm iteratively computes predictor coefficients of ord
 
 # UNIT-2 (CO2)
 
-## MID1-Q09: Identify the key stages of a speech feature extraction pipeline and the purpose of each stage in converting speech signals into feature representations. 
+## MID1-Q09: Q9. Identify the key stages of a speech feature extraction pipeline and the purpose of each stage in converting speech signals into feature representations.
 **Mid:** Mid-I | **QNo:** 9 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K1 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #13 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** The pipeline converts raw audio into compact, decorrelated acoustic vectors through 7 sequential stages: Pre-emphasis -> Framing -> Windowing -> FFT -> Mel Filter Bank -> Log -> DCT.
+> 🧠 **Core Anchor:** The pipeline converts raw audio into compact, decorrelated acoustic vectors through 7 sequential stages: Pre-emphasis -> Framing -> Windowing -> FFT -> Mel Filter Bank -> Log -> DCT.
 
 > 🐣 **In Plain English:** The 7-step recipe that converts raw microphone recordings into compact acoustic feature vectors for speech AI.
-> 🔑 **Magic Exam Keywords:** `Pre-emphasis (1 - 0.97z^-1), Frame Blocking (20-30 ms), Hamming Windowing (prevents leakage), FFT, Mel-scale Filter Bank (26-40 filters), Log Compression, DCT-II decorrelation`
-> 📝 **What to Draw / Write:** Sequential vertical pipe: Raw Audio -> Pre-emphasis -> Framing -> Hamming Window -> FFT -> Mel Filterbank -> Log -> DCT -> 39D Vector
+> 🔑 **Key Exam Terms:** `Pre-emphasis (1 - 0.97z^-1), Frame Blocking (20-30 ms), Hamming Windowing (prevents leakage), FFT, Mel-scale Filter Bank (26-40 filters), Log Compression, DCT-II decorrelation`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Pre-emphasis ($1 - 0.97z^{-1}$):** Boosts high-frequency formants by compensating for the $-6\text{ dB/octave}$ glottal spectral tilt.
 - **Framing & Windowing:** Splits continuous audio into $20-30\text{ ms}$ quasi-stationary frames; Hamming window prevents spectral leakage.
 - **Mel Filter Bank:** 26 to 40 overlapping triangular bandpass filters spaced according to human cochlear critical bands.
 - **Logarithm & DCT-II:** Logarithm compresses perceptual loudness; DCT-II decorrelates filter bank energies into 13 compact MFCCs.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-Raw Speech s(t) ──► [ ADC / Sampler (16 kHz) ]
-                             │
-                             ▼
-                    [ 1. Pre-Emphasis Filter ]  (H(z) = 1 - 0.97 z^-1)
-                             │
-                             ▼
-                    [ 2. Frame Blocking ]       (20-30 ms frames, 50% overlap)
-                             │
-                             ▼
-                    [ 3. Windowing (Hamming) ]  (Eliminates edge leakage)
-                             │
-                             ▼
-                    [ 4. FFT Spectral Analysis] (Magnitude Spectrum |X[k]|)
-                             │
-                             ▼
-                    [ 5. Mel Filter Bank ]      (26-40 Triangular Filters)
-                             │
-                             ▼
-                    [ 6. Log Energy ]           (Perceptual loudness compression)
-                             │
-                             ▼
-                    [ 7. DCT / Cepstrum ]       (Orthogonal decorrelation -> MFCCs)
-                             │
-                             ▼
-         [ Feature Vector: 13 Static + 13 Δ + 13 ΔΔ = 39 Dimensions ]
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Purpose of Feature Extraction
 A raw speech waveform contains enormous redundant information (speaker pitch, background noise, phase details) alongside the essential phonetic content. The feature extraction pipeline extracts a compact, time-synchronous acoustic vector (e.g., MFCCs) every 10 ms that maximizes phonetic discriminability while minimizing speaker and channel variability.
 
@@ -828,41 +662,21 @@ A raw speech waveform contains enormous redundant information (speaker pitch, ba
 
 ---
 
-## MID1-Q10: Discuss the role of static and dynamic features in speech processing. 🔥 [FREE MARKS / NUMERICAL]
+## MID1-Q10: Q10. Discuss the role of static and dynamic features in speech processing.
 **Mid:** Mid-I | **QNo:** 10 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K2 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #8 of 40 | **Prep Time:** 4 min
 
-> 🧠 **30-Second Exam Anchor:** Static features (13-D MFCCs) capture instantaneous vocal tract geometry at frame t; Dynamic features (13-D Delta + 13-D Delta-Delta) capture transitional velocity and acceleration, forming a 39-D vector.
+> 🧠 **Core Anchor:** Static features (13-D MFCCs) capture instantaneous vocal tract geometry at frame t; Dynamic features (13-D Delta + 13-D Delta-Delta) capture transitional velocity and acceleration, forming a 39-D vector.
 
 > 🐣 **In Plain English:** Static features are a photo of the mouth shape right now (13 numbers); dynamic features are the speed and acceleration of the mouth moving between sounds (26 numbers).
-> 🔑 **Magic Exam Keywords:** `Static MFCCs (13-D instantaneous posture), Delta / Velocity (13-D Δc), Delta-Delta / Acceleration (13-D ΔΔc), 39-Dimensional Feature Vector, Co-articulation, Regression formula`
-> 📝 **What to Draw / Write:** Timeline of frames: Frame t gives Static c(t); arrows from neighbors t-1, t+1 give Delta Δc(t); combined into 39-D vector [c | Δc | ΔΔc]
+> 🔑 **Key Exam Terms:** `Static MFCCs (13-D instantaneous posture), Delta / Velocity (13-D Δc), Delta-Delta / Acceleration (13-D ΔΔc), 39-Dimensional Feature Vector, Co-articulation, Regression formula`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Static Features (13-D):** $c_0$ to $c_{12}$ MFCCs represent instantaneous vocal tract articulatory posture at single frame $t$.
 - **Delta / Velocity Features (13-D):** $\Delta c_t$ measures first-order temporal derivative (speed of spectral change) using linear regression.
 - **Delta-Delta / Acceleration (13-D):** $\Delta^2 c_t$ measures second-order temporal derivative (articulatory muscle acceleration).
 - **Standard 39-D Vector:** Combining $[c_t \mid \Delta c_t \mid \Delta^2 c_t]$ captures co-articulation and transitional phonemes, boosting ASR accuracy.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-TEMPORAL SPEECH EVOLUTION (Frame by Frame):
-   Frame t-2       Frame t-1        Frame t        Frame t+1       Frame t+2
-  ┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐     ┌─────────┐
-  │ c(t-2)  │     │ c(t-1)  │     │  c(t)   │     │ c(t+1)  │     │ c(t+2)  │
-  └─────────┘     └─────────┘     └─────────┘     └─────────┘     └─────────┘
-                                       │
-                                       ├─► STATIC: Instantaneous Spectrum c(t) [13-D]
-                                       │
-                                       ├─► DELTA (Δ): Velocity / Spectral Slope [13-D]
-                                       │              Δc(t) = Σ n·(c(t+n) - c(t-n)) / 2Σn^2
-                                       │
-                                       └─► DELTA-DELTA (ΔΔ): Acceleration [13-D]
-                                                      ΔΔc(t) = Δ(Δc(t))
-   COMBINED FEATURE VECTOR: [ c(t) | Δc(t) | ΔΔc(t) ] ──► 39-Dimensional Vector
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Concept of Static Features
 Static features represent the **instantaneous spectral characteristics** of the speech signal at a specific, frozen window in time (frame $t$):
 * **What they capture:** The physical shape, geometry, and cross-sectional area of the vocal tract (tongue position, lip rounding, jaw opening).
@@ -907,40 +721,21 @@ $$X_t = \Big[ \underbrace{c_0, c_1, \dots, c_{12}}_{\text{13 Static MFCCs}}, \qu
 
 ---
 
-## MID1-Q11: A signal has 1600 samples, frame size = 400 samples, overlap = 200 samples. Q1: Find the number of frames 🔥 [FREE MARKS / NUMERICAL]
+## MID1-Q11: Q11. A signal has 1600 samples, frame size = 400 samples, overlap = 200 samples. Q1: Find the number of frames
 **Mid:** Mid-I | **QNo:** 11 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K3 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #3 of 40 | **Prep Time:** 2 min
 
-> 🧠 **30-Second Exam Anchor:** Using the framing equation $K = \lfloor\frac{L - N}{R}\rfloor + 1$, with hop size $R = N - M = 200$, the signal yields exactly 7 frames.
+> 🧠 **Core Anchor:** Using the framing equation $K = \lfloor\frac{L - N}{R}\rfloor + 1$, with hop size $R = N - M = 200$, the signal yields exactly 7 frames.
 
 > 🐣 **In Plain English:** With 1600 total samples, taking 400 at a time and jumping forward by 200 each step fits exactly 7 frames.
-> 🔑 **Magic Exam Keywords:** `Total Samples L = 1600, Window Size N = 400, Overlap M = 200, Hop Size R = N - M = 200, Formula K = floor((L - N)/R) + 1 = floor(1200/200) + 1 = 7 frames`
-> 📝 **What to Draw / Write:** Timeline ruler from 0 to 1600 showing 7 overlapping bars sliding by 200 samples each: Frame 1 (0-399) to Frame 7 (1200-1599)
+> 🔑 **Key Exam Terms:** `Total Samples L = 1600, Window Size N = 400, Overlap M = 200, Hop Size R = N - M = 200, Formula K = floor((L - N)/R) + 1 = floor(1200/200) + 1 = 7 frames`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Given Parameters:** Total samples $L = 1600$, window size $N = 400$, overlap $M = 200$.
 - **Hop Size ($R$):** $R = N - M = 400 - 200 = 200\text{ samples}$ (50% overlap).
 - **Framing Equation:** $K = \lfloor\frac{L - N}{R}\rfloor + 1 = \lfloor\frac{1600 - 400}{200}\rfloor + 1 = \lfloor\frac{1200}{200}\rfloor + 1 = 6 + 1 = \mathbf{7\text{ frames}}$.
 - **Boundary Verification:** Frame 1 (0 to 399) through Frame 7 (1200 to 1599) perfectly covers all 1600 samples.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-Total Signal Length L = 1600 Samples
-|-------------------------------------------------------------------------------|
-0                     400                   800                  1200          1600
-
-Frame 1: [  0  ───  399  ]
-Frame 2:       [  200  ───  599  ]
-Frame 3:             [  400  ───  799  ]
-Frame 4:                   [  600  ───  999  ]
-Frame 5:                         [  800  ───  1199 ]
-Frame 6:                               [  1000 ─── 1399 ]
-Frame 7:                                     [  1200 ─── 1599 ]  <-- EXACT END!
-
-Total Frames = 7 (Hop size R = 200 samples, 50% Overlap)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Given Data
 * Total number of samples in the speech signal ($L$): **$1600\text{ samples}$**
 * Frame size / window length ($N$): **$400\text{ samples}$**
@@ -995,34 +790,21 @@ If the audio signal was recorded at a standard sampling rate of $f_s = 16\text{ 
 
 ---
 
-## MID1-Q12: Compare LPCC and MFCC features in terms of spectral representation and robustness for speech recognition applications. 🔥 [FREE MARKS / NUMERICAL]
+## MID1-Q12: Q12. Compare LPCC and MFCC features in terms of spectral representation and robustness for speech recognition applications.
 **Mid:** Mid-I | **QNo:** 12 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K2 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #7 of 40 | **Prep Time:** 4 min
 
-> 🧠 **30-Second Exam Anchor:** LPCC relies on an all-pole linear vocal tract model (sensitive to noise and unvoiced sounds); MFCC uses a psychoacoustic Mel filter bank (robust to noise and universal standard in ASR).
+> 🧠 **Core Anchor:** LPCC relies on an all-pole linear vocal tract model (sensitive to noise and unvoiced sounds); MFCC uses a psychoacoustic Mel filter bank (robust to noise and universal standard in ASR).
 
 > 🐣 **In Plain English:** LPCC models speech like a rigid mathematical pipe (breaks when noisy); MFCC models speech like the human ear (super robust to noise and world standard).
-> 🔑 **Magic Exam Keywords:** `LPCC (Linear Prediction Cepstrum, all-pole model, noise-sensitive, no zeros), MFCC (Mel-Frequency Cepstrum, cochlear auditory filters, noise-robust, DCT decorrelation, ASR standard)`
-> 📝 **What to Draw / Write:** Comparison table: LPCC (Acoustic Tube -> LPC -> Recursive Cepstrum) vs MFCC (Cochlea -> Mel Filterbank -> DCT)
+> 🔑 **Key Exam Terms:** `LPCC (Linear Prediction Cepstrum, all-pole model, noise-sensitive, no zeros), MFCC (Mel-Frequency Cepstrum, cochlear auditory filters, noise-robust, DCT decorrelation, ASR standard)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Theoretical Model:** LPCC is based on an all-pole linear acoustic tube; MFCC is based on human auditory cochlear perception.
 - **Noise Robustness:** LPCC degrades severely under environmental noise and unvoiced consonants; MFCC is highly robust due to wide filter averaging.
 - **Zeros / Anti-resonances:** LPCC cannot model nasal dips (/m/, /n/); MFCC captures arbitrary spectral shapes.
 - **Industry Standard:** MFCC is universal standard for ASR and speaker ID; LPCC is restricted to low-bitrate military/telephony vocoders.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-LPCC PIPELINE (Acoustic Tube Model):
-  Speech ──► [ LPC Analysis ] ──► [ Predictor ak ] ──► [ Recursive Formula ] ──► LPCCs
-                                  (All-Pole Model)
-
-MFCC PIPELINE (Human Auditory Model):
-  Speech ──► [ FFT ] ──► [ Mel Filter Bank ] ──► [ Log ] ──► [ DCT-II ] ──► MFCCs
-                          (Cochlear Tonotopy)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Conceptual Foundations
 * **Linear Prediction Cepstral Coefficients (LPCC):** Derived from Linear Predictive Coding (LPC). It models speech production through an all-pole linear filter representing the resonant cavities of the vocal tract. Cepstral coefficients are computed recursively from the LPC predictor coefficients $a_k$.
 * **Mel-Frequency Cepstral Coefficients (MFCC):** Derived from the Short-Time Fourier Transform (STFT) combined with human auditory perception. It applies overlapping triangular filters spaced according to the non-linear **Mel scale**, followed by logarithmic compression and DCT.
@@ -1059,41 +841,21 @@ In automatic speech recognition, **MFCC is overwhelmingly superior to LPCC**. It
 
 ---
 
-## MID1-Q13: Discuss different distance measures (Euclidean, Mahalanobis, and DTW) and evaluate their role in speech pattern matching and recognition systems. 
+## MID1-Q13: Q13. Discuss different distance measures (Euclidean, Mahalanobis, and DTW) and evaluate their role in speech pattern matching and recognition systems.
 **Mid:** Mid-I | **QNo:** 13 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K4 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #24 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** Euclidean treats all features equally; Mahalanobis weights features by covariance to handle variance and correlation; DTW solves variable-length temporal misalignment via dynamic programming.
+> 🧠 **Core Anchor:** Euclidean treats all features equally; Mahalanobis weights features by covariance to handle variance and correlation; DTW solves variable-length temporal misalignment via dynamic programming.
 
 > 🐣 **In Plain English:** Euclidean measures straight lines; Mahalanobis scales by feature spread; DTW warps time on a grid to match fast and slow speakers.
-> 🔑 **Magic Exam Keywords:** `Euclidean distance (spherical, unweighted), Mahalanobis distance (inverse covariance Σ^-1 weighting), Dynamic Time Warping (DTW), Dynamic Programming grid D(i,j), Non-linear temporal alignment`
-> 📝 **What to Draw / Write:** DTW grid (N x M) with non-linear warping path connecting bottom-left (1, 1) to top-right (N, M), constrained by Sakoe-Chiba band
+> 🔑 **Key Exam Terms:** `Euclidean distance (spherical, unweighted), Mahalanobis distance (inverse covariance Σ^-1 weighting), Dynamic Time Warping (DTW), Dynamic Programming grid D(i,j), Non-linear temporal alignment`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Euclidean Distance:** $d(x, y) = \sqrt{\sum (x_i - y_i)^2}$; assumes features are uncorrelated with equal variance; dominated by low-order MFCCs.
 - **Mahalanobis Distance:** $d_M = \sqrt{(x - y)^T \Sigma^{-1} (x - y)}$; normalizes features by inverse covariance matrix, achieving scale invariance.
 - **Dynamic Time Warping (DTW):** Aligns variable-length speech sequences ($N \ne M$) via dynamic programming grid $D(i, j)$ using local distance and slope constraints.
 - **DTW Constraints:** Boundary conditions, monotonicity (time cannot flow backwards), continuity, and Sakoe-Chiba search bands.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-DYNAMIC TIME WARPING (DTW) OPTIMAL WARPING PATH:
-   Test Utterance j (Length M)
-   ▲
- M │                      ╭──── (N, M) [End]
-   │                   ╭──╯
-   │                ╭──╯   Optimal Warping Path
-   │             ╭──╯      W = [w1, w2, ..., wK]
-   │          ╭──╯
- 1 │ (1,1) ───╯
-   └─┴──────────────────────────────►
-     1                             N   Reference Template i (Length N)
-
-LOCAL SLOPE CONSTRAINTS:
-     D(i, j) = d(xi, yj) + min { D(i-1, j), D(i, j-1), D(i-1, j-1) }
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. The Role of Distance Measures in Speech Recognition
 Speech pattern matching compares an unknown test speech utterance against stored reference patterns or models. Because speech varies in both **feature space** (acoustic variability) and **time space** (speaking rate variability), specialized distance metrics are required:
 1. **Point-to-Point Acoustic Distances:** Euclidean and Mahalanobis distances compare two feature vectors of the same dimension.
@@ -1165,40 +927,21 @@ $$D(i, j) = d(\mathbf{x}_i, \mathbf{y}_j) + \min \begin{cases} D(i - 1, j) & \te
 
 ---
 
-## MID1-Q14: Evaluate the performance of vector quantization models in speech recognition and justify codebook optimization strategies. 
+## MID1-Q14: Q14. Evaluate the performance of vector quantization models in speech recognition and justify codebook optimization strategies.
 **Mid:** Mid-I | **QNo:** 14 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K5 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 4 (Deep Dive) | **Global Rank:** #37 of 40 | **Prep Time:** 7 min
 
-> 🧠 **30-Second Exam Anchor:** Vector Quantization maps high-dimensional continuous features into a compact discrete codebook using the LBG algorithm; optimal codebook size balances distortion and latency.
+> 🧠 **Core Anchor:** Vector Quantization maps high-dimensional continuous features into a compact discrete codebook using the LBG algorithm; optimal codebook size balances distortion and latency.
 
 > 🐣 **In Plain English:** Grouping thousands of speech sounds into a dictionary of 256 code words using the LBG algorithm so voice files shrink drastically.
-> 🔑 **Magic Exam Keywords:** `Vector Quantization (VQ), Codebook (K=64-256), Codevectors, Voronoi Partitions, Linde-Buzo-Gray (LBG) algorithm, Centroid Splitting (±ε), Distortion minimization`
-> 📝 **What to Draw / Write:** Voronoi tessellation diagram with 2D feature plane divided into polygon cells, each containing a central codevector dot y_k
+> 🔑 **Key Exam Terms:** `Vector Quantization (VQ), Codebook (K=64-256), Codevectors, Voronoi Partitions, Linde-Buzo-Gray (LBG) algorithm, Centroid Splitting (±ε), Distortion minimization`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Vector Quantization (VQ):** Maps continuous high-dimensional vectors to a finite codebook $C = \{y_1, \dots, y_K\}$ partitioned into Voronoi cells.
 - **Linde-Buzo-Gray (LBG) Algorithm:** Iteratively generates codebooks by computing global centroid, splitting each centroid by $\pm \epsilon$, and running K-means clustering.
 - **Codebook Sizing:** $K = 64$ to $128$ balances quantization distortion against memory and search latency.
 - **Tree-Structured VQ (TSVQ):** Replaces linear $O(K)$ search with binary tree search in $O(\log_2 K)$.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-VECTOR QUANTIZATION FEATURE SPACE (Voronoi Tessellation):
-   ▲ Feature Dimension 2 (MFCC 2)
-   │     \      /
-   │      \ y1 /         y1, y2, y3, y4 = Codevectors (Centroids)
-   │   ────●────────     R1, R2, R3, R4 = Voronoi Partitions (Cells)
-   │      / │    │     /  │  \ y2
-   │    /   │   ●
-   │   / y3 │    \       Input vector x is mapped to nearest y_k:
-   │  /  ●  │     \      Q(x) = y_k if d(x, y_k) <= d(x, y_j)
-   └──┴─────┴──────┴──────────────────► Feature Dimension 1 (MFCC 1)
-
-LBG ALGORITHM (Centroid Splitting):
-  1 Centroid ──(Split ±ε)──► 2 Centroids ──(Split ±ε)──► 4 ──► ... ──► K Codevectors
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Vector Quantization (VQ) in Speech Recognition
 Vector Quantization (VQ) is a lossy data compression technique that maps continuous high-dimensional speech vectors $\mathbf{x} \in \mathbb{R}^D$ into a finite set of $K$ discrete representative vectors called **codevectors**:
 $$C = \{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_K\}, \quad \mathbf{y}_i \in \mathbb{R}^D$$
@@ -1258,54 +1001,22 @@ The LBG algorithm is an iterative clustering technique that generalizes k-means 
 
 ---
 
-## MID1-Q15: Design a Gaussian Mixture Model (GMM) for speech feature distribution and explain how the Expectation-Maximization (EM) algorithm is used for parameter estimation. 
+## MID1-Q15: Q15. Design a Gaussian Mixture Model (GMM) for speech feature distribution and explain how the Expectation-Maximization (EM) algorithm is used for parameter estimation.
 **Mid:** Mid-I | **QNo:** 15 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #26 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** A GMM models complex multi-modal speech feature distributions as a weighted sum of M Gaussian densities; the EM algorithm iteratively maximizes data likelihood via posterior responsibilities.
+> 🧠 **Core Anchor:** A GMM models complex multi-modal speech feature distributions as a weighted sum of M Gaussian densities; the EM algorithm iteratively maximizes data likelihood via posterior responsibilities.
 
 > 🐣 **In Plain English:** Representing complex voice data as a blend of several bell curves (Gaussians); the EM algorithm tweaks weights, centers, and widths until the fit is perfect.
-> 🔑 **Magic Exam Keywords:** `Gaussian Mixture Model (GMM), Mixture Weights (wm), Mean Vectors (μm), Covariance Matrices (Σm), Expectation-Maximization (EM), E-Step (Responsibilities γm), M-Step (Updates)`
-> 📝 **What to Draw / Write:** A multi-modal curve made of 3 dashed Gaussian bell curves summing into one solid multi-peak probability envelope, alongside the EM loop
+> 🔑 **Key Exam Terms:** `Gaussian Mixture Model (GMM), Mixture Weights (wm), Mean Vectors (μm), Covariance Matrices (Σm), Expectation-Maximization (EM), E-Step (Responsibilities γm), M-Step (Updates)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **GMM Formulation:** $p(x | \lambda) = \sum_{m=1}^M w_m \mathcal{N}(x; \mu_m, \Sigma_m)$ with $\sum w_m = 1$; diagonal covariance matrices used in ASR.
 - **Expectation-Maximization (EM):** Solves intractable maximum likelihood estimation iteratively.
 - **E-Step (Expectation):** Computes posterior component responsibilities $\gamma_m(x_t)$ for each training vector.
 - **M-Step (Maximization):** Updates mixture weights $\hat{w}_m$, mean vectors $\hat{\mu}_m$, and covariance matrices $\hat{\Sigma}_m$.
 - **Variance Flooring:** Enforces a minimum variance threshold to prevent singular probability spikes.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-GAUSSIAN MIXTURE MODEL (GMM) ARCHITECTURE:
-   Probability Density p(x)
-   ▲                   _---_
-   │                  /     \  Component 2 (Weight w2, Mean μ2, Cov Σ2)
-   │        _---_    /          │       /     \  /         \       Composite GMM Density:
-   │      /  c1   \/           \      p(x) = w1·N(x; μ1, Σ1) + w2·N(x; μ2, Σ2)
-   │     /         \               └────┴───────────┴────────────┴─────► Feature Space x (MFCC)
-
-EM ALGORITHM CYCLE:
-  Initial Parameters λ = {wm, μm, Σm}
-            │
-            ▼
-     ┌───────────────┐
- ┌──►│ E-STEP:       │  Compute Posterior Responsibilities:
- │   │               │  γm(xt) = wm·N(xt; μm, Σm) / Σ wj·N(xt; μj, Σj)
- │   └───────┬───────┘
- │           │
- │           ▼
- │   ┌───────────────┐
- │   │ M-STEP:       │  Re-estimate Parameters:
- │   │               │  w^m = (1/T) Σ γm(xt)
- │   │               │  μ^m = Σ γm(xt)·xt / Σ γm(xt)
- │   │               │  Σ^m = Σ γm(xt)·(xt - μ^m)(xt - μ^m)^T / Σ γm(xt)
- │   └───────┬───────┘
- │           │
- └── Check Convergence: Likelihood Increase < ε ──► Optimal GMM λ*
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Mathematical Design of a Gaussian Mixture Model (GMM)
 In speech processing, speech feature vectors (MFCCs) for a given phoneme or speaker form a complex, multi-modal distribution that cannot be modeled by a single Gaussian. A **Gaussian Mixture Model (GMM)** approximates the probability density function as a linear superposition of $M$ multivariate Gaussian basis functions:
 $$p(\mathbf{x} | \lambda) = \sum_{m=1}^M w_m \mathcal{N}(\mathbf{x}; \boldsymbol{\mu}_m, \mathbf{\Sigma}_m)$$
@@ -1358,17 +1069,15 @@ Iteration stops when the log-likelihood gain falls below a small tolerance $\eps
 
 ---
 
-## MID1-Q16: Construct a Hidden Markov Model (HMM) for continuous speech recognition and assess its capability in modeling temporal variability of speech signals. 
+## MID1-Q16: Q16. Construct a Hidden Markov Model (HMM) for continuous speech recognition and assess its capability in modeling temporal variability of speech signals.
 **Mid:** Mid-I | **QNo:** 16 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #25 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** An HMM models doubly stochastic speech processes: hidden articulatory states transition over time while emitting observable acoustic MFCCs; solved via Forward, Viterbi, and Baum-Welch algorithms.
+> 🧠 **Core Anchor:** An HMM models doubly stochastic speech processes: hidden articulatory states transition over time while emitting observable acoustic MFCCs; solved via Forward, Viterbi, and Baum-Welch algorithms.
 
 > 🐣 **In Plain English:** A statistical machine with hidden mouth states moving left-to-right that emit speech sounds over time; handles fast and slow talkers effortlessly.
-> 🔑 **Magic Exam Keywords:** `Hidden Markov Model (HMM), Left-to-Right Bakis Topology, Hidden States (Onset, Nucleus, Coda), Transition Matrix A, Emission Distributions B, Forward Algorithm, Viterbi Algorithm, Baum-Welch`
-> 📝 **What to Draw / Write:** 3-state left-to-right chain (State 1 -> State 2 -> State 3) with self-loops a_ii and forward transitions a_ij, each state emitting acoustic vector o(t)
+> 🔑 **Key Exam Terms:** `Hidden Markov Model (HMM), Left-to-Right Bakis Topology, Hidden States (Onset, Nucleus, Coda), Transition Matrix A, Emission Distributions B, Forward Algorithm, Viterbi Algorithm, Baum-Welch`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **HMM Architecture:** Doubly stochastic model $\lambda = (A, B, \pi)$ with hidden articulatory states and observable acoustic feature emissions.
 - **Bakis Left-to-Right Topology:** States only loop to self ($a_{ii}$) or transition forward ($a_{i, i+1}$), mirroring the forward march of time.
 - **Problem 1 (Evaluation):** Solved via **Forward Algorithm** in $O(N^2 T)$ operations.
@@ -1376,26 +1085,7 @@ Iteration stops when the log-likelihood gain falls below a small tolerance $\eps
 - **Problem 3 (Training):** Solved via **Baum-Welch Algorithm** (EM recursion) to estimate model parameters.
 - **Temporal Flexibility:** State self-loops $a_{ii}$ absorb speaking rate variations naturally (expected duration $\bar{d}_i = \frac{1}{1 - a_{ii}}$).
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-3-STATE LEFT-TO-RIGHT (BAKIS) HMM TOPOLOGY FOR A PHONEME:
-             a11                    a22                    a33
-            ╭───╮                  ╭───╮                  ╭───╮
-            ▼   │                  ▼   │                  ▼   │
-         ┌─────────┐    a12     ┌─────────┐    a23     ┌─────────┐
-  ────►  │ State 1 ├───────────►│ State 2 ├───────────►│ State 3 ├────► Exit
-  Initial│ (Onset) │            │(Nucleus)│            │ (Coda)  │
-  π1 = 1 └────┬────┘            └────┬────┘            └────┬────┘
-              │                      │                      │
-              ▼ b1(ot)               ▼ b2(ot)               ▼ b3(ot)
-          Observation            Observation            Observation
-          Vector o(t)            Vector o(t)            Vector o(t)
-          (Acoustic MFCC)        (Acoustic MFCC)        (Acoustic MFCC)
-
-CONTINUOUS SPEECH: HMMs for phonemes are concatenated into Words, and Words into Sentences!
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Conceptual Architecture of an HMM for Speech
 A Hidden Markov Model (HMM) is a doubly stochastic statistical process ideally suited for speech recognition:
 1. **Underlying Hidden Process:** A discrete Markov chain representing the hidden sequence of articulatory vocal tract states ($S = \{s_1, s_2, \dots, s_N\}$).
@@ -1459,38 +1149,21 @@ In continuous speech recognition, individual phoneme HMMs are concatenated into 
 
 # UNIT-3 (CO3)
 
-## MID1-Q17: Interpret the characteristics and representation of multi-dimensional signals and examine their significance in advanced signal processing applications. 
+## MID1-Q17: Q17. Interpret the characteristics and representation of multi-dimensional signals and examine their significance in advanced signal processing applications.
 **Mid:** Mid-I | **QNo:** 17 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K2 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #19 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** Multi-dimensional (M-D) signals depend on 2 or more independent spatial/temporal variables (e.g. 2D image f(x,y), 3D video f(x,y,t)); characterized by spatial correlation, non-causality, and massive data volume.
+> 🧠 **Core Anchor:** Multi-dimensional (M-D) signals depend on 2 or more independent spatial/temporal variables (e.g. 2D image f(x,y), 3D video f(x,y,t)); characterized by spatial correlation, non-causality, and massive data volume.
 
 > 🐣 **In Plain English:** Signals with 2 or more coordinates: photos have (x,y), videos have (x,y,time), and MRI scans have (x,y,z); pixels are heavily correlated in all directions.
-> 🔑 **Magic Exam Keywords:** `Multi-Dimensional Signals, 2D Still Images f(x, y), 3D Video f(x, y, t), 3D Volumetric CT/MRI f(x, y, z), Spatial/Temporal Correlation, Non-Causality, High Bandwidth (Gbps)`
-> 📝 **What to Draw / Write:** Stacked diagrams: 1D wave s(t), 2D grid f(x,y), and 3D cube of video frames moving along time t
+> 🔑 **Key Exam Terms:** `Multi-Dimensional Signals, 2D Still Images f(x, y), 3D Video f(x, y, t), 3D Volumetric CT/MRI f(x, y, z), Spatial/Temporal Correlation, Non-Causality, High Bandwidth (Gbps)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Taxonomy:** 2D signals (images $f(x, y)$), 3D signals (video $f(x, y, t)$ or volumetric CT $f(x, y, z)$), 4D signals (dynamic MRI).
 - **Spatial Correlation:** Neighboring pixels exhibit $>90\%$ mutual statistical correlation; video frames exhibit massive temporal redundancy.
 - **Non-Causality:** Unlike 1D time signals, spatial dimensions exist simultaneously in all directions, permitting zero-phase symmetric 2D filtering.
 - **Massive Bandwidth:** Uncompressed Full HD video requires $>3.0\text{ Gbps}$, necessitating aggressive transform-domain compression.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-MULTI-DIMENSIONAL SIGNAL TAXONOMY:
-  1D Signal (Speech)      : s(t)          ──► [ Amplitude vs Time ]
-  2D Signal (Still Image) : f(x, y)       ──► [ Intensity vs (Horizontal, Vertical) ]
-  3D Signal (Digital Video): f(x, y, t)   ──► [ 2D Spatial Frames over Time t ]
-  3D Signal (Medical CT)  : f(x, y, z)    ──► [ Volumetric Voxel Grid in 3D Space ]
-  4D Signal (Dynamic MRI) : f(x, y, z, t) ──► [ Beating Heart Volume over Time ]
-
-CORE CHARACTERISTICS:
-  1. Spatial Correlation  (Neighboring pixels are highly similar)
-  2. Non-Causal Nature    (Pixels exist simultaneously in all spatial directions)
-  3. Massive Data Bandwidth (HD Video requires Gbps without compression)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Definition and Mathematical Representation
 A **Multi-Dimensional (M-D) signal** is a physical quantity whose value depends on two or more independent variables:
 1. **2D Signals (Still Images):**
@@ -1532,48 +1205,21 @@ A **Multi-Dimensional (M-D) signal** is a physical quantity whose value depends 
 
 ---
 
-## MID1-Q18: Demonstrate the application of multi-dimensional transforms (2D-DFT) for analyzing signal representation in spatial and frequency domains. 
+## MID1-Q18: Q18. Demonstrate the application of multi-dimensional transforms (2D-DFT) for analyzing signal representation in spatial and frequency domains.
 **Mid:** Mid-I | **QNo:** 18 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K3 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #21 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** 2D-DFT decomposes an image into 2D spatial sinusoidal frequencies; separable into 1D row-column DFTs; center DC represents average brightness, while high-frequency axes correspond to vertical and horizontal edges.
+> 🧠 **Core Anchor:** 2D-DFT decomposes an image into 2D spatial sinusoidal frequencies; separable into 1D row-column DFTs; center DC represents average brightness, while high-frequency axes correspond to vertical and horizontal edges.
 
 > 🐣 **In Plain English:** 2D-DFT splits an image into horizontal and vertical wave ripples; can be computed by doing 1D-FFT on all rows, then on all columns.
-> 🔑 **Magic Exam Keywords:** `2D-DFT, Row-Column Separability (O(MN log MN)), DC Component F(0,0) (Average Brightness), Spatial Frequency Axes, Horizontal/Vertical Edge Orientation, Low-pass blurring, High-pass edges`
-> 📝 **What to Draw / Write:** Square 2D spectrum with DC bright spot at center (0,0), horizontal axis u (vertical edges), and vertical axis v (horizontal edges)
+> 🔑 **Key Exam Terms:** `2D-DFT, Row-Column Separability (O(MN log MN)), DC Component F(0,0) (Average Brightness), Spatial Frequency Axes, Horizontal/Vertical Edge Orientation, Low-pass blurring, High-pass edges`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **2D-DFT Formulation:** $F(u, v) = \sum_x \sum_y f(x, y) e^{-j 2\pi (ux/M + vy/N)}$; kernel is fully separable.
 - **Row-Column Algorithm:** Computed by applying 1D-FFT to all rows, then 1D-FFT to all columns in $O(MN \log_2(MN))$ ops.
 - **DC Component:** Centered $F(0, 0)$ represents total spatial sum, directly proportional to average image brightness.
 - **Edge Orthogonality:** Horizontal frequency axis ($u$) corresponds to vertical spatial edges; vertical frequency axis ($v$) corresponds to horizontal spatial edges.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-2D-DFT SEPARABLE COMPUTATION (Row-Column Decomposition):
-   Input Image f(x, y) [M x N]
-            │
-            ▼  Step 1: Apply 1D-DFT along every Row
-   Intermediate Matrix G(u, y)
-            │
-            ▼  Step 2: Apply 1D-DFT along every Column
-   2D-DFT Spectrum F(u, v)
-
-SPECTRAL INTERPRETATION (Shifted Spectrum):
-   ┌─────────────────────────────────────┐
-   │ High Spatial Freq (Fine Texture)    │
-   │                  ▲ v (Vertical Freq)│
-   │                  │                  │
-   │         Horizontal Edges            │
-   │                  │                  │
-   │ ── Vertical ────(DC)──── Edges ───► u (Horizontal Freq)
-   │                  │ (Average Lum)    │
-   │                  │                  │
-   │                                     │
-   └─────────────────────────────────────┘
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Mathematical Definition of 2D-DFT
 For an $M \times N$ digital image $f(x, y)$ (where $0 \le x \le M-1$ and $0 \le y \le N-1$), the 2D Discrete Fourier Transform (2D-DFT) is defined as:
 $$F(u, v) = \sum_{x=0}^{M-1} \sum_{y=0}^{N-1} f(x, y) e^{-j 2\pi \left( \frac{ux}{M} + \frac{vy}{N} \right)}$$
@@ -1620,36 +1266,21 @@ When the spectrum is centered (via `fftshift`, multiplying $f(x,y)$ by $(-1)^{x+
 
 ---
 
-## MID1-Q19: Evaluate multi-dimensional system models by analyzing their input–output relationships using convolution and transform domain methods. 
+## MID1-Q19: Q19. Evaluate multi-dimensional system models by analyzing their input–output relationships using convolution and transform domain methods.
 **Mid:** Mid-I | **QNo:** 19 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K5 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 4 (Deep Dive) | **Global Rank:** #39 of 40 | **Prep Time:** 7 min
 
-> 🧠 **30-Second Exam Anchor:** 2D Linear Shift-Invariant (LSI) systems are completely characterized by their 2D impulse response h[m,n]; spatial 2D convolution y = x ** h maps to frequency-domain multiplication Y = X · H via 2D-DFT/Z-transform.
+> 🧠 **Core Anchor:** 2D Linear Shift-Invariant (LSI) systems are completely characterized by their 2D impulse response h[m,n]; spatial 2D convolution y = x ** h maps to frequency-domain multiplication Y = X · H via 2D-DFT/Z-transform.
 
 > 🐣 **In Plain English:** A 2D filter slides a small kernel over an image like a magnifying glass; in frequency space, this is just multiplying two matrices.
-> 🔑 **Magic Exam Keywords:** `2D LSI System, 2D Unit Impulse Response / Point Spread Function (PSF h[m,n]), 2D Discrete Convolution, 2D Z-Transform, Frequency Response H(ω1, ω2), Separable 2D Filter (O(2K) vs O(K^2))`
-> 📝 **What to Draw / Write:** 2D image x[m,n] being convolved with 3x3 kernel h[m,n] to produce output y[m,n], alongside separable row-then-column filtering diagram
+> 🔑 **Key Exam Terms:** `2D LSI System, 2D Unit Impulse Response / Point Spread Function (PSF h[m,n]), 2D Discrete Convolution, 2D Z-Transform, Frequency Response H(ω1, ω2), Separable 2D Filter (O(2K) vs O(K^2))`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **2D LSI Systems:** Characterized by 2D unit impulse response / Point Spread Function $h[m, n]$.
 - **2D Spatial Convolution:** $y[m, n] = x[m, n] ** h[m, n] = \sum_k \sum_l x[k, l] h[m-k, n-l]$.
 - **Transform Domain Equivalence:** Convolution in space corresponds to matrix multiplication in frequency domain: $Y(z_1, z_2) = X(z_1, z_2) \cdot H(z_1, z_2)$.
 - **Separable 2D Filters:** If $h[m, n] = h_1[m] \cdot h_2[n]$, complexity drops from $O(K^2)$ to $O(2K)$ operations per pixel.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-2D SPATIAL DOMAIN LSI SYSTEM:
-  Input Image x[m, n] ──► [ 2D System h[m, n] ] ──► Output Image y[m, n]
-                          (Impulse Response / PSF)    y[m, n] = x[m, n] ** h[m, n]
-
-TRANSFORM DOMAIN (2D-DFT / 2D Z-Transform):
-  X(ω1, ω2) ────────────► [ Frequency Response H(ω1, ω2) ] ──► Y(ω1, ω2) = X · H
-
-SEPARABLE 2D CONVOLUTION (Speedup from O(M^2 N^2) to O(2MNK)):
-  Input x[m, n] ──► [ 1D Row Filter h1[m] ] ──► [ 1D Col Filter h2[n] ] ──► Output y[m, n]
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Multi-Dimensional Linear Shift-Invariant (LSI) Systems
 A 2D discrete system $\mathcal{T}\{\cdot\}$ maps an input image $x[m, n]$ to an output image $y[m, n]$. It is **Linear Shift-Invariant (LSI)** if:
 1. **Linearity (Superposition):**
@@ -1709,67 +1340,21 @@ A 2D filter kernel is **separable** if $h[m, n] = h_1[m] \cdot h_2[n]$.
 
 ---
 
-## MID1-Q20: Design and formulate a multi-dimensional signal processing framework for applications such as image or video systems, and justify the choice of transforms and system models. 
+## MID1-Q20: Q20. Design and formulate a multi-dimensional signal processing framework for applications such as image or video systems, and justify the choice of transforms and system models.
 **Mid:** Mid-I | **QNo:** 20 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #33 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** A complete image/video compression framework incorporates block partition, 2D-DCT transform, psycho-visual quantization, zig-zag reordering, and entropy coding, achieving 10:1 to 50:1 compression.
+> 🧠 **Core Anchor:** A complete image/video compression framework incorporates block partition, 2D-DCT transform, psycho-visual quantization, zig-zag reordering, and entropy coding, achieving 10:1 to 50:1 compression.
 
 > 🐣 **In Plain English:** The JPEG/MPEG machine: chop image into 8x8 squares, run 2D-DCT to pack energy into corners, throw away invisible high frequencies, and zip-compress.
-> 🔑 **Magic Exam Keywords:** `Image Compression Pipeline, YCbCr 4:2:0 subsampling, 8x8 Block Partitioning, 2D-DCT-II (Energy Compaction, no boundary discontinuity), Psychovisual Quantization Q(u,v), Zig-zag scan, Huffman/CABAC`
-> 📝 **What to Draw / Write:** End-to-end flowchart: RGB -> YCbCr -> 8x8 Block -> 2D-DCT -> Quantization -> Zig-zag scan -> Huffman coding -> Bitstream
+> 🔑 **Key Exam Terms:** `Image Compression Pipeline, YCbCr 4:2:0 subsampling, 8x8 Block Partitioning, 2D-DCT-II (Energy Compaction, no boundary discontinuity), Psychovisual Quantization Q(u,v), Zig-zag scan, Huffman/CABAC`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Compression Pipeline:** Color Conversion (RGB to YCbCr) -> 4:2:0 Chroma Subsampling -> 8x8 Block Partition -> 2D-DCT -> Quantization -> Zig-zag -> Entropy Coding.
 - **Why 2D-DCT over 2D-DFT:** DCT enforces even-symmetric boundary reflection (eliminates blocking artifacts and spectral leakage), packs $>90\%$ energy into 3-5 coefficients, and uses purely real arithmetic.
 - **Quantization:** Lossy step dividing DCT coefficients by HVS visibility threshold matrix $Q(u, v)$, driving high frequencies to zero.
 - **Performance:** Delivers 10:1 to 25:1 visually lossless image compression, and 50:1 to 100:1 video compression.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-END-TO-END MULTI-DIMENSIONAL COMPRESSION FRAMEWORK (JPEG / MPEG Pipeline):
-
-  Spatial Image/Frame f(x, y)
-             │
-             ▼
-  ┌─────────────────────────────────┐
-  │ 1. Color Space Conversion       │  RGB ──► YCbCr (Luminance + Chrominance)
-  │    & Chroma Subsampling         │  4:4:4 ──► 4:2:0 (Discards 50% chroma data)
-  └────────────────┬────────────────┘
-                   │
-                   ▼
-  ┌─────────────────────────────────┐
-  │ 2. Block Partitioning           │  Divide image into non-overlapping 8x8 blocks
-  └────────────────┬────────────────┘
-                   │
-                   ▼
-  ┌─────────────────────────────────┐
-  │ 3. 2D-DCT Transform             │  Spatial domain ──► Frequency domain
-  │    (Discrete Cosine Transform)  │  Compacts 90% energy into top-left coefficients
-  └────────────────┬────────────────┘
-                   │
-                   ▼
-  ┌─────────────────────────────────┐
-  │ 4. Psycho-visual Quantization   │  Divide by Quantization Matrix Q(u, v) & Round
-  │    (Lossy Step)                 │  High frequencies zeroed out based on HVS
-  └────────────────┬────────────────┘
-                   │
-                   ▼
-  ┌─────────────────────────────────┐
-  │ 5. Zig-Zag Scan & Run-Length    │  Converts 2D matrix into 1D array;
-  │    Encoding (RLE)               │  Groups long runs of trailing zeros
-  └────────────────┬────────────────┘
-                   │
-                   ▼
-  ┌─────────────────────────────────┐
-  │ 6. Entropy Coding (Huffman/CABAC│  Assigns short codes to frequent symbols
-  └────────────────┬────────────────┘
-                   │
-                   ▼
-        [ Compressed Bitstream (.jpg / .mp4) ]
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Framework Architecture Overview
 To process and compress multi-dimensional visual signals (still images and video frames), an end-to-end framework must eliminate three primary redundancies:
 1. **Spatial Redundancy:** Correlation between neighboring pixels in a frame.
@@ -1827,39 +1412,21 @@ To process and compress multi-dimensional visual signals (still images and video
 
 ---
 
-## MID2-Q01: Explain the concept of multi-dimensional sampling theory. 
+## MID2-Q01: Q1. Explain the concept of multi-dimensional sampling theory.
 **Mid:** Mid-II | **QNo:** 1 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K2 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #22 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** M-D sampling converts continuous space-time signals into discrete grids via sampling matrices/lattices; Nyquist requires sampling rates along each axis to exceed twice the maximum directional bandwidth.
+> 🧠 **Core Anchor:** M-D sampling converts continuous space-time signals into discrete grids via sampling matrices/lattices; Nyquist requires sampling rates along each axis to exceed twice the maximum directional bandwidth.
 
 > 🐣 **In Plain English:** Sampling images on a grid: pixels can be laid out in squares or hexagons; sampling rate must be twice the highest spatial frequency to avoid wavy moiré patterns.
-> 🔑 **Magic Exam Keywords:** `Multi-Dimensional Sampling, Sampling Lattice Matrix V, Rectangular Lattice vs Hexagonal Lattice (saves 13.4% samples), Reciprocal Lattice U, 2D Nyquist Criterion (fsx >= 2·fmax,x), Moiré Aliasing`
-> 📝 **What to Draw / Write:** Two pixel grids: Rectangular grid (square dots) and Hexagonal grid (staggered honeycomb dots), with overlapping spectral circles illustrating 2D aliasing
+> 🔑 **Key Exam Terms:** `Multi-Dimensional Sampling, Sampling Lattice Matrix V, Rectangular Lattice vs Hexagonal Lattice (saves 13.4% samples), Reciprocal Lattice U, 2D Nyquist Criterion (fsx >= 2·fmax,x), Moiré Aliasing`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Sampling Lattices:** Discrete grid generated by sampling matrix $\mathbf{V}$: $\mathbf{x} = \mathbf{V} \mathbf{n}$.
 - **Rectangular vs Hexagonal:** Hexagonal lattice packs circular bandlimited signals tighter, saving **13.4% samples** over rectangular grids.
 - **Reciprocal Lattice:** Frequency domain spectral replication occurs on reciprocal matrix $\mathbf{U} = 2\pi \mathbf{V}^{-T}$.
 - **2D Nyquist Criterion:** $f_{sx} \ge 2 f_{\max,x}$ and $f_{sy} \ge 2 f_{\max,y}$. Undersampling causes overlapping spectral replicas, manifesting as **Moiré patterns** and spatial jaggies.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-MULTI-DIMENSIONAL SAMPLING GEOMETRIES:
-  1. RECTANGULAR LATTICE:                2. HEXAGONAL LATTICE:
-     ●   ●   ●   ●   (T1, 0)                ●     ●     ●
-                                                   ●     ●     ●
-     ●   ●   ●   ●   (0, T2)                ●     ●     ●
-     Sample Matrix V = [ T1   0 ]               Optimal for circular bandlimited
-                       [  0  T2 ]               signals (saves ~13.4% samples!)
-
-SPECTRAL REPLICATION & 2D NYQUIST CONDITION:
-  Continuous Spectrum F(ω1, ω2) ──► Replicated on Reciprocal Lattice U = 2π V^-T
-  Condition to prevent spectral overlap (Aliasing):
-       fsx ≥ 2 · f_max,x   AND   fsy ≥ 2 · f_max,y
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Fundamentals of Multi-Dimensional Sampling
 Multi-dimensional sampling theory extends 1D sampling of continuous time signals to signals defined over two or more spatial/temporal dimensions (e.g. continuous 2D image $f(x, y)$ or 3D video $f(x, y, t)$):
 * A continuous signal $f_c(\mathbf{x})$ (where $\mathbf{x} = [x_1, x_2, \dots, x_D]^T \in \mathbb{R}^D$) is sampled on a discrete spatial **Lattice** $\Lambda$.
@@ -1899,58 +1466,21 @@ $$F_s(\boldsymbol{\Omega}) = \frac{1}{|\det(\mathbf{V})|} \sum_{\mathbf{k} \in \
 
 ---
 
-## MID2-Q02: Illustrate with a block diagram and justify the transformation process. 🔥 [FREE MARKS / NUMERICAL]
+## MID2-Q02: Q2. Illustrate with a block diagram and justify the transformation process.
 **Mid:** Mid-II | **QNo:** 2 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K3 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #10 of 40 | **Prep Time:** 4 min
 
-> 🧠 **30-Second Exam Anchor:** The transformation process converts correlated spatial pixels into decorrelated frequency coefficients via 2D-DCT, concentrating signal energy into few low-frequency coefficients.
+> 🧠 **Core Anchor:** The transformation process converts correlated spatial pixels into decorrelated frequency coefficients via 2D-DCT, concentrating signal energy into few low-frequency coefficients.
 
 > 🐣 **In Plain English:** Take 8x8 pixel blocks, convert them to frequencies via DCT, throw away fine textures with quantization, and compress the remaining numbers into a small file.
-> 🔑 **Magic Exam Keywords:** `Block Partitioning (8x8), 2D-DCT (decorrelation & energy compaction), Quantization Matrix (lossy step based on HVS), Zig-Zag Scan (groups zeros), Entropy Coding (lossless Huffman)`
-> 📝 **What to Draw / Write:** Flowchart: 8x8 Block -> 2D-DCT -> Quantization Matrix -> Zig-Zag Serialization -> Run-Length & Huffman Encoding
+> 🔑 **Key Exam Terms:** `Block Partitioning (8x8), 2D-DCT (decorrelation & energy compaction), Quantization Matrix (lossy step based on HVS), Zig-Zag Scan (groups zeros), Entropy Coding (lossless Huffman)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Block Partitioning (8x8):** Exploits localized spatial correlation and reduces computation from global $O(N^2)$ to block-level parallel processing.
 - **2D-DCT Transformation:** Orthogonally decorrelates the 64 spatial pixels and concentrates almost all block energy into the top-left DC and first 3 AC coefficients.
 - **Quantization Matrix:** Divides coefficients by human visual contrast thresholds, converting imperceptible fine textures into exact zeros.
 - **Zig-Zag & Entropy Coding:** Reorders matrix by increasing frequency into a 1D vector to produce long trailing zero-runs encoded via Huffman/CABAC.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-THE COMPLETE TRANSFORMATION PROCESS BLOCK DIAGRAM:
-
-Spatial Image Input f(x, y)
-       │
-       ▼
-┌───────────────────────────────┐
-│ 1. 8x8 Block Partitioning     │  Splits image into local spatial blocks
-└──────────────┬────────────────┘
-               │
-               ▼
-┌───────────────────────────────┐
-│ 2. 2D-DCT Transformation      │  Decorrelates pixels & compacts energy into DC/AC
-└──────────────┬────────────────┘
-               │
-               ▼
-┌───────────────────────────────┐
-│ 3. Quantization Matrix Q(u, v)│  Lossy step: Divides by HVS visibility threshold
-└──────────────┬────────────────┘
-               │
-               ▼
-┌───────────────────────────────┐
-│ 4. Zig-Zag Serial Scanning    │  Converts 2D array into 1D sorted by frequency
-└──────────────┬────────────────┘
-               │
-               ▼
-┌───────────────────────────────┐
-│ 5. Entropy Encoder (Huffman)  │  Lossless binary compression
-└──────────────┬────────────────┘
-               │
-               ▼
-Compressed Output Bitstream
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Block Diagram of the Transformation Process
 The transformation process is the heart of transform-based video and image compression standards (JPEG, MPEG, H.264). It maps spatial pixel blocks into the transform (frequency) domain to decouple statistical correlations and exploit human visual limitations.
 
@@ -1977,45 +1507,21 @@ The transformation process is the heart of transform-based video and image compr
 
 ---
 
-## MID2-Q03: Evaluate the influence of human visual system properties such as luminance sensitivity, contrast perception, and color interpretation on image representation and compression techniques. 
+## MID2-Q03: Q3. Evaluate the influence of human visual system properties such as luminance sensitivity, contrast perception, and color interpretation on image representation and compression techniques.
 **Mid:** Mid-II | **QNo:** 3 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K5 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #29 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** Human vision exhibits high luminance sensitivity but poor color acuity (enabling 4:2:0 subsampling), logarithmic contrast perception (Weber's Law), and bandpass frequency response (CSF justifying heavy high-frequency quantization).
+> 🧠 **Core Anchor:** Human vision exhibits high luminance sensitivity but poor color acuity (enabling 4:2:0 subsampling), logarithmic contrast perception (Weber's Law), and bandpass frequency response (CSF justifying heavy high-frequency quantization).
 
 > 🐣 **In Plain English:** Human eyes are sharp for black-and-white brightness but fuzzy for colors, and blind to very fine patterns, letting us throw away 70% of image data safely.
-> 🔑 **Magic Exam Keywords:** `Human Visual System (HVS), Rods vs Cones, Luminance vs Chrominance Sensitivity, YCbCr 4:2:0 Chroma Subsampling (50% saving), Weber-Fechner Law (logarithmic brightness), Contrast Sensitivity Function (CSF)`
-> 📝 **What to Draw / Write:** HVS CSF curve peaking at 3-5 cycles/degree and dropping sharply at high frequencies, paired with RGB to YCbCr 4:2:0 color subsampling diagram
+> 🔑 **Key Exam Terms:** `Human Visual System (HVS), Rods vs Cones, Luminance vs Chrominance Sensitivity, YCbCr 4:2:0 Chroma Subsampling (50% saving), Weber-Fechner Law (logarithmic brightness), Contrast Sensitivity Function (CSF)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Luminance vs Chroma:** Human retina has 120M rods (brightness) and only 6M cones (color); justifies YCbCr 4:2:0 subsampling that discards 50% data without visible loss.
 - **Contrast Sensitivity Function (CSF):** Bandpass response peaking at 3-5 cycles/degree and falling steeply to zero at high frequencies, justifying heavy high-frequency DCT quantization.
 - **Weber-Fechner Law:** Perception of light intensity is logarithmic; relative contrast $\Delta I / I \approx \text{const}$, governing gamma correction and adaptive quantization.
 - **Spatial & Temporal Masking:** Busy textured backgrounds mask visual noise; rapid scene transitions temporarily blind human vision, allowing higher compression.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-HUMAN CONTRAST SENSITIVITY FUNCTION (CSF):
-  ▲ Sensitivity S(f) = 1 / Threshold
-  │          ╭─────────╮
-  │        ╭─           ─╮       Peak Sensitivity at 3 - 5 cycles/degree
-  │       ╭               ╮
-  │      ╭                 ╰╮    High Frequency Drop-off:
-  │     ╭                    ╰╮  Eye CANNOT perceive fine spatial detail!
-  │    ╭                       ╰──► HEAVY QUANTIZATION ALLOWED HERE
-  └────┴───────────┴─────────────┴─────► Spatial Frequency (cycles/degree)
-       0           4            30
-
-COLOR OPPONENT MODEL IN HVS:
-   Photoreceptors: [ L-Cone (Red) ] [ M-Cone (Green) ] [ S-Cone (Blue) ]
-                          │                 │                 │
-                          ▼                 ▼                 ▼
-   Opponent Channels:  Y = Luminance (L + M) ────────► HIGH BANDWIDTH (Preserve)
-                      Cb = Blue - Yellow     ────────► LOW BANDWIDTH  (Compress 4:2:0)
-                      Cr = Red - Green       ────────► LOW BANDWIDTH  (Compress 4:2:0)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Introduction to the Human Visual System (HVS)
 Engineering visual compression algorithms (JPEG, H.264, HEVC) requires understanding the physiological and perceptual characteristics of the ultimate receiver: the human eye and visual cortex. The HVS is non-linear, non-uniform, and discards enormous amounts of physical light energy before transmitting signals to the brain.
 
@@ -2058,54 +1564,21 @@ Engineering visual compression algorithms (JPEG, H.264, HEVC) requires understan
 
 ---
 
-## MID2-Q04: Design and justify a digital video representation system, incorporating sampling theory, frame structure, and temporal redundancy reduction techniques. 
+## MID2-Q04: Q4. Design and justify a digital video representation system, incorporating sampling theory, frame structure, and temporal redundancy reduction techniques.
 **Mid:** Mid-II | **QNo:** 4 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #28 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** A comprehensive digital video system integrates progressive sampling lattices, YCbCr 4:2:0 subsampling, hierarchical GOP frame structures (I, P, B frames), and block motion compensation to achieve 100:1 video compression.
+> 🧠 **Core Anchor:** A comprehensive digital video system integrates progressive sampling lattices, YCbCr 4:2:0 subsampling, hierarchical GOP frame structures (I, P, B frames), and block motion compensation to achieve 100:1 video compression.
 
 > 🐣 **In Plain English:** How MP4 video works: capture progressive frames, compress color to 4:2:0, and store only 1 full photo (I-frame) followed by motion-predicted sticky notes (P/B frames).
-> 🔑 **Magic Exam Keywords:** `Digital Video System, Progressive Scanning (no interlace comb artifacts), YCbCr 4:2:0 (12 bpp), Group of Pictures (GOP), I-Frames (Intra), P-Frames (Forward predicted), B-Frames (Bi-directional), Motion Vectors`
-> 📝 **What to Draw / Write:** Timeline of GOP frames: I ──► P ──► P with arrows pointing to B-frames in between, showing forward and backward prediction arrows
+> 🔑 **Key Exam Terms:** `Digital Video System, Progressive Scanning (no interlace comb artifacts), YCbCr 4:2:0 (12 bpp), Group of Pictures (GOP), I-Frames (Intra), P-Frames (Forward predicted), B-Frames (Bi-directional), Motion Vectors`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Progressive Scanning:** Scans all lines sequentially in a single frame; eliminates motion comb artifacts common in interlaced video.
 - **Color Subsampling (YCbCr 4:2:0):** 4 luminance pixels share 1 pair of chroma samples, cutting uncompressed data from 24 bpp to 12 bpp.
 - **Group of Pictures (GOP):** Recurring sequence of I-frames (intra-coded anchors), P-frames (forward motion predicted), and B-frames (bi-directional motion predicted).
 - **Motion Compensation:** Replaces full frames with motion vectors $\vec{d} = (d_x, d_y)$ and near-zero prediction residuals, achieving 100:1 compression.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-DIGITAL VIDEO REPRESENTATION & COMPRESSION ARCHITECTURE:
-
-1. COLOR & SPATIAL SAMPLING:
-   Input Video ──► [ YCbCr 4:2:0 Subsampling ] ──► Cuts raw bitrate by 50%
-
-2. TEMPORAL GOP (Group of Pictures) STRUCTURE:
-       Forward Prediction
-     ┌───────────────────────┐
-     │                       ▼
-   ┌───┐       ┌───┐       ┌───┐       ┌───┐       ┌───┐
-   │ I │◄─────►│ B │◄─────►│ P │◄─────►│ B │◄─────►│ I │  ...
-   └───┘       └───┘       └───┘       └───┘       └───┘
-     ▲                       ▲
-     └───────────────────────┘
-       Bidirectional Prediction
-
-3. TEMPORAL REDUNDANCY REDUCTION (Motion Compensation):
-   Target Block Frame(t) ──► [ Block Matching Search ] ──► Motion Vector (dx, dy)
-                                    │
-                                    ▼
-                          [ Subtract Reference ]
-                                    │
-                                    ▼
-                         Residual Error e[x, y]  (Near Zero Energy!)
-                                    │
-                                    ▼
-                           [ 2D-DCT + Quant ] ──► Compressed Bitstream
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Architectural System Design
 A digital video system represents continuous 3D spatio-temporal light $f(x, y, t)$ as a compressed, streamable digital bitstream. The design integrates three interconnected subsystems:
 1. **Sampling Lattice & Frame Scanning Architecture**
@@ -2167,42 +1640,21 @@ Video frames are classified into three functional types within a recurring GOP (
 
 # UNIT-4 (CO4)
 
-## MID2-Q05: Classify the fundamental principles of image formation models and their role in motion estimation frameworks. 
+## MID2-Q05: Q5. Classify the fundamental principles of image formation models and their role in motion estimation frameworks.
 **Mid:** Mid-II | **QNo:** 5 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K1 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #17 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** Image formation models describe how 3D dynamic scenes project onto a 2D sensor through Geometric (perspective projection) and Photometric (illumination-reflectance) models.
+> 🧠 **Core Anchor:** Image formation models describe how 3D dynamic scenes project onto a 2D sensor through Geometric (perspective projection) and Photometric (illumination-reflectance) models.
 
 > 🐣 **In Plain English:** Geometric projection shrinks distant objects (3D to 2D); photometric illumination determines pixel brightness; motion estimation must separate real motion from lighting changes.
-> 🔑 **Magic Exam Keywords:** `Image Formation Model, Geometric Projection (Pinhole x=fX/Z, y=fY/Z), Motion Parallax, Photometric Model (Illumination L × Reflectance R), Brightness Constancy, Camera Intrinsics/Extrinsics`
-> 📝 **What to Draw / Write:** Pinhole camera model showing 3D point P(X, Y, Z) projecting through pinhole lens onto 2D image plane at (x, y)
+> 🔑 **Key Exam Terms:** `Image Formation Model, Geometric Projection (Pinhole x=fX/Z, y=fY/Z), Motion Parallax, Photometric Model (Illumination L × Reflectance R), Brightness Constancy, Camera Intrinsics/Extrinsics`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Geometric Model:** Pinhole perspective projection ($x = f X/Z, y = f Y/Z$); distant objects appear smaller; establishes motion parallax (speed inversely proportional to depth $Z$).
 - **Photometric Model:** Image irradiance $I(x, y) = L(x, y) \cdot R(x, y)$ (Illumination $\times$ Reflectance); explains when brightness constancy fails (shadows, lighting flickers).
 - **Camera Parameters:** Extrinsics ($[R \mid \mathbf{t}]$) define 3D camera pose; Intrinsics ($K$) define focal length and lens distortion.
 - **Role in Motion:** Enables motion estimation algorithms to separate true geometric 3D object motion from lighting fluctuations and camera egomotion.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-IMAGE FORMATION PRINCIPLES IN MOTION ESTIMATION:
-
-1. GEOMETRIC MODEL (3D World ──► 2D Sensor):
-   World Point P(X, Y, Z) ──► [ Perspective Projection ] ──► Image Point p(x, y)
-                              x = f · (X / Z),   y = f · (Y / Z)
-                              (Objects moving away appear smaller!)
-
-2. PHOTOMETRIC / RADIOMETRIC MODEL (Scene Radiance ──► Pixel Intensity):
-   Illumination L(x, y) ──► [ Surface Reflectance R(x, y) ] ──► Image Irradiance I(x, y)
-                            I(x, y) = L(x, y) · R(x, y)
-
-3. ROLE IN MOTION ESTIMATION:
-   Motion Estimator must differentiate:
-   - True Geometric Displacement (Moving object)  VS
-   - Photometric Artifacts (Flickering light, casting shadow)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Overview of Image Formation Models
 An image formation model mathematically describes the physical process through which a 3D real-world scene is converted into a 2D digital image sequence $I(x, y, t)$ by an optical imaging sensor (camera). In video processing, understanding image formation is critical so that motion estimation algorithms can distinguish true physical object motion from lighting fluctuations.
 
@@ -2245,45 +1697,21 @@ An image formation model mathematically describes the physical process through w
 
 ---
 
-## MID2-Q06: Explain the mathematical representation of motion models and interpret their assumptions in real-world dynamic scenes. 
+## MID2-Q06: Q6. Explain the mathematical representation of motion models and interpret their assumptions in real-world dynamic scenes.
 **Mid:** Mid-II | **QNo:** 6 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K2 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #16 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** Motion models parameterize 2D pixel displacement via Translational (2 DOF), Affine (6 DOF), or Projective (8 DOF) transforms under Brightness Constancy and Spatial Coherence assumptions.
+> 🧠 **Core Anchor:** Motion models parameterize 2D pixel displacement via Translational (2 DOF), Affine (6 DOF), or Projective (8 DOF) transforms under Brightness Constancy and Spatial Coherence assumptions.
 
 > 🐣 **In Plain English:** Translational motion just shifts (2 parameters); Affine also rotates and zooms (6 parameters); Homography handles full 3D tilting (8 parameters).
-> 🔑 **Magic Exam Keywords:** `Translational Model (2 DOF [dx, dy]), Affine Model (6 DOF: translation, rotation, scale, shear), Projective / Homography (8 DOF), Brightness Constancy (I(t+dt)=I(t)), Small Motion, Spatial Coherence`
-> 📝 **What to Draw / Write:** Three transformed squares: 1. Translated box; 2. Rotated/sheared affine parallelogram; 3. Perspective trapezoid (homography)
+> 🔑 **Key Exam Terms:** `Translational Model (2 DOF [dx, dy]), Affine Model (6 DOF: translation, rotation, scale, shear), Projective / Homography (8 DOF), Brightness Constancy (I(t+dt)=I(t)), Small Motion, Spatial Coherence`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Translational Model (2 DOF):** $\mathbf{x}' = \mathbf{x} + \mathbf{d}$; rigid shift; standard in block matching algorithms.
 - **Affine Model (6 DOF):** $\mathbf{x}' = \mathbf{A} \mathbf{x} + \mathbf{d}$; captures translation, rotation, zoom/scale, and shear; preserves parallel lines.
 - **Projective / Homography (8 DOF):** 8 parameters modeling full perspective distortion of rigid 3D planar surfaces.
 - **Core Assumptions:** Brightness Constancy ($I(t+dt) = I(t)$), Small Motion (permits Taylor expansion), and Spatial Coherence (neighboring pixels move together).
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-PARAMETRIC 2D MOTION MODELS (Degrees of Freedom):
-
-1. TRANSLATIONAL (2 DOF):
-   [ x' ] = [ x ] + [ dx ]        (Rigid shift; uniform camera pan)
-   [ y' ]   [ y ]   [ dy ]
-
-2. AFFINE MODEL (6 DOF):
-   [ x' ] = [ a11  a12 ] [ x ] + [ dx ]  (Translation, Rotation,
-   [ y' ]   [ a21  a22 ] [ y ]   [ dy ]   Scale, and Shear)
-
-3. PROJECTIVE / HOMOGRAPHY (8 DOF):
-   x' = (h11·x + h12·y + h13) / (h31·x + h32·y + 1)   (Full 3D planar rotation
-   y' = (h21·x + h22·y + h23) / (h31·x + h32·y + 1)    and perspective tilt)
-
-CORE MOTION ASSUMPTIONS:
-  1. Brightness Constancy : I(x+dx, y+dy, t+dt) = I(x, y, t)
-  2. Small Motion         : Displacement ||d|| is small between adjacent frames
-  3. Spatial Coherence    : Neighboring pixels move together with identical velocity
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Mathematical Representation of Motion Models
 In video processing, motion estimation describes how pixel coordinates $(x, y)$ in frame $t$ map to new coordinates $(x', y')$ in frame $t + 1$:
 $$x' = f(x, y; \mathbf{p}), \quad y' = g(x, y; \mathbf{p})$$
@@ -2328,44 +1756,21 @@ where $\mathbf{p}$ is the motion parameter vector.
 
 ---
 
-## MID2-Q07: By using  Block Motion Estimation A block in Frame 1 is at:  (20,25) Best match in Frame 2 is at: (23,30) Compute motion vector  Interpret direction of motion 🔥 [FREE MARKS / NUMERICAL]
+## MID2-Q07: Q7. By using  Block Motion Estimation A block in Frame 1 is at:  (20,25) Best match in Frame 2 is at: (23,30) Compute motion vector  Interpret direction of motion
 **Mid:** Mid-II | **QNo:** 7 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K3 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #1 of 40 | **Prep Time:** 2 min
 
-> 🧠 **30-Second Exam Anchor:** Motion vector is $\vec{d} = (\Delta x, \Delta y) = (3, 5)$; magnitude $|\vec{d}| = \sqrt{34} \approx 5.83\text{ pixels}$; moving rightward (+3) and downward (+5) at angle $59.04^\circ$.
+> 🧠 **Core Anchor:** Motion vector is $\vec{d} = (\Delta x, \Delta y) = (3, 5)$; magnitude $|\vec{d}| = \sqrt{34} \approx 5.83\text{ pixels}$; moving rightward (+3) and downward (+5) at angle $59.04^\circ$.
 
 > 🐣 **In Plain English:** From (20, 25) to (23, 30): Displacement is dx = 23-20 = +3, dy = 30-25 = +5; distance is √(3²+5²) = 5.83 pixels; direction is down-right at 59.04°.
-> 🔑 **Magic Exam Keywords:** `Block Motion Estimation, Displacement Vector d = (Δx, Δy) = (3, 5), Magnitude ||d|| = √(3² + 5²) = √34 ≈ 5.83 pixels, Direction θ = arctan(5/3) ≈ 59.04°, Downward-Rightward motion`
-> 📝 **What to Draw / Write:** Coordinate plot: Starting block at (20, 25) with an arrow pointing to best match at (23, 30), labeled dx=+3, dy=+5, θ=59.04°
+> 🔑 **Key Exam Terms:** `Block Motion Estimation, Displacement Vector d = (Δx, Δy) = (3, 5), Magnitude ||d|| = √(3² + 5²) = √34 ≈ 5.83 pixels, Direction θ = arctan(5/3) ≈ 59.04°, Downward-Rightward motion`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Given Coordinates:** Frame 1 at $(x_1, y_1) = (20, 25)$; Frame 2 best match at $(x_2, y_2) = (23, 30)$.
 - **Motion Vector:** $\Delta x = 23 - 20 = +3\text{ px}$, $\Delta y = 30 - 25 = +5\text{ px} \implies \vec{d} = (\mathbf{3, 5})$.
 - **Magnitude:** $|\vec{d}| = \sqrt{3^2 + 5^2} = \sqrt{9 + 25} = \sqrt{34} \approx \mathbf{5.83\text{ pixels}}$.
 - **Direction:** $\theta = \arctan(5/3) \approx \mathbf{59.04^\circ}$; motion is directed **3 px Rightward and 5 px Downward** in image coordinates.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-BLOCK MOTION ESTIMATION GEOMETRY:
-   Frame 1 (t)                               Frame 2 (t+1)
-   (0,0) ──────────────► x                  (0,0) ──────────────► x
-     │                                        │
-     │      (20, 25)                          │
-  25 │───────■ [Block 1]                   25 │       · · · · ·
-     │                                        │       ·       ·
-  30 │                                     30 │───────·───────■ (23, 30) [Best Match]
-     ▼ y                                      ▼ y            23
-
-DISPLACEMENT VECTOR CALCULATION:
-   Δx = x2 - x1 = 23 - 20 = +3 pixels (Rightward)
-   Δy = y2 - y1 = 30 - 25 = +5 pixels (Downward in image coords)
-
-   Motion Vector d = (3, 5)
-   Magnitude ||d|| = √(3² + 5²) = √34 ≈ 5.83 pixels
-   Direction θ = arctan(5/3) ≈ 59.04° (Down-Right)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Given Data
 * Position of the block center in **Frame 1 (Reference Frame, $t$)**:
   $$(x_1, y_1) = (20, 25)$$
@@ -2412,42 +1817,22 @@ $$\mathbf{Final\ Interpretation: } \quad \text{The block exhibits downward-right
 
 ---
 
-## MID2-Q08: Implement differential methods for motion estimation and analyze their sensitivity to noise and illumination variations. 
+## MID2-Q08: Q8. Implement differential methods for motion estimation and analyze their sensitivity to noise and illumination variations.
 **Mid:** Mid-II | **QNo:** 8 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K4 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #18 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** Differential optical flow uses spatial/temporal image gradients: Optical Flow Constraint $I_x u + I_y v + I_t = 0$; suffers from the Aperture Problem; solved locally via Lucas-Kanade and globally via Horn-Schunck.
+> 🧠 **Core Anchor:** Differential optical flow uses spatial/temporal image gradients: Optical Flow Constraint $I_x u + I_y v + I_t = 0$; suffers from the Aperture Problem; solved locally via Lucas-Kanade and globally via Horn-Schunck.
 
 > 🐣 **In Plain English:** Using brightness slope (gradients) to find pixel speed; looking through a small aperture hides parallel motion; Lucas-Kanade solves it in small windows.
-> 🔑 **Magic Exam Keywords:** `Optical Flow Constraint Equation (Ix·u + Iy·v + It = 0), Aperture Problem (1 eq, 2 unknowns), Lucas-Kanade (local least squares (A^T A)^-1 A^T b), Horn-Schunck (global smoothness PDE), Noise sensitivity`
-> 📝 **What to Draw / Write:** Aperture problem sketch: A straight edge moving diagonally seen through a circular hole appears to move only perpendicularly to the edge
+> 🔑 **Key Exam Terms:** `Optical Flow Constraint Equation (Ix·u + Iy·v + It = 0), Aperture Problem (1 eq, 2 unknowns), Lucas-Kanade (local least squares (A^T A)^-1 A^T b), Horn-Schunck (global smoothness PDE), Noise sensitivity`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Optical Flow Equation:** $I_x u + I_y v + I_t = 0$; derived from first-order Taylor expansion under brightness constancy.
 - **Aperture Problem:** 1 linear equation with 2 unknowns ($u, v$); only motion perpendicular to image edges (normal flow) can be directly measured.
 - **Lucas-Kanade:** Assumes constant flow in local $3 \times 3$ window; solves overdetermined least squares $(A^T A)^{-1} A^T b$ at textured corners.
 - **Horn-Schunck:** Global variational formulation adding a spatial smoothness regularizer; produces dense optical flow via iterative Gauss-Seidel updates.
 - **Sensitivity:** Gradient operators amplify noise; lighting shifts violate brightness constancy; large motion requires Gaussian pyramids.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-OPTICAL FLOW CONSTRAINT & APERTURE PROBLEM:
-  Taylor Expansion: I(x+u, y+v, t+1) ≈ I(x, y, t) + Ix·u + Iy·v + It = I(x, y, t)
-  ──► Optical Flow Equation: Ix · u + Iy · v + It = 0  (1 equation, 2 unknowns!)
-
-THE APERTURE PROBLEM:
-  ┌────────────────┐
-  │      /         │  Only motion NORMAL (perpendicular) to the edge can be measured!
-  │    /           │  Motion parallel to the edge is completely invisible.
-  │  /  ──► v_norm │
-  └────────────────┘
-
-DIFFERENTIAL METHODS COMPARISON:
-  1. LUCAS-KANADE (Local): Assumes constant velocity in 3x3 window -> Overdetermined least-squares
-  2. HORN-SCHUNCK (Global): Adds global smoothness regularization -> Iterative Gauss-Seidel PDE
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. The Optical Flow Constraint Equation (OFCE)
 Differential methods estimate optical flow $(u, v) = \left(\frac{dx}{dt}, \frac{dy}{dt}\right)$ using spatial and temporal partial derivatives of image brightness.
 
@@ -2498,45 +1883,21 @@ where $I_x = \frac{\partial I}{\partial x}$, $I_y = \frac{\partial I}{\partial y
 
 ---
 
-## MID2-Q09: Analyze matching-based motion estimation methods and evaluate their computational complexity and accuracy trade-offs. 
+## MID2-Q09: Q9. Analyze matching-based motion estimation methods and evaluate their computational complexity and accuracy trade-offs.
 **Mid:** Mid-II | **QNo:** 9 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K5 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #30 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** Matching-based methods divide frames into macroblocks and search for optimal displacements using matching criteria (SAD/MAD/MSE); Full Search is optimal but heavy O((2p+1)^2); Fast algorithms (TSS, 2D-Log, Diamond) achieve 90% speedup with minimal loss.
+> 🧠 **Core Anchor:** Matching-based methods divide frames into macroblocks and search for optimal displacements using matching criteria (SAD/MAD/MSE); Full Search is optimal but heavy O((2p+1)^2); Fast algorithms (TSS, 2D-Log, Diamond) achieve 90% speedup with minimal loss.
 
 > 🐣 **In Plain English:** Finding where a block moved: Full Search checks all 225 spots (slow but perfect); Three-Step Search checks 25 spots (9 times faster with almost the same quality).
-> 🔑 **Magic Exam Keywords:** `Block Matching Algorithm (BMA), Matching Criteria (SAD/MAD, MSE), Full Search (O((2p+1)^2)), Three-Step Search (TSS, 25 points), Diamond Search, Computational Complexity vs Accuracy trade-off`
-> 📝 **What to Draw / Write:** TSS 3-stage search grid: 8 points at step 4 around center, then 8 points at step 2, then 8 points at step 1, converging on target
+> 🔑 **Key Exam Terms:** `Block Matching Algorithm (BMA), Matching Criteria (SAD/MAD, MSE), Full Search (O((2p+1)^2)), Three-Step Search (TSS, 25 points), Diamond Search, Computational Complexity vs Accuracy trade-off`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Matching Criteria:** Sum of Absolute Differences (SAD) is computationally fastest (integer operations only); MSE requires costly multiplications.
 - **Full Search (FS):** Tests all $(2p+1)^2$ candidate points in search window; optimal minimum distortion but massive computation ($225$ points for $p=7$).
 - **Three-Step Search (TSS):** Checks 8 points at step 4, then step 2, then step 1; evaluates only **25 points (9x faster than FS)** with minimal loss.
 - **Diamond Search:** Evaluates 15-20 points adaptively using large/small diamond patterns; state-of-the-art fast BMA in modern video encoders.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-BLOCK MATCHING ALGORITHMS (Search Strategies):
-
-1. FULL SEARCH (Exhaustive Search over [-p, +p]):
-   Tests ALL (2p+1)² candidate locations in search window.
-   For p = 7 ──► 225 candidate locations per block! (High compute, 100% optimal)
-
-2. THREE-STEP SEARCH (TSS):
-   Step 1: Check 8 points at step s = 4 around center (0,0)
-   Step 2: Center around minimum, halve step s = 2, check 8 points
-   Step 3: Center around minimum, halve step s = 1, check 8 points
-   Total Points Checked: 1 + 8 + 8 + 8 = 25 Points! (9x Faster than Full Search!)
-
-   Step 1 (s=4)        Step 2 (s=2)        Step 3 (s=1)
-   ●     ●     ●
-                       ●   ●   ●
-   ●    (0)    ●           ●           ● ● ●
-                       ●   ●   ●       ● ★ ● ◄── Final Best Match
-   ●     ●     ●                       ● ● ●
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Principle of Matching-Based Motion Estimation
 Block Matching Algorithms (BMA) are the universal standard for video compression (MPEG-1/2/4, H.261/263/264, HEVC).
 * The current target frame $t$ is partitioned into non-overlapping blocks of size $N \times N$ (typically $16 \times 16$ macroblocks or $8 \times 8$ blocks).
@@ -2596,49 +1957,22 @@ $$MSE(d_x, d_y) = \frac{1}{N^2} \sum_{i=0}^{N-1} \sum_{j=0}^{N-1} \left(I_t(x + 
 
 ---
 
-## MID2-Q10: Critically evaluate nonlinear optimization techniques used in motion estimation and justify their convergence behavior 
+## MID2-Q10: Q10. Critically evaluate nonlinear optimization techniques used in motion estimation and justify their convergence behavior
 **Mid:** Mid-II | **QNo:** 10 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 4 (Deep Dive) | **Global Rank:** #40 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** Nonlinear motion estimation optimizes parametric models (affine/homography) by minimizing sum-of-squared errors; Levenberg-Marquardt adaptively bridges Gradient Descent and Gauss-Newton for robust convergence.
+> 🧠 **Core Anchor:** Nonlinear motion estimation optimizes parametric models (affine/homography) by minimizing sum-of-squared errors; Levenberg-Marquardt adaptively bridges Gradient Descent and Gauss-Newton for robust convergence.
 
 > 🐣 **In Plain English:** Finding the best motion parameters using math optimization: Levenberg-Marquardt automatically blends safe small steps with fast giant leaps.
-> 🔑 **Magic Exam Keywords:** `Nonlinear Optimization, Sum of Squared Residuals min ||r(p)||^2, Gradient Descent (linear, slow), Gauss-Newton (quadratic, unstable), Levenberg-Marquardt (adaptive damping λ), Gaussian Pyramids`
-> 📝 **What to Draw / Write:** Error bowl surface showing Gradient descent taking small zigzag steps, Gauss-Newton taking a direct jump, and coarse-to-fine Gaussian pyramid
+> 🔑 **Key Exam Terms:** `Nonlinear Optimization, Sum of Squared Residuals min ||r(p)||^2, Gradient Descent (linear, slow), Gauss-Newton (quadratic, unstable), Levenberg-Marquardt (adaptive damping λ), Gaussian Pyramids`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Formulation:** Minimizes non-linear sum-of-squared residuals $\min_{\mathbf{p}} \frac{1}{2} \|\mathbf{r}(\mathbf{p})\|^2$ for affine/homography models.
 - **Gradient Descent:** First-order linear convergence; reliable globally but suffers from catastrophic slow zigzagging in narrow error valleys.
 - **Gauss-Newton:** Second-order quadratic convergence near minimum via Hessian approximation $\mathbf{H} \approx \mathbf{J}^T \mathbf{J}$; unstable if Hessian is ill-conditioned.
 - **Levenberg-Marquardt (LM):** Adaptively damps Hessian with $\lambda \mathbf{I}$; automatically shifts between Gradient Descent (far from minimum) and Gauss-Newton (near minimum).
 - **Gaussian Pyramids:** Multi-resolution coarse-to-fine pyramids overcome local minima and handle large displacements.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-NONLINEAR OPTIMIZATION CONVERGENCE COMPARISON:
-
-  Error Surface E(p)
-  ▲
-  │    Gauss-Newton Jump (Fast quadratic convergence near minimum)
-  │            ╭───────╮       ▲
-  │           ╭         ╮     ╱
-  │          ╭    Local  ╮   ╱  Divergence Risk if Hessian is ill-conditioned!
-  │         ╭    Minimum  ╮ ╱
-  │        ╭               v
-  │       ╭─────────────────╮
-  │      ╭   Global Minimum  ╮
-  └─────┴─────────────────────┴──────────────────► Parameter Vector p
-
-LEVENBERG-MARQUARDT DAMPING DYNAMICS:
-  Update Equation: Δp = - (J^T J + λ · diag(J^T J))^-1 · J^T · r
-  - If λ is LARGE : Behaves like GRADIENT DESCENT (Guaranteed descent, slow)
-  - If λ is SMALL : Behaves like GAUSS-NEWTON     (Quadratic convergence near minimum)
-
-MULTI-RESOLUTION COARSE-TO-FINE PYRAMID (Overcomes Local Minima):
-  Level 2 (Coarse 1/4 Res) ──► Level 1 (Medium 1/2 Res) ──► Level 0 (Full Res)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. The Nonlinear Optimization Problem in Motion Estimation
 When estimating multi-parameter motion models (Affine: 6 parameters, Homography: 8 parameters), block-matching exhaustive search becomes mathematically impossible due to exponential parameter dimensionality.
 Instead, motion estimation is formulated as a continuous non-linear least-squares optimization problem:
@@ -2693,53 +2027,21 @@ $$r_i(\mathbf{p}) = I_{t+1}(f(\mathbf{x}_i; \mathbf{p})) - I_t(\mathbf{x}_i)$$
 
 ---
 
-## MID2-Q11: Design transform-domain motion estimation algorithms and optimize their performance for video compression applications. 
+## MID2-Q11: Q11. Design transform-domain motion estimation algorithms and optimize their performance for video compression applications.
 **Mid:** Mid-II | **QNo:** 11 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K5 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #34 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** Transform-domain motion estimation utilizes Phase Correlation based on the Fourier Shift Theorem; cross-power spectrum inversion produces a sharp Dirac delta peak identifying global/block displacement with sub-pixel precision.
+> 🧠 **Core Anchor:** Transform-domain motion estimation utilizes Phase Correlation based on the Fourier Shift Theorem; cross-power spectrum inversion produces a sharp Dirac delta peak identifying global/block displacement with sub-pixel precision.
 
 > 🐣 **In Plain English:** Transforming two frames with 2D-FFT and dividing their phases produces a single razor-sharp laser spike pointing to the exact motion offset.
-> 🔑 **Magic Exam Keywords:** `Phase Correlation, Fourier Shift Theorem (F2 = F1·e^-j2π(ux0+vy0)), Normalized Cross-Power Spectrum R(u,v), Inverse FFT Dirac Delta Peak δ(x-x0, y-y0), Sub-pixel interpolation, Illumination invariance`
-> 📝 **What to Draw / Write:** Flowchart: Frame 1 & 2 -> 2D-FFT -> Cross-Power Spectrum R(u,v) -> Inverse 2D-FFT -> 3D surface plot showing a sharp needle spike at displacement (x0, y0)
+> 🔑 **Key Exam Terms:** `Phase Correlation, Fourier Shift Theorem (F2 = F1·e^-j2π(ux0+vy0)), Normalized Cross-Power Spectrum R(u,v), Inverse FFT Dirac Delta Peak δ(x-x0, y-y0), Sub-pixel interpolation, Illumination invariance`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Fourier Shift Theorem:** Translation $(x_0, y_0)$ in space creates pure linear phase rotation in frequency domain: $F_2(u, v) = F_1(u, v) e^{-j 2\pi (ux_0 + vy_0)}$.
 - **Normalized Cross-Power Spectrum:** $R(u, v) = \frac{F_1 \cdot F_2^*}{|F_1 \cdot F_2^*|} = e^{j 2\pi (ux_0 + vy_0)}$; strips away all image magnitude and lighting bias.
 - **Dirac Delta Peak:** Inverse 2D-FFT of $R(u, v)$ yields an impulse spike $\delta(x + x_0, y + y_0)$ whose coordinate peak gives exact displacement.
 - **Advantages:** Immune to uniform illumination changes; sub-pixel accuracy via parabolic peak interpolation; executed efficiently via 2D-FFT hardware.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-PHASE CORRELATION MOTION ESTIMATION PIPELINE:
-
-Frame 1: f1(x, y) ────────► [ 2D-FFT ] ────────► F1(u, v)
-                                                   │
-                                                   ▼
-Frame 2: f2(x, y) = f1(x-x0, y-y0) ──► [ 2D-FFT ] ──► F2(u, v)
-                                                   │
-                                                   ▼
-┌────────────────────────────────────────────────────────┐
-│ Normalized Cross-Power Spectrum R(u, v):               │
-│               F1(u, v) · F2*(u, v)                     │
-│    R(u, v) = ────────────────────── = e^-j2π(u·x0 + v·y0)
-│              |F1(u, v) · F2*(u, v)|                    │
-└──────────────────────────┬─────────────────────────────┘
-                           │
-                           ▼
-                  [ Inverse 2D-FFT ]
-                           │
-                           ▼
-              Phase Correlation Surface r(x, y)
-                           │
-                           ▼
-            δ(x - x0, y - y0) (Sharp Dirac Delta Peak at Displacement!)
-                           │
-                           ▼
-       [ Sub-pixel Interpolation ──► (dx, dy) = (x0, y0) ]
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Conceptual Foundation: The Phase Correlation Method
 Transform-domain motion estimation computes spatial displacements directly in the frequency domain without spatial block searching. It is mathematically rooted in the **Fourier Shift Property**:
 * Let $f_1(x, y)$ be the reference frame and $f_2(x, y)$ be the translated frame shifted by displacement $(x_0, y_0)$:
@@ -2779,62 +2081,22 @@ $$(x_0, y_0) = \arg\max_{x, y} \{ r(x, y) \}$$
 
 ---
 
-## MID2-Q12: Develop a comprehensive framework for 3D motion and structure estimation integrating geometric and statistical models. 
+## MID2-Q12: Q12. Develop a comprehensive framework for 3D motion and structure estimation integrating geometric and statistical models.
 **Mid:** Mid-II | **QNo:** 12 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 4 (Deep Dive) | **Global Rank:** #38 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** The 3D Structure from Motion (SfM) framework integrates epipolar geometry, Essential Matrix (E = [t]_x R), 8-Point SVD algorithm, RANSAC outlier rejection, and Bundle Adjustment to reconstruct 3D scene structure and camera trajectory.
+> 🧠 **Core Anchor:** The 3D Structure from Motion (SfM) framework integrates epipolar geometry, Essential Matrix (E = [t]_x R), 8-Point SVD algorithm, RANSAC outlier rejection, and Bundle Adjustment to reconstruct 3D scene structure and camera trajectory.
 
 > 🐣 **In Plain English:** Reconstructing a 3D world from video photos: match feature points, compute camera angles via the Essential Matrix, triangulate 3D points, and polish the 3D model.
-> 🔑 **Magic Exam Keywords:** `Structure from Motion (SfM), Epipolar Geometry, Essential Matrix (E = [t]× R, 5 DOF), Fundamental Matrix F, Eight-Point SVD Algorithm, RANSAC outlier rejection, Triangulation, Bundle Adjustment`
-> 📝 **What to Draw / Write:** Two cameras looking at 3D point P with epipolar rays intersecting, plus the SfM pipeline flowchart (Features -> RANSAC -> E matrix -> 3D Point Cloud -> Bundle Adjustment)
+> 🔑 **Key Exam Terms:** `Structure from Motion (SfM), Epipolar Geometry, Essential Matrix (E = [t]× R, 5 DOF), Fundamental Matrix F, Eight-Point SVD Algorithm, RANSAC outlier rejection, Triangulation, Bundle Adjustment`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Epipolar Geometry:** Relates two camera views through Epipolar Plane, Epipoles, and Epipolar Lines.
 - **Essential Matrix:** $\mathbf{E} = [\mathbf{t}]_\times \mathbf{R}$ (5 DOF); satisfies calibrated coplanarity constraint $\mathbf{x}_2^T \mathbf{E} \mathbf{x}_1 = 0$.
 - **Eight-Point SVD Algorithm:** Solves for $\mathbf{E}$ from 8 point correspondences; enforces singular values $(\sigma, \sigma, 0)$ via SVD projection.
 - **RANSAC:** Iteratively tests minimal 8-point subsets to eliminate false feature matches (outliers).
 - **SfM Pipeline:** Features (SIFT) -> RANSAC -> Essential Matrix -> Pose Recovery $(R, \mathbf{t})$ -> Triangulation -> Bundle Adjustment (Levenberg-Marquardt).
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-EPIPOLAR GEOMETRY & 3D STRUCTURE FROM MOTION (SfM) PIPELINE:
-
-  Camera 1 (C1)                                           Camera 2 (C2)
-  Center ── ── ── ── ── ── Baseline (t) ── ── ── ── ── ── Center
-    │  \                                                /  │
-    │    \  Ray 1                                  Ray 2   │
-    │      \                                      /        │
-    ▼        \                                  /          ▼
-  [ Image 1 ]  \                              /        [ Image 2 ]
-    Point p1 ───►\                          /◄─── Epipolar Line l2
-                   \                      /
-                     ▼                  ▼
-                    [ 3D Scene Point P(X, Y, Z) ]
-
-COMPLETE SfM PIPELINE:
-  Multi-view Video ──► [ Feature Extraction (SIFT/ORB) ]
-                             │
-                             ▼
-                       [ Feature Matching & RANSAC Outlier Removal ]
-                             │
-                             ▼
-                       [ Essential Matrix E = [t]× R via 8-Point SVD ]
-                             │
-                             ▼
-                       [ SVD Decomposition ──► Camera Pose (R, t) ]
-                             │
-                             ▼
-                       [ Triangulation ──► Sparse 3D Point Cloud ]
-                             │
-                             ▼
-                       [ Bundle Adjustment (Nonlinear Levenberg-Marquardt) ]
-                             │
-                             ▼
-                [ Optimized 3D Structure & Camera Trajectory ]
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Architectural Overview of the 3D Estimation Framework
 Recovering 3D scene structure (a 3D point cloud) and 3D camera trajectory (rotation $R$, translation $\mathbf{t}$) from a 2D video sequence is known as **Structure from Motion (SfM)**. The framework synergistically unifies:
 1. **Geometric Models:** Epipolar geometry, projection matrices, and multi-view projective constraints.
@@ -2897,42 +2159,21 @@ $$\mathbf{A} \mathbf{e} = 0, \quad \mathbf{e} = [e_{11}, e_{12}, \dots, e_{33}]^
 
 # UNIT-5 (CO5)
 
-## MID2-Q13: Define image segmentation and classify its major categories based on region-based and boundary-based approaches. 🔥 [FREE MARKS / NUMERICAL]
+## MID2-Q13: Q13. Define image segmentation and classify its major categories based on region-based and boundary-based approaches.
 **Mid:** Mid-II | **QNo:** 13 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K1 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #9 of 40 | **Prep Time:** 4 min
 
-> 🧠 **30-Second Exam Anchor:** Image segmentation partitions a scene into disjoint, semantically meaningful regions; classified into Region-Based (homogeneity, Region Growing, Split-and-Merge) and Boundary-Based (gradient discontinuities, Canny, Active Contours/Snakes).
+> 🧠 **Core Anchor:** Image segmentation partitions a scene into disjoint, semantically meaningful regions; classified into Region-Based (homogeneity, Region Growing, Split-and-Merge) and Boundary-Based (gradient discontinuities, Canny, Active Contours/Snakes).
 
 > 🐣 **In Plain English:** Chopping an image into objects: Region methods group pixels that look alike (color/texture); Boundary methods draw lines where color changes abruptly (edges/snakes).
-> 🔑 **Magic Exam Keywords:** `Image Segmentation, Region-Based (Homogeneity, Seeded Region Growing, Quadtree Split-and-Merge), Boundary-Based (Discontinuity, Sobel/Canny Gradients, Active Contours/Snakes, Hough Transform)`
-> 📝 **What to Draw / Write:** Side-by-side comparison: Region growing spreading outward from a seed dot vs Boundary snake contracting around an object edge
+> 🔑 **Key Exam Terms:** `Image Segmentation, Region-Based (Homogeneity, Seeded Region Growing, Quadtree Split-and-Merge), Boundary-Based (Discontinuity, Sobel/Canny Gradients, Active Contours/Snakes, Hough Transform)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Segmentation Definition:** Partitions image into disjoint, complete, internally homogeneous, and externally distinct regions: $\bigcup R_i = I, R_i \cap R_j = \emptyset$.
 - **Region-Based:** Groups pixels by similarity. **Region Growing** expands from seeds based on intensity threshold; **Split-and-Merge** uses quadtree variance decomposition.
 - **Boundary-Based:** Detects intensity discontinuities. **Gradient Operators** (Sobel, Canny) locate edges; **Active Contours (Snakes)** deform an elastic spline curve to minimize internal and external edge energies.
 - **Key Contrast:** Region methods guarantee closed regions; boundary methods produce thin edge segments that often require linking.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-IMAGE SEGMENTATION PARADIGMS:
-
-1. REGION-BASED (Similarity Criterion):
-   - Region Growing: Seed Pixel ──► Expand to neighbors if |I_p - I_seed| < T
-   - Split & Merge: Quadtree decomposition (Split if variance high; Merge if similar)
-   ┌───────────┬───────────┐
-   │ Region R1 │ Region R2 │   Condition: R1 ∩ R2 = ∅ (Disjoint)
-   ├───────────┼───────────┤              ∪ Ri = Total Image
-   │ Region R3 │ Region R4 │              P(Ri) = TRUE (Uniform within region)
-   └───────────┴───────────┘              P(Ri ∪ Rj) = FALSE (Distinct across regions)
-
-2. BOUNDARY-BASED (Discontinuity Criterion):
-   - Gradient Operators : Sobel, Prewitt, Canny Edge Detector (Local maxima)
-   - Active Contours    : Snakes minimizing Energy E_snake = E_internal + E_external
-   - Hough Transform    : Parametric curve voting (Circles, Lines)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Definition of Image Segmentation
 Image segmentation is the foundational process of partitioning a digital image $I(x, y)$ into multiple disjoint, non-overlapping, and semantically meaningful regions or sets of pixels $\{R_1, R_2, \dots, R_N\}$.
 
@@ -2982,51 +2223,22 @@ These methods identify regions by detecting abrupt local intensity discontinuiti
 
 ---
 
-## MID2-Q14: Explain the principles of change detection in video sequences and interpret its role in dynamic scene analysis. 
+## MID2-Q14: Q14. Explain the principles of change detection in video sequences and interpret its role in dynamic scene analysis.
 **Mid:** Mid-II | **QNo:** 14 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K2 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #15 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** Change detection isolates moving foreground objects from static backgrounds; implemented via Temporal Differencing, Background Subtraction, and adaptive Gaussian Mixture Models (MoG) to handle illumination and swaying backgrounds.
+> 🧠 **Core Anchor:** Change detection isolates moving foreground objects from static backgrounds; implemented via Temporal Differencing, Background Subtraction, and adaptive Gaussian Mixture Models (MoG) to handle illumination and swaying backgrounds.
 
 > 🐣 **In Plain English:** Spotting motion by subtracting the background: simple frame difference creates hollow ghost holes; Mixture of Gaussians (MoG) models moving trees and shadows cleanly.
-> 🔑 **Magic Exam Keywords:** `Change Detection, Temporal Differencing (ghosting/aperture holes), Background Subtraction (|I - B| > T), Running Average, Mixture of Gaussians (MoG / Stauffer-Grimson), Multimodal backgrounds, Shadow suppression`
-> 📝 **What to Draw / Write:** Current frame minus Background frame passing through a threshold T to yield a clean binary silhouette mask of a moving pedestrian
+> 🔑 **Key Exam Terms:** `Change Detection, Temporal Differencing (ghosting/aperture holes), Background Subtraction (|I - B| > T), Running Average, Mixture of Gaussians (MoG / Stauffer-Grimson), Multimodal backgrounds, Shadow suppression`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Temporal Differencing:** Subtracts adjacent frames ($|I_t - I_{t-1}| > T$); fast and adaptive, but leaves hollow "ghost" holes inside uniformly colored moving objects.
 - **Background Subtraction:** Subtracts current frame from static background model ($|I_t - B_t| > T$); detects entire solid moving silhouette.
 - **Running Average:** $B_{t+1} = \alpha I_t + (1 - \alpha) B_t$; slowly absorbs ambient lighting changes.
 - **Mixture of Gaussians (MoG):** Models each pixel as 3-5 adaptive Gaussians; handles multi-modal dynamic clutter (swaying trees, water ripples, flickering monitors).
 - **Shadow Suppression:** Evaluates HSV/YCbCr color space; shadows reduce luminance ($V$) without altering hue ($H$) or saturation ($S$).
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-CHANGE DETECTION IN VIDEO SEQUENCES:
-
-1. TEMPORAL DIFFERENCING (Adjacent Frames):
-   Frame(t) ──► ( - ) ◄── Frame(t-1)  ──► |Difference| > T ──► Motion Mask
-   (Very fast, but suffers from aperture 'holes' inside uniform moving objects)
-
-2. BACKGROUND SUBTRACTION (Background Model):
-   Current Frame I(t) ──► ( - ) ◄── Background Model B(t)
-                                 │
-                                 ▼
-                         |I(t) - B(t)| > Threshold
-                                 │
-                                 ▼
-                     [ Raw Foreground Mask M(x, y) ]
-                                 │
-                                 ▼
-                     [ Morphological Cleanup & Shadow Removal ]
-                                 │
-                                 ▼
-                     [ Segmented Moving Objects ]
-
-ADAPTIVE BACKGROUND UPDATE (GMM / Running Average):
-   B(t+1) = α · I(t) + (1 - α) · B(t)  (Adapts to gradual sun changes)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Principles of Change Detection
 Change detection is the process of identifying pixels in a temporal video sequence $I(x, y, t)$ that exhibit significant motion or structural alterations compared to the reference scene. It is the initial step for automated surveillance, traffic monitoring, and action recognition.
 
@@ -3066,48 +2278,21 @@ Change detection is the process of identifying pixels in a temporal video sequen
 
 ---
 
-## MID2-Q15: By Using Global Motion Detection  Frame differences (sum of absolute differences): Region A = 120  Region B = 45  Region C = 200  Threshold = 100  Identify regions with motion  Determine dominant motion region 🔥 [FREE MARKS / NUMERICAL]
+## MID2-Q15: Q15. By Using Global Motion Detection  Frame differences (sum of absolute differences): Region A = 120  Region B = 45  Region C = 200  Threshold = 100  Identify regions with motion  Determine dominant motion region
 **Mid:** Mid-II | **QNo:** 15 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K3 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #2 of 40 | **Prep Time:** 2 min
 
-> 🧠 **30-Second Exam Anchor:** Motion occurs where SAD > 100 -> Region A (120) and Region C (200) exhibit motion; Region C is the Dominant Motion Region with maximum SAD = 200.
+> 🧠 **Core Anchor:** Motion occurs where SAD > 100 -> Region A (120) and Region C (200) exhibit motion; Region C is the Dominant Motion Region with maximum SAD = 200.
 
 > 🐣 **In Plain English:** Compare SAD against 100: Region A (120 > 100) and Region C (200 > 100) have motion; Region B (45 <= 100) is static; Region C has the most motion (SAD 200).
-> 🔑 **Magic Exam Keywords:** `Global Motion Detection, Sum of Absolute Differences (SAD), Threshold T = 100, Condition (SAD > T -> Motion), Region A (120) & Region C (200) Active, Region B (45) Static, Region C Dominant (Max SAD = 200)`
-> 📝 **What to Draw / Write:** Bar chart of Regions A (120), B (45), and C (200) with a horizontal dashed threshold line at 100; bars A and C rise above line, C is highest
+> 🔑 **Key Exam Terms:** `Global Motion Detection, Sum of Absolute Differences (SAD), Threshold T = 100, Condition (SAD > T -> Motion), Region A (120) & Region C (200) Active, Region B (45) Static, Region C Dominant (Max SAD = 200)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Given Differences:** $\text{SAD}_A = 120$, $\text{SAD}_B = 45$, $\text{SAD}_C = 200$, Threshold $T = 100$.
 - **Motion Rule:** $\text{SAD} > T \implies$ Motion Detected; $\text{SAD} \le T \implies$ Static Background.
 - **Motion Identification:** Region A ($120 > 100$) and Region C ($200 > 100$) exhibit motion; Region B ($45 \le 100$) has no motion.
 - **Dominant Motion Region:** $\max(120, 45, 200) = 200 \implies$ **Region C is the Dominant Motion Region** (highest frame difference activity).
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-GLOBAL MOTION DETECTION THRESHOLDING:
-
-  Frame Difference (SAD)
-  ▲
-  │                     ■ Region C (SAD = 200)  ◄── DOMINANT MOTION REGION!
-  │                     │                           (Max Activity: 200 > 100)
-  │                     │
-  │        ■ Region A   │
-  │        │ (SAD = 120)│
-200 ───────┼────────────┼──────────────────────────
-  │        │            │
-100 ───────┼────────────┼──────────────────────────◄ THRESHOLD T = 100
-  │        │   ■ Region B
-  │        │   │ (SAD = 45)  ◄── STATIC / NOISE (45 <= 100)
-  └────────┴───┴────────┴──────────────────────────► Spatial Regions
-           A   B        C
-
-DECISION MATRIX:
-  - Region A : 120 > 100 ──► MOTION DETECTED (Active)
-  - Region B :  45 ≤ 100 ──► NO SIGNIFICANT MOTION (Static Background)
-  - Region C : 200 > 100 ──► MOTION DETECTED (DOMINANT REGION)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Given Data
 * Frame difference measure: **Sum of Absolute Differences (SAD)**
 * **Region A Difference:** $\text{SAD}_A = 120$
@@ -3162,44 +2347,21 @@ $$\mathbf{Answer\ 2: } \quad \mathbf{Region\ C} \text{ is the Dominant Motion Re
 
 ---
 
-## MID2-Q16: Implement motion tracking algorithms and demonstrate object trajectory estimation in a temporal video sequence. 
+## MID2-Q16: Q16. Implement motion tracking algorithms and demonstrate object trajectory estimation in a temporal video sequence.
 **Mid:** Mid-II | **QNo:** 16 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K4 | **Marks:** 05 Marks
-**Cramming Priority:** Tier 2 (Core Scoring) | **Global Rank:** #20 of 40 | **Prep Time:** 5 min
 
-> 🧠 **30-Second Exam Anchor:** Motion tracking associates detections over time into continuous trajectories (x(t), y(t)) using Point Tracking (Kalman/Particle filters), Kernel Tracking (Mean-Shift/CamShift), or Silhouette Tracking.
+> 🧠 **Core Anchor:** Motion tracking associates detections over time into continuous trajectories (x(t), y(t)) using Point Tracking (Kalman/Particle filters), Kernel Tracking (Mean-Shift/CamShift), or Silhouette Tracking.
 
 > 🐣 **In Plain English:** Following a moving object across video: Point tracking uses Kalman filters; Mean-Shift climbs the color hill to keep the bounding box centered on the target.
-> 🔑 **Magic Exam Keywords:** `Visual Motion Tracking, Point Tracking (Kalman Filter, state [x, y, vx, vy]^T), Kernel / Appearance Tracking (Mean-Shift & CamShift, Bhattacharyya coefficient, color histogram), Silhouette Tracking, Trajectory`
-> 📝 **What to Draw / Write:** Mean-Shift vector climbing a 2D color density peak, accompanied by a multi-frame video trajectory curve connecting bounding box centroids
+> 🔑 **Key Exam Terms:** `Visual Motion Tracking, Point Tracking (Kalman Filter, state [x, y, vx, vy]^T), Kernel / Appearance Tracking (Mean-Shift & CamShift, Bhattacharyya coefficient, color histogram), Silhouette Tracking, Trajectory`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Point Tracking:** Tracks object centroids using **Kalman Filters** (linear Gaussian predict-update) or **Particle Filters** (non-linear multi-hypothesis sampling).
 - **Kernel / Appearance Tracking (Mean-Shift):** Uses color histogram appearance models; iteratively computes Mean-Shift vector $\mathbf{m}(\mathbf{y})$ to climb probability gradients to the target mode.
 - **CamShift:** Continuously Adaptive Mean Shift; dynamically scales and re-orients the bounding box as objects approach or recede.
 - **Trajectory Extraction:** Connects sequence of centroids $\{(x_t, y_t)\}$ to compute velocity, acceleration, and predict future path collisions.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-OBJECT MOTION TRACKING TAXONOMY:
-
-1. POINT TRACKING:
-   - Tracks sparse feature points (corners/centroids) across time
-   - Deterministic: Kalman Filter (Linear Gaussian state updates)
-   - Probabilistic: Particle Filter (Non-linear non-Gaussian sampling)
-
-2. KERNEL / APPEARANCE TRACKING (Mean-Shift / CamShift):
-   Frame t: Target Bounding Box ──► Color Histogram q
-                                         │
-   Frame t+1: Back-project Color Prob Map p(x)
-              Mean Shift Vector m(x) iteratively climbs gradient to mode!
-
-3. TRAJECTORY ESTIMATION:
-   Temporal State: X_t = [ x, y, v_x, v_y ]^T
-   Estimated Trajectory: Tr = { (x1, y1), (x2, y2), ..., (xT, yT) }
-   Allows velocity and acceleration estimation & future path prediction!
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Conceptual Framework of Visual Motion Tracking
 Visual tracking is the problem of estimating the continuous trajectory of one or more moving objects over time in an image sequence:
 $$\text{Trajectory } \mathcal{T} = \left\{ \mathbf{x}_t = (x_t, y_t) \right\}_{t=1}^T$$
@@ -3240,51 +2402,22 @@ It creates a temporal correspondence between detected target regions across succ
 
 ---
 
-## MID2-Q17: Analyze image and video matting techniques and evaluate their effectiveness in foreground extraction under complex backgrounds. 
+## MID2-Q17: Q17. Analyze image and video matting techniques and evaluate their effectiveness in foreground extraction under complex backgrounds.
 **Mid:** Mid-II | **QNo:** 17 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K5 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #32 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** Digital matting solves the under-constrained composite equation I = αF + (1-α)B (7 unknowns, 3 equations); guided by a user Trimap; implemented via Sampling-based, Laplacian closed-form, and Deep Learning matting.
+> 🧠 **Core Anchor:** Digital matting solves the under-constrained composite equation I = αF + (1-α)B (7 unknowns, 3 equations); guided by a user Trimap; implemented via Sampling-based, Laplacian closed-form, and Deep Learning matting.
 
 > 🐣 **In Plain English:** Extracting semi-transparent details like flying hair or smoke: solving I = αF + (1-α)B using a Trimap (known foreground, known background, and unknown blending band).
-> 🔑 **Magic Exam Keywords:** `Digital Image Matting, Fundamental Matting Equation (I = αF + (1-α)B, 3 equations vs 7 unknowns), Alpha Matte α ∈ [0, 1], Trimap (Foreground α=1, Background α=0, Unknown 0<α<1), Levin Closed-Form Laplacian, Deep Matting`
-> 📝 **What to Draw / Write:** Trimap diagram with 3 zones: White inner foreground (α=1), Black outer background (α=0), and Gray fuzzy boundary band (0<α<1)
+> 🔑 **Key Exam Terms:** `Digital Image Matting, Fundamental Matting Equation (I = αF + (1-α)B, 3 equations vs 7 unknowns), Alpha Matte α ∈ [0, 1], Trimap (Foreground α=1, Background α=0, Unknown 0<α<1), Levin Closed-Form Laplacian, Deep Matting`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Matting Equation:** $\mathbf{I} = \alpha \mathbf{F} + (1 - \alpha) \mathbf{B}$; 3 color equations vs 7 unknowns (severely under-constrained).
 - **Alpha Matte ($\alpha$):** Continuous fractional opacity $\alpha \in [0, 1]$; critical for semi-transparent hair, fur, smoke, and motion blur.
 - **User Trimap:** Partitions image into Known Foreground ($\alpha = 1$), Known Background ($\alpha = 0$), and Unknown Transition Band ($0 < \alpha < 1$).
 - **Levin's Closed-Form Matting:** Derives Matting Laplacian matrix $\mathbf{L}$ assuming local color linearity; solves sparse linear system $(\mathbf{L} + \lambda \mathbf{D}) \boldsymbol{\alpha} = \lambda \mathbf{b}$.
 - **Video Matting:** Enforces temporal coherence across optical flow trajectories to eliminate inter-frame alpha matte flickering.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-DIGITAL MATTING COMPOSITION & TRIMAP:
-
-1. THE MATTING EQUATION:
-   I(x, y) = α(x, y) · F(x, y) + (1 - α(x, y)) · B(x, y)
-   - I: Observed RGB pixel  (3 knowns: R, G, B)
-   - F: True Foreground RGB (3 unknowns)
-   - B: True Background RGB (3 unknowns)
-   - α: Opacity Matte [0, 1] (1 unknown)
-   Total: 3 Equations vs 7 Unknowns ──► Severely Under-Constrained!
-
-2. USER-DEFINED TRIMAP:
-   ┌──────────────────────────────────────────────┐
-   │ Known Background (α = 0)                     │
-   │            ╭───────────────────╮             │
-   │            │ UNKNOWN BAND (0 < α < 1)        │
-   │            │    ╭─────────╮    │             │
-   │            │    │ KNOWN   │    │             │
-   │            │    │ FORE-   │    │             │
-   │            │    │ GROUND  │    │             │
-   │            │    │ (α = 1) │    │             │
-   │            │    ╰─────────╯    │             │
-   │            ╰───────────────────╯             │
-   └──────────────────────────────────────────────┘
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. The Digital Matting Problem Formulation
 Image and video matting is the technique of soft, fractional extraction of a foreground object from a background image. Unlike hard binary segmentation ($M \in \{0, 1\}$), matting estimates continuous pixel opacity (**Alpha Matte $\alpha \in [0, 1]$**).
 
@@ -3336,17 +2469,15 @@ $$J_{\text{video}}(\boldsymbol{\alpha}) = \sum_t J_t(\boldsymbol{\alpha}_t) + \g
 
 ---
 
-## MID2-Q18: A)  Particle Weight Normalization Given particle weights: Tasks: Normalize weights  Identify most likely particle  Explain robustness to uncertainty  B)  State Update (Kalman Filter) Given: Predicted state  x−=50 Measurement  z=60 Kalman Gain  K=0.6  Compute updated state:  x=x−+K(z−x−) Interpret motion correction 🔥 [FREE MARKS / NUMERICAL]
+## MID2-Q18: Q18. A)  Particle Weight Normalization Given particle weights: Tasks: Normalize weights  Identify most likely particle  Explain robustness to uncertainty  B)  State Update (Kalman Filter) Given: Predicted state  x−=50 Measurement  z=60 Kalman Gain  K=0.6  Compute updated state:  x=x−+K(z−x−) Interpret motion correction
 **Mid:** Mid-II | **QNo:** 18 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 1 (Free Marks) | **Global Rank:** #4 of 40 | **Prep Time:** 4 min
 
-> 🧠 **30-Second Exam Anchor:** Part A: Normalized weights W=[0.2, 0.3, 0.1, 0.4]; Particle 4 is most likely (40%); handles multimodal uncertainty. Part B: Kalman update x = 50 + 0.6(60 - 50) = 56; corrects state 60% toward sensor measurement.
+> 🧠 **Core Anchor:** Part A: Normalized weights W=[0.2, 0.3, 0.1, 0.4]; Particle 4 is most likely (40%); handles multimodal uncertainty. Part B: Kalman update x = 50 + 0.6(60 - 50) = 56; corrects state 60% toward sensor measurement.
 
 > 🐣 **In Plain English:** Part A: Sum of [0.2, 0.3, 0.1, 0.4] is 1.0, so Particle 4 is most likely at 40%. Part B: Prediction is 50, sensor says 60; with gain 0.6, state moves 60% toward 60, landing at 56.
-> 🔑 **Magic Exam Keywords:** `Particle Filter Weight Normalization (Σw=1.0, w~=[0.2,0.3,0.1,0.4], Most Likely Particle 4 at 40%, Multimodal robustness), Kalman Filter State Update (x = x^- + K(z - x^-) = 50 + 0.6(10) = 56, Innovation +10, 60% sensor trust)`
-> 📝 **What to Draw / Write:** Two diagrams: 1. Bar graph of 4 normalized particle weights with Particle 4 highlighted; 2. Kalman update ruler showing prior 50 pulled to 56 toward measurement 60
+> 🔑 **Key Exam Terms:** `Particle Filter Weight Normalization (Σw=1.0, w~=[0.2,0.3,0.1,0.4], Most Likely Particle 4 at 40%, Multimodal robustness), Kalman Filter State Update (x = x^- + K(z - x^-) = 50 + 0.6(10) = 56, Innovation +10, 60% sensor trust)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Part A (Particle Normalization):** Given weights $W = [0.2, 0.3, 0.1, 0.4]$; sum $S = 0.2 + 0.3 + 0.1 + 0.4 = 1.0$.
 - **Normalized Weights:** $\tilde{W} = [0.20, 0.30, 0.10, 0.40]$; **Particle 4 is Most Likely** with highest probability weight $0.40$ (40%).
 - **Uncertainty Robustness:** Particle filters maintain multiple non-Gaussian hypotheses simultaneously; resampling clones high-weight particles and discards weak ones.
@@ -3354,29 +2485,7 @@ $$J_{\text{video}}(\boldsymbol{\alpha}) = \sum_t J_t(\boldsymbol{\alpha}_t) + \g
 - **Updated State Calculation:** $\hat{x} = 50 + 0.6(60 - 50) = 50 + 6 = \mathbf{56}$.
 - **Motion Correction Interpretation:** Kalman gain of 0.6 means filter places 60% confidence in sensor measurement and 40% in internal model, pulling prior state upward by +6.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-PART A: PARTICLE FILTER WEIGHT NORMALIZATION
-  Particles:        [ P1 ]    [ P2 ]    [ P3 ]    [ P4 ]
-  Raw Weights:       0.2       0.3       0.1       0.4
-  Sum of Weights S = 0.2 + 0.3 + 0.1 + 0.4 = 1.0
-  Normalized w~_i = w_i / S:
-                    [ 0.20 ]  [ 0.30 ]  [ 0.10 ]  [ 0.40 ]
-                                                     ▲
-  Most Likely Particle ──────────────────────────────┘ (Max Weight = 0.4 / 40%)
-
-PART B: KALMAN FILTER STATE UPDATE
-  Predicted Prior State x^- = 50  ──────────┐
-                                            ▼
-  Sensor Measurement    z = 60    ──► Innovation = (z - x^-) = 60 - 50 = +10
-                                            │
-  Kalman Gain K = 0.6 ──────────────────────┼──► Correction = K · 10 = +6
-                                            │
-  Updated Posterior State x = 50 + 6 = 56 ◄─┘
-  (60% trust in sensor, 40% trust in prediction)
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### PART A: Numerical Problem on Particle Weight Normalization
 
 #### 1. Given Data
@@ -3457,71 +2566,22 @@ $$\mathbf{Final\ Calculated\ State: } \quad \mathbf{\hat{x} = 56}$$
 
 ---
 
-## MID2-Q19: Design a video segmentation and tracking framework by integrating change detection and motion analysis for real-time applications. 
+## MID2-Q19: Q19. Design a video segmentation and tracking framework by integrating change detection and motion analysis for real-time applications.
 **Mid:** Mid-II | **QNo:** 19 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K5 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #31 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** An end-to-end framework integrates adaptive background subtraction (MoG), morphological filtering, multi-feature association via the Hungarian algorithm, and Kalman filtering for real-time multi-target tracking.
+> 🧠 **Core Anchor:** An end-to-end framework integrates adaptive background subtraction (MoG), morphological filtering, multi-feature association via the Hungarian algorithm, and Kalman filtering for real-time multi-target tracking.
 
 > 🐣 **In Plain English:** Building a real-time self-driving vision pipeline: MoG finds moving cars, morphological filters clean the blobs, Hungarian algorithm assigns track IDs, and Kalman filters smooth paths.
-> 🔑 **Magic Exam Keywords:** `Real-Time Tracking Framework, Spatio-Temporal Preprocessing, MoG2 Background Subtraction, Morphological Opening/Closing, Feature Extraction (Bounding Box, HSV Hist, Deep Re-ID), Hungarian Algorithm, Kalman Filtering, Track Life-Cycle`
-> 📝 **What to Draw / Write:** Complete multi-stage pipeline flowchart: Camera -> Preprocess -> MoG2 -> Morphology -> Feature Extraction -> Hungarian Association -> Kalman State Filter -> Track Manager -> Analytics
+> 🔑 **Key Exam Terms:** `Real-Time Tracking Framework, Spatio-Temporal Preprocessing, MoG2 Background Subtraction, Morphological Opening/Closing, Feature Extraction (Bounding Box, HSV Hist, Deep Re-ID), Hungarian Algorithm, Kalman Filtering, Track Life-Cycle`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Preprocessing & Detection:** Gaussian smoothing followed by adaptive MoG2 background subtraction extracts moving foreground pixels.
 - **Morphology & Blobs:** Opening removes salt-and-pepper noise; closing fills cavities; connected components extract bounding boxes and centroids.
 - **Feature Extraction:** Computes spatial coordinates, HSV color histograms, and deep Re-ID embedding vectors.
 - **Data Association:** Pairwise cost matrix evaluated using **Hungarian (Munkres) Algorithm** to match tracks to detections in $O(N^3)$.
 - **Kalman Filtering & Management:** Independent Kalman filters smooth trajectories; life-cycle handles track birth, occlusion coasting, and track termination.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-INTEGRATED REAL-TIME VIDEO SEGMENTATION & TRACKING ARCHITECTURE:
-
-Live Video Stream (30 fps)
-       │
-       ▼
-┌─────────────────────────────────┐
-│ 1. Spatio-Temporal Preprocessing │  Gaussian Blur G_σ (Noise reduction) + Resize
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 2. Change Detection & Segment   │  Mixture of Gaussians (MoG2) Background Subtraction
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 3. Morphological Post-Processing│  Opening (removes salt-pepper) + Closing (fills holes)
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 4. Feature Extraction           │  Bounding Boxes, Centroids, HSV Histograms, Deep Embed
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 5. Data Association Engine      │  Cost Matrix C = α·IoU_cost + (1-α)·Feature_dist
-│    (Hungarian Algorithm)        │  Optimal matching between Existing Tracks & New Detections
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 6. State Estimation (Kalman)    │  Predict & Update kinematics: X = [x, y, vx, vy]^T
-└──────────────┬──────────────────┘
-               │
-               ▼
-┌─────────────────────────────────┐
-│ 7. Track Life-Cycle Management  │  Track Birth (New detection)
-│    & Occlusion Handling         │  Track Maintenance (Matched)
-└──────────────┬──────────────────┘  Track Termination (Missing for >30 frames)
-               │
-               ▼
-[ Output Annotated Video Stream & Analytics Dashboard ]
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. System Overview & Engineering Objectives
 Real-time video segmentation and tracking is the core computational backbone for autonomous vehicles (Tesla/Waymo), intelligent surveillance, and robotic automation.
 * **Core Goal:** Detect moving objects, distinguish them from dynamic background clutter, maintain persistent unique identities (Track IDs), and estimate continuous trajectories at **$\ge 30\text{ frames per second (fps)}$**.
@@ -3574,17 +2634,15 @@ For each detected foreground blob:
 
 ---
 
-## MID2-Q20: Develop and optimize a performance evaluation model for video segmentation and tracking using metrics such as IoU, precision, recall, and F1-score 
+## MID2-Q20: Q20. Develop and optimize a performance evaluation model for video segmentation and tracking using metrics such as IoU, precision, recall, and F1-score
 **Mid:** Mid-II | **QNo:** 20 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K6 | **Marks:** 10 Marks
-**Cramming Priority:** Tier 3 (High-Value 10M) | **Global Rank:** #23 of 40 | **Prep Time:** 8 min
 
-> 🧠 **30-Second Exam Anchor:** Segmentation is evaluated pixel-wise via Confusion Matrix (TP, FP, FN), IoU (Jaccard Index), Precision, Recall, and F1-score; Tracking is evaluated via MOTA, MOTP, and ID Switches.
+> 🧠 **Core Anchor:** Segmentation is evaluated pixel-wise via Confusion Matrix (TP, FP, FN), IoU (Jaccard Index), Precision, Recall, and F1-score; Tracking is evaluated via MOTA, MOTP, and ID Switches.
 
 > 🐣 **In Plain English:** Grading video AI: IoU measures mask overlap; Precision measures purity (no false alarms); Recall measures completeness (no misses); F1 is the balanced grade; MOTA grades tracking.
-> 🔑 **Magic Exam Keywords:** `Performance Evaluation, Confusion Matrix (TP, FP, FN, TN), Intersection over Union (IoU = TP/(TP+FP+FN)), Precision (TP/(TP+FP)), Recall (TP/(TP+FN)), F1-Score (2PR/(P+R)), CLEAR MOT (MOTA, MOTP, ID Switches)`
-> 📝 **What to Draw / Write:** Venn diagram of Prediction vs Ground Truth showing TP overlap, FP, and FN regions, with worked numerical formulas (IoU=72.7%, P=88.9%, R=80.0%, F1=84.2%)
+> 🔑 **Key Exam Terms:** `Performance Evaluation, Confusion Matrix (TP, FP, FN, TN), Intersection over Union (IoU = TP/(TP+FP+FN)), Precision (TP/(TP+FP)), Recall (TP/(TP+FN)), F1-Score (2PR/(P+R)), CLEAR MOT (MOTA, MOTP, ID Switches)`
 
-### 🎯 High-Yield Key Points (Shortest Essentials):
+### 🎯 Key Points:
 - **Confusion Matrix:** True Positives ($TP$), False Positives ($FP$, false alarms), False Negatives ($FN$, missed detections), True Negatives ($TN$).
 - **Intersection over Union (IoU):** $\text{IoU} = \frac{TP}{TP + FP + FN}$; standard overlap threshold is $\text{IoU} \ge 0.50$.
 - **Precision & Recall:** $\text{Precision} = \frac{TP}{TP + FP}$ (purity); $\text{Recall} = \frac{TP}{TP + FN}$ (completeness).
@@ -3592,35 +2650,7 @@ For each detected foreground blob:
 - **Worked Example ($TP=800, FP=100, FN=200$):** $\text{IoU} = 72.7\%$, $\text{Precision} = 88.9\%$, $\text{Recall} = 80.0\%$, $F_1 = 84.2\%$.
 - **CLEAR MOT Metrics:** $\text{MOTA} = 1 - \frac{\sum (FN + FP + IDSW)}{\sum GT}$; $\text{MOTP}$ measures average bounding box overlap precision.
 
-### ✏️ Pen-and-Paper Exam Diagram Blueprint:
-```text
-PERFORMANCE EVALUATION MODEL ARCHITECTURE:
-
-1. SEGMENTATION SPATIAL OVERLAP (IoU / Jaccard Index):
-   ┌──────────────────────┐
-   │ Ground Truth Mask A  │
-   │      ┌───────────────┼──────────────┐
-   │      │ Intersection  │ Prediction   │
-   │      │ (TP)          │ Mask B       │
-   │      │               │ (FP)         │
-   └──────┼───────────────┘              │
-     (FN) └──────────────────────────────┘
-
-               Area of Overlap (A ∩ B)             TP
-   IoU = ────────────────────────────────── = ──────────────
-         Area of Union (A ∪ B)                TP + FP + FN
-
-2. EVALUATION METRICS FORMULAS:
-   - Precision = TP / (TP + FP)         (Quality / Purity of detections)
-   - Recall    = TP / (TP + FN)         (Completeness / Coverage)
-   - F1-Score  = 2 · (P · R) / (P + R)  (Harmonic Mean)
-
-3. MULTI-OBJECT TRACKING EVALUATION (CLEAR MOT):
-   - MOTA = 1 - (FN + FP + ID_Switches) / Ground_Truth_Objects
-   - MOTP = Total_Bounding_Box_Distance / Total_Matched_Detections
-```
-
-### 📝 Full Student Exam Notes & Derivations:
+### 📝 Full Exam Solution & Derivations:
 ### 1. Conceptual Framework of Performance Evaluation
 A robust evaluation model quantifies how accurately an automated video segmentation and tracking algorithm matches human-annotated Ground Truth (GT). Evaluation operates at two levels:
 1. **Spatial Segmentation Level (Pixel / Bounding Box accuracy)**

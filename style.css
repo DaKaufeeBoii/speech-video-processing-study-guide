@@ -811,8 +811,9 @@ header.sticky-header {
 
 .badge-marks { background: #064e3b; color: #6ee7b7; }
 .badge-bloom { background: #581c87; color: #d8b4fe; }
-.badge-unit { background: #1e293b; color: #94a3b8; border: 1px solid var(--border); }
+.badge-unit { background: #0f172a; color: #38bdf8; border: 1px solid #0284c7; }
 .badge-mid { background: #701a75; color: #f472b6; }
+.badge-co { background: #1e1b4b; color: #a5b4fc; border: 1px solid #4338ca; }
 
 .card-title {
   font-size: 0.98rem;
