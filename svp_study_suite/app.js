@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ytLoungeToggleBtn.classList.toggle('active', isShowing);
       if (isShowing) {
         if (!ytIframe.src || ytIframe.src === '' || ytIframe.src === window.location.href) {
-          switchYtStream('5qap5aO4i9A', 'Lofi Girl — 24/7 Study Beats');
+          switchYtStream('akD85MNgOFU', 'Zelda BOTW — Full Original Soundtrack (OST)');
         }
       } else {
         if (ytIframe) ytIframe.src = "";
