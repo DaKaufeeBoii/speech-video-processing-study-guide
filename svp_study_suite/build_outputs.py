@@ -463,8 +463,8 @@ def generate_html_handbook():
 <button id="backToTopBtn" class="fab-top" title="Back to Top" aria-label="Back to Top">↑</button>
 
 <!-- SCRIPTS: Clean separation matching Deep Learning StudyMode -->
-<script src="audio.js?v=20261127_04"></script>
-<script src="app.js?v=20261127_04"></script>
+<script src="audio.js?v=20261127_05"></script>
+<script src="app.js?v=20261127_05"></script>
 </body>
 </html>
 """)

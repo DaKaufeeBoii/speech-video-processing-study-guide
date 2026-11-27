@@ -9,7 +9,7 @@ import os, re, html
 DIAGRAMS = {}
 
 def svg_doc(w, h, inner):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="auto" class="flowchart-svg" style="max-width: {w}px; min-width: 580px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="{h}" class="flowchart-svg" style="max-width: {w}px; min-width: 580px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -84,19 +84,19 @@ def arrow(x1, y1, x2, y2, color="#38bdf8", label=""):
 # --- UNIT 1: MID1-Q01 to MID1-Q08 ---
 
 DIAGRAMS['MID1-Q01'] = svg_doc(740, 320, f'''
-  <text x="370" y="32" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">SPEECH PRODUCTION: SOURCE-FILTER MECHANISM (FAN\\'S MODEL)</text>
+  <text x="370" y="32" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">SPEECH PRODUCTION: SOURCE-FILTER MECHANISM (FANT\\'S ACOUSTIC MODEL)</text>
   <rect x="20" y="55" width="220" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="130" y="78" font-size="12" font-weight="bold" fill="#fbbf24" text-anchor="middle">EXCITATION SOURCE E(z)</text>
   {box(40, 95, 180, 50, "1. Lungs & Trachea", "Subglottal Air Pressure", "#fbbf24", "#0f172a")}
   {arrow(130, 145, 130, 185, "#fbbf24", "Airflow")}
-  {box(40, 185, 180, 85, "2. Glottis / Vocal Cords", "Voiced: Pulses (Pitch F0)\\nUnvoiced: Turbulent Noise", "#fbbf24", "#0f172a", "Source", "#fbbf24")}
+  {box(40, 185, 180, 85, "2. Glottis / Vocal Cords", "Voiced: Pulses (Pitch F0)\\nUnvoiced: Turbulent Noise", "#fbbf24", "#0f172a")}
 
   {arrow(220, 225, 275, 225, "#38bdf8", "Raw Acoustic e(t)")}
 
   <rect x="275" y="55" width="260" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="405" y="78" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">VOCAL TRACT FILTER H(z)</text>
   {box(295, 95, 220, 50, "Pharynx (Throat Cavity)", "Cross-section ~17.5 cm", "#38bdf8", "#0f172a")}
-  {box(295, 155, 220, 55, "Oral & Nasal Cavities", "Resonances = Formants (F1, F2, F3)", "#38bdf8", "#0f172a", "Filter", "#38bdf8")}
+  {box(295, 155, 220, 55, "Oral & Nasal Cavities", "Resonances = Formants (F1, F2, F3)", "#38bdf8", "#0f172a")}
   {box(295, 220, 220, 50, "Articulators (Tongue/Lips)", "Shaping Vowels & Consonants", "#38bdf8", "#0f172a")}
 
   {arrow(515, 225, 570, 225, "#34d399", "Acoustic Wave")}
@@ -104,7 +104,7 @@ DIAGRAMS['MID1-Q01'] = svg_doc(740, 320, f'''
   <rect x="570" y="55" width="150" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#34d399" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="645" y="78" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">OUTPUT s(t)</text>
   {box(580, 115, 130, 60, "Lip Radiation", "R(z) ≈ 1 - z^-1", "#34d399", "#0f172a")}
-  {box(580, 195, 130, 75, "Radiated Speech", "S(z) = E·H·R\\nAudio Waveform", "#34d399", "#0f172a", "Speech", "#34d399")}
+  {box(580, 195, 130, 75, "Radiated Speech", "S(z) = E·H·R\\nAudio Waveform", "#34d399", "#0f172a")}
 ''')
 
 DIAGRAMS['MID1-Q02'] = svg_doc(720, 280, f'''
