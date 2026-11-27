@@ -126,6 +126,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterChips = document.querySelectorAll('.filter-chip');
   let activeFilter = 'all';
 
+  function normalizeTier(key) {
+    if (!key) return '';
+    const k = String(key).toLowerCase().trim();
+    if (k === 'tier1' || k === 't1' || k === '1') return 'tier1';
+    if (k === 'tier2' || k === 't2' || k === '2') return 'tier2';
+    if (k === 'tier3' || k === 't3' || k === '3') return 'tier3';
+    if (k === 'tier4' || k === 't4' || k === '4') return 'tier4';
+    return k;
+  }
+
   window.filterByUnit = function(unitKey) {
     filterChips.forEach(c => c.classList.remove('active'));
     const targetChip = document.querySelector(`.filter-chip[data-filter="${unitKey}"]`);
@@ -155,21 +165,26 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.filterByTier = function(tierKey) {
-    filterChips.forEach(c => c.classList.remove('active'));
-    const targetChip = document.querySelector(`.filter-chip[data-filter="${tierKey}"]`);
+    const norm = normalizeTier(tierKey);
+    activeFilter = norm;
+
+    filterChips.forEach(c => {
+      const cFilter = normalizeTier(c.getAttribute('data-filter') || '');
+      c.classList.toggle('active', cFilter === norm);
+    });
+
+    const targetChip = document.querySelector(`.filter-chip[data-filter="${norm}"]`);
     if (targetChip) {
-      targetChip.classList.add('active');
       try {
         targetChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       } catch (e) {}
     }
-    activeFilter = tierKey;
 
     // Highlight active tier summary card if any
     document.querySelectorAll('.tier-summary-card').forEach(c => c.classList.remove('active-tier-card'));
     const cardMap = { 'tier1': 't1', 'tier2': 't2', 'tier3': 't3', 'tier4': 't4' };
-    if (cardMap[tierKey]) {
-      const tCard = document.querySelector(`.tier-summary-card.${cardMap[tierKey]}`);
+    if (cardMap[norm]) {
+      const tCard = document.querySelector(`.tier-summary-card.${cardMap[norm]}`);
       if (tCard) tCard.classList.add('active-tier-card');
     }
 
@@ -177,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.unit-hub-card').forEach(c => c.classList.remove('active-unit-card'));
 
     // Auto-sort to rank 1-40 order whenever a tier or fasttrack is selected
-    if (tierKey === 'fasttrack' || tierKey.startsWith('tier') || tierKey.startsWith('t')) {
+    if (norm === 'fasttrack' || norm.startsWith('tier')) {
       if (sortSelect) sortSelect.value = 'rank';
       sortCards('rank');
     }
@@ -187,9 +202,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   filterChips.forEach(chip => {
     chip.addEventListener('click', () => {
+      const rawFilter = chip.getAttribute('data-filter');
+      if (!rawFilter) return;
+
+      const norm = normalizeTier(rawFilter);
+      activeFilter = norm;
+
       filterChips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-      activeFilter = chip.getAttribute('data-filter') || 'all';
 
       // Highlight active unit hub card if any
       document.querySelectorAll('.unit-hub-card').forEach(c => c.classList.remove('active-unit-card'));
@@ -236,20 +256,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const mid = card.getAttribute('data-mid');
       const unit = card.getAttribute('data-unit');
       const marks = card.getAttribute('data-marks');
-      const tier = card.getAttribute('data-tier');
+      const cardTier = normalizeTier(card.getAttribute('data-tier') || '');
       const text = card.textContent.toLowerCase();
 
       let matchesFilter = false;
-      if (activeFilter === 'all' || activeFilter === 'fasttrack' || activeFilter === 'keypoints') matchesFilter = true;
-      else if (activeFilter === 'tier1' && tier === 'tier1') matchesFilter = true;
-      else if (activeFilter === 'tier2' && tier === 'tier2') matchesFilter = true;
-      else if (activeFilter === 'tier3' && tier === 'tier3') matchesFilter = true;
-      else if (activeFilter === 'tier4' && tier === 'tier4') matchesFilter = true;
-      else if (activeFilter === 'mid1' && mid === 'mid1') matchesFilter = true;
-      else if (activeFilter === 'mid2' && mid === 'mid2') matchesFilter = true;
-      else if (activeFilter === '5m' && marks === '5m') matchesFilter = true;
-      else if (activeFilter === '10m' && marks === '10m') matchesFilter = true;
-      else if (activeFilter === unit) matchesFilter = true;
+      if (activeFilter === 'all' || activeFilter === 'fasttrack' || activeFilter === 'keypoints') {
+        matchesFilter = true;
+      } else if (activeFilter.startsWith('tier') && cardTier === activeFilter) {
+        matchesFilter = true;
+      } else if (activeFilter === 'mid1' && mid === 'mid1') {
+        matchesFilter = true;
+      } else if (activeFilter === 'mid2' && mid === 'mid2') {
+        matchesFilter = true;
+      } else if (activeFilter === '5m' && marks === '5m') {
+        matchesFilter = true;
+      } else if (activeFilter === '10m' && marks === '10m') {
+        matchesFilter = true;
+      } else if (activeFilter === unit) {
+        matchesFilter = true;
+      }
 
       const matchesQuery = !query || text.includes(query);
 
