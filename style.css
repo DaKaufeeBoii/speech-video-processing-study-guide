@@ -694,7 +694,7 @@ header.sticky-header {
 
 .tier-pills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
   gap: 8px;
 }
 
@@ -725,10 +725,25 @@ header.sticky-header {
 .tier-summary-card.t4 { border-left: 4px solid #f43f5e; }
 
 .tier-summary-title {
-  font-size: 0.78rem;
-  font-weight: 700;
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 3px;
+}
+.tier-summary-title .tier-name {
+  font-size: 0.8rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.tier-summary-title .tier-meta-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1px 6px;
+  border-radius: 4px;
 }
 .tier-summary-desc {
   font-size: 0.7rem;
