@@ -212,34 +212,155 @@ document.addEventListener('DOMContentLoaded', () => {
     if (visibleCount) visibleCount.textContent = count;
   }
 
-  // --- 6. AUDIO CONTROLS WIRING ---
+  // --- 6. UNIFIED AUDIO & LO-FI LOUNGE ENGINE ---
   const audioPlayBtn = document.getElementById('audioPlayBtn');
   const audioModeSelect = document.getElementById('audioModeSelect');
   const audioVolSlider = document.getElementById('audioVolSlider');
   const ambientVinylBtn = document.getElementById('ambientVinylBtn');
   const ambientRainBtn = document.getElementById('ambientRainBtn');
+  const audioStatusPill = document.getElementById('audioStatusPill');
+  const audioEqBars = document.getElementById('audioEqBars');
+
+  // --- 7. YOUTUBE LO-FI VISUAL LOUNGE ---
+  const ytLoungeToggleBtn = document.getElementById('ytLoungeToggleBtn');
+  const ytMiniPlayer = document.getElementById('ytMiniPlayer');
+  const ytMiniCloseBtn = document.getElementById('ytMiniCloseBtn');
+  const ytIframe = document.getElementById('ytIframe');
+  const ytCurrentTitle = document.getElementById('ytCurrentTitle');
+  const ytChips = document.querySelectorAll('.yt-chip');
+
+  let currentYtVid = 'akD85MNgOFU';
+  let isYtPlaying = false;
+
+  function switchYtStream(vid, title) {
+    if (!ytIframe) return;
+    currentYtVid = vid;
+    ytIframe.src = `https://www.youtube-nocookie.com/embed/${vid}?autoplay=1&enablejsapi=1`;
+    isYtPlaying = true;
+    if (ytCurrentTitle) ytCurrentTitle.textContent = `📺 ${title}`;
+
+    // Sync dropdown selection
+    if (audioModeSelect) {
+      const opt = audioModeSelect.querySelector(`option[value="yt_${vid}"]`);
+      if (opt) audioModeSelect.value = `yt_${vid}`;
+    }
+
+    // Sync active chip
+    if (ytChips) {
+      ytChips.forEach(c => c.classList.toggle('active', c.getAttribute('data-vid') === vid));
+    }
+
+    // Stop native sound generators
+    if (window.studyAudio && window.studyAudio.isPlaying) {
+      window.studyAudio.stop();
+    }
+
+    // Update play button & status
+    if (audioPlayBtn) {
+      audioPlayBtn.classList.add('playing');
+      audioPlayBtn.textContent = '❚❚';
+    }
+    if (audioStatusPill) {
+      audioStatusPill.textContent = '🔴 Live';
+      audioStatusPill.className = 'audio-status-pill live';
+    }
+    if (audioEqBars) {
+      audioEqBars.classList.add('active');
+    }
+  }
+
+  function pauseYtStream() {
+    if (ytIframe && ytIframe.contentWindow) {
+      ytIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+    }
+    isYtPlaying = false;
+    if (audioPlayBtn) {
+      audioPlayBtn.classList.remove('playing');
+      audioPlayBtn.textContent = '▶';
+    }
+    if (audioStatusPill) {
+      audioStatusPill.textContent = 'Paused';
+      audioStatusPill.className = 'audio-status-pill';
+    }
+    if (audioEqBars) {
+      audioEqBars.classList.remove('active');
+    }
+  }
+
+  function playYtStream() {
+    if (!ytIframe.src || !ytIframe.src.includes(currentYtVid)) {
+      const title = audioModeSelect?.selectedOptions[0]?.text || 'Zelda BOTW OST';
+      switchYtStream(currentYtVid, title);
+    } else {
+      if (ytIframe && ytIframe.contentWindow) {
+        ytIframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+      }
+      isYtPlaying = true;
+      if (audioPlayBtn) {
+        audioPlayBtn.classList.add('playing');
+        audioPlayBtn.textContent = '❚❚';
+      }
+      if (audioStatusPill) {
+        audioStatusPill.textContent = '🔴 Live';
+        audioStatusPill.className = 'audio-status-pill live';
+      }
+      if (audioEqBars) {
+        audioEqBars.classList.add('active');
+      }
+    }
+  }
 
   if (audioPlayBtn) {
     audioPlayBtn.addEventListener('click', () => {
-      if (!window.studyAudio) return;
-      const isPlaying = window.studyAudio.togglePlay();
-      audioPlayBtn.classList.toggle('playing', isPlaying);
-      audioPlayBtn.textContent = isPlaying ? '❚❚' : '▶';
+      const mode = audioModeSelect ? audioModeSelect.value : 'yt_akD85MNgOFU';
+      if (mode.startsWith('yt_')) {
+        if (isYtPlaying) {
+          pauseYtStream();
+        } else {
+          playYtStream();
+        }
+      } else {
+        if (!window.studyAudio) return;
+        const isPlaying = window.studyAudio.togglePlay();
+        audioPlayBtn.classList.toggle('playing', isPlaying);
+        audioPlayBtn.textContent = isPlaying ? '❚❚' : '▶';
+      }
     });
   }
 
   if (audioModeSelect) {
     audioModeSelect.addEventListener('change', (e) => {
-      if (window.studyAudio) {
-        window.studyAudio.setMode(e.target.value);
+      const mode = e.target.value;
+      if (mode.startsWith('yt_')) {
+        const vid = mode.replace('yt_', '');
+        const title = e.target.selectedOptions[0]?.text || 'Lo-Fi Stream';
+        switchYtStream(vid, title);
+        if (ytMiniPlayer) ytMiniPlayer.classList.add('show');
+        if (ytLoungeToggleBtn) ytLoungeToggleBtn.classList.add('active');
+      } else {
+        pauseYtStream();
+        if (window.studyAudio) {
+          window.studyAudio.setMode(mode);
+          if (!window.studyAudio.isPlaying) {
+            window.studyAudio.start();
+          }
+          if (audioPlayBtn) {
+            audioPlayBtn.classList.add('playing');
+            audioPlayBtn.textContent = '❚❚';
+          }
+        }
       }
     });
   }
 
   if (audioVolSlider) {
     audioVolSlider.addEventListener('input', (e) => {
+      const val = parseFloat(e.target.value);
       if (window.studyAudio) {
-        window.studyAudio.setVolume(parseFloat(e.target.value));
+        window.studyAudio.setVolume(val);
+      }
+      if (ytIframe && ytIframe.contentWindow) {
+        ytIframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[' + Math.round(val * 100) + ']}', '*');
       }
     });
   }
@@ -262,37 +383,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 7. YOUTUBE LO-FI VISUAL LOUNGE ---
-  const ytLoungeToggleBtn = document.getElementById('ytLoungeToggleBtn');
-  const ytMiniPlayer = document.getElementById('ytMiniPlayer');
-  const ytMiniCloseBtn = document.getElementById('ytMiniCloseBtn');
-  const ytIframe = document.getElementById('ytIframe');
-  const ytCurrentTitle = document.getElementById('ytCurrentTitle');
-  const ytChips = document.querySelectorAll('.yt-chip');
-
-  function switchYtStream(vid, title) {
-    if (!ytIframe) return;
-    ytIframe.src = `https://www.youtube-nocookie.com/embed/${vid}?autoplay=1&enablejsapi=1`;
-    if (ytCurrentTitle) ytCurrentTitle.textContent = `📺 ${title}`;
-    if (window.studyAudio && window.studyAudio.isPlaying) {
-      window.studyAudio.stop();
-      if (audioPlayBtn) {
-        audioPlayBtn.classList.remove('playing');
-        audioPlayBtn.textContent = '▶';
-      }
-    }
-  }
-
   if (ytLoungeToggleBtn && ytMiniPlayer) {
     ytLoungeToggleBtn.addEventListener('click', () => {
       const isShowing = ytMiniPlayer.classList.toggle('show');
       ytLoungeToggleBtn.classList.toggle('active', isShowing);
       if (isShowing) {
         if (!ytIframe.src || ytIframe.src === '' || ytIframe.src === window.location.href) {
-          switchYtStream('akD85MNgOFU', 'Zelda BOTW — Full Original Soundtrack (OST)');
+          const mode = audioModeSelect ? audioModeSelect.value : 'yt_akD85MNgOFU';
+          const vid = mode.startsWith('yt_') ? mode.replace('yt_', '') : 'akD85MNgOFU';
+          const title = audioModeSelect?.selectedOptions[0]?.text || 'Zelda BOTW — Full Original Soundtrack (OST)';
+          switchYtStream(vid, title);
         }
-      } else {
-        if (ytIframe) ytIframe.src = "";
       }
     });
   }
@@ -301,15 +402,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ytMiniCloseBtn.addEventListener('click', () => {
       ytMiniPlayer.classList.remove('show');
       if (ytLoungeToggleBtn) ytLoungeToggleBtn.classList.remove('active');
-      if (ytIframe) ytIframe.src = "";
     });
   }
 
   if (ytChips) {
     ytChips.forEach(chip => {
       chip.addEventListener('click', () => {
-        ytChips.forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
         const vid = chip.getAttribute('data-vid');
         const title = chip.getAttribute('data-title') || 'YouTube Lo-Fi';
         switchYtStream(vid, title);
