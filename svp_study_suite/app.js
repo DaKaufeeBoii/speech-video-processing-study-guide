@@ -140,10 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auto-sort into natural question sequence if a unit or mid filter is chosen
     if (tier.startsWith('u') || tier === 'mid1' || tier === 'mid2') {
-      if (sortSelect && sortSelect.value !== 'unit') {
-        sortSelect.value = 'unit';
-        sortCards('unit');
-      }
+      if (sortSelect) sortSelect.value = 'unit';
+      sortCards('unit');
     }
 
     applyFilters();
@@ -162,10 +160,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Auto-sort into natural question sequence if a unit or mid filter is chosen
       if (activeFilter.startsWith('u') || activeFilter === 'mid1' || activeFilter === 'mid2') {
-        if (sortSelect && sortSelect.value !== 'unit') {
-          sortSelect.value = 'unit';
-          sortCards('unit');
-        }
+        if (sortSelect) sortSelect.value = 'unit';
+        sortCards('unit');
       }
 
       applyFilters();
