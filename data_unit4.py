@@ -289,7 +289,7 @@ Looking through a small window (aperture), you can only see motion perpendicular
 
 | Real-World Challenge | Bad Effect on Optical Flow | Engineering Solution |
 | :--- | :--- | :--- |
-| **Image Sensor Noise** | Derivative operators amplify noise, producing wild, erratic vectors. | Apply a **2D Gaussian smoothing filter** ($G_\\sigma * I$) before calculating gradients. |
+| **Image Sensor Noise** | Derivative operators amplify noise, producing wild, erratic vectors. | Apply a **2D Gaussian smoothing filter** ($G_\\sigma \\ast I$) before calculating gradients. |
 | **Illumination Changes** | Shadows or sun flashes violate brightness constancy, creating fake motion. | Apply **illumination normalization** (histogram equalization) or use gradient-based matching. |
 | **Flat / Untextured Regions** | Gradients $I_x = 0, I_y = 0$, making $\\mathbf{A}^T \\mathbf{A}$ singular and dividing by zero! | Track only **Harris corner features** where both eigenvalues $\\lambda_1, \\lambda_2$ are large. |
 | **Large Displacements** | Taylor approximation fails if motion is $>1$ pixel. | Build **Hierarchical Coarse-to-Fine Gaussian Pyramids** to track large moves."""

@@ -4,7 +4,7 @@ Inlined SVG diagrams dictionary for all 40 SVP questions.
 """
 
 DIAGRAMS_SVG = {
-    "MID1-Q01": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320" width="100%" height="auto" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q01": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -65,7 +65,7 @@ DIAGRAMS_SVG = {
   </g>
 
     <line x1="220" y1="225" x2="275" y2="225" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
-  <text x="247.5" y="219.0" font-size="11" fill="#38bdf8" font-weight="700" text-anchor="middle">Raw Acoustic e(t)</text>
+  <text x="247.5" y="219.0" font-size="11" fill="#38bdf8" font-weight="700" text-anchor="middle">e[n] Source</text>
 
   <rect x="275" y="55" width="260" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="405" y="78" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">VOCAL TRACT FILTER H(z)</text>
@@ -89,7 +89,7 @@ DIAGRAMS_SVG = {
   </g>
 
     <line x1="515" y1="225" x2="570" y2="225" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
-  <text x="542.5" y="219.0" font-size="11" fill="#34d399" font-weight="700" text-anchor="middle">Acoustic Wave</text>
+  <text x="542.5" y="219.0" font-size="11" fill="#34d399" font-weight="700" text-anchor="middle">s[n] Speech</text>
 
   <rect x="570" y="55" width="150" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#34d399" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="645" y="78" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">OUTPUT s(t)</text>
@@ -107,7 +107,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q02": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q02": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -204,7 +204,7 @@ DIAGRAMS_SVG = {
   <text x="360" y="258" font-size="11" fill="#f8fafc" text-anchor="middle">Nyquist Condition: fs ≥ 2·fmax | Undersampling causes overlapping spectral replicas (Aliasing)</text>
 
 </svg>""",
-    "MID1-Q03": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 310" width="100%" height="auto" class="flowchart-svg" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q03": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 310" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -288,7 +288,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q04": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q04": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -380,7 +380,7 @@ DIAGRAMS_SVG = {
   <text x="380" y="252" font-size="11" fill="#cbd5e1">6. Periodicity: Rectangular window causes spectral leakage</text>
 
 </svg>""",
-    "MID1-Q05": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q05": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -434,11 +434,11 @@ DIAGRAMS_SVG = {
     <g filter="url(#shadow)">
     <rect x="230" y="60" width="200" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="330.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Vocal Tract Filter h[n]</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="330.0" y="94">Resonances (Formants v[n] * r[n])</tspan></text>
-    <rect x="355" y="51" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="390" y="64" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">LTI System</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="330.0" y="94">Resonances v[n] * r[n]</tspan></text>
+    <rect x="355" y="51" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="390" y="64" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">LTI Filter</text>
   </g>
     <line x1="430" y1="90" x2="485" y2="90" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
-  <text x="457.5" y="84.0" font-size="11" fill="#34d399" font-weight="700" text-anchor="middle">Convolution</text>
+  <text x="457.5" y="84.0" font-size="11" fill="#34d399" font-weight="700" text-anchor="middle">* h[n]</text>
     <g filter="url(#shadow)">
     <rect x="485" y="60" width="200" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="585.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Radiated Speech s[n]</text>
@@ -481,7 +481,7 @@ DIAGRAMS_SVG = {
   <text x="45" y="265" font-size="11" fill="#cbd5e1">Avoids time-aliasing by zero-padding to N ≥ L + M - 1 | Eliminates infinite convolution latency</text>
 
 </svg>""",
-    "MID1-Q06": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q06": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -548,7 +548,7 @@ DIAGRAMS_SVG = {
   <text x="360" y="264" font-size="11" fill="#cbd5e1" text-anchor="middle">Linear: Invertible waveform resynthesis | Mel: Maximizes phoneme discriminability for ASR (MFCC)</text>
 
 </svg>""",
-    "MID1-Q07": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q07": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -636,7 +636,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q08": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q08": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -745,7 +745,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q09": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q09": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -869,7 +869,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q10": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q10": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -970,7 +970,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q11": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q11": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1051,7 +1051,7 @@ DIAGRAMS_SVG = {
   <text x="360" y="267" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">Formula: K = ⌊(L - N)/R⌋ + 1 = ⌊(1600 - 400)/200⌋ + 1 = 6 + 1 = 7 Frames (Hop R = 200)</text>
 
 </svg>""",
-    "MID1-Q12": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q12": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1176,7 +1176,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q13": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" width="100%" height="auto" class="flowchart-svg" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q13": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1259,7 +1259,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q14": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q14": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1356,7 +1356,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q15": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q15": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1434,7 +1434,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q16": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q16": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1538,7 +1538,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q17": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q17": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1620,7 +1620,7 @@ DIAGRAMS_SVG = {
   <text x="380" y="228" font-size="11" fill="#cbd5e1">4. Massive Data Rates: Demands transform-domain compression</text>
 
 </svg>""",
-    "MID1-Q18": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q18": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1720,7 +1720,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q19": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q19": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1802,7 +1802,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID1-Q20": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID1-Q20": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1900,7 +1900,7 @@ DIAGRAMS_SVG = {
   <text x="35" y="236" font-size="11" fill="#38bdf8">Universal Industry Standard: Powers JPEG, MPEG-1/2/4, H.264/AVC, and HEVC codecs</text>
 
 </svg>""",
-    "MID2-Q01": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q01": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1974,7 +1974,7 @@ DIAGRAMS_SVG = {
   <text x="360" y="238" font-size="11" fill="#f8fafc" text-anchor="middle">2D Nyquist: fsx ≥ 2·fmax,x and fsy ≥ 2·fmax,y | Aliasing causes Moiré patterns and spatial jaggies</text>
 
 </svg>""",
-    "MID2-Q02": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q02": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2063,7 +2063,7 @@ DIAGRAMS_SVG = {
   <text x="35" y="226" font-size="11" fill="#cbd5e1">3. Quantize: Exploits HVS blindness to high spatial frequencies, zeroing out insignificant terms.</text>
 
 </svg>""",
-    "MID2-Q03": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q03": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2149,7 +2149,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q04": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q04": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2258,7 +2258,7 @@ DIAGRAMS_SVG = {
   <text x="380" y="254" font-size="11" fill="#cbd5e1">4. 100:1 Compression: Only small residuals e[x, y] are coded</text>
 
 </svg>""",
-    "MID2-Q05": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q05": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2342,7 +2342,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q06": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q06": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2410,7 +2410,7 @@ DIAGRAMS_SVG = {
   <text x="35" y="238" font-size="11" fill="#cbd5e1">2. Small Motion: Displacements are small between frames | 3. Spatial Coherence: Neighbor pixels move smoothly</text>
 
 </svg>""",
-    "MID2-Q07": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q07": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2499,7 +2499,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q08": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q08": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2572,7 +2572,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q09": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q09": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2646,7 +2646,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q10": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q10": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2714,7 +2714,7 @@ DIAGRAMS_SVG = {
   <text x="45" y="238" font-size="11" fill="#cbd5e1">Coarse levels smooth away high-frequency error ripples and shrink large displacements into Taylor range.</text>
 
 </svg>""",
-    "MID2-Q11": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q11": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2812,7 +2812,7 @@ DIAGRAMS_SVG = {
   <text x="360" y="236" font-size="11" fill="#cbd5e1" text-anchor="middle">Sub-pixel displacement estimation via 2D parabolic peak interpolation around the Dirac delta peak</text>
 
 </svg>""",
-    "MID2-Q12": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q12": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2910,7 +2910,7 @@ DIAGRAMS_SVG = {
   <text x="35" y="238" font-size="11" fill="#34d399">Recovers both 3D sparse scene point cloud and 3D camera motion trajectory!</text>
 
 </svg>""",
-    "MID2-Q13": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q13": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -2988,7 +2988,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q14": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q14": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -3057,7 +3057,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q15": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q15": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -3148,7 +3148,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q16": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q16": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -3230,7 +3230,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q17": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q17": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -3309,7 +3309,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q18": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q18": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -3405,7 +3405,7 @@ DIAGRAMS_SVG = {
   </g>
 
 </svg>""",
-    "MID2-Q19": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q19": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -3503,7 +3503,7 @@ DIAGRAMS_SVG = {
   <text x="35" y="234" font-size="11" fill="#38bdf8">Parallel GPU multi-threading delivers &gt;30 fps throughput for self-driving and security surveillance</text>
 
 </svg>""",
-    "MID2-Q20": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    "MID2-Q20": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">

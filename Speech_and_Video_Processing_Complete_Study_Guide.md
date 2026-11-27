@@ -258,16 +258,16 @@ The FFT implicitly assumes the $N$-point frame repeats forever. Abrupt frame cho
 > 📐 **Flowchart & Diagram Blueprint:** Impulse train e[n] entering Vocal Tract LTI System h[n] to produce speech s[n] = e[n] * h[n], plus Overlap-Add block diagram
 
 ### 🎯 Key Points:
-- **Discrete Convolution:** $y[n] = x[n] * h[n] = \sum_{k=-\infty}^\infty x[k] h[n-k]$, executed via Flip, Shift, Multiply, and Sum.
-- **Source-Filter Speech Convolution:** Speech output is glottal pulse $e[n]$ convolved with vocal tract impulse response $v[n]$ and radiation $r[n]$: $s[n] = e[n] * v[n] * r[n]$.
-- **Convolution Theorem:** Time-domain convolution equals frequency-domain point-wise multiplication: $\mathcal{F}\{x[n] * h[n]\} = X(\omega) \cdot H(\omega)$.
+- **Discrete Convolution:** $y[n] = x[n] \ast h[n] = \sum_{k=-\infty}^\infty x[k] h[n-k]$, executed via Flip, Shift, Multiply, and Sum.
+- **Source-Filter Speech Convolution:** Speech output is glottal pulse $e[n]$ convolved with vocal tract impulse response $v[n]$ and radiation $r[n]$: $s[n] = e[n] \ast v[n] \ast r[n]$.
+- **Convolution Theorem:** Time-domain convolution equals frequency-domain point-wise multiplication: $\mathcal{F}\{x[n] \ast h[n]\} = X(\omega) \cdot H(\omega)$.
 - **Streaming Fast Convolution:** Computed via FFT using **Overlap-Add (OLA)** or **Overlap-Save (OLS)** to filter continuous speech without infinite latency.
 
 ### 📝 Full Exam Solution & Derivations:
 ### 1. The Big Picture (What is Convolution in Speech?)
 In speech processing, **convolution** is the mathematical operation that describes what happens when a sound signal passes through an acoustic filter or physical space.
 Whenever you talk, your vocal cords create raw excitation pulses $e[n]$. As this air travels up your 17.5 cm throat and mouth cavity (which has impulse response $h[n]$), every pulse generates a ringing resonance. The resulting spoken speech $s[n]$ is the **convolution** of excitation and vocal tract:
-$$s[n] = e[n] * h[n] = \sum_{k=-\infty}^{\infty} e[k] \, h[n - k]$$
+$$s[n] = e[n] \ast h[n] = \sum_{k=-\infty}^{\infty} e[k] \, h[n - k]$$
 
 ---
 
@@ -284,7 +284,7 @@ If an examiner asks you to explain the mechanics of convolution, write these 4 m
 
 #### A. The Convolution Theorem (The Magic Shortcut):
 Convolution in the time domain is equivalent to **simple multiplication** in the frequency domain:
-$$y[n] = x[n] * h[n] \stackrel{\mathcal{F}}{\longleftrightarrow} Y(\omega) = X(\omega) \cdot H(\omega)$$
+$$y[n] = x[n] \ast h[n] \stackrel{\mathcal{F}}{\longleftrightarrow} Y(\omega) = X(\omega) \cdot H(\omega)$$
 Instead of doing thousands of slow slide-and-sum additions in Python, we simply take the FFT of the speech, multiply by the filter spectrum, and take the IFFT!
 
 #### B. Pre-Emphasis High-Pass Filtering:
@@ -295,7 +295,7 @@ This boosts high frequencies by $+6\text{ dB/octave}$, balancing the spectrum an
 
 #### C. Room Reverberation & Echo Modeling:
 When speaking in an auditorium, sound bounces off walls before reaching the microphone:
-$$x_{\text{mic}}[n] = s[n] * h_{\text{room}}[n]$$
+$$x_{\text{mic}}[n] = s[n] \ast h_{\text{room}}[n]$$
 Denoising and speech dereverberation algorithms use inverse filtering (deconvolution) to remove room echoes.
 
 ---
@@ -1146,7 +1146,7 @@ $$\mathcal{T}\{x[m - m_0, n - n_0]\} = y[m - m_0, n - n_0]$$
 ### 2. Mathematical Formulation: 2D Convolution
 Let $\delta[m, n]$ be a 2D unit impulse (a single bright white pixel at the origin). The system's response to this impulse is called the **Point Spread Function (PSF)** $h[m, n]$.
 Any input image $x[m, n]$ can be represented as an array of shifted impulses. Therefore, the system output is governed by the **2D Discrete Convolution Sum**:
-$$y[m, n] = x[m, n] * * h[m, n] = \sum_{k=-\infty}^{\infty} \sum_{l=-\infty}^{\infty} x[k, l] \, h[m - k, n - l]$$
+$$y[m, n] = x[m, n] \astst h[m, n] = \sum_{k=-\infty}^{\infty} \sum_{l=-\infty}^{\infty} x[k, l] \, h[m - k, n - l]$$
 
 #### Spatio-Temporal 3D Video Extension:
 For video, we add a temporal axis $t$:
@@ -1734,7 +1734,7 @@ Looking through a small window (aperture), you can only see motion perpendicular
 
 | Real-World Challenge | Bad Effect on Optical Flow | Engineering Solution |
 | :--- | :--- | :--- |
-| **Image Sensor Noise** | Derivative operators amplify noise, producing wild, erratic vectors. | Apply a **2D Gaussian smoothing filter** ($G_\sigma * I$) before calculating gradients. |
+| **Image Sensor Noise** | Derivative operators amplify noise, producing wild, erratic vectors. | Apply a **2D Gaussian smoothing filter** ($G_\sigma \ast I$) before calculating gradients. |
 | **Illumination Changes** | Shadows or sun flashes violate brightness constancy, creating fake motion. | Apply **illumination normalization** (histogram equalization) or use gradient-based matching. |
 | **Flat / Untextured Regions** | Gradients $I_x = 0, I_y = 0$, making $\mathbf{A}^T \mathbf{A}$ singular and dividing by zero! | Track only **Harris corner features** where both eigenvalues $\lambda_1, \lambda_2$ are large. |
 | **Large Displacements** | Taylor approximation fails if motion is $>1$ pixel. | Build **Hierarchical Coarse-to-Fine Gaussian Pyramids** to track large moves.

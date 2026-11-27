@@ -161,7 +161,7 @@ $$\\mathcal{T}\\{x[m - m_0, n - n_0]\\} = y[m - m_0, n - n_0]$$
 ### 2. Mathematical Formulation: 2D Convolution
 Let $\\delta[m, n]$ be a 2D unit impulse (a single bright white pixel at the origin). The system's response to this impulse is called the **Point Spread Function (PSF)** $h[m, n]$.
 Any input image $x[m, n]$ can be represented as an array of shifted impulses. Therefore, the system output is governed by the **2D Discrete Convolution Sum**:
-$$y[m, n] = x[m, n] * * h[m, n] = \\sum_{k=-\\infty}^{\\infty} \\sum_{l=-\\infty}^{\\infty} x[k, l] \\, h[m - k, n - l]$$
+$$y[m, n] = x[m, n] \\ast\ast h[m, n] = \\sum_{k=-\\infty}^{\\infty} \\sum_{l=-\\infty}^{\\infty} x[k, l] \\, h[m - k, n - l]$$
 
 #### Spatio-Temporal 3D Video Extension:
 For video, we add a temporal axis $t$:

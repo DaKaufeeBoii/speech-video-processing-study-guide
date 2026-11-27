@@ -9,7 +9,7 @@ import os, re, html
 DIAGRAMS = {}
 
 def svg_doc(w, h, inner):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="auto" class="flowchart-svg" style="max-width: {w}px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -92,7 +92,7 @@ DIAGRAMS['MID1-Q01'] = svg_doc(740, 320, f'''
   {arrow(130, 145, 130, 185, "#fbbf24", "Airflow")}
   {box(40, 185, 180, 85, "2. Glottis / Vocal Cords", "Voiced: Pulses (Pitch F0)\\nUnvoiced: Turbulent Noise", "#fbbf24", "#0f172a")}
 
-  {arrow(220, 225, 275, 225, "#38bdf8", "Raw Acoustic e(t)")}
+  {arrow(220, 225, 275, 225, "#38bdf8", "e[n] Source")}
 
   <rect x="275" y="55" width="260" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="405" y="78" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">VOCAL TRACT FILTER H(z)</text>
@@ -100,7 +100,7 @@ DIAGRAMS['MID1-Q01'] = svg_doc(740, 320, f'''
   {box(295, 155, 220, 55, "Oral & Nasal Cavities", "Resonances = Formants (F1, F2, F3)", "#38bdf8", "#0f172a")}
   {box(295, 220, 220, 50, "Articulators (Tongue/Lips)", "Shaping Vowels & Consonants", "#38bdf8", "#0f172a")}
 
-  {arrow(515, 225, 570, 225, "#34d399", "Acoustic Wave")}
+  {arrow(515, 225, 570, 225, "#34d399", "s[n] Speech")}
 
   <rect x="570" y="55" width="150" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#34d399" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="645" y="78" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">OUTPUT s(t)</text>
@@ -183,8 +183,8 @@ DIAGRAMS['MID1-Q05'] = svg_doc(720, 300, f'''
   <text x="360" y="30" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">CONVOLUTION OPERATIONS &amp; REAL-TIME OVERLAP-ADD (OLA)</text>
   {box(25, 60, 150, 60, "Glottal Excitation e[n]", "Pulse train / Noise source", "#fbbf24")}
   {arrow(175, 90, 230, 90, "#fbbf24", "Input")}
-  {box(230, 60, 200, 60, "Vocal Tract Filter h[n]", "Resonances (Formants v[n] * r[n])", "#38bdf8", badge="LTI System")}
-  {arrow(430, 90, 485, 90, "#34d399", "Convolution")}
+  {box(230, 60, 200, 60, "Vocal Tract Filter h[n]", "Resonances v[n] * r[n]", "#38bdf8", badge="LTI Filter")}
+  {arrow(430, 90, 485, 90, "#34d399", "* h[n]")}
   {box(485, 60, 200, 60, "Radiated Speech s[n]", "s[n] = e[n] * h[n] = Σ e[k]h[n-k]", "#34d399", badge="Output")}
 
   <rect x="25" y="140" width="665" height="145" rx="8" fill="#1e293b" stroke="#334155"/>
