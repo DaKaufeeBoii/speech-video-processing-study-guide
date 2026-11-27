@@ -1,5 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="270" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -25,9 +24,6 @@
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -41,7 +37,7 @@
   <rect width="740" height="270" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="370" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">REAL-TIME VIDEO SEGMENTATION &amp; TRACKING FRAMEWORK</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="15" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="62.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Video In</text>
     <text x="62.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">30 fps Camera</text>
@@ -49,7 +45,7 @@
   </g>
     <line x1="110" y1="85" x2="130" y2="85" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="130" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="177.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. MoG2 Detect</text>
     <text x="177.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Background Sub</text>
@@ -57,7 +53,7 @@
   </g>
     <line x1="225" y1="85" x2="245" y2="85" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="245" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="292.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. Morphology</text>
     <text x="292.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Open / Close</text>
@@ -65,7 +61,7 @@
   </g>
     <line x1="340" y1="85" x2="360" y2="85" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="360" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="407.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. Features</text>
     <text x="407.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Centroid, Hist</text>
@@ -73,7 +69,7 @@
   </g>
     <line x1="455" y1="85" x2="475" y2="85" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="475" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
     <text x="522.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">5. Hungarian</text>
     <text x="522.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Data Assoc O(N³)</text>
@@ -81,7 +77,7 @@
   </g>
     <line x1="570" y1="85" x2="590" y2="85" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="590" y="55" width="135" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="657.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">6. Kalman Track</text>
     <text x="657.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Predict &amp; Smooth</text>

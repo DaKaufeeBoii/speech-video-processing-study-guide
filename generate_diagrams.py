@@ -10,7 +10,6 @@ DIAGRAMS = {}
 
 def svg_doc(w, h, inner):
     return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="{h}" class="flowchart-svg" style="max-width: {w}px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -36,9 +35,6 @@ def svg_doc(w, h, inner):
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -69,7 +65,7 @@ def box(x, y, w, h, title, sub="", stroke="#38bdf8", fill="#1e293b", badge="", b
         sub_text = ''
 
     badge_markup = f'<rect x="{x + w - 75}" y="{y - 9}" width="70" height="18" rx="9" fill="{badge_color}" fill-opacity="0.25" stroke="{badge_color}" stroke-width="1"/><text x="{x + w - 40}" y="{y + 4}" font-size="9.5" font-weight="700" fill="{badge_color}" text-anchor="middle">{badge}</text>' if badge else ''
-    return f'''  <g filter="url(#shadow)">
+    return f'''  <g>
     <rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="1.5"/>
     <text x="{x + w/2}" y="{y_title}" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">{html.escape(title)}</text>
     {sub_text}

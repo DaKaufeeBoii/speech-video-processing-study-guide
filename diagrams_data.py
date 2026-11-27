@@ -5,7 +5,6 @@ Inlined SVG diagrams dictionary for all 40 SVP questions.
 
 DIAGRAMS_SVG = {
     "MID1-Q01": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 320" width="100%" height="320" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -31,9 +30,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -49,7 +45,7 @@ DIAGRAMS_SVG = {
   <text x="370" y="32" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">SPEECH PRODUCTION: SOURCE-FILTER MECHANISM (FANT\'S ACOUSTIC MODEL)</text>
   <rect x="20" y="55" width="220" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="130" y="78" font-size="12" font-weight="bold" fill="#fbbf24" text-anchor="middle">EXCITATION SOURCE E(z)</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="40" y="95" width="180" height="50" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="130.0" y="113" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Lungs &amp; Trachea</text>
     <text x="130.0" y="128" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Subglottal Air Pressure</text>
@@ -57,7 +53,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="130" y1="145" x2="130" y2="185" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   <text x="130.0" y="159.0" font-size="11" fill="#fbbf24" font-weight="700" text-anchor="middle">Airflow</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="40" y="185" width="180" height="85" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="130.0" y="203" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. Glottis / Vocal Cords</text>
     <text x="130.0" y="218" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Voiced: Pulses (Pitch F0)</text>
@@ -70,19 +66,19 @@ DIAGRAMS_SVG = {
 
   <rect x="275" y="55" width="260" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="405" y="78" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">VOCAL TRACT FILTER H(z)</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="295" y="95" width="220" height="50" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="405.0" y="113" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Pharynx (Throat Cavity)</text>
     <text x="405.0" y="128" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Cross-section ~17.5 cm</text>
     
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="295" y="155" width="220" height="55" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="405.0" y="173" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Oral &amp; Nasal Cavities</text>
     <text x="405.0" y="188" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Resonances = Formants (F1, F2, F3)</text>
     
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="295" y="220" width="220" height="50" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="405.0" y="238" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Articulators (Tongue/Lips)</text>
     <text x="405.0" y="253" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Shaping Vowels &amp; Consonants</text>
@@ -94,13 +90,13 @@ DIAGRAMS_SVG = {
 
   <rect x="570" y="55" width="150" height="235" rx="10" fill="#1e293b" fill-opacity="0.4" stroke="#34d399" stroke-width="1" stroke-dasharray="4 4"/>
   <text x="645" y="78" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">OUTPUT s(t)</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="580" y="115" width="130" height="60" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
     <text x="645.0" y="133" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Lip Radiation</text>
     <text x="645.0" y="148" font-size="10.5" fill="#cbd5e1" text-anchor="middle">R(z) ≈ 1 - z^-1</text>
     
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="580" y="195" width="130" height="75" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
     <text x="645.0" y="213" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Radiated Speech</text>
     <text x="645.0" y="228" font-size="10.5" fill="#cbd5e1" text-anchor="middle">S(z) = E·H·R</text>
@@ -110,7 +106,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q02": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -136,9 +131,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -152,7 +144,7 @@ DIAGRAMS_SVG = {
   <rect width="720" height="280" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="32" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">DISCRETE-TIME SPEECH SAMPLING &amp; NYQUIST RECONSTRUCTION</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="20" y="70" width="140" height="65" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="90.0" y="88" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Analog Speech s(t)</text>
     <text x="90.0" y="103" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Continuous Acoustic Wave</text>
@@ -160,7 +152,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="160" y1="102" x2="195" y2="102" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="195" y="70" width="150" height="65" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="270.0" y="88" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Anti-Aliasing Filter</text>
     <text x="270.0" y="103" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Low-Pass LPF (fc = fs/2)</text>
@@ -168,7 +160,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="345" y1="102" x2="380" y2="102" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="380" y="70" width="145" height="65" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="452.5" y="88" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">ADC / Sampler</text>
     <text x="452.5" y="103" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Ts = 1/fs (8k / 16kHz)</text>
@@ -176,7 +168,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="525" y1="102" x2="560" y2="102" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="560" y="70" width="140" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="630.0" y="88" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Discrete Speech s[n]</text>
     <text x="630.0" y="103" font-size="10.5" fill="#cbd5e1" text-anchor="middle">s[n] = s(n·Ts)</text>
@@ -185,7 +177,7 @@ DIAGRAMS_SVG = {
 
   <path d="M 630 135 L 630 185 L 450 185" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#arrEmerald)"/>
 
-    <g filter="url(#shadow)">
+    <g>
     <rect x="300" y="160" width="150" height="65" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="375.0" y="178" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">D/A Converter</text>
     <text x="375.0" y="193" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Discrete Impulse Train</text>
@@ -193,7 +185,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="300" y1="192" x2="250" y2="192" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="100" y="160" width="150" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="175.0" y="178" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Sinc Reconstruction</text>
     <text x="175.0" y="193" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Ideal Sinc LPF Filter</text>
@@ -207,7 +199,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q03": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 310" width="100%" height="310" class="flowchart-svg" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -233,9 +224,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -270,20 +258,20 @@ DIAGRAMS_SVG = {
   </g>
 
   <!-- Right Details -->
-    <g filter="url(#shadow)">
+    <g>
     <rect x="310" y="60" width="370" height="75" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="495.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">System Transfer Function H(z)</text>
     <text x="495.0" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">H(z) = [z(z - 0.5)] / [z² - 0.9z + 0.2] = z / (z - 0.4)</text>
     <rect x="605" y="51" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="640" y="64" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Filter</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="310" y="145" width="370" height="70" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="495.0" y="163" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Poles &amp; Zeros Extraction</text>
     <text x="495.0" y="178" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Zeros (Numerator=0): z1 = 0, z2 = 0.5</text>
     <text x="495.0" y="191" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Poles (Denominator=0): p1 = 0.5, p2 = 0.4</text>
     
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="310" y="225" width="370" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="495.0" y="243" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">BIBO Stability Verdict: UNCONDITIONALLY STABLE</text>
     <text x="495.0" y="258" font-size="10.5" fill="#cbd5e1" text-anchor="middle">All poles strictly INSIDE unit circle (|p|&lt;1 -&gt; Stable)</text>
@@ -292,7 +280,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q04": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -318,9 +305,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -334,7 +318,7 @@ DIAGRAMS_SVG = {
   <rect width="720" height="280" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="30" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">FAST FOURIER TRANSFORM (FFT) IN SPEECH RECOGNITION</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="20" y="65" width="140" height="60" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="90.0" y="83" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Speech Frame x[n]</text>
     <text x="90.0" y="98" font-size="10.5" fill="#cbd5e1" text-anchor="middle">20 - 30 ms duration</text>
@@ -342,7 +326,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="160" y1="95" x2="195" y2="95" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="195" y="65" width="150" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="270.0" y="83" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Hamming Window</text>
     <text x="270.0" y="98" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Prevents spectral leakage</text>
@@ -350,7 +334,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="345" y1="95" x2="380" y2="95" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="380" y="65" width="150" height="60" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="455.0" y="83" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">N-Point FFT</text>
     <text x="455.0" y="98" font-size="10.5" fill="#cbd5e1" text-anchor="middle">O(N log N) Fast Engine</text>
@@ -360,13 +344,13 @@ DIAGRAMS_SVG = {
   
     <line x1="530" y1="95" x2="570" y2="120" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="570" y="45" width="135" height="50" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="637.5" y="63" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Magnitude |X[k]|</text>
     <text x="637.5" y="78" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Formant Peak Spectrum</text>
     
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="570" y="105" width="135" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="637.5" y="123" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Phase Spectrum</text>
     <text x="637.5" y="138" font-size="10.5" fill="#cbd5e1" text-anchor="middle">∠X[k] Dispersion</text>
@@ -384,7 +368,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q05": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="100%" height="300" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -410,9 +393,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -426,7 +406,7 @@ DIAGRAMS_SVG = {
   <rect width="720" height="300" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="30" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">CONVOLUTION OPERATIONS &amp; REAL-TIME OVERLAP-ADD (OLA)</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="25" y="60" width="150" height="60" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="100.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Glottal Excitation e[n]</text>
     <text x="100.0" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Pulse train / Noise source</text>
@@ -434,7 +414,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="175" y1="90" x2="230" y2="90" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   <text x="202.5" y="84.0" font-size="11" fill="#fbbf24" font-weight="700" text-anchor="middle">Input</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="230" y="60" width="200" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="330.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Vocal Tract Filter h[n]</text>
     <text x="330.0" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Resonances v[n] * r[n]</text>
@@ -442,7 +422,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="430" y1="90" x2="485" y2="90" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   <text x="457.5" y="84.0" font-size="11" fill="#34d399" font-weight="700" text-anchor="middle">* h[n]</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="485" y="60" width="200" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="585.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Radiated Speech s[n]</text>
     <text x="585.0" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">s[n] = e[n] * h[n] = Σ e[k]h[n-k]</text>
@@ -451,7 +431,7 @@ DIAGRAMS_SVG = {
 
   <rect x="25" y="140" width="665" height="145" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="45" y="162" font-size="12" font-weight="bold" fill="#38bdf8">Real-Time Streaming Speech Convolution (Overlap-Add Method):</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="45" y="175" width="150" height="50" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="120.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Split Stream</text>
     <text x="120.0" y="208" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Blocks of length L</text>
@@ -459,7 +439,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="195" y1="200" x2="230" y2="200" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="230" y="175" width="150" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="305.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. Fast FFT &amp; Mult</text>
     <text x="305.0" y="208" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Y_i[k] = X_i[k] · H[k]</text>
@@ -467,7 +447,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="380" y1="200" x2="415" y2="200" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="415" y="175" width="140" height="50" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="485.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. Inverse IFFT</text>
     <text x="485.0" y="208" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Length L + M - 1</text>
@@ -475,7 +455,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="555" y1="200" x2="580" y2="200" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="580" y="175" width="95" height="50" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="627.5" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. Overlap &amp; Add</text>
     <text x="627.5" y="208" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Stream Assembly</text>
@@ -485,7 +465,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q06": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="290" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -511,9 +490,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -552,7 +528,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q07": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" width="100%" height="310" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -578,9 +553,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -640,7 +612,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q08": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" width="100%" height="310" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -666,9 +637,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -687,7 +655,7 @@ DIAGRAMS_SVG = {
   <g transform="translate(25, 55)">
     <rect width="670" height="110" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="335" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">LPC ENCODER (ANALYSIS): All-Pole Autoregressive Prediction</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="40" y="38" width="120" height="50" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="100.0" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Speech s[n]</text>
     <text x="100.0" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Past p samples</text>
@@ -695,7 +663,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="160" y1="63" x2="215" y2="63" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="215" y="38" width="180" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="305.0" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">LPC Predictor ak</text>
     <text x="305.0" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Yule-Walker / Levinson</text>
@@ -703,7 +671,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="395" y1="63" x2="450" y2="63" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   <text x="422.5" y="57.0" font-size="11" fill="#38bdf8" font-weight="700" text-anchor="middle">s^[n]</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="450" y="38" width="90" height="50" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="495.0" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Difference</text>
     <text x="495.0" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">e[n]=s - s^</text>
@@ -711,7 +679,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="540" y1="63" x2="580" y2="63" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="580" y="38" width="100" height="50" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="630.0" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Residual e[n]</text>
     <text x="630.0" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Pitch / Gain G</text>
@@ -723,7 +691,7 @@ DIAGRAMS_SVG = {
   <g transform="translate(25, 175)">
     <rect width="670" height="115" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="335" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">LPC DECODER (SYNTHESIS): Vocal Tract Resynthesis</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="40" y="38" width="150" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="115.0" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Excitation Source</text>
     <text x="115.0" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Pitch pulses (Voiced)</text>
@@ -732,7 +700,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="190" y1="65" x2="250" y2="65" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   <text x="220.0" y="59.0" font-size="11" fill="#fbbf24" font-weight="700" text-anchor="middle">Gain G</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="250" y="38" width="230" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="365.0" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">All-Pole Synthesis Filter</text>
     <text x="365.0" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">H(z) = G / (1 - Σ ak z^-k)</text>
@@ -740,7 +708,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="480" y1="65" x2="540" y2="65" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="535" y="38" width="145" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="607.5" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Synthesized Speech</text>
     <text x="607.5" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Speech 2.4 kbps</text>
@@ -750,7 +718,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q09": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="270" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -776,9 +743,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -792,7 +756,7 @@ DIAGRAMS_SVG = {
   <rect width="740" height="270" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="370" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">SPEECH FEATURE EXTRACTION PIPELINE (MFCC)</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="15" y="55" width="90" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="60.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Pre-emp</text>
     <text x="60.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">1 - 0.97z^-1</text>
@@ -800,7 +764,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="105" y1="82" x2="120" y2="82" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="120" y="55" width="90" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="165.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. Framing</text>
     <text x="165.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">25ms, 10ms</text>
@@ -808,7 +772,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="210" y1="82" x2="225" y2="82" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="225" y="55" width="95" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="272.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. Window</text>
     <text x="272.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Hamming</text>
@@ -816,7 +780,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="320" y1="82" x2="335" y2="82" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="335" y="55" width="85" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="377.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. FFT</text>
     <text x="377.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">|X[k]| Mag</text>
@@ -824,7 +788,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="420" y1="82" x2="435" y2="82" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="435" y="55" width="95" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="482.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">5. Mel Filter</text>
     <text x="482.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">26-40 Banks</text>
@@ -832,7 +796,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="530" y1="82" x2="545" y2="82" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="545" y="55" width="85" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="587.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">6. Log E</text>
     <text x="587.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Loudness</text>
@@ -840,7 +804,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="630" y1="82" x2="645" y2="82" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="645" y="55" width="80" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="685.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">7. DCT-II</text>
     <text x="685.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">13 MFCC</text>
@@ -851,21 +815,21 @@ DIAGRAMS_SVG = {
   
   <rect x="15" y="145" width="710" height="105" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="35" y="170" font-size="12" font-weight="bold" fill="#34d399">Dynamic Derivative Augmentation (Final 39-D Vector):</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="35" y="185" width="205" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="137.5" y="203" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">13 Static MFCCs (c0 - c12)</text>
     <text x="137.5" y="218" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Instantaneous Vocal Posture</text>
     
   </g>
   <text x="255" y="215" font-size="18" fill="#cbd5e1" font-weight="bold">+</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="275" y="185" width="200" height="50" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="375.0" y="203" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">13 Delta Features (Δc)</text>
     <text x="375.0" y="218" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Spectral Velocity / Transitions</text>
     
   </g>
   <text x="490" y="215" font-size="18" fill="#cbd5e1" font-weight="bold">+</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="510" y="185" width="200" height="50" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="610.0" y="203" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">13 Delta-Delta (Δ²c)</text>
     <text x="610.0" y="218" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Articulatory Acceleration</text>
@@ -874,7 +838,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q10": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -900,9 +863,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -919,31 +879,31 @@ DIAGRAMS_SVG = {
   
   <!-- Temporal Frame Evolution -->
   <g transform="translate(40, 60)">
-      <g filter="url(#shadow)">
+      <g>
     <rect x="0" y="0" width="100" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
     <text x="50.0" y="18" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Frame t-2</text>
     <text x="50.0" y="33" font-size="10.5" fill="#cbd5e1" text-anchor="middle">c(t-2)</text>
     
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="130" y="0" width="100" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
     <text x="180.0" y="18" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Frame t-1</text>
     <text x="180.0" y="33" font-size="10.5" fill="#cbd5e1" text-anchor="middle">c(t-1)</text>
     
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="260" y="0" width="120" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="320.0" y="18" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Frame t</text>
     <text x="320.0" y="33" font-size="10.5" fill="#cbd5e1" text-anchor="middle">c(t) [CURRENT]</text>
     <rect x="305" y="-9" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="340" y="4" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Target</text>
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="410" y="0" width="100" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
     <text x="460.0" y="18" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Frame t+1</text>
     <text x="460.0" y="33" font-size="10.5" fill="#cbd5e1" text-anchor="middle">c(t+1)</text>
     
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="540" y="0" width="100" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
     <text x="590.0" y="18" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Frame t+2</text>
     <text x="590.0" y="33" font-size="10.5" fill="#cbd5e1" text-anchor="middle">c(t+2)</text>
@@ -954,21 +914,21 @@ DIAGRAMS_SVG = {
   <!-- Hierarchy -->
   <path d="M 360 115 L 360 145 M 360 145 L 140 145 L 140 170 M 360 145 L 360 170 M 360 145 L 580 145 L 580 170" fill="none" stroke="#94a3b8" stroke-width="2"/>
 
-    <g filter="url(#shadow)">
+    <g>
     <rect x="30" y="170" width="220" height="85" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="140.0" y="188" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. STATIC FEATURES (13-D)</text>
     <text x="140.0" y="203" font-size="10.5" fill="#cbd5e1" text-anchor="middle">c0 to c12 MFCCs</text>
     <text x="140.0" y="216" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Represents instantaneous vocal tract posture at frame t</text>
     <rect x="175" y="161" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="210" y="174" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Static</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="270" y="170" width="200" height="85" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="370.0" y="188" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. DELTA (13-D)</text>
     <text x="370.0" y="203" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Δc(t) = Velocity</text>
     <text x="370.0" y="216" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Rate of spectral change across neighboring frames</text>
     <rect x="395" y="161" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="430" y="174" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Delta</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="490" y="170" width="200" height="85" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="590.0" y="188" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. DELTA-DELTA (13-D)</text>
     <text x="590.0" y="203" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Δ²c(t) = Acceleration</text>
@@ -978,7 +938,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q11": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="290" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1004,9 +963,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1059,7 +1015,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q12": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1085,9 +1040,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1106,7 +1058,7 @@ DIAGRAMS_SVG = {
   <g transform="translate(30, 50)">
     <rect width="660" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="330" y="20" font-size="12" font-weight="bold" fill="#fbbf24" text-anchor="middle">LPCC: Acoustic All-Pole Tube Model (Noise-Sensitive, No Zeros)</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="30" y="32" width="100" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="80.0" y="50" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Raw Speech</text>
     <text x="80.0" y="65" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Linear scale</text>
@@ -1114,7 +1066,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="130" y1="54" x2="170" y2="54" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="170" y="32" width="130" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="235.0" y="50" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">LPC Analysis</text>
     <text x="235.0" y="65" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Yule-Walker / Levinson</text>
@@ -1122,7 +1074,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="300" y1="54" x2="340" y2="54" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="340" y="32" width="120" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="400.0" y="50" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Predictor ak</text>
     <text x="400.0" y="65" font-size="10.5" fill="#cbd5e1" text-anchor="middle">All-pole filter</text>
@@ -1130,7 +1082,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="460" y1="54" x2="500" y2="54" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="500" y="32" width="130" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="565.0" y="50" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">LPCCs</text>
     <text x="565.0" y="65" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Recursive Cepstrum</text>
@@ -1142,7 +1094,7 @@ DIAGRAMS_SVG = {
   <g transform="translate(30, 155)">
     <rect width="660" height="95" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="330" y="20" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">MFCC: Human Auditory Cochlea Model (Highly Robust to Noise, ASR Standard)</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="30" y="32" width="85" height="45" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="72.5" y="50" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Raw Speech</text>
     <text x="72.5" y="65" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Pre-emphasized</text>
@@ -1150,7 +1102,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="115" y1="54" x2="140" y2="54" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="140" y="32" width="80" height="45" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="180.0" y="50" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">FFT</text>
     <text x="180.0" y="65" font-size="10.5" fill="#cbd5e1" text-anchor="middle">|X[k]| Mag</text>
@@ -1158,7 +1110,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="220" y1="54" x2="245" y2="54" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="245" y="32" width="120" height="45" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="305.0" y="50" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Mel Filterbank</text>
     <text x="305.0" y="65" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Critical bands</text>
@@ -1166,7 +1118,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="365" y1="54" x2="390" y2="54" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="390" y="32" width="80" height="45" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="430.0" y="50" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Log E</text>
     <text x="430.0" y="65" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Loudness</text>
@@ -1174,7 +1126,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="470" y1="54" x2="495" y2="54" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="495" y="32" width="135" height="45" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="562.5" y="50" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">13 MFCCs</text>
     <text x="562.5" y="65" font-size="10.5" fill="#cbd5e1" text-anchor="middle">DCT-II Decorrelation</text>
@@ -1184,7 +1136,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q13": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 300" width="100%" height="300" class="flowchart-svg" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1210,9 +1161,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1246,19 +1194,19 @@ DIAGRAMS_SVG = {
   </g>
 
   <!-- Right: 3 Measures Comparison -->
-    <g filter="url(#shadow)">
+    <g>
     <rect x="330" y="55" width="335" height="65" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="497.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Euclidean Distance d_E</text>
     <text x="497.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">d = √Σ(xi - yi)² | Assumes equal variance &amp; no correlation</text>
     <rect x="590" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="625" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Fast O(D)</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="330" y="135" width="335" height="65" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="497.5" y="153" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. Mahalanobis Distance d_M</text>
     <text x="497.5" y="168" font-size="10.5" fill="#cbd5e1" text-anchor="middle">d = √[(x - y)ᵀ Σ⁻¹ (x - y)] | Accounts for feature covariance</text>
     <rect x="590" y="126" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="625" y="139" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Scale-Inv</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="330" y="215" width="335" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="497.5" y="233" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. Dynamic Time Warping (DTW)</text>
     <text x="497.5" y="248" font-size="10.5" fill="#cbd5e1" text-anchor="middle">D(i,j) = d + min{D(i-1,j), D(i,j-1), D(i-1,j-1)}</text>
@@ -1267,7 +1215,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q14": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1293,9 +1240,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1331,7 +1275,7 @@ DIAGRAMS_SVG = {
   </g>
 
   <!-- LBG Flowchart -->
-    <g filter="url(#shadow)">
+    <g>
     <rect x="350" y="55" width="335" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="517.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Initial Global Centroid (K=1)</text>
     <text x="517.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Average of all training speech vectors</text>
@@ -1339,7 +1283,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="517" y1="100" x2="517" y2="115" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="350" y="115" width="335" height="45" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="517.5" y="133" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. Centroid Splitting (K ──► 2K)</text>
     <text x="517.5" y="148" font-size="10.5" fill="#cbd5e1" text-anchor="middle">y+ = y(1 + ε), y- = y(1 - ε)</text>
@@ -1347,7 +1291,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="517" y1="160" x2="517" y2="175" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="350" y="175" width="335" height="45" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="517.5" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. K-Means Nearest Assignment</text>
     <text x="517.5" y="208" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Classify vectors into Voronoi cells R_i</text>
@@ -1355,7 +1299,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="517" y1="220" x2="517" y2="235" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="350" y="235" width="335" height="45" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="517.5" y="253" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. Iterate until Distortion Converges</text>
     <text x="517.5" y="268" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Generates optimal codebook (K=64-256)</text>
@@ -1364,7 +1308,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q15": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="290" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1390,9 +1333,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1424,7 +1364,7 @@ DIAGRAMS_SVG = {
   </g>
 
   <!-- Right: EM Cycle -->
-    <g filter="url(#shadow)">
+    <g>
     <rect x="360" y="55" width="320" height="90" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="520.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">E-STEP (Expectation)</text>
     <text x="520.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Compute posterior responsibilities:</text>
@@ -1434,7 +1374,7 @@ DIAGRAMS_SVG = {
   <path d="M 520 145 L 520 175" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arrEmerald)"/>
   <path d="M 360 215 L 340 215 L 340 100 L 360 100" fill="none" stroke="#c084fc" stroke-width="2" stroke-dasharray="4 4"/>
   <text x="325" y="155" font-size="9" fill="#c084fc" transform="rotate(-90 325 155)">Iterate until ΔL &lt; ε</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="360" y="175" width="320" height="95" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="520.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">M-STEP (Maximization)</text>
     <text x="520.0" y="208" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Re-estimate mixture parameters:</text>
@@ -1446,7 +1386,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q16": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="270" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1472,9 +1411,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1550,7 +1486,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q17": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1576,9 +1511,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1592,7 +1524,7 @@ DIAGRAMS_SVG = {
   <rect width="720" height="270" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">MULTI-DIMENSIONAL SIGNALS TAXONOMY &amp; PROPERTIES</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="25" y="60" width="150" height="85" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="100.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1D Signal: Speech</text>
     <text x="100.0" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">s(t) = Amplitude vs Time</text>
@@ -1602,7 +1534,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="175" y1="102" x2="205" y2="102" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="205" y="60" width="150" height="85" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="280.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2D Signal: Image</text>
     <text x="280.0" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">f(x, y) = 2D Spatial Grid</text>
@@ -1612,7 +1544,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="355" y1="102" x2="385" y2="102" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="385" y="60" width="150" height="85" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="460.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3D Signal: Video</text>
     <text x="460.0" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">f(x, y, t) = Space + Time</text>
@@ -1622,7 +1554,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="535" y1="102" x2="565" y2="102" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="565" y="60" width="130" height="85" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="630.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3D/4D Medical</text>
     <text x="630.0" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">f(x, y, z, t)</text>
@@ -1639,7 +1571,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q18": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1665,9 +1596,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1686,7 +1614,7 @@ DIAGRAMS_SVG = {
   <g transform="translate(30, 55)">
     <rect width="320" height="205" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="160" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">Row-Column Separable Algorithm</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="20" y="38" width="120" height="50" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="80.0" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Image f(x, y)</text>
     <text x="80.0" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Size M x N</text>
@@ -1694,7 +1622,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="140" y1="63" x2="175" y2="63" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="175" y="38" width="125" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="237.5" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1D-FFT on Rows</text>
     <text x="237.5" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">G(x, v)</text>
@@ -1702,7 +1630,7 @@ DIAGRAMS_SVG = {
   </g>
     
     <path d="M 237 88 L 237 115 L 80 115 L 80 135" fill="none" stroke="#c084fc" stroke-width="2" marker-end="url(#arrEmerald)"/>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="20" y="135" width="125" height="50" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="82.5" y="153" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1D-FFT on Cols</text>
     <text x="82.5" y="168" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Applied to G(x, v)</text>
@@ -1710,7 +1638,7 @@ DIAGRAMS_SVG = {
   </g>
       <line x1="145" y1="160" x2="180" y2="160" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-      <g filter="url(#shadow)">
+      <g>
     <rect x="180" y="135" width="120" height="50" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="240.0" y="153" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2D-DFT F(u, v)</text>
     <text x="240.0" y="168" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Total O(MN log MN)</text>
@@ -1739,7 +1667,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q19": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1765,9 +1692,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1781,7 +1705,7 @@ DIAGRAMS_SVG = {
   <rect width="720" height="280" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">2D LINEAR SHIFT-INVARIANT (LSI) SYSTEMS &amp; CONVOLUTION</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="25" y="55" width="140" height="60" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="95.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Input Image x[m, n]</text>
     <text x="95.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Spatial Domain</text>
@@ -1789,7 +1713,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="165" y1="85" x2="215" y2="85" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="215" y="55" width="180" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="305.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2D LSI System h[m, n]</text>
     <text x="305.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Point Spread Function (PSF)</text>
@@ -1797,7 +1721,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="395" y1="85" x2="445" y2="85" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="445" y="55" width="250" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="570.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Output Image y[m, n]</text>
     <text x="570.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">y[m, n] = Σ Σ x[k, l] h[m-k, n-l]</text>
@@ -1806,14 +1730,14 @@ DIAGRAMS_SVG = {
 
   <rect x="25" y="135" width="670" height="125" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="45" y="160" font-size="12" font-weight="bold" fill="#38bdf8">Transform Domain &amp; Separable Fast Computation:</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="45" y="175" width="280" height="65" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="185.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Frequency Domain Multiplication</text>
     <text x="185.0" y="208" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Y(ω1, ω2) = X(ω1, ω2) · H(ω1, ω2)</text>
     <text x="185.0" y="221" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Zero-phase required to prevent edge distortion</text>
     
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="355" y="175" width="320" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="515.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Separable 2D Filter Speedup</text>
     <text x="515.0" y="208" font-size="10.5" fill="#cbd5e1" text-anchor="middle">h[m, n] = h1[m] · h2[n]</text>
@@ -1823,7 +1747,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID1-Q20": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="270" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1849,9 +1772,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1865,7 +1785,7 @@ DIAGRAMS_SVG = {
   <rect width="740" height="270" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="370" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">MULTI-DIMENSIONAL IMAGE COMPRESSION FRAMEWORK (JPEG / MPEG)</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="15" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="62.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Color Conv</text>
     <text x="62.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">RGB -&gt; YCbCr</text>
@@ -1873,7 +1793,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="110" y1="85" x2="130" y2="85" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="130" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="177.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. 4:2:0 Sub</text>
     <text x="177.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Saves 50% data</text>
@@ -1881,7 +1801,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="225" y1="85" x2="245" y2="85" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="245" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="292.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. 8x8 Blocks</text>
     <text x="292.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Local stats</text>
@@ -1889,7 +1809,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="340" y1="85" x2="360" y2="85" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="360" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="407.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. 2D-DCT</text>
     <text x="407.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Energy pack</text>
@@ -1897,7 +1817,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="455" y1="85" x2="475" y2="85" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="475" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
     <text x="522.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">5. Quantize</text>
     <text x="522.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">HVS Matrix Q</text>
@@ -1905,7 +1825,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="570" y1="85" x2="590" y2="85" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="590" y="55" width="130" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="655.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">6. Zig-Zag</text>
     <text x="655.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Entropy Coding</text>
@@ -1921,7 +1841,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q01": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1947,9 +1866,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -1995,7 +1911,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q02": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" width="100%" height="260" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2021,9 +1936,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2037,7 +1949,7 @@ DIAGRAMS_SVG = {
   <rect width="720" height="260" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">THE TRANSFORMATION PROCESS BLOCK DIAGRAM</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="20" y="60" width="115" height="65" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="77.5" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. 8x8 Partition</text>
     <text x="77.5" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Localized stats</text>
@@ -2045,7 +1957,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="135" y1="92" x2="160" y2="92" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="160" y="60" width="115" height="65" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="217.5" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. 2D-DCT</text>
     <text x="217.5" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Decorrelation</text>
@@ -2053,7 +1965,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="275" y1="92" x2="300" y2="92" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="300" y="60" width="115" height="65" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
     <text x="357.5" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. Quantize</text>
     <text x="357.5" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">HVS Matrix</text>
@@ -2061,7 +1973,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="415" y1="92" x2="440" y2="92" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="440" y="60" width="115" height="65" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="497.5" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. Zig-Zag</text>
     <text x="497.5" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Zero-run order</text>
@@ -2069,7 +1981,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="555" y1="92" x2="580" y2="92" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="580" y="60" width="120" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="640.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">5. Huffman</text>
     <text x="640.0" y="93" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Entropy Coding</text>
@@ -2084,7 +1996,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q03": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="290" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2110,9 +2021,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2148,20 +2056,20 @@ DIAGRAMS_SVG = {
   <g transform="translate(375, 55)">
     <rect width="310" height="210" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="155" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">Luminance vs. Chrominance (4:2:0)</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="20" y="38" width="270" height="42" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="155.0" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Rods (120M) vs Cones (6M)</text>
     <text x="155.0" y="71" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Eye is far more sensitive to Light than Color</text>
     
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="20" y="90" width="270" height="48" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="155.0" y="108" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">YCbCr Color Transform</text>
     <text x="155.0" y="123" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Y = Luminance (Keep high bandwidth)</text>
     <text x="155.0" y="136" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Cb, Cr = Chroma (Downsample by 2)</text>
     
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="20" y="148" width="270" height="48" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="155.0" y="166" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4:2:0 Chroma Subsampling</text>
     <text x="155.0" y="181" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Discards 50% raw video data with ZERO visible loss!</text>
@@ -2171,7 +2079,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q04": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="290" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2197,9 +2104,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2220,43 +2124,43 @@ DIAGRAMS_SVG = {
     <text x="330" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">Group of Pictures (GOP) Frame Structure</text>
     
     <!-- Frames -->
-      <g filter="url(#shadow)">
+      <g>
     <rect x="30" y="40" width="75" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="67.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">I-Frame</text>
     <text x="67.5" y="73" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Intra (Key)</text>
     <rect x="30" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="65" y="44" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Anchor</text>
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="130" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="162.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">B1</text>
     <text x="162.5" y="73" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Bi-dir</text>
     
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="215" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="247.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">B2</text>
     <text x="247.5" y="73" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Bi-dir</text>
     
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="300" y="40" width="75" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="337.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">P-Frame</text>
     <text x="337.5" y="73" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Forward</text>
     <rect x="300" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="335" y="44" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Pred</text>
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="395" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="427.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">B3</text>
     <text x="427.5" y="73" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Bi-dir</text>
     
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="480" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="512.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">B4</text>
     <text x="512.5" y="73" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Bi-dir</text>
     
   </g>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="565" y="40" width="75" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="602.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">I-Frame</text>
     <text x="602.5" y="73" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Next GOP</text>
@@ -2280,7 +2184,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q05": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2306,9 +2209,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2345,14 +2245,14 @@ DIAGRAMS_SVG = {
   <g transform="translate(375, 55)">
     <rect width="315" height="195" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="157" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">2. Photometric / Radiometric Model</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="25" y="40" width="265" height="42" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="157.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Illumination L(x, y)</text>
     <text x="157.5" y="73" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Light from Sun / Lamp source</text>
     
   </g>
     <text x="157" y="98" font-size="14" fill="#cbd5e1" font-weight="bold" text-anchor="middle">×</text>
-      <g filter="url(#shadow)">
+      <g>
     <rect x="25" y="105" width="265" height="42" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="157.5" y="123" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Surface Reflectance R(x, y)</text>
     <text x="157.5" y="138" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Material properties (0 ≤ R ≤ 1)</text>
@@ -2364,7 +2264,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q06": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2390,9 +2289,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2406,7 +2302,7 @@ DIAGRAMS_SVG = {
   <rect width="720" height="270" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">PARAMETRIC 2D MOTION MODELS (2, 6, AND 8 DEGREES OF FREEDOM)</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="20" y="55" width="210" height="110" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="125.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. TRANSLATIONAL (2 DOF)</text>
     <text x="125.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">[x&#x27;] = [x] + [dx]</text>
@@ -2414,7 +2310,7 @@ DIAGRAMS_SVG = {
     <text x="125.0" y="114" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Rigid shift; standard in Block Matching Algorithms</text>
     <rect x="155" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="190" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">2 DOF</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="255" y="55" width="210" height="110" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="360.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. AFFINE MODEL (6 DOF)</text>
     <text x="360.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">[x&#x27;] = [a11 a12][x] + [dx]</text>
@@ -2422,7 +2318,7 @@ DIAGRAMS_SVG = {
     <text x="360.0" y="114" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Rotation, Scale, Shear, Translation; Parallel lines preserved</text>
     <rect x="390" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="425" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">6 DOF</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="490" y="55" width="210" height="110" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="595.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. HOMOGRAPHY (8 DOF)</text>
     <text x="595.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">x&#x27; = (h11x + h12y + h13) / D</text>
@@ -2438,7 +2334,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q07": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 290" width="100%" height="290" class="flowchart-svg" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2464,9 +2359,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2506,7 +2398,7 @@ DIAGRAMS_SVG = {
   </g>
 
   <!-- Right: Computations -->
-    <g filter="url(#shadow)">
+    <g>
     <rect x="370" y="50" width="310" height="68" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="525.0" y="68" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Task 1: Motion Vector d</text>
     <text x="525.0" y="83" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Δx = 23 - 20 = +3 (Right)</text>
@@ -2514,14 +2406,14 @@ DIAGRAMS_SVG = {
     <text x="525.0" y="109" font-size="10.5" fill="#cbd5e1" text-anchor="middle">d = (3, 5)</text>
     <rect x="605" y="41" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="640" y="54" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Vector</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="370" y="122" width="310" height="64" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="525.0" y="140" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Task 2: Magnitude ||d||</text>
     <text x="525.0" y="155" font-size="10.5" fill="#cbd5e1" text-anchor="middle">||d|| = √(3² + 5²) = √34</text>
     <text x="525.0" y="168" font-size="10.5" fill="#cbd5e1" text-anchor="middle">||d|| ≈ 5.831 pixels</text>
     <rect x="605" y="113" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="640" y="126" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Length</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="370" y="192" width="310" height="64" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="525.0" y="210" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Task 3: Direction θ</text>
     <text x="525.0" y="225" font-size="10.5" fill="#cbd5e1" text-anchor="middle">θ = arctan(5/3) = arctan(1.667)</text>
@@ -2531,7 +2423,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q08": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2557,9 +2448,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2589,7 +2477,7 @@ DIAGRAMS_SVG = {
   </g>
 
   <!-- Right: Comparison LK vs HS -->
-    <g filter="url(#shadow)">
+    <g>
     <rect x="370" y="55" width="320" height="90" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="530.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Lucas-Kanade Method (Local)</text>
     <text x="530.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Assumes constant flow in small 3x3 window</text>
@@ -2597,7 +2485,7 @@ DIAGRAMS_SVG = {
     <text x="530.0" y="114" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Reliable only at corners (large eigenvalues)</text>
     <rect x="615" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="650" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Local</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="370" y="160" width="320" height="90" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="530.0" y="178" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Horn-Schunck Method (Global)</text>
     <text x="530.0" y="193" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Adds global spatial smoothness regularizer α²</text>
@@ -2608,7 +2496,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q09": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2634,9 +2521,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2682,7 +2566,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q10": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2708,9 +2591,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2724,7 +2604,7 @@ DIAGRAMS_SVG = {
   <rect width="720" height="270" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">NONLINEAR OPTIMIZATION IN MOTION ESTIMATION</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="25" y="55" width="210" height="110" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="130.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Gradient Descent</text>
     <text x="130.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">p^(k+1) = p^(k) - η·Jᵀ r</text>
@@ -2733,7 +2613,7 @@ DIAGRAMS_SVG = {
     <text x="130.0" y="127" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Zigzags in narrow valleys</text>
     <rect x="160" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="195" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Linear</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="255" y="55" width="210" height="110" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
     <text x="360.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. Gauss-Newton</text>
     <text x="360.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Δp = -(Jᵀ J)⁻¹ Jᵀ r</text>
@@ -2741,7 +2621,7 @@ DIAGRAMS_SVG = {
     <text x="360.0" y="114" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Can diverge if Hessian Jᵀ J is singular or ill-conditioned</text>
     <rect x="390" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="425" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Quadratic</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="485" y="55" width="210" height="110" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="590.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. Levenberg-Marquardt</text>
     <text x="590.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Δp = -(Jᵀ J + λ·I)⁻¹ Jᵀ r</text>
@@ -2757,7 +2637,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q11": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2783,9 +2662,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2799,7 +2675,7 @@ DIAGRAMS_SVG = {
   <rect width="720" height="270" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">TRANSFORM-DOMAIN MOTION ESTIMATION: PHASE CORRELATION</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="25" y="55" width="130" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="90.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Frame f1(x, y)</text>
     <text x="90.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Reference Frame</text>
@@ -2807,14 +2683,14 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="155" y1="82" x2="185" y2="82" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="185" y="55" width="100" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="235.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2D-FFT</text>
     <text x="235.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">F1(u, v)</text>
     
   </g>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="25" y="125" width="130" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="90.0" y="143" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Frame f2(x, y)</text>
     <text x="90.0" y="158" font-size="10.5" fill="#cbd5e1" text-anchor="middle">f1(x - x0, y - y0)</text>
@@ -2822,7 +2698,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="155" y1="152" x2="185" y2="152" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="185" y="125" width="100" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="235.0" y="143" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2D-FFT</text>
     <text x="235.0" y="158" font-size="10.5" fill="#cbd5e1" text-anchor="middle">F2(u, v)</text>
@@ -2834,7 +2710,7 @@ DIAGRAMS_SVG = {
     <line x1="285" y1="152" x2="325" y2="115" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
 
-    <g filter="url(#shadow)">
+    <g>
     <rect x="325" y="75" width="190" height="80" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="420.0" y="93" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Cross-Power Spectrum</text>
     <text x="420.0" y="108" font-size="10.5" fill="#cbd5e1" text-anchor="middle">R(u,v) = (F1·F2*) / |F1·F2*|</text>
@@ -2843,7 +2719,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="515" y1="115" x2="550" y2="115" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="550" y="75" width="145" height="80" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="622.5" y="93" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Inverse 2D-FFT</text>
     <text x="622.5" y="108" font-size="10.5" fill="#cbd5e1" text-anchor="middle">r(x, y) = δ(x-x0, y-y0)</text>
@@ -2857,7 +2733,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q12": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 280" width="100%" height="280" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2883,9 +2758,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -2899,7 +2771,7 @@ DIAGRAMS_SVG = {
   <rect width="740" height="280" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="370" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">3D STRUCTURE FROM MOTION (SfM) PIPELINE</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="15" y="55" width="100" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="65.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. SIFT / ORB</text>
     <text x="65.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Feature Points</text>
@@ -2907,7 +2779,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="115" y1="82" x2="135" y2="82" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="135" y="55" width="105" height="55" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
     <text x="187.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. RANSAC</text>
     <text x="187.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Outlier Filter</text>
@@ -2915,7 +2787,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="240" y1="82" x2="260" y2="82" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="260" y="55" width="115" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="317.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. 8-Point SVD</text>
     <text x="317.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Essential Matrix E</text>
@@ -2923,7 +2795,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="375" y1="82" x2="395" y2="82" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="395" y="55" width="105" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="447.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. Pose (R, t)</text>
     <text x="447.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Camera Motion</text>
@@ -2931,7 +2803,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="500" y1="82" x2="520" y2="82" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="520" y="55" width="95" height="55" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="567.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">5. Triangulate</text>
     <text x="567.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">3D Points P</text>
@@ -2939,7 +2811,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="615" y1="82" x2="635" y2="82" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="635" y="55" width="85" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="677.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">6. Bundle Adj</text>
     <text x="677.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Levenberg-M</text>
@@ -2955,7 +2827,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q13": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -2981,9 +2852,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -3033,7 +2901,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q14": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -3059,9 +2926,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -3102,7 +2966,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q15": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" width="100%" height="280" class="flowchart-svg" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -3128,9 +2991,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -3172,19 +3032,19 @@ DIAGRAMS_SVG = {
   </g>
 
   <!-- Right: Decisions -->
-    <g filter="url(#shadow)">
+    <g>
     <rect x="390" y="55" width="280" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="530.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Region A: MOTION DETECTED</text>
     <text x="530.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">120 &gt; 100 -&gt; Active object displacement</text>
     <rect x="595" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="630" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Active</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="390" y="125" width="280" height="60" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
     <text x="530.0" y="143" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Region B: NO MOTION (STATIC)</text>
     <text x="530.0" y="158" font-size="10.5" fill="#cbd5e1" text-anchor="middle">45 ≤ 100 -&gt; Sensor noise / background</text>
     <rect x="595" y="116" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="630" y="129" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Static</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="390" y="195" width="280" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="530.0" y="213" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Region C: DOMINANT REGION</text>
     <text x="530.0" y="228" font-size="10.5" fill="#cbd5e1" text-anchor="middle">200 &gt; 100 -&gt; MAXIMUM ACTIVITY!</text>
@@ -3194,7 +3054,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q16": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -3220,9 +3079,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -3276,7 +3132,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q17": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -3302,9 +3157,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -3334,21 +3186,21 @@ DIAGRAMS_SVG = {
   </g>
 
   <!-- Right: Matting Equation & Laplacian -->
-    <g filter="url(#shadow)">
+    <g>
     <rect x="375" y="55" width="310" height="65" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="530.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">The Fundamental Matting Equation</text>
     <text x="530.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">I = α·F + (1 - α)·B</text>
     <text x="530.0" y="101" font-size="10.5" fill="#cbd5e1" text-anchor="middle">3 Known RGB Equations vs 7 Unknowns (Ill-posed!)</text>
     <rect x="610" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="645" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Equation</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="375" y="125" width="310" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="530.0" y="143" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Closed-Form Matting (Levin)</text>
     <text x="530.0" y="158" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Minimizes αᵀ L α via Matting Laplacian</text>
     <text x="530.0" y="171" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Exact global sparse linear solution</text>
     <rect x="610" y="116" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="645" y="129" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Laplacian</text>
   </g>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="375" y="190" width="310" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="530.0" y="208" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Video Matting &amp; Coherence</text>
     <text x="530.0" y="223" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Temporal optical flow penalty prevents flickering</text>
@@ -3357,7 +3209,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q18": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -3383,9 +3234,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -3453,7 +3301,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q19": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 270" width="100%" height="270" class="flowchart-svg" style="max-width: 740px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -3479,9 +3326,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
@@ -3495,7 +3339,7 @@ DIAGRAMS_SVG = {
   <rect width="740" height="270" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="370" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">REAL-TIME VIDEO SEGMENTATION &amp; TRACKING FRAMEWORK</text>
-    <g filter="url(#shadow)">
+    <g>
     <rect x="15" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="62.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Video In</text>
     <text x="62.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">30 fps Camera</text>
@@ -3503,7 +3347,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="110" y1="85" x2="130" y2="85" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="130" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="177.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. MoG2 Detect</text>
     <text x="177.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Background Sub</text>
@@ -3511,7 +3355,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="225" y1="85" x2="245" y2="85" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="245" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="292.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. Morphology</text>
     <text x="292.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Open / Close</text>
@@ -3519,7 +3363,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="340" y1="85" x2="360" y2="85" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="360" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="407.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. Features</text>
     <text x="407.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Centroid, Hist</text>
@@ -3527,7 +3371,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="455" y1="85" x2="475" y2="85" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="475" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
     <text x="522.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">5. Hungarian</text>
     <text x="522.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Data Assoc O(N³)</text>
@@ -3535,7 +3379,7 @@ DIAGRAMS_SVG = {
   </g>
     <line x1="570" y1="85" x2="590" y2="85" stroke="#f43f5e" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
-    <g filter="url(#shadow)">
+    <g>
     <rect x="590" y="55" width="135" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="657.5" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">6. Kalman Track</text>
     <text x="657.5" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Predict &amp; Smooth</text>
@@ -3551,7 +3395,6 @@ DIAGRAMS_SVG = {
 
 </svg>""",
     "MID2-Q20": """<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" class="flowchart-svg" style="max-width: 720px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
-  <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -3577,9 +3420,6 @@ DIAGRAMS_SVG = {
       <stop offset="0%" stop-color="#fb7185"/>
       <stop offset="100%" stop-color="#e11d48"/>
     </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4"/>
-    </filter>
     <marker id="arrCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
     </marker>
