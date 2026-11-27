@@ -9,7 +9,7 @@ import os, re, html
 DIAGRAMS = {}
 
 def svg_doc(w, h, inner):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="{h}" class="flowchart-svg" style="max-width: {w}px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -61,9 +61,9 @@ def box(x, y, w, h, title, sub="", stroke="#38bdf8", fill="#1e293b", badge="", b
 
     if sub_lines:
         y_title = y + 18
-        start_y = y_title + 16
-        tspans = [f'<tspan x="{x + w/2}" y="{start_y + idx * 14}">{html.escape(l)}</tspan>' for idx, l in enumerate(sub_lines)]
-        sub_text = f'<text font-size="11" fill="#cbd5e1" text-anchor="middle">{"".join(tspans)}</text>'
+        start_y = y_title + 15
+        sub_lines_xml = [f'<text x="{x + w/2}" y="{start_y + idx * 13}" font-size="10.5" fill="#cbd5e1" text-anchor="middle">{html.escape(l)}</text>' for idx, l in enumerate(sub_lines)]
+        sub_text = "\n    ".join(sub_lines_xml)
     else:
         y_title = y + h / 2 + 5
         sub_text = ''
@@ -154,7 +154,7 @@ DIAGRAMS['MID1-Q03'] = svg_doc(700, 310, f'''
   <!-- Right Details -->
   {box(310, 60, 370, 75, "System Transfer Function H(z)", "H(z) = [z(z - 0.5)] / [z² - 0.9z + 0.2] = z / (z - 0.4)", "#38bdf8", badge="Filter")}
   {box(310, 145, 370, 70, "Poles & Zeros Extraction", "Zeros (Numerator=0): z1 = 0, z2 = 0.5\\nPoles (Denominator=0): p1 = 0.5, p2 = 0.4", "#fbbf24")}
-  {box(310, 225, 370, 65, "BIBO Stability Verdict: UNCONDITIONALLY STABLE", "All poles strictly INSIDE unit circle (|p1|=0.5 < 1, |p2|=0.4 < 1)", "#34d399", badge="Stable")}
+  {box(310, 225, 370, 65, "BIBO Stability Verdict: UNCONDITIONALLY STABLE", "All poles strictly INSIDE unit circle (|p|<1 -> Stable)", "#34d399", badge="Stable")}
 ''')
 
 DIAGRAMS['MID1-Q04'] = svg_doc(720, 280, f'''
@@ -174,9 +174,9 @@ DIAGRAMS['MID1-Q04'] = svg_doc(720, 280, f'''
   <text x="35" y="218" font-size="11" fill="#cbd5e1">1. Linearity: Preserves speech+noise superposition</text>
   <text x="35" y="235" font-size="11" fill="#cbd5e1">2. Conjugate Symmetry: Real speech -> X[N-k]=X*[k] (Save 50% compute)</text>
   <text x="35" y="252" font-size="11" fill="#cbd5e1">3. Time-Shift: Magnitude invariant to boundary offset</text>
-  <text x="380" y="218" font-size="11" fill="#cbd5e1">4. Resolution: Δf = fs / N (Trade-off time vs frequency)</text>
-  <text x="380" y="235" font-size="11" fill="#cbd5e1">5. Parseval's Theorem: Total energy preserved for VAD</text>
-  <text x="380" y="252" font-size="11" fill="#cbd5e1">6. Periodicity: Rectangular window causes spectral leakage</text>
+  <text x="380" y="218" font-size="11" fill="#cbd5e1">4. Resolution: Δf = fs / N (Time vs Freq)</text>
+  <text x="380" y="235" font-size="11" fill="#cbd5e1">5. Parseval: Energy preserved for VAD</text>
+  <text x="380" y="252" font-size="11" fill="#cbd5e1">6. Periodicity: Rect window causes leakage</text>
 ''')
 
 DIAGRAMS['MID1-Q05'] = svg_doc(720, 300, f'''
@@ -268,7 +268,7 @@ DIAGRAMS['MID1-Q07'] = svg_doc(720, 310, f'''
     <text x="30" y="165" font-size="11" font-weight="bold" fill="#38bdf8">Task 2: Frequency for Bin k = 10</text>
     <text x="30" y="185" font-size="12" fill="#f8fafc">f10 = k · Δf = 10 × 31.25 = <tspan fill="#38bdf8" font-weight="bold">312.5 Hz</tspan></text>
 
-    <text x="20" y="222" font-size="11" fill="#cbd5e1">Falls in female/child pitch &amp; closed vowel F1 formant range</text>
+    <text x="20" y="222" font-size="11" fill="#cbd5e1">Falls in female pitch &amp; F1 formant band</text>
   </g>
 ''')
 
@@ -296,7 +296,7 @@ DIAGRAMS['MID1-Q08'] = svg_doc(720, 310, f'''
     {arrow(190, 65, 250, 65, "#fbbf24", "Gain G")}
     {box(250, 38, 230, 55, "All-Pole Synthesis Filter", "H(z) = G / (1 - Σ ak z^-k)", "#34d399", badge="Resonator")}
     {arrow(480, 65, 540, 65, "#34d399")}
-    {box(540, 38, 140, 55, "Reconstructed Speech", "Natural Audio 2.4 kbps", "#34d399", badge="LPC-10")}
+    {box(535, 38, 145, 55, "Synthesized Speech", "Speech 2.4 kbps", "#34d399", badge="LPC-10")}
   </g>
 ''')
 
@@ -345,7 +345,7 @@ DIAGRAMS['MID1-Q10'] = svg_doc(720, 280, f'''
 
   {box(30, 170, 220, 85, "1. STATIC FEATURES (13-D)", "c0 to c12 MFCCs\\nRepresents instantaneous vocal tract posture at frame t", "#38bdf8", badge="Static")}
   {box(270, 170, 200, 85, "2. DELTA (13-D)", "Δc(t) = Velocity\\nRate of spectral change across neighboring frames", "#fbbf24", badge="Delta")}
-  {box(490, 170, 200, 85, "3. DELTA-DELTA (13-D)", "Δ²c(t) = Acceleration\\nSecond-order derivative of articulatory transitions", "#34d399", badge="Delta-Delta")}
+  {box(490, 170, 200, 85, "3. DELTA-DELTA (13-D)", "Δ²c(t) = Acceleration\\n2nd derivative of transitions", "#34d399", badge="Delta-Delta")}
 ''')
 
 DIAGRAMS['MID1-Q11'] = svg_doc(720, 290, f'''
@@ -357,7 +357,7 @@ DIAGRAMS['MID1-Q11'] = svg_doc(720, 290, f'''
   <text x="200" y="50" font-size="11" fill="#cbd5e1">400</text>
   <text x="360" y="50" font-size="11" fill="#cbd5e1">800</text>
   <text x="520" y="50" font-size="11" fill="#cbd5e1">1200</text>
-  <text x="660" y="50" font-size="11" fill="#34d399" font-weight="bold">1600 Total</text>
+  <text x="680" y="50" font-size="11" fill="#34d399" font-weight="bold" text-anchor="end">1600 Total</text>
 
   <!-- 7 Frames Overlap -->
   <g transform="translate(40, 85)">
@@ -586,8 +586,8 @@ DIAGRAMS['MID1-Q17'] = svg_doc(720, 270, f'''
   <text x="45" y="190" font-size="12" font-weight="bold" fill="#38bdf8">Key Multi-Dimensional Signal Characteristics:</text>
   <text x="45" y="210" font-size="11" fill="#cbd5e1">1. High Spatial Correlation: Adjacent pixels have &gt;90% similar intensity</text>
   <text x="45" y="228" font-size="11" fill="#cbd5e1">2. Non-Causal Space: Processing accesses left, right, top, and bottom simultaneously</text>
-  <text x="380" y="210" font-size="11" fill="#cbd5e1">3. Separability: f(x, y) = f1(x) · f2(y) (Saves O(N²) ops)</text>
-  <text x="380" y="228" font-size="11" fill="#cbd5e1">4. Massive Data Rates: Demands transform-domain compression</text>
+  <text x="380" y="210" font-size="11" fill="#cbd5e1">3. Separability: f(x, y) = f1(x) · f2(y) (O(N²))</text>
+  <text x="380" y="228" font-size="11" fill="#cbd5e1">4. Data Rates: Demands transform coding</text>
 ''')
 
 DIAGRAMS['MID1-Q18'] = svg_doc(720, 280, f'''
@@ -653,7 +653,7 @@ DIAGRAMS['MID1-Q20'] = svg_doc(740, 270, f'''
   {arrow(455, 85, 475, 85, "#c084fc")}
   {box(475, 55, 95, 60, "5. Quantize", "HVS Matrix Q", "#f43f5e", badge="Lossy")}
   {arrow(570, 85, 590, 85, "#f43f5e")}
-  {box(590, 55, 135, 60, "6. Zig-Zag & Encode", "Huffman / CABAC", "#34d399", badge="Compressed")}
+  {box(590, 55, 130, 60, "6. Zig-Zag", "Entropy Coding", "#34d399", badge="Encode")}
 
   <rect x="15" y="135" width="710" height="115" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="35" y="160" font-size="12" font-weight="bold" fill="#34d399">Why 2D-DCT Outperforms 2D-DFT in Video/Image Frameworks:</text>
@@ -774,8 +774,8 @@ DIAGRAMS['MID2-Q04'] = svg_doc(720, 290, f'''
   <text x="50" y="218" font-size="11" font-weight="bold" fill="#34d399">Video Redundancy Reduction Mechanics:</text>
   <text x="50" y="238" font-size="11" fill="#cbd5e1">1. Progressive Scan: 1080p60 avoids interlaced comb distortion</text>
   <text x="50" y="254" font-size="11" fill="#cbd5e1">2. YCbCr 4:2:0: Cuts raw uncompressed pixels from 24 bpp to 12 bpp</text>
-  <text x="380" y="238" font-size="11" fill="#cbd5e1">3. Motion Vectors: Transmits displacement (dx, dy) instead of pixels</text>
-  <text x="380" y="254" font-size="11" fill="#cbd5e1">4. 100:1 Compression: Only small residuals e[x, y] are coded</text>
+  <text x="380" y="238" font-size="11" fill="#cbd5e1">3. Motion Vectors: Codes displacement (dx, dy)</text>
+  <text x="380" y="254" font-size="11" fill="#cbd5e1">4. Compression: Small residuals e[x, y] coded</text>
 ''')
 
 # --- UNIT 4: MID2-Q05 to MID2-Q12 ---
@@ -817,12 +817,12 @@ DIAGRAMS['MID2-Q06'] = svg_doc(720, 270, f'''
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">PARAMETRIC 2D MOTION MODELS (2, 6, AND 8 DEGREES OF FREEDOM)</text>
   {box(20, 55, 210, 110, "1. TRANSLATIONAL (2 DOF)", "[x'] = [x] + [dx]\\n[y']   [y]   [dy]\\nRigid shift; standard in Block Matching Algorithms", "#fbbf24", badge="2 DOF")}
   {box(255, 55, 210, 110, "2. AFFINE MODEL (6 DOF)", "[x'] = [a11 a12][x] + [dx]\\n[y']   [a21 a22][y]   [dy]\\nRotation, Scale, Shear, Translation; Parallel lines preserved", "#38bdf8", badge="6 DOF")}
-  {box(490, 55, 210, 110, "3. HOMOGRAPHY (8 DOF)", "x' = (h11x + h12y + h13) / D\\ny' = (h21x + h22y + h23) / D\\nFull 3D planar tilt & perspective projection", "#c084fc", badge="8 DOF")}
+  {box(490, 55, 210, 110, "3. HOMOGRAPHY (8 DOF)", "x' = (h11x + h12y + h13) / D\\ny' = (h21x + h22y + h23) / D\\nFull 3D planar tilt & perspective", "#c084fc", badge="8 DOF")}
 
   <rect x="20" y="180" width="680" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="35" y="202" font-size="11" font-weight="bold" fill="#34d399">The 3 Fundamental Real-World Motion Assumptions:</text>
-  <text x="35" y="222" font-size="11" fill="#cbd5e1">1. Brightness Constancy: I(x+dx, y+dy, t+dt) = I(x, y, t) (Violated by shadows &amp; lighting changes)</text>
-  <text x="35" y="238" font-size="11" fill="#cbd5e1">2. Small Motion: Displacements are small between frames | 3. Spatial Coherence: Neighbor pixels move smoothly</text>
+  <text x="35" y="222" font-size="11" fill="#cbd5e1">1. Brightness Constancy: I(x+dx, y+dy, t+dt) = I(x, y, t) (Violated by shadows)</text>
+  <text x="35" y="238" font-size="11" fill="#cbd5e1">2. Small Motion: Small inter-frame shifts | 3. Spatial Coherence: Smooth motion</text>
 ''')
 
 DIAGRAMS['MID2-Q07'] = svg_doc(700, 290, f'''
@@ -917,12 +917,12 @@ DIAGRAMS['MID2-Q10'] = svg_doc(720, 270, f'''
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">NONLINEAR OPTIMIZATION IN MOTION ESTIMATION</text>
   {box(25, 55, 210, 110, "1. Gradient Descent", "p^(k+1) = p^(k) - η·Jᵀ r\\nLinear convergence\\nSafe when far from minimum\\nZigzags in narrow valleys", "#fbbf24", badge="Linear")}
   {box(255, 55, 210, 110, "2. Gauss-Newton", "Δp = -(Jᵀ J)⁻¹ Jᵀ r\\nQuadratic convergence near min\\nCan diverge if Hessian Jᵀ J is singular or ill-conditioned", "#f43f5e", badge="Quadratic")}
-  {box(485, 55, 210, 110, "3. Levenberg-Marquardt", "Δp = -(Jᵀ J + λ·I)⁻¹ Jᵀ r\\nAdaptive damping factor λ\\nBlends Gradient Descent + Gauss-Newton optimally", "#34d399", badge="Optimal")}
+  {box(485, 55, 210, 110, "3. Levenberg-Marquardt", "Δp = -(Jᵀ J + λ·I)⁻¹ Jᵀ r\\nAdaptive damping factor λ\\nBlends Gradient Descent & Gauss-Newton", "#34d399", badge="Optimal")}
 
   <rect x="25" y="180" width="670" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="45" y="202" font-size="11" font-weight="bold" fill="#38bdf8">Overcoming Local Minima via Multi-Resolution Gaussian Pyramids:</text>
   <text x="45" y="222" font-size="11" fill="#cbd5e1">Level 2 (Coarse 1/4 Res) ──► Level 1 (Medium 1/2 Res) ──► Level 0 (Full Native Resolution)</text>
-  <text x="45" y="238" font-size="11" fill="#cbd5e1">Coarse levels smooth away high-frequency error ripples and shrink large displacements into Taylor range.</text>
+  <text x="45" y="238" font-size="11" fill="#cbd5e1">Coarse levels smooth away high-frequency ripples and shrink large displacements into Taylor range.</text>
 ''')
 
 DIAGRAMS['MID2-Q11'] = svg_doc(720, 270, f'''
@@ -959,13 +959,13 @@ DIAGRAMS['MID2-Q12'] = svg_doc(740, 280, f'''
   {arrow(500, 82, 520, 82, "#c084fc")}
   {box(520, 55, 95, 55, "5. Triangulate", "3D Points P", "#38bdf8")}
   {arrow(615, 82, 635, 82, "#38bdf8")}
-  {box(635, 55, 90, 55, "6. Bundle Adj", "Levenberg-M", "#34d399", badge="Optimized")}
+  {box(635, 55, 85, 55, "6. Bundle Adj", "Levenberg-M", "#34d399", badge="Opt")}
 
   <rect x="15" y="130" width="710" height="135" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="35" y="155" font-size="12" font-weight="bold" fill="#38bdf8">Epipolar Geometry Fundamentals:</text>
   <text x="35" y="178" font-size="11" fill="#cbd5e1">• Essential Matrix: E = [t]× R (5 DOF for calibrated cameras: x2ᵀ E x1 = 0)</text>
   <text x="35" y="198" font-size="11" fill="#cbd5e1">• Fundamental Matrix: F = K2⁻ᵀ E K1⁻¹ (7 DOF for uncalibrated cameras)</text>
-  <text x="35" y="218" font-size="11" fill="#cbd5e1">• Bundle Adjustment: Minimizes 2D re-projection error: min Σ ||p_ij - π(K, R, t, P_j)||²</text>
+  <text x="35" y="218" font-size="11" fill="#cbd5e1">• Bundle Adjustment: Minimizes 2D re-projection error: min Σ ||p - π(K, R, t, P)||²</text>
   <text x="35" y="238" font-size="11" fill="#34d399">Recovers both 3D sparse scene point cloud and 3D camera motion trajectory!</text>
 ''')
 
@@ -1132,7 +1132,7 @@ DIAGRAMS['MID2-Q17'] = svg_doc(720, 270, f'''
   <!-- Right: Matting Equation & Laplacian -->
   {box(375, 55, 310, 65, "The Fundamental Matting Equation", "I = α·F + (1 - α)·B\\n3 Known RGB Equations vs 7 Unknowns (Ill-posed!)", "#fbbf24", badge="Equation")}
   {box(375, 125, 310, 60, "Closed-Form Matting (Levin)", "Minimizes αᵀ L α via Matting Laplacian\\nExact global sparse linear solution", "#38bdf8", badge="Laplacian")}
-  {box(375, 190, 310, 60, "Video Matting & Coherence", "Optical flow consistency penalty prevents alpha flickering across frames", "#34d399", badge="Video")}
+  {box(375, 190, 310, 60, "Video Matting & Coherence", "Temporal optical flow penalty prevents flickering", "#34d399", badge="Video")}
 ''')
 
 DIAGRAMS['MID2-Q18'] = svg_doc(720, 280, f'''

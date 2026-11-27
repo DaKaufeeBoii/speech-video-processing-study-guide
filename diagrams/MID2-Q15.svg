@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 100%; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" width="100%" height="280" class="flowchart-svg" style="max-width: 700px; width: 100%; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <rect width="100%" height="100%" fill="#0b1120" rx="8" stroke="#1e293b" stroke-width="1"/>
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -72,19 +72,20 @@
     <g filter="url(#shadow)">
     <rect x="390" y="55" width="280" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="530.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Region A: MOTION DETECTED</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="530.0" y="89">120 &gt; 100 -&gt; Active object displacement</tspan></text>
+    <text x="530.0" y="88" font-size="10.5" fill="#cbd5e1" text-anchor="middle">120 &gt; 100 -&gt; Active object displacement</text>
     <rect x="595" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="630" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Active</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="390" y="125" width="280" height="60" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
     <text x="530.0" y="143" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Region B: NO MOTION (STATIC)</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="530.0" y="159">45 ≤ 100 -&gt; Sensor noise / background</tspan></text>
+    <text x="530.0" y="158" font-size="10.5" fill="#cbd5e1" text-anchor="middle">45 ≤ 100 -&gt; Sensor noise / background</text>
     <rect x="595" y="116" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="630" y="129" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Static</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="390" y="195" width="280" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="530.0" y="213" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Region C: DOMINANT REGION</text>
-    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="530.0" y="229">200 &gt; 100 -&gt; MAXIMUM ACTIVITY!</tspan><tspan x="530.0" y="243">Rank 1 Dominant Motion Region</tspan></text>
+    <text x="530.0" y="228" font-size="10.5" fill="#cbd5e1" text-anchor="middle">200 &gt; 100 -&gt; MAXIMUM ACTIVITY!</text>
+    <text x="530.0" y="241" font-size="10.5" fill="#cbd5e1" text-anchor="middle">Rank 1 Dominant Motion Region</text>
     <rect x="595" y="186" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="630" y="199" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">DOMINANT</text>
   </g>
 
