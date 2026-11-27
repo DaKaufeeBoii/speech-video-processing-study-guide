@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="270" style="max-width: 720px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 270" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; min-width: 580px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -37,7 +37,7 @@
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
     </marker>
   </defs>
-  <rect width="720" height="270" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+  <rect width="720" height="270" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">VISUAL MOTION TRACKING: KALMAN FILTER &amp; MEAN-SHIFT</text>
   
@@ -56,7 +56,7 @@
     <line x1="140" y1="125" x2="170" y2="115" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
     <circle cx="170" cy="115" r="5" fill="#34d399"/>
     <text x="170" y="105" font-size="9" fill="#34d399" font-weight="bold" text-anchor="middle">Mode Peak (Target)</text>
-    <text x="160" y="180" font-size="9" fill="#94a3b8" text-anchor="middle">Climbs color probability gradient via Bhattacharyya</text>
+    <text x="160" y="180" font-size="9" fill="#cbd5e1" text-anchor="middle">Climbs color probability gradient via Bhattacharyya</text>
   </g>
 
   <!-- Right: Kalman Trajectory -->
@@ -74,8 +74,8 @@
     <line x1="180" y1="80" x2="195" y2="70" stroke="#f43f5e" stroke-width="1" stroke-dasharray="2 2"/>
     <text x="215" y="72" font-size="9" fill="#f43f5e">Sensor z</text>
 
-    <text x="160" y="160" font-size="10" fill="#f8fafc" text-anchor="middle">State x = [x, y, vx, vy]ᵀ</text>
-    <text x="160" y="180" font-size="9" fill="#94a3b8" text-anchor="middle">Predict-Update loop filters measurement noise</text>
+    <text x="160" y="160" font-size="11" fill="#f8fafc" text-anchor="middle">State x = [x, y, vx, vy]ᵀ</text>
+    <text x="160" y="180" font-size="9" fill="#cbd5e1" text-anchor="middle">Predict-Update loop filters measurement noise</text>
   </g>
 
 </svg>

@@ -9,7 +9,7 @@ import os, re, html
 DIAGRAMS = {}
 
 def svg_doc(w, h, inner):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="{h}" style="max-width: {w}px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="auto" class="flowchart-svg" style="max-width: {w}px; min-width: 580px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -48,7 +48,7 @@ def svg_doc(w, h, inner):
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
     </marker>
   </defs>
-  <rect width="{w}" height="{h}" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+  <rect width="{w}" height="{h}" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 {inner}
 </svg>'''
 
@@ -59,26 +59,26 @@ def box(x, y, w, h, title, sub="", stroke="#38bdf8", fill="#1e293b", badge="", b
         sub_lines = [l.strip() for l in raw_lines if l.strip()]
 
     if sub_lines:
-        y_title = y + 17
-        start_y = y_title + 15
-        tspans = [f'<tspan x="{x + w/2}" y="{start_y + idx * 13}">{html.escape(l)}</tspan>' for idx, l in enumerate(sub_lines)]
-        sub_text = f'<text font-size="9.5" fill="#94a3b8" text-anchor="middle">{"".join(tspans)}</text>'
+        y_title = y + 18
+        start_y = y_title + 16
+        tspans = [f'<tspan x="{x + w/2}" y="{start_y + idx * 14}">{html.escape(l)}</tspan>' for idx, l in enumerate(sub_lines)]
+        sub_text = f'<text font-size="11" fill="#cbd5e1" text-anchor="middle">{"".join(tspans)}</text>'
     else:
         y_title = y + h / 2 + 5
         sub_text = ''
 
-    badge_markup = f'<rect x="{x + w - 75}" y="{y - 9}" width="70" height="18" rx="9" fill="{badge_color}" fill-opacity="0.2" stroke="{badge_color}" stroke-width="1"/><text x="{x + w - 40}" y="{y + 4}" font-size="9" font-weight="bold" fill="{badge_color}" text-anchor="middle">{badge}</text>' if badge else ''
+    badge_markup = f'<rect x="{x + w - 75}" y="{y - 9}" width="70" height="18" rx="9" fill="{badge_color}" fill-opacity="0.25" stroke="{badge_color}" stroke-width="1"/><text x="{x + w - 40}" y="{y + 4}" font-size="9.5" font-weight="700" fill="{badge_color}" text-anchor="middle">{badge}</text>' if badge else ''
     return f'''  <g filter="url(#shadow)">
     <rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="1.5"/>
-    <text x="{x + w/2}" y="{y_title}" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">{html.escape(title)}</text>
+    <text x="{x + w/2}" y="{y_title}" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">{html.escape(title)}</text>
     {sub_text}
     {badge_markup}
   </g>'''
 
 def arrow(x1, y1, x2, y2, color="#38bdf8", label=""):
-    lbl = f'<text x="{(x1+x2)/2}" y="{(y1+y2)/2 - 6}" font-size="10" fill="{color}" font-weight="600" text-anchor="middle">{label}</text>' if label else ''
+    lbl = f'<text x="{(x1+x2)/2}" y="{(y1+y2)/2 - 6}" font-size="11" fill="{color}" font-weight="700" text-anchor="middle">{label}</text>' if label else ''
     marker = "arrCyan" if color == "#38bdf8" else ("arrEmerald" if color == "#34d399" else "arrAmber")
-    return f'''  <line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="2" marker-end="url(#{marker})"/>
+    return f'''  <line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="2.5" marker-end="url(#{marker})"/>
   {lbl}'''
 
 # --- UNIT 1: MID1-Q01 to MID1-Q08 ---
@@ -133,21 +133,21 @@ DIAGRAMS['MID1-Q03'] = svg_doc(700, 310, f'''
   <!-- Z-plane Plot -->
   <g transform="translate(140, 170)">
     <circle cx="0" cy="0" r="85" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4 4"/>
-    <text x="65" y="-65" font-size="10" fill="#94a3b8">Unit Circle (|z|=1)</text>
+    <text x="65" y="-65" font-size="11" fill="#cbd5e1">Unit Circle (|z|=1)</text>
     <line x1="-115" y1="0" x2="115" y2="0" stroke="#475569" stroke-width="1.5"/>
     <line x1="0" y1="-115" x2="0" y2="115" stroke="#475569" stroke-width="1.5"/>
-    <text x="120" y="4" font-size="10" fill="#64748b">Re</text>
-    <text x="4" y="-120" font-size="10" fill="#64748b">Im</text>
+    <text x="120" y="4" font-size="11" fill="#64748b">Re</text>
+    <text x="4" y="-120" font-size="11" fill="#64748b">Im</text>
     <!-- Poles: x at (42.5, 0) and (34, 0) -->
     <text x="42.5" y="4" font-size="16" font-weight="bold" fill="#f43f5e" text-anchor="middle">×</text>
-    <text x="42.5" y="-12" font-size="10" fill="#f43f5e" text-anchor="middle">p1=0.5</text>
+    <text x="42.5" y="-12" font-size="11" fill="#f43f5e" text-anchor="middle">p1=0.5</text>
     <text x="30" y="18" font-size="16" font-weight="bold" fill="#f43f5e" text-anchor="middle">×</text>
-    <text x="25" y="32" font-size="10" fill="#f43f5e" text-anchor="middle">p2=0.4</text>
+    <text x="25" y="32" font-size="11" fill="#f43f5e" text-anchor="middle">p2=0.4</text>
     <!-- Zeros: o at (0, 0) and (42.5, 0) -->
     <circle cx="0" cy="0" r="4" fill="none" stroke="#38bdf8" stroke-width="2"/>
-    <text x="-12" y="-6" font-size="10" fill="#38bdf8">z1=0</text>
+    <text x="-12" y="-6" font-size="11" fill="#38bdf8">z1=0</text>
     <circle cx="42.5" cy="0" r="6" fill="none" stroke="#38bdf8" stroke-width="2"/>
-    <text x="60" y="12" font-size="10" fill="#38bdf8">z2=0.5</text>
+    <text x="60" y="12" font-size="11" fill="#38bdf8">z2=0.5</text>
   </g>
 
   <!-- Right Details -->
@@ -195,7 +195,7 @@ DIAGRAMS['MID1-Q05'] = svg_doc(720, 300, f'''
   {box(415, 175, 140, 50, "3. Inverse IFFT", "Length L + M - 1", "#fbbf24")}
   {arrow(555, 200, 580, 200, "#34d399")}
   {box(580, 175, 95, 50, "4. Overlap & Add", "Stream Assembly", "#34d399")}
-  <text x="45" y="265" font-size="11" fill="#94a3b8">Avoids time-aliasing by zero-padding to N ≥ L + M - 1 | Eliminates infinite convolution latency</text>
+  <text x="45" y="265" font-size="11" fill="#cbd5e1">Avoids time-aliasing by zero-padding to N ≥ L + M - 1 | Eliminates infinite convolution latency</text>
 ''')
 
 DIAGRAMS['MID1-Q06'] = svg_doc(720, 290, f'''
@@ -207,7 +207,7 @@ DIAGRAMS['MID1-Q06'] = svg_doc(720, 290, f'''
     <text x="157" y="25" font-size="13" font-weight="bold" fill="#38bdf8" text-anchor="middle">LINEAR FILTER BANK (Uniform STFT)</text>
     <!-- Uniform Filters -->
     <path d="M 25 120 L 45 60 L 65 120 M 65 120 L 85 60 L 105 120 M 105 120 L 125 60 L 145 120 M 145 120 L 165 60 L 185 120 M 185 120 L 205 60 L 225 120 M 225 120 L 245 60 L 265 120 M 265 120 L 285 60 L 305 120" fill="none" stroke="#38bdf8" stroke-width="2"/>
-    <text x="157" y="140" font-size="10" fill="#94a3b8" text-anchor="middle">Constant Bandwidth Δf (e.g. 100 Hz everywhere)</text>
+    <text x="157" y="140" font-size="11" fill="#cbd5e1" text-anchor="middle">Constant Bandwidth Δf (e.g. 100 Hz everywhere)</text>
   </g>
 
   <!-- Non-Linear Mel Filter Bank -->
@@ -216,12 +216,12 @@ DIAGRAMS['MID1-Q06'] = svg_doc(720, 290, f'''
     <text x="157" y="25" font-size="13" font-weight="bold" fill="#34d399" text-anchor="middle">NON-LINEAR MEL FILTER BANK (Human Hearing)</text>
     <!-- Non-uniform Filters -->
     <path d="M 20 120 L 35 60 L 50 120 M 45 120 L 65 60 L 85 120 M 80 120 L 110 60 L 140 120 M 130 120 L 175 60 L 220 120 M 205 120 L 260 60 L 305 120" fill="none" stroke="#34d399" stroke-width="2"/>
-    <text x="157" y="140" font-size="10" fill="#94a3b8" text-anchor="middle">Dense &lt;1 kHz (Fine Res) ──► Wide &gt;1 kHz (Coarse Res)</text>
+    <text x="157" y="140" font-size="11" fill="#cbd5e1" text-anchor="middle">Dense &lt;1 kHz (Fine Res) ──► Wide &gt;1 kHz (Coarse Res)</text>
   </g>
 
   <rect x="30" y="225" width="660" height="50" rx="6" fill="#1e293b" stroke="#334155"/>
   <text x="360" y="246" font-size="11" fill="#f8fafc" text-anchor="middle">Mel Scale: Mel(f) = 2595·log10(1 + f/700) | Models Cochlear Tonotopy &amp; Critical Bands</text>
-  <text x="360" y="264" font-size="10" fill="#94a3b8" text-anchor="middle">Linear: Invertible waveform resynthesis | Mel: Maximizes phoneme discriminability for ASR (MFCC)</text>
+  <text x="360" y="264" font-size="11" fill="#cbd5e1" text-anchor="middle">Linear: Invertible waveform resynthesis | Mel: Maximizes phoneme discriminability for ASR (MFCC)</text>
 ''')
 
 DIAGRAMS['MID1-Q07'] = svg_doc(720, 310, f'''
@@ -234,23 +234,23 @@ DIAGRAMS['MID1-Q07'] = svg_doc(720, 310, f'''
     <text x="20" y="55" font-size="11" fill="#cbd5e1">Twiddle Matrix Multiply [W4] · [x]:</text>
     <text x="20" y="75" font-size="11" fill="#f8fafc">X[0] = 2 + 1 + 0 + 1 = <tspan fill="#34d399" font-weight="bold">4</tspan> (DC Component)</text>
     <text x="20" y="95" font-size="11" fill="#f8fafc">X[1] = 2 - j + 0 + j = <tspan fill="#38bdf8" font-weight="bold">2</tspan> (Dominant AC)</text>
-    <text x="20" y="115" font-size="11" fill="#f8fafc">X[2] = 2 - 1 + 0 - 1 = <tspan fill="#94a3b8" font-weight="bold">0</tspan></text>
+    <text x="20" y="115" font-size="11" fill="#f8fafc">X[2] = 2 - 1 + 0 - 1 = <tspan fill="#cbd5e1" font-weight="bold">0</tspan></text>
     <text x="20" y="135" font-size="11" fill="#f8fafc">X[3] = 2 + j + 0 - j = <tspan fill="#38bdf8" font-weight="bold">2</tspan> (Dominant AC)</text>
     
     <!-- Magnitude Bars -->
     <text x="20" y="165" font-size="11" font-weight="bold" fill="#fbbf24">Magnitude Spectrum |X[k]|:</text>
     <rect x="35" y="180" width="35" height="40" fill="#34d399" rx="3"/>
-    <text x="52" y="205" font-size="10" fill="#090d16" font-weight="bold" text-anchor="middle">4.0</text>
+    <text x="52" y="205" font-size="11" fill="#090d16" font-weight="bold" text-anchor="middle">4.0</text>
     <rect x="85" y="200" width="35" height="20" fill="#38bdf8" rx="3"/>
-    <text x="102" y="215" font-size="10" fill="#090d16" font-weight="bold" text-anchor="middle">2.0</text>
-    <rect x="135" y="219" width="35" height="1" fill="#94a3b8"/>
-    <text x="152" y="215" font-size="10" fill="#94a3b8" text-anchor="middle">0</text>
+    <text x="102" y="215" font-size="11" fill="#090d16" font-weight="bold" text-anchor="middle">2.0</text>
+    <rect x="135" y="219" width="35" height="1" fill="#cbd5e1"/>
+    <text x="152" y="215" font-size="11" fill="#cbd5e1" text-anchor="middle">0</text>
     <rect x="185" y="200" width="35" height="20" fill="#38bdf8" rx="3"/>
-    <text x="202" y="215" font-size="10" fill="#090d16" font-weight="bold" text-anchor="middle">2.0</text>
-    <text x="52" y="232" font-size="9" fill="#94a3b8" text-anchor="middle">k=0</text>
-    <text x="102" y="232" font-size="9" fill="#94a3b8" text-anchor="middle">k=1</text>
-    <text x="152" y="232" font-size="9" fill="#94a3b8" text-anchor="middle">k=2</text>
-    <text x="202" y="232" font-size="9" fill="#94a3b8" text-anchor="middle">k=3</text>
+    <text x="202" y="215" font-size="11" fill="#090d16" font-weight="bold" text-anchor="middle">2.0</text>
+    <text x="52" y="232" font-size="9" fill="#cbd5e1" text-anchor="middle">k=0</text>
+    <text x="102" y="232" font-size="9" fill="#cbd5e1" text-anchor="middle">k=1</text>
+    <text x="152" y="232" font-size="9" fill="#cbd5e1" text-anchor="middle">k=2</text>
+    <text x="202" y="232" font-size="9" fill="#cbd5e1" text-anchor="middle">k=3</text>
   </g>
 
   <!-- Right: Frequency Resolution -->
@@ -267,7 +267,7 @@ DIAGRAMS['MID1-Q07'] = svg_doc(720, 310, f'''
     <text x="30" y="165" font-size="11" font-weight="bold" fill="#38bdf8">Task 2: Frequency for Bin k = 10</text>
     <text x="30" y="185" font-size="12" fill="#f8fafc">f10 = k · Δf = 10 × 31.25 = <tspan fill="#38bdf8" font-weight="bold">312.5 Hz</tspan></text>
 
-    <text x="20" y="222" font-size="10" fill="#94a3b8">Falls in female/child pitch &amp; closed vowel F1 formant range</text>
+    <text x="20" y="222" font-size="11" fill="#cbd5e1">Falls in female/child pitch &amp; closed vowel F1 formant range</text>
   </g>
 ''')
 
@@ -321,9 +321,9 @@ DIAGRAMS['MID1-Q09'] = svg_doc(740, 270, f'''
   <rect x="15" y="145" width="710" height="105" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="35" y="170" font-size="12" font-weight="bold" fill="#34d399">Dynamic Derivative Augmentation (Final 39-D Vector):</text>
   {box(35, 185, 205, 50, "13 Static MFCCs (c0 - c12)", "Instantaneous Vocal Posture", "#38bdf8")}
-  <text x="255" y="215" font-size="18" fill="#94a3b8" font-weight="bold">+</text>
+  <text x="255" y="215" font-size="18" fill="#cbd5e1" font-weight="bold">+</text>
   {box(275, 185, 200, 50, "13 Delta Features (Δc)", "Spectral Velocity / Transitions", "#fbbf24")}
-  <text x="490" y="215" font-size="18" fill="#94a3b8" font-weight="bold">+</text>
+  <text x="490" y="215" font-size="18" fill="#cbd5e1" font-weight="bold">+</text>
   {box(510, 185, 200, 50, "13 Delta-Delta (Δ²c)", "Articulatory Acceleration", "#c084fc")}
 ''')
 
@@ -352,11 +352,11 @@ DIAGRAMS['MID1-Q11'] = svg_doc(720, 290, f'''
   
   <!-- Signal Ruler -->
   <rect x="40" y="55" width="640" height="20" rx="4" fill="#1e293b" stroke="#64748b"/>
-  <text x="40" y="50" font-size="10" fill="#94a3b8">Sample 0</text>
-  <text x="200" y="50" font-size="10" fill="#94a3b8">400</text>
-  <text x="360" y="50" font-size="10" fill="#94a3b8">800</text>
-  <text x="520" y="50" font-size="10" fill="#94a3b8">1200</text>
-  <text x="660" y="50" font-size="10" fill="#34d399" font-weight="bold">1600 Total</text>
+  <text x="40" y="50" font-size="11" fill="#cbd5e1">Sample 0</text>
+  <text x="200" y="50" font-size="11" fill="#cbd5e1">400</text>
+  <text x="360" y="50" font-size="11" fill="#cbd5e1">800</text>
+  <text x="520" y="50" font-size="11" fill="#cbd5e1">1200</text>
+  <text x="660" y="50" font-size="11" fill="#34d399" font-weight="bold">1600 Total</text>
 
   <!-- 7 Frames Overlap -->
   <g transform="translate(40, 85)">
@@ -428,8 +428,8 @@ DIAGRAMS['MID1-Q13'] = svg_doc(700, 300, f'''
     <text x="130" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">DTW Grid &amp; Optimal Warping Path</text>
     <line x1="40" y1="195" x2="230" y2="195" stroke="#475569" stroke-width="1.5"/>
     <line x1="40" y1="195" x2="40" y2="40" stroke="#475569" stroke-width="1.5"/>
-    <text x="135" y="212" font-size="10" fill="#94a3b8">Reference Template i (Length N)</text>
-    <text x="25" y="115" font-size="10" fill="#94a3b8" transform="rotate(-90 25 115)">Test Utterance j (M)</text>
+    <text x="135" y="212" font-size="11" fill="#cbd5e1">Reference Template i (Length N)</text>
+    <text x="25" y="115" font-size="11" fill="#cbd5e1" transform="rotate(-90 25 115)">Test Utterance j (M)</text>
     <!-- Warping Path -->
     <path d="M 40 195 L 70 170 L 95 160 L 130 120 L 160 100 L 180 80 L 220 50" fill="none" stroke="#34d399" stroke-width="3"/>
     <circle cx="40" cy="195" r="4" fill="#fbbf24"/>
@@ -459,14 +459,14 @@ DIAGRAMS['MID1-Q14'] = svg_doc(720, 280, f'''
     <line x1="140" y1="105" x2="130" y2="195" stroke="#475569" stroke-width="1.5"/>
     <!-- Centroids -->
     <circle cx="85" cy="70" r="5" fill="#38bdf8"/>
-    <text x="95" y="70" font-size="10" fill="#38bdf8" font-weight="bold">y1 (R1)</text>
+    <text x="95" y="70" font-size="11" fill="#38bdf8" font-weight="bold">y1 (R1)</text>
     <circle cx="190" cy="80" r="5" fill="#34d399"/>
-    <text x="200" y="80" font-size="10" fill="#34d399" font-weight="bold">y2 (R2)</text>
+    <text x="200" y="80" font-size="11" fill="#34d399" font-weight="bold">y2 (R2)</text>
     <circle cx="80" cy="155" r="5" fill="#fbbf24"/>
-    <text x="90" y="155" font-size="10" fill="#fbbf24" font-weight="bold">y3 (R3)</text>
+    <text x="90" y="155" font-size="11" fill="#fbbf24" font-weight="bold">y3 (R3)</text>
     <circle cx="195" cy="155" r="5" fill="#c084fc"/>
-    <text x="205" y="155" font-size="10" fill="#c084fc" font-weight="bold">y4 (R4)</text>
-    <text x="140" y="195" font-size="9" fill="#94a3b8" text-anchor="middle">Maps 39-D vector x to nearest codevector y_k</text>
+    <text x="205" y="155" font-size="11" fill="#c084fc" font-weight="bold">y4 (R4)</text>
+    <text x="140" y="195" font-size="9" fill="#cbd5e1" text-anchor="middle">Maps 39-D vector x to nearest codevector y_k</text>
   </g>
 
   <!-- LBG Flowchart -->
@@ -495,7 +495,7 @@ DIAGRAMS['MID1-Q15'] = svg_doc(720, 290, f'''
     <!-- Composite Envelope -->
     <path d="M 25 180 C 65 50 110 80 160 30 C 200 40 230 120 265 180" fill="none" stroke="#38bdf8" stroke-width="3"/>
     <line x1="20" y1="180" x2="270" y2="180" stroke="#64748b" stroke-width="1.5"/>
-    <text x="145" y="200" font-size="10" fill="#94a3b8" text-anchor="middle">Composite: p(x) = Σ wm·N(x; μm, Σm)</text>
+    <text x="145" y="200" font-size="11" fill="#cbd5e1" text-anchor="middle">Composite: p(x) = Σ wm·N(x; μm, Σm)</text>
   </g>
 
   <!-- Right: EM Cycle -->
@@ -513,58 +513,58 @@ DIAGRAMS['MID1-Q16'] = svg_doc(740, 270, f'''
   <g transform="translate(60, 75)">
     <circle cx="50" cy="50" r="42" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
     <text x="50" y="45" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">State 1</text>
-    <text x="50" y="60" font-size="10" fill="#38bdf8" text-anchor="middle">(Onset)</text>
+    <text x="50" y="60" font-size="11" fill="#38bdf8" text-anchor="middle">(Onset)</text>
     <!-- Self loop -->
     <path d="M 30 15 C 20 -15 80 -15 70 15" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
-    <text x="50" y="-18" font-size="10" fill="#38bdf8" font-weight="bold" text-anchor="middle">a11</text>
+    <text x="50" y="-18" font-size="11" fill="#38bdf8" font-weight="bold" text-anchor="middle">a11</text>
     <!-- Emission -->
     <line x1="50" y1="92" x2="50" y2="130" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
-    <text x="50" y="145" font-size="10" fill="#38bdf8" font-weight="bold" text-anchor="middle">b1(ot) [MFCC]</text>
+    <text x="50" y="145" font-size="11" fill="#38bdf8" font-weight="bold" text-anchor="middle">b1(ot) [MFCC]</text>
   </g>
 
   <!-- Transition a12 -->
   <line x1="152" y1="125" x2="225" y2="125" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
-  <text x="188" y="118" font-size="10" fill="#fbbf24" font-weight="bold" text-anchor="middle">a12</text>
+  <text x="188" y="118" font-size="11" fill="#fbbf24" font-weight="bold" text-anchor="middle">a12</text>
 
   <!-- State 2 -->
   <g transform="translate(230, 75)">
     <circle cx="50" cy="50" r="42" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
     <text x="50" y="45" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">State 2</text>
-    <text x="50" y="60" font-size="10" fill="#fbbf24" text-anchor="middle">(Nucleus)</text>
+    <text x="50" y="60" font-size="11" fill="#fbbf24" text-anchor="middle">(Nucleus)</text>
     <!-- Self loop -->
     <path d="M 30 15 C 20 -15 80 -15 70 15" fill="none" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
-    <text x="50" y="-18" font-size="10" fill="#fbbf24" font-weight="bold" text-anchor="middle">a22</text>
+    <text x="50" y="-18" font-size="11" fill="#fbbf24" font-weight="bold" text-anchor="middle">a22</text>
     <!-- Emission -->
     <line x1="50" y1="92" x2="50" y2="130" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
-    <text x="50" y="145" font-size="10" fill="#fbbf24" font-weight="bold" text-anchor="middle">b2(ot) [MFCC]</text>
+    <text x="50" y="145" font-size="11" fill="#fbbf24" font-weight="bold" text-anchor="middle">b2(ot) [MFCC]</text>
   </g>
 
   <!-- Transition a23 -->
   <line x1="322" y1="125" x2="395" y2="125" stroke="#34d399" stroke-width="2" marker-end="url(#arrEmerald)"/>
-  <text x="358" y="118" font-size="10" fill="#34d399" font-weight="bold" text-anchor="middle">a23</text>
+  <text x="358" y="118" font-size="11" fill="#34d399" font-weight="bold" text-anchor="middle">a23</text>
 
   <!-- State 3 -->
   <g transform="translate(400, 75)">
     <circle cx="50" cy="50" r="42" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
     <text x="50" y="45" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">State 3</text>
-    <text x="50" y="60" font-size="10" fill="#34d399" text-anchor="middle">(Coda)</text>
+    <text x="50" y="60" font-size="11" fill="#34d399" text-anchor="middle">(Coda)</text>
     <!-- Self loop -->
     <path d="M 30 15 C 20 -15 80 -15 70 15" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arrEmerald)"/>
-    <text x="50" y="-18" font-size="10" fill="#34d399" font-weight="bold" text-anchor="middle">a33</text>
+    <text x="50" y="-18" font-size="11" fill="#34d399" font-weight="bold" text-anchor="middle">a33</text>
     <!-- Emission -->
     <line x1="50" y1="92" x2="50" y2="130" stroke="#34d399" stroke-width="2" marker-end="url(#arrEmerald)"/>
-    <text x="50" y="145" font-size="10" fill="#34d399" font-weight="bold" text-anchor="middle">b3(ot) [MFCC]</text>
+    <text x="50" y="145" font-size="11" fill="#34d399" font-weight="bold" text-anchor="middle">b3(ot) [MFCC]</text>
   </g>
 
   <!-- Right: 3 Problems Summary -->
   <g transform="translate(520, 65)">
     <rect width="190" height="155" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
     <text x="95" y="22" font-size="11" font-weight="bold" fill="#c084fc" text-anchor="middle">The 3 HMM Problems:</text>
-    <text x="15" y="50" font-size="10" fill="#f8fafc">1. Evaluation:</text>
+    <text x="15" y="50" font-size="11" fill="#f8fafc">1. Evaluation:</text>
     <text x="25" y="68" font-size="9" fill="#38bdf8">Forward Algorithm</text>
-    <text x="15" y="90" font-size="10" fill="#f8fafc">2. Decoding:</text>
+    <text x="15" y="90" font-size="11" fill="#f8fafc">2. Decoding:</text>
     <text x="25" y="108" font-size="9" fill="#fbbf24">Viterbi (Dynamic Prog)</text>
-    <text x="15" y="130" font-size="10" fill="#f8fafc">3. Learning / Training:</text>
+    <text x="15" y="130" font-size="11" fill="#f8fafc">3. Learning / Training:</text>
     <text x="25" y="148" font-size="9" fill="#34d399">Baum-Welch (EM)</text>
   </g>
 ''')
@@ -612,8 +612,8 @@ DIAGRAMS['MID1-Q18'] = svg_doc(720, 280, f'''
     <text x="155" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">Centered 2D Frequency Spectrum</text>
     <line x1="25" y1="110" x2="285" y2="110" stroke="#475569" stroke-width="1.5"/>
     <line x1="155" y1="35" x2="155" y2="185" stroke="#475569" stroke-width="1.5"/>
-    <text x="280" y="105" font-size="10" fill="#38bdf8">u</text>
-    <text x="160" y="45" font-size="10" fill="#38bdf8">v</text>
+    <text x="280" y="105" font-size="11" fill="#38bdf8">u</text>
+    <text x="160" y="45" font-size="11" fill="#38bdf8">v</text>
     <!-- DC Center -->
     <circle cx="155" cy="110" r="14" fill="#fbbf24" fill-opacity="0.8"/>
     <text x="155" y="114" font-size="9" fill="#090d16" font-weight="bold" text-anchor="middle">DC</text>
@@ -675,7 +675,7 @@ DIAGRAMS['MID2-Q01'] = svg_doc(720, 270, f'''
       <circle cx="50" cy="90" r="4"/><circle cx="110" cy="90" r="4"/><circle cx="170" cy="90" r="4"/><circle cx="230" cy="90" r="4"/>
       <circle cx="50" cy="130" r="4"/><circle cx="110" cy="130" r="4"/><circle cx="170" cy="130" r="4"/><circle cx="230" cy="130" r="4"/>
     </g>
-    <text x="145" y="115" font-size="9" fill="#94a3b8" text-anchor="middle">V = diag(T1, T2) | Orthogonal lines</text>
+    <text x="145" y="115" font-size="9" fill="#cbd5e1" text-anchor="middle">V = diag(T1, T2) | Orthogonal lines</text>
   </g>
 
   <!-- Hexagonal -->
@@ -709,9 +709,9 @@ DIAGRAMS['MID2-Q02'] = svg_doc(720, 260, f'''
 
   <rect x="20" y="145" width="680" height="95" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="35" y="170" font-size="11" font-weight="bold" fill="#38bdf8">Justification of Transformation Steps:</text>
-  <text x="35" y="190" font-size="10" fill="#cbd5e1">1. Partition: Limits computation and adapts to non-stationary image regions.</text>
-  <text x="35" y="208" font-size="10" fill="#cbd5e1">2. 2D-DCT: Packs 90% energy into top-left coefficients; completely decorrelates pixels.</text>
-  <text x="35" y="226" font-size="10" fill="#cbd5e1">3. Quantize: Exploits HVS blindness to high spatial frequencies, zeroing out insignificant terms.</text>
+  <text x="35" y="190" font-size="11" fill="#cbd5e1">1. Partition: Limits computation and adapts to non-stationary image regions.</text>
+  <text x="35" y="208" font-size="11" fill="#cbd5e1">2. 2D-DCT: Packs 90% energy into top-left coefficients; completely decorrelates pixels.</text>
+  <text x="35" y="226" font-size="11" fill="#cbd5e1">3. Quantize: Exploits HVS blindness to high spatial frequencies, zeroing out insignificant terms.</text>
 ''')
 
 DIAGRAMS['MID2-Q03'] = svg_doc(720, 290, f'''
@@ -724,7 +724,7 @@ DIAGRAMS['MID2-Q03'] = svg_doc(720, 290, f'''
     <!-- Axis -->
     <line x1="30" y1="180" x2="280" y2="180" stroke="#64748b" stroke-width="1.5"/>
     <line x1="30" y1="180" x2="30" y2="40" stroke="#64748b" stroke-width="1.5"/>
-    <text x="155" y="198" font-size="9" fill="#94a3b8" text-anchor="middle">Spatial Frequency (cycles/degree)</text>
+    <text x="155" y="198" font-size="9" fill="#cbd5e1" text-anchor="middle">Spatial Frequency (cycles/degree)</text>
     <!-- CSF Bandpass curve -->
     <path d="M 35 150 C 60 70 85 45 110 50 C 145 60 200 130 270 178" fill="none" stroke="#38bdf8" stroke-width="3"/>
     <text x="110" y="40" font-size="9" fill="#fbbf24" font-weight="bold" text-anchor="middle">Peak (3-5 cpd)</text>
@@ -771,10 +771,10 @@ DIAGRAMS['MID2-Q04'] = svg_doc(720, 290, f'''
 
   <rect x="30" y="195" width="660" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="50" y="218" font-size="11" font-weight="bold" fill="#34d399">Video Redundancy Reduction Mechanics:</text>
-  <text x="50" y="238" font-size="10" fill="#cbd5e1">1. Progressive Scan: 1080p60 avoids interlaced comb distortion</text>
-  <text x="50" y="254" font-size="10" fill="#cbd5e1">2. YCbCr 4:2:0: Cuts raw uncompressed pixels from 24 bpp to 12 bpp</text>
-  <text x="380" y="238" font-size="10" fill="#cbd5e1">3. Motion Vectors: Transmits displacement (dx, dy) instead of pixels</text>
-  <text x="380" y="254" font-size="10" fill="#cbd5e1">4. 100:1 Compression: Only small residuals e[x, y] are coded</text>
+  <text x="50" y="238" font-size="11" fill="#cbd5e1">1. Progressive Scan: 1080p60 avoids interlaced comb distortion</text>
+  <text x="50" y="254" font-size="11" fill="#cbd5e1">2. YCbCr 4:2:0: Cuts raw uncompressed pixels from 24 bpp to 12 bpp</text>
+  <text x="380" y="238" font-size="11" fill="#cbd5e1">3. Motion Vectors: Transmits displacement (dx, dy) instead of pixels</text>
+  <text x="380" y="254" font-size="11" fill="#cbd5e1">4. 100:1 Compression: Only small residuals e[x, y] are coded</text>
 ''')
 
 # --- UNIT 4: MID2-Q05 to MID2-Q12 ---
@@ -792,12 +792,12 @@ DIAGRAMS['MID2-Q05'] = svg_doc(720, 270, f'''
     <line x1="50" y1="80" x2="280" y2="150" stroke="#38bdf8" stroke-width="1.5"/>
     <!-- Pinhole lens -->
     <line x1="160" y1="45" x2="160" y2="185" stroke="#94a3b8" stroke-width="2"/>
-    <text x="160" y="40" font-size="9" fill="#94a3b8" text-anchor="middle">Lens Center (f)</text>
+    <text x="160" y="40" font-size="9" fill="#cbd5e1" text-anchor="middle">Lens Center (f)</text>
     <!-- Sensor plane -->
     <line x1="280" y1="65" x2="280" y2="185" stroke="#34d399" stroke-width="3"/>
     <circle cx="280" cy="150" r="4" fill="#34d399"/>
     <text x="280" y="165" font-size="9" fill="#34d399" text-anchor="middle">p(x, y)</text>
-    <text x="160" y="178" font-size="10" fill="#cbd5e1" text-anchor="middle">Perspective: x = f·X/Z,  y = f·Y/Z</text>
+    <text x="160" y="178" font-size="11" fill="#cbd5e1" text-anchor="middle">Perspective: x = f·X/Z,  y = f·Y/Z</text>
   </g>
 
   <!-- Photometric Model -->
@@ -805,9 +805,9 @@ DIAGRAMS['MID2-Q05'] = svg_doc(720, 270, f'''
     <rect width="315" height="195" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="157" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">2. Photometric / Radiometric Model</text>
     {box(25, 40, 265, 42, "Illumination L(x, y)", "Light from Sun / Lamp source", "#fbbf24")}
-    <text x="157" y="98" font-size="14" fill="#94a3b8" font-weight="bold" text-anchor="middle">×</text>
+    <text x="157" y="98" font-size="14" fill="#cbd5e1" font-weight="bold" text-anchor="middle">×</text>
     {box(25, 105, 265, 42, "Surface Reflectance R(x, y)", "Material properties (0 ≤ R ≤ 1)", "#38bdf8")}
-    <text x="157" y="162" font-size="14" fill="#94a3b8" font-weight="bold" text-anchor="middle">=</text>
+    <text x="157" y="162" font-size="14" fill="#cbd5e1" font-weight="bold" text-anchor="middle">=</text>
     <text x="157" y="182" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">Image Irradiance I(x, y) = L · R</text>
   </g>
 ''')
@@ -820,8 +820,8 @@ DIAGRAMS['MID2-Q06'] = svg_doc(720, 270, f'''
 
   <rect x="20" y="180" width="680" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="35" y="202" font-size="11" font-weight="bold" fill="#34d399">The 3 Fundamental Real-World Motion Assumptions:</text>
-  <text x="35" y="222" font-size="10" fill="#cbd5e1">1. Brightness Constancy: I(x+dx, y+dy, t+dt) = I(x, y, t) (Violated by shadows &amp; lighting changes)</text>
-  <text x="35" y="238" font-size="10" fill="#cbd5e1">2. Small Motion: Displacements are small between frames | 3. Spatial Coherence: Neighbor pixels move smoothly</text>
+  <text x="35" y="222" font-size="11" fill="#cbd5e1">1. Brightness Constancy: I(x+dx, y+dy, t+dt) = I(x, y, t) (Violated by shadows &amp; lighting changes)</text>
+  <text x="35" y="238" font-size="11" fill="#cbd5e1">2. Small Motion: Displacements are small between frames | 3. Spatial Coherence: Neighbor pixels move smoothly</text>
 ''')
 
 DIAGRAMS['MID2-Q07'] = svg_doc(700, 290, f'''
@@ -833,18 +833,18 @@ DIAGRAMS['MID2-Q07'] = svg_doc(700, 290, f'''
     <text x="160" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">Block Displacement Geometry</text>
     <line x1="40" y1="40" x2="280" y2="40" stroke="#475569" stroke-width="1.5"/>
     <line x1="40" y1="40" x2="40" y2="190" stroke="#475569" stroke-width="1.5"/>
-    <text x="270" y="32" font-size="10" fill="#94a3b8">x (Right)</text>
-    <text x="45" y="185" font-size="10" fill="#94a3b8">y (Down)</text>
+    <text x="270" y="32" font-size="11" fill="#cbd5e1">x (Right)</text>
+    <text x="45" y="185" font-size="11" fill="#cbd5e1">y (Down)</text>
 
     <!-- Block 1 at (20, 25) -> mapped to (80, 80) -->
     <rect x="70" y="70" width="35" height="35" fill="#fbbf24" fill-opacity="0.3" stroke="#fbbf24" stroke-width="2"/>
     <circle cx="87.5" cy="87.5" r="4" fill="#fbbf24"/>
-    <text x="70" y="62" font-size="10" fill="#fbbf24" font-weight="bold">Frame 1: (20, 25)</text>
+    <text x="70" y="62" font-size="11" fill="#fbbf24" font-weight="bold">Frame 1: (20, 25)</text>
 
     <!-- Block 2 at (23, 30) -> mapped to (155, 160) -->
     <rect x="137.5" y="142.5" width="35" height="35" fill="#34d399" fill-opacity="0.3" stroke="#34d399" stroke-width="2"/>
     <circle cx="155" cy="160" r="4" fill="#34d399"/>
-    <text x="180" y="170" font-size="10" fill="#34d399" font-weight="bold">Frame 2: (23, 30)</text>
+    <text x="180" y="170" font-size="11" fill="#34d399" font-weight="bold">Frame 2: (23, 30)</text>
 
     <!-- Motion Vector Arrow -->
     <line x1="87.5" y1="87.5" x2="155" y2="160" stroke="#38bdf8" stroke-width="3" marker-end="url(#arrCyan)"/>
@@ -871,7 +871,7 @@ DIAGRAMS['MID2-Q08'] = svg_doc(720, 270, f'''
     <!-- Normal flow vector -->
     <line x1="160" y1="110" x2="195" y2="65" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
     <text x="210" y="65" font-size="9" fill="#34d399" font-weight="bold">v_normal (Measured)</text>
-    <text x="160" y="185" font-size="9" fill="#94a3b8" text-anchor="middle">Ix·u + Iy·v + It = 0 (1 Eq, 2 Unknowns!)</text>
+    <text x="160" y="185" font-size="9" fill="#cbd5e1" text-anchor="middle">Ix·u + Iy·v + It = 0 (1 Eq, 2 Unknowns!)</text>
   </g>
 
   <!-- Right: Comparison LK vs HS -->
@@ -886,7 +886,7 @@ DIAGRAMS['MID2-Q09'] = svg_doc(720, 270, f'''
   <g transform="translate(30, 55)">
     <rect width="320" height="195" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="160" y="22" font-size="12" font-weight="bold" fill="#fbbf24" text-anchor="middle">1. Full Search (Exhaustive)</text>
-    <text x="160" y="45" font-size="10" fill="#94a3b8" text-anchor="middle">Evaluates ALL (2p+1)² points in search area</text>
+    <text x="160" y="45" font-size="11" fill="#cbd5e1" text-anchor="middle">Evaluates ALL (2p+1)² points in search area</text>
     <!-- Dense Grid of points -->
     <g fill="#fbbf24" opacity="0.6">
       <circle cx="80" cy="70" r="3"/><circle cx="120" cy="70" r="3"/><circle cx="160" cy="70" r="3"/><circle cx="200" cy="70" r="3"/><circle cx="240" cy="70" r="3"/>
@@ -901,7 +901,7 @@ DIAGRAMS['MID2-Q09'] = svg_doc(720, 270, f'''
   <g transform="translate(370, 55)">
     <rect width="320" height="195" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="160" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">2. Three-Step Search (TSS)</text>
-    <text x="160" y="45" font-size="10" fill="#94a3b8" text-anchor="middle">Step 1 (s=4) -> Step 2 (s=2) -> Step 3 (s=1)</text>
+    <text x="160" y="45" font-size="11" fill="#cbd5e1" text-anchor="middle">Step 1 (s=4) -> Step 2 (s=2) -> Step 3 (s=1)</text>
     <!-- Step 1 points -->
     <circle cx="80" cy="75" r="4" fill="#38bdf8"/><circle cx="160" cy="75" r="4" fill="#38bdf8"/><circle cx="240" cy="75" r="4" fill="#38bdf8"/>
     <circle cx="80" cy="125" r="4" fill="#38bdf8"/><circle cx="160" cy="125" r="4" fill="#38bdf8"/><circle cx="240" cy="125" r="4" fill="#38bdf8"/>
@@ -920,8 +920,8 @@ DIAGRAMS['MID2-Q10'] = svg_doc(720, 270, f'''
 
   <rect x="25" y="180" width="670" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="45" y="202" font-size="11" font-weight="bold" fill="#38bdf8">Overcoming Local Minima via Multi-Resolution Gaussian Pyramids:</text>
-  <text x="45" y="222" font-size="10" fill="#cbd5e1">Level 2 (Coarse 1/4 Res) ──► Level 1 (Medium 1/2 Res) ──► Level 0 (Full Native Resolution)</text>
-  <text x="45" y="238" font-size="10" fill="#94a3b8">Coarse levels smooth away high-frequency error ripples and shrink large displacements into Taylor range.</text>
+  <text x="45" y="222" font-size="11" fill="#cbd5e1">Level 2 (Coarse 1/4 Res) ──► Level 1 (Medium 1/2 Res) ──► Level 0 (Full Native Resolution)</text>
+  <text x="45" y="238" font-size="11" fill="#cbd5e1">Coarse levels smooth away high-frequency error ripples and shrink large displacements into Taylor range.</text>
 ''')
 
 DIAGRAMS['MID2-Q11'] = svg_doc(720, 270, f'''
@@ -943,7 +943,7 @@ DIAGRAMS['MID2-Q11'] = svg_doc(720, 270, f'''
 
   <rect x="25" y="195" width="670" height="60" rx="6" fill="#1e293b" stroke="#334155"/>
   <text x="360" y="218" font-size="11" fill="#f8fafc" text-anchor="middle">100% Robust to Illumination Changes (Magnitude normalization removes lighting variations)</text>
-  <text x="360" y="236" font-size="10" fill="#94a3b8" text-anchor="middle">Sub-pixel displacement estimation via 2D parabolic peak interpolation around the Dirac delta peak</text>
+  <text x="360" y="236" font-size="11" fill="#cbd5e1" text-anchor="middle">Sub-pixel displacement estimation via 2D parabolic peak interpolation around the Dirac delta peak</text>
 ''')
 
 DIAGRAMS['MID2-Q12'] = svg_doc(740, 280, f'''
@@ -987,8 +987,8 @@ DIAGRAMS['MID2-Q13'] = svg_doc(720, 270, f'''
     <line x1="170" y1="75" x2="270" y2="75" stroke="#fbbf24"/>
     <text x="220" y="125" font-size="9" fill="#fbbf24" text-anchor="middle">Split &amp; Merge (Quadtree)</text>
 
-    <text x="160" y="155" font-size="10" fill="#cbd5e1" text-anchor="middle">Guarantees fully CLOSED regions</text>
-    <text x="160" y="175" font-size="9" fill="#94a3b8" text-anchor="middle">Homogeneity predicate P(Ri)=TRUE</text>
+    <text x="160" y="155" font-size="11" fill="#cbd5e1" text-anchor="middle">Guarantees fully CLOSED regions</text>
+    <text x="160" y="175" font-size="9" fill="#cbd5e1" text-anchor="middle">Homogeneity predicate P(Ri)=TRUE</text>
   </g>
 
   <!-- Boundary Based -->
@@ -997,13 +997,13 @@ DIAGRAMS['MID2-Q13'] = svg_doc(720, 270, f'''
     <text x="160" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">2. Boundary-Based (Discontinuity)</text>
     <!-- Canny Edge -->
     <path d="M 50 100 Q 110 50 160 100 T 270 90" fill="none" stroke="#34d399" stroke-width="3"/>
-    <text x="160" y="60" font-size="10" fill="#34d399" font-weight="bold" text-anchor="middle">Canny / Sobel ∇I</text>
+    <text x="160" y="60" font-size="11" fill="#34d399" font-weight="bold" text-anchor="middle">Canny / Sobel ∇I</text>
     <!-- Snake Spline -->
     <ellipse cx="160" cy="115" rx="60" ry="25" fill="none" stroke="#c084fc" stroke-width="2" stroke-dasharray="4 4"/>
     <text x="160" y="118" font-size="9" fill="#c084fc" text-anchor="middle">Active Contour (Snake)</text>
 
-    <text x="160" y="155" font-size="10" fill="#cbd5e1" text-anchor="middle">Detects sharp gradient edges</text>
-    <text x="160" y="175" font-size="9" fill="#94a3b8" text-anchor="middle">Snakes minimize E_int + E_ext energy</text>
+    <text x="160" y="155" font-size="11" fill="#cbd5e1" text-anchor="middle">Detects sharp gradient edges</text>
+    <text x="160" y="175" font-size="9" fill="#cbd5e1" text-anchor="middle">Snakes minimize E_int + E_ext energy</text>
   </g>
 ''')
 
@@ -1014,24 +1014,24 @@ DIAGRAMS['MID2-Q14'] = svg_doc(720, 270, f'''
   <g transform="translate(30, 55)">
     <rect width="320" height="195" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
     <text x="160" y="22" font-size="12" font-weight="bold" fill="#fbbf24" text-anchor="middle">1. Temporal Frame Differencing</text>
-    <text x="160" y="45" font-size="10" fill="#cbd5e1" text-anchor="middle">|Frame(t) - Frame(t-1)| &gt; Threshold T</text>
+    <text x="160" y="45" font-size="11" fill="#cbd5e1" text-anchor="middle">|Frame(t) - Frame(t-1)| &gt; Threshold T</text>
     <!-- Hollow Ghost Person -->
     <ellipse cx="160" cy="85" rx="12" ry="12" fill="none" stroke="#fbbf24" stroke-width="2"/>
     <path d="M 160 97 L 160 145 M 140 115 L 180 115 M 160 145 L 145 175 M 160 145 L 175 175" stroke="#fbbf24" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
-    <text x="160" y="170" font-size="10" fill="#f43f5e" font-weight="bold" text-anchor="middle">Hollow \"Ghost\" Holes inside!</text>
-    <text x="160" y="185" font-size="9" fill="#94a3b8" text-anchor="middle">Detects only leading &amp; trailing edges</text>
+    <text x="160" y="170" font-size="11" fill="#f43f5e" font-weight="bold" text-anchor="middle">Hollow \"Ghost\" Holes inside!</text>
+    <text x="160" y="185" font-size="9" fill="#cbd5e1" text-anchor="middle">Detects only leading &amp; trailing edges</text>
   </g>
 
   <!-- Background Subtraction -->
   <g transform="translate(370, 55)">
     <rect width="320" height="195" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="160" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">2. Background Subtraction (MoG)</text>
-    <text x="160" y="45" font-size="10" fill="#cbd5e1" text-anchor="middle">|Frame(t) - Background Model B(t)| &gt; T</text>
+    <text x="160" y="45" font-size="11" fill="#cbd5e1" text-anchor="middle">|Frame(t) - Background Model B(t)| &gt; T</text>
     <!-- Solid Silhouette -->
     <ellipse cx="160" cy="85" rx="12" ry="12" fill="#34d399"/>
     <path d="M 160 97 L 160 145 M 140 115 L 180 115 M 160 145 L 145 175 M 160 145 L 175 175" stroke="#34d399" stroke-width="5" stroke-linecap="round"/>
-    <text x="160" y="170" font-size="10" fill="#34d399" font-weight="bold" text-anchor="middle">Full Solid Object Mask!</text>
-    <text x="160" y="185" font-size="9" fill="#94a3b8" text-anchor="middle">Adaptive MoG handles moving trees/water</text>
+    <text x="160" y="170" font-size="11" fill="#34d399" font-weight="bold" text-anchor="middle">Full Solid Object Mask!</text>
+    <text x="160" y="185" font-size="9" fill="#cbd5e1" text-anchor="middle">Adaptive MoG handles moving trees/water</text>
   </g>
 ''')
 
@@ -1050,18 +1050,18 @@ DIAGRAMS['MID2-Q15'] = svg_doc(700, 280, f'''
 
     <!-- Region A: 120 -->
     <rect x="65" y="91" width="45" height="84" rx="4" fill="#38bdf8"/>
-    <text x="87" y="85" font-size="10" fill="#38bdf8" font-weight="bold" text-anchor="middle">120</text>
-    <text x="87" y="190" font-size="10" fill="#f8fafc" text-anchor="middle">Region A</text>
+    <text x="87" y="85" font-size="11" fill="#38bdf8" font-weight="bold" text-anchor="middle">120</text>
+    <text x="87" y="190" font-size="11" fill="#f8fafc" text-anchor="middle">Region A</text>
 
     <!-- Region B: 45 -->
     <rect x="145" y="143" width="45" height="32" rx="4" fill="#64748b"/>
-    <text x="167" y="138" font-size="10" fill="#94a3b8" font-weight="bold" text-anchor="middle">45</text>
-    <text x="167" y="190" font-size="10" fill="#f8fafc" text-anchor="middle">Region B</text>
+    <text x="167" y="138" font-size="11" fill="#cbd5e1" font-weight="bold" text-anchor="middle">45</text>
+    <text x="167" y="190" font-size="11" fill="#f8fafc" text-anchor="middle">Region B</text>
 
     <!-- Region C: 200 -->
     <rect x="225" y="35" width="45" height="140" rx="4" fill="#34d399"/>
     <text x="247" y="30" font-size="11" fill="#34d399" font-weight="bold" text-anchor="middle">200</text>
-    <text x="247" y="190" font-size="10" fill="#f8fafc" text-anchor="middle">Region C</text>
+    <text x="247" y="190" font-size="11" fill="#f8fafc" text-anchor="middle">Region C</text>
   </g>
 
   <!-- Right: Decisions -->
@@ -1088,7 +1088,7 @@ DIAGRAMS['MID2-Q16'] = svg_doc(720, 270, f'''
     <line x1="140" y1="125" x2="170" y2="115" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
     <circle cx="170" cy="115" r="5" fill="#34d399"/>
     <text x="170" y="105" font-size="9" fill="#34d399" font-weight="bold" text-anchor="middle">Mode Peak (Target)</text>
-    <text x="160" y="180" font-size="9" fill="#94a3b8" text-anchor="middle">Climbs color probability gradient via Bhattacharyya</text>
+    <text x="160" y="180" font-size="9" fill="#cbd5e1" text-anchor="middle">Climbs color probability gradient via Bhattacharyya</text>
   </g>
 
   <!-- Right: Kalman Trajectory -->
@@ -1106,8 +1106,8 @@ DIAGRAMS['MID2-Q16'] = svg_doc(720, 270, f'''
     <line x1="180" y1="80" x2="195" y2="70" stroke="#f43f5e" stroke-width="1" stroke-dasharray="2 2"/>
     <text x="215" y="72" font-size="9" fill="#f43f5e">Sensor z</text>
 
-    <text x="160" y="160" font-size="10" fill="#f8fafc" text-anchor="middle">State x = [x, y, vx, vy]ᵀ</text>
-    <text x="160" y="180" font-size="9" fill="#94a3b8" text-anchor="middle">Predict-Update loop filters measurement noise</text>
+    <text x="160" y="160" font-size="11" fill="#f8fafc" text-anchor="middle">State x = [x, y, vx, vy]ᵀ</text>
+    <text x="160" y="180" font-size="9" fill="#cbd5e1" text-anchor="middle">Predict-Update loop filters measurement noise</text>
   </g>
 ''')
 
@@ -1119,13 +1119,13 @@ DIAGRAMS['MID2-Q17'] = svg_doc(720, 270, f'''
     <rect width="310" height="195" rx="8" fill="#090d16" stroke="#64748b" stroke-width="2"/>
     <text x="155" y="22" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">User-Defined Trimap</text>
     <!-- Outer Background: Black -->
-    <text x="45" y="55" font-size="9" fill="#94a3b8">Background (α = 0)</text>
+    <text x="45" y="55" font-size="9" fill="#cbd5e1">Background (α = 0)</text>
     <!-- Unknown Gray Band -->
     <path d="M 60 70 C 90 40 220 40 250 70 C 270 120 270 150 250 180 C 220 200 90 200 60 180 Z" fill="#334155" stroke="#94a3b8" stroke-width="1.5"/>
-    <text x="155" y="85" font-size="10" fill="#fbbf24" font-weight="bold" text-anchor="middle">UNKNOWN BAND (0 &lt; α &lt; 1)</text>
+    <text x="155" y="85" font-size="11" fill="#fbbf24" font-weight="bold" text-anchor="middle">UNKNOWN BAND (0 &lt; α &lt; 1)</text>
     <!-- Known Foreground: White -->
     <path d="M 90 100 C 110 85 200 85 220 100 C 230 130 230 145 220 160 C 200 170 110 170 90 160 Z" fill="#f8fafc"/>
-    <text x="155" y="130" font-size="10" fill="#090d16" font-weight="bold" text-anchor="middle">FOREGROUND (α = 1)</text>
+    <text x="155" y="130" font-size="11" fill="#090d16" font-weight="bold" text-anchor="middle">FOREGROUND (α = 1)</text>
   </g>
 
   <!-- Right: Matting Equation & Laplacian -->
@@ -1141,51 +1141,51 @@ DIAGRAMS['MID2-Q18'] = svg_doc(720, 280, f'''
   <g transform="translate(30, 55)">
     <rect width="320" height="205" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
     <text x="160" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">PART A: Particle Weight Normalization</text>
-    <text x="20" y="45" font-size="10" fill="#cbd5e1">Given W = [0.2, 0.3, 0.1, 0.4] | Sum S = 1.0</text>
+    <text x="20" y="45" font-size="11" fill="#cbd5e1">Given W = [0.2, 0.3, 0.1, 0.4] | Sum S = 1.0</text>
     
     <!-- 4 Bars -->
     <rect x="35" y="125" width="45" height="40" rx="3" fill="#38bdf8"/>
-    <text x="57" y="148" font-size="10" fill="#090d16" font-weight="bold" text-anchor="middle">0.20</text>
-    <text x="57" y="180" font-size="9" fill="#94a3b8" text-anchor="middle">P1</text>
+    <text x="57" y="148" font-size="11" fill="#090d16" font-weight="bold" text-anchor="middle">0.20</text>
+    <text x="57" y="180" font-size="9" fill="#cbd5e1" text-anchor="middle">P1</text>
 
     <rect x="100" y="105" width="45" height="60" rx="3" fill="#38bdf8"/>
-    <text x="122" y="138" font-size="10" fill="#090d16" font-weight="bold" text-anchor="middle">0.30</text>
-    <text x="122" y="180" font-size="9" fill="#94a3b8" text-anchor="middle">P2</text>
+    <text x="122" y="138" font-size="11" fill="#090d16" font-weight="bold" text-anchor="middle">0.30</text>
+    <text x="122" y="180" font-size="9" fill="#cbd5e1" text-anchor="middle">P2</text>
 
     <rect x="165" y="145" width="45" height="20" rx="3" fill="#64748b"/>
-    <text x="187" y="158" font-size="10" fill="#f8fafc" text-anchor="middle">0.10</text>
-    <text x="187" y="180" font-size="9" fill="#94a3b8" text-anchor="middle">P3</text>
+    <text x="187" y="158" font-size="11" fill="#f8fafc" text-anchor="middle">0.10</text>
+    <text x="187" y="180" font-size="9" fill="#cbd5e1" text-anchor="middle">P3</text>
 
     <rect x="230" y="85" width="45" height="80" rx="3" fill="#34d399"/>
     <text x="252" y="128" font-size="11" fill="#090d16" font-weight="bold" text-anchor="middle">0.40</text>
     <text x="252" y="180" font-size="9" fill="#34d399" font-weight="bold" text-anchor="middle">P4 (Max)</text>
 
-    <text x="160" y="198" font-size="10" fill="#34d399" font-weight="bold" text-anchor="middle">Most Likely: Particle 4 (Weight = 0.40 / 40%)</text>
+    <text x="160" y="198" font-size="11" fill="#34d399" font-weight="bold" text-anchor="middle">Most Likely: Particle 4 (Weight = 0.40 / 40%)</text>
   </g>
 
   <!-- Right: Kalman Filter Update -->
   <g transform="translate(370, 55)">
     <rect width="320" height="205" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="160" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">PART B: Kalman Filter State Update</text>
-    <text x="20" y="45" font-size="10" fill="#cbd5e1">Prior x^- = 50, Measurement z = 60, Gain K = 0.6</text>
+    <text x="20" y="45" font-size="11" fill="#cbd5e1">Prior x^- = 50, Measurement z = 60, Gain K = 0.6</text>
     
     <!-- State Ruler -->
     <line x1="30" y1="100" x2="290" y2="100" stroke="#64748b" stroke-width="2"/>
     <circle cx="50" cy="100" r="5" fill="#fbbf24"/>
-    <text x="50" y="88" font-size="10" fill="#fbbf24" font-weight="bold" text-anchor="middle">x^- = 50</text>
+    <text x="50" y="88" font-size="11" fill="#fbbf24" font-weight="bold" text-anchor="middle">x^- = 50</text>
 
     <circle cx="270" cy="100" r="5" fill="#f43f5e"/>
-    <text x="270" y="88" font-size="10" fill="#f43f5e" font-weight="bold" text-anchor="middle">z = 60</text>
+    <text x="270" y="88" font-size="11" fill="#f43f5e" font-weight="bold" text-anchor="middle">z = 60</text>
 
     <circle cx="182" cy="100" r="7" fill="#34d399"/>
     <text x="182" y="85" font-size="11" fill="#34d399" font-weight="bold" text-anchor="middle">Updated x = 56</text>
 
     <!-- Arrow from 50 to 56 -->
     <path d="M 55 115 L 175 115" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arrEmerald)"/>
-    <text x="115" y="130" font-size="10" fill="#34d399" font-weight="bold" text-anchor="middle">+6 Correction (K·Innovation)</text>
+    <text x="115" y="130" font-size="11" fill="#34d399" font-weight="bold" text-anchor="middle">+6 Correction (K·Innovation)</text>
 
     <text x="160" y="160" font-size="11" fill="#f8fafc" text-anchor="middle">x = 50 + 0.6(60 - 50) = 50 + 6 = 56</text>
-    <text x="160" y="185" font-size="9" fill="#94a3b8" text-anchor="middle">60% trust in sensor measurement, 40% in model</text>
+    <text x="160" y="185" font-size="9" fill="#cbd5e1" text-anchor="middle">60% trust in sensor measurement, 40% in model</text>
   </g>
 ''')
 
@@ -1208,7 +1208,7 @@ DIAGRAMS['MID2-Q19'] = svg_doc(740, 270, f'''
   <text x="35" y="182" font-size="11" fill="#cbd5e1">• Track Birth: Consistent detection across 3 consecutive frames initiates a unique Track ID</text>
   <text x="35" y="198" font-size="11" fill="#cbd5e1">• Occlusion Handling: Kalman filter velocity coasts trajectory through pillars/trees for up to 30 frames</text>
   <text x="35" y="214" font-size="11" fill="#cbd5e1">• Track Termination: Missing for &gt;30 frames deletes track and releases memory</text>
-  <text x="35" y="234" font-size="10" fill="#38bdf8">Parallel GPU multi-threading delivers &gt;30 fps throughput for self-driving and security surveillance</text>
+  <text x="35" y="234" font-size="11" fill="#38bdf8">Parallel GPU multi-threading delivers &gt;30 fps throughput for self-driving and security surveillance</text>
 ''')
 
 DIAGRAMS['MID2-Q20'] = svg_doc(720, 280, f'''
@@ -1220,29 +1220,29 @@ DIAGRAMS['MID2-Q20'] = svg_doc(720, 280, f'''
     <text x="155" y="22" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">Spatial Overlap (IoU / Jaccard)</text>
     <!-- Ground Truth Circle -->
     <circle cx="120" cy="115" r="50" fill="#fbbf24" fill-opacity="0.3" stroke="#fbbf24" stroke-width="2"/>
-    <text x="90" y="115" font-size="10" fill="#fbbf24" font-weight="bold">FN</text>
+    <text x="90" y="115" font-size="11" fill="#fbbf24" font-weight="bold">FN</text>
     <!-- Prediction Circle -->
     <circle cx="180" cy="115" r="50" fill="#38bdf8" fill-opacity="0.3" stroke="#38bdf8" stroke-width="2"/>
-    <text x="210" y="115" font-size="10" fill="#38bdf8" font-weight="bold">FP</text>
+    <text x="210" y="115" font-size="11" fill="#38bdf8" font-weight="bold">FP</text>
     <!-- Overlap TP -->
     <text x="150" y="118" font-size="12" fill="#34d399" font-weight="bold" text-anchor="middle">TP</text>
 
     <text x="155" y="180" font-size="11" fill="#f8fafc" text-anchor="middle">IoU = Area(A ∩ B) / Area(A ∪ B)</text>
-    <text x="155" y="195" font-size="10" fill="#34d399" text-anchor="middle">= TP / (TP + FP + FN)</text>
+    <text x="155" y="195" font-size="11" fill="#34d399" text-anchor="middle">= TP / (TP + FP + FN)</text>
   </g>
 
   <!-- Right: Metrics Table -->
   <g transform="translate(375, 55)">
     <rect width="310" height="205" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
     <text x="155" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">Worked Numerical Evaluation Example</text>
-    <text x="20" y="45" font-size="10" fill="#94a3b8">Given: TP=800, FP=100, FN=200, TN=98900</text>
+    <text x="20" y="45" font-size="11" fill="#cbd5e1">Given: TP=800, FP=100, FN=200, TN=98900</text>
     
     <text x="20" y="75" font-size="11" fill="#cbd5e1">1. IoU = 800 / (800+100+200) = <tspan fill="#34d399" font-weight="bold">72.7%</tspan></text>
     <text x="20" y="105" font-size="11" fill="#cbd5e1">2. Precision = TP/(TP+FP) = 800/900 = <tspan fill="#38bdf8" font-weight="bold">88.9%</tspan></text>
     <text x="20" y="135" font-size="11" fill="#cbd5e1">3. Recall = TP/(TP+FN) = 800/1000 = <tspan fill="#fbbf24" font-weight="bold">80.0%</tspan></text>
     <text x="20" y="165" font-size="11" fill="#cbd5e1">4. F1-Score = 2PR/(P+R) = <tspan fill="#34d399" font-weight="bold">84.2%</tspan></text>
 
-    <text x="20" y="195" font-size="10" fill="#c084fc">CLEAR MOT: MOTA = 1 - (FN+FP+IDSW)/GT</text>
+    <text x="20" y="195" font-size="11" fill="#c084fc">CLEAR MOT: MOTA = 1 - (FN+FP+IDSW)/GT</text>
   </g>
 ''')
 

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="280" style="max-width: 720px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 280" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; min-width: 580px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -37,45 +37,45 @@
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
     </marker>
   </defs>
-  <rect width="720" height="280" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+  <rect width="720" height="280" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">2D LINEAR SHIFT-INVARIANT (LSI) SYSTEMS &amp; CONVOLUTION</text>
     <g filter="url(#shadow)">
     <rect x="25" y="55" width="140" height="60" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="95.0" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Input Image x[m, n]</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="95.0" y="87">Spatial Domain</tspan></text>
+    <text x="95.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Input Image x[m, n]</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="95.0" y="89">Spatial Domain</tspan></text>
     
   </g>
-    <line x1="165" y1="85" x2="215" y2="85" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
+    <line x1="165" y1="85" x2="215" y2="85" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
     <g filter="url(#shadow)">
     <rect x="215" y="55" width="180" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="305.0" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">2D LSI System h[m, n]</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="305.0" y="87">Point Spread Function (PSF)</tspan></text>
-    <rect x="320" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="355" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">LSI</text>
+    <text x="305.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2D LSI System h[m, n]</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="305.0" y="89">Point Spread Function (PSF)</tspan></text>
+    <rect x="320" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="355" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">LSI</text>
   </g>
-    <line x1="395" y1="85" x2="445" y2="85" stroke="#34d399" stroke-width="2" marker-end="url(#arrEmerald)"/>
+    <line x1="395" y1="85" x2="445" y2="85" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
     <g filter="url(#shadow)">
     <rect x="445" y="55" width="250" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="570.0" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Output Image y[m, n]</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="570.0" y="87">y[m, n] = Σ Σ x[k, l] h[m-k, n-l]</tspan></text>
-    <rect x="620" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="655" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Output</text>
+    <text x="570.0" y="73" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Output Image y[m, n]</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="570.0" y="89">y[m, n] = Σ Σ x[k, l] h[m-k, n-l]</tspan></text>
+    <rect x="620" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="655" y="59" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Output</text>
   </g>
 
   <rect x="25" y="135" width="670" height="125" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="45" y="160" font-size="12" font-weight="bold" fill="#38bdf8">Transform Domain &amp; Separable Fast Computation:</text>
     <g filter="url(#shadow)">
     <rect x="45" y="175" width="280" height="65" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="185.0" y="192" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Frequency Domain Multiplication</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="185.0" y="207">Y(ω1, ω2) = X(ω1, ω2) · H(ω1, ω2)</tspan><tspan x="185.0" y="220">Zero-phase required to prevent edge distortion</tspan></text>
+    <text x="185.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Frequency Domain Multiplication</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="185.0" y="209">Y(ω1, ω2) = X(ω1, ω2) · H(ω1, ω2)</tspan><tspan x="185.0" y="223">Zero-phase required to prevent edge distortion</tspan></text>
     
   </g>
     <g filter="url(#shadow)">
     <rect x="355" y="175" width="320" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="515.0" y="192" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Separable 2D Filter Speedup</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="515.0" y="207">h[m, n] = h1[m] · h2[n]</tspan><tspan x="515.0" y="220">Reduces operations from O(K²) to O(2K) per pixel!</tspan></text>
-    <rect x="600" y="166" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="635" y="179" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Fast</text>
+    <text x="515.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Separable 2D Filter Speedup</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="515.0" y="209">h[m, n] = h1[m] · h2[n]</tspan><tspan x="515.0" y="223">Reduces operations from O(K²) to O(2K) per pixel!</tspan></text>
+    <rect x="600" y="166" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="635" y="179" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Fast</text>
   </g>
 
 </svg>
