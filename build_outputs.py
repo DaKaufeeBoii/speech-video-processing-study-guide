@@ -379,8 +379,8 @@ def generate_html_handbook():
     <div class="sort-group">
       <span>Sort Order:</span>
       <select id="sortSelect" class="sort-select">
-        <option value="priority" selected>🚀 Priority &amp; Difficulty (Cramming Order)</option>
-        <option value="unit">📚 Unit Order (Syllabus 1 to 5)</option>
+        <option value="unit" selected>📚 Unit Order (Syllabus 1 to 5)</option>
+        <option value="priority">🚀 Priority &amp; Difficulty (Cramming Order)</option>
         <option value="marks">⭐ Marks (10M First)</option>
         <option value="fastest">⚡ Fastest to Learn (2m -> 6m)</option>
       </select>
@@ -392,8 +392,14 @@ def generate_html_handbook():
   <div id="questionsContainer">
 """]
 
-    # Render questions sorted by rank by default
-    sorted_q = sorted(ALL_QUESTIONS, key=lambda x: x['rank'])
+    # Render questions sorted by unit then question number in syllabus order
+    def sort_key(item):
+        u_str = str(item.get('unit', '')).lower().replace('unit-', '').replace('unit', '').strip()
+        u_num = int(u_str) if u_str.isdigit() else 9
+        mid_num = 1 if item.get('mid') == 'Mid-I' else 2
+        return (u_num, mid_num, item.get('qno', 0))
+
+    sorted_q = sorted(ALL_QUESTIONS, key=sort_key)
     for q in sorted_q:
         mid_class = "mid1" if q["mid"] == "Mid-I" else "mid2"
         unit_num = str(q['unit']).lower().replace('unit-', '').replace('unit', '').strip()
@@ -522,8 +528,8 @@ def generate_html_handbook():
 <button id="backToTopBtn" class="fab-top" title="Back to Top" aria-label="Back to Top">↑</button>
 
 <!-- SCRIPTS: Clean separation matching Deep Learning StudyMode -->
-<script src="audio.js"></script>
-<script src="app.js"></script>
+<script src="audio.js?v=20261127_02"></script>
+<script src="app.js?v=20261127_02"></script>
 </body>
 </html>
 """)
