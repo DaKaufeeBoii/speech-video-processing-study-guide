@@ -9,6 +9,7 @@ import os, re, html, shutil
 from eli5_data import ELI5_DATA
 from keypoints_data import KEYPOINTS_DATA
 from diagrams_data import DIAGRAMS_SVG as SVG_DIAGRAMS
+from tier_data import QUESTION_TIER_DATA
 
 from data_unit1 import UNIT1_QUESTIONS
 from data_unit2 import UNIT2_QUESTIONS
@@ -25,6 +26,15 @@ for q in ALL_QUESTIONS:
     q['key_points'] = KEYPOINTS_DATA.get(qid, [])
     q['svg_diagram'] = SVG_DIAGRAMS.get(qid, '')
     q['draw_guide'] = ELI5_DATA.get(qid, {}).get('draw', '')
+    
+    t_info = QUESTION_TIER_DATA.get(qid, {})
+    q['rank'] = t_info.get('rank', 99)
+    q['tier'] = t_info.get('tier', 4)
+    q['tier_name'] = t_info.get('tier_name', 'General')
+    q['diff'] = t_info.get('diff', 'Moderate')
+    q['time'] = t_info.get('time', '5 min')
+    q['prio'] = t_info.get('prio', 'Medium')
+    q['reason'] = t_info.get('reason', '')
 
 def inline_md(txt):
     if not txt:
@@ -135,7 +145,9 @@ def generate_markdown_guide():
             md_parts.append(f"\n# {current_unit.upper()} ({q['co']})\n")
 
         md_parts.append(f"## {q['id']}: Q{q['qno']}. {q['title']}")
-        md_parts.append(f"**Mid:** {q['mid']} | **QNo:** {q['qno']} | **Unit:** {q['unit']} | **CO:** {q['co']} | **Bloom's:** {q['bloom']} | **Marks:** {q['marks']}")
+        md_parts.append(f"**Mid:** {q['mid']} | **QNo:** {q['qno']} | **Unit:** {q['unit']} | **CO:** {q['co']} | **Bloom's:** {q['bloom']} | **Marks:** {q['marks']} | **Cramming Rank:** #{q['rank']} (Tier {q['tier']}: {q['tier_name']} • {q['time']})")
+        if q.get('reason'):
+            md_parts.append(f"> ⚡ **Why Learn This (ROI):** {q['reason']}")
         md_parts.append(f"\n> 🧠 **Core Anchor:** {q['punchline']}\n")
 
         eli5 = q.get('eli5', {})
@@ -248,6 +260,12 @@ def generate_html_handbook():
 
 <div class="filter-bar" id="filterBar">
   <button class="filter-chip active" data-filter="all">All (40 Questions)</button>
+  <button class="filter-chip chip-fasttrack" data-filter="fasttrack" style="border-color:#38bdf8; color:#38bdf8; font-weight:700;">🚀 Fastest First (Rank 1→40)</button>
+  <button class="filter-chip chip-tier1" data-filter="tier1" style="border-color:#10b981; color:#6ee7b7;">💎 Tier 1: Free Marks (10)</button>
+  <button class="filter-chip chip-tier2" data-filter="tier2" style="border-color:#3b82f6; color:#93c5fd;">⚡ Tier 2: Core Scoring (12)</button>
+  <button class="filter-chip chip-tier3" data-filter="tier3" style="border-color:#8b5cf6; color:#c4b5fd;">⚔️ Tier 3: 10M Anchors (12)</button>
+  <button class="filter-chip chip-tier4" data-filter="tier4" style="border-color:#f43f5e; color:#fda4af;">🧠 Tier 4: Deep Dive (6)</button>
+  <span class="filter-sep" style="display:inline-block; width:1px; height:20px; background:#334155; margin:0 4px; vertical-align:middle;"></span>
   <button class="filter-chip chip-unit" data-filter="u1">📚 Unit 1 (8)</button>
   <button class="filter-chip chip-unit" data-filter="u2">📚 Unit 2 (8)</button>
   <button class="filter-chip chip-unit" data-filter="u3">📚 Unit 3 (8)</button>
@@ -260,6 +278,51 @@ def generate_html_handbook():
 </div>
 
 <div class="container">
+  <!-- Fast-Track High-ROI Exam Triage Hub -->
+  <div class="triage-banner" id="triageBanner">
+    <div class="triage-header">
+      <div class="triage-title">
+        <span>🚀 High-ROI Exam Triage: Fastest Learning $\rightarrow$ Slowest</span>
+      </div>
+      <button class="filter-chip chip-fasttrack" onclick="filterByTier('fasttrack')" style="font-size:0.75rem; padding:4px 12px; border-color:#38bdf8; color:#38bdf8; background:rgba(56,189,248,0.12); cursor:pointer; font-weight:700;">
+        ▶ Auto-Sort All (Rank 1→40)
+      </button>
+    </div>
+    <div class="triage-desc">
+      Prioritized strictly by marks-per-minute: Pure numericals and high-contrast tables first (free marks in 2–4 min), followed by standard 5M algorithms, 10M design anchors, and deep theoretical proofs.
+    </div>
+    <div class="tier-pills-grid">
+      <div class="tier-summary-card t1" onclick="filterByTier('tier1')">
+        <div class="tier-summary-title">
+          <span style="color:#6ee7b7;">💎 Tier 1: Free Marks</span>
+          <span style="color:#10b981; font-weight:800;">10 Qs • Top ROI</span>
+        </div>
+        <div class="tier-summary-desc">Pure numericals &amp; instant visual models (2–4 min each)</div>
+      </div>
+      <div class="tier-summary-card t2" onclick="filterByTier('tier2')">
+        <div class="tier-summary-title">
+          <span style="color:#93c5fd;">⚡ Tier 2: Core Scoring</span>
+          <span style="color:#3b82f6; font-weight:800;">12 Qs • 5–6 min</span>
+        </div>
+        <div class="tier-summary-desc">Core feature pipelines, optical flow &amp; standard 5M answers</div>
+      </div>
+      <div class="tier-summary-card t3" onclick="filterByTier('tier3')">
+        <div class="tier-summary-title">
+          <span style="color:#c4b5fd;">⚔️ Tier 3: 10M Anchors</span>
+          <span style="color:#8b5cf6; font-weight:800;">12 Qs • 8 min</span>
+        </div>
+        <div class="tier-summary-desc">Comprehensive designs, HMM, GMM-EM, DTW &amp; tracking metrics</div>
+      </div>
+      <div class="tier-summary-card t4" onclick="filterByTier('tier4')">
+        <div class="tier-summary-title">
+          <span style="color:#fda4af;">🧠 Tier 4: Deep Dive</span>
+          <span style="color:#f43f5e; font-weight:800;">6 Qs • Slowest</span>
+        </div>
+        <div class="tier-summary-desc">Dense mathematics, SfM 8-point &amp; low-ROI proofs (save for last)</div>
+      </div>
+    </div>
+  </div>
+
   <!-- Unit-Wise Preparation Hub -->
   <div class="unit-hub-container" id="unitHubContainer" style="margin-bottom: 18px;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
@@ -313,7 +376,8 @@ def generate_html_handbook():
     <div class="sort-group">
       <span>Sort Order:</span>
       <select id="sortSelect" class="sort-select">
-        <option value="unit" selected>📚 Syllabus Order (Unit 1 to 5)</option>
+        <option value="rank" selected>🚀 Fastest Learning (Rank 1 → 40 • High ROI)</option>
+        <option value="unit">📚 Syllabus Order (Unit 1 to 5)</option>
         <option value="marks">⭐ Marks (10M First)</option>
         <option value="mid">📝 Exam Order (Mid-I then Mid-II)</option>
       </select>
@@ -389,16 +453,28 @@ def generate_html_handbook():
         </div>
 """
 
+        reason_html = f"""
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> {html.escape(q['reason'])}
+        </div>
+""" if q.get('reason') else ""
+
         html_parts.append(f"""
     <div class="question-card"
          id="{q['id']}"
          data-mid="{mid_class}"
          data-unit="{unit_class}"
          data-marks="{marks_class}"
+         data-tier="tier{q['tier']}"
+         data-rank="{q['rank']}"
+         data-diff="{q['diff']}"
+         data-time="{q['time']}"
          data-qno="{q['qno']}"
          data-orig="{q['mid']}-{q['qno']:02d}">
       <div class="card-header" onclick="toggleCard('{q['id']}')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #{q['rank']}</span>
+          <span class="badge badge-tier{q['tier']}">Tier {q['tier']}: {q['tier_name']} • {q['time']}</span>
           <span class="badge badge-unit">{q['unit']}</span>
           <span class="badge badge-mid">{q['mid']} • Q{q['qno']}</span>
           <span class="badge badge-marks">{q['marks']}</span>
@@ -413,8 +489,11 @@ def generate_html_handbook():
       <div class="card-body" id="body-{q['id']}">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 {q['marks']} Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: {q['time']} ({q['diff']})</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 {q['unit']} • {q['mid']} • {q['co']}</span>
         </div>
+
+        {reason_html}
 
         {eli5_html}
 

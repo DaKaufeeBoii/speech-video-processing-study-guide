@@ -82,7 +82,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!container) return;
     const cards = Array.from(container.children);
     cards.sort((a, b) => {
-      if (mode === 'unit') {
+      if (mode === 'rank') {
+        const rA = parseInt(a.getAttribute('data-rank') || '99') || 99;
+        const rB = parseInt(b.getAttribute('data-rank') || '99') || 99;
+        return rA - rB;
+      } else if (mode === 'unit') {
         const uA = parseInt((a.getAttribute('data-unit') || 'u0').replace('u', '')) || 0;
         const uB = parseInt((b.getAttribute('data-unit') || 'u0').replace('u', '')) || 0;
         if (uA !== uB) return uA - uB;
@@ -114,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (sortSelect) {
     sortSelect.addEventListener('change', () => sortCards(sortSelect.value));
-    sortCards(sortSelect.value || 'unit');
+    sortCards(sortSelect.value || 'rank');
   }
 
   // --- 5. SEARCH & FILTER ENGINE ---
@@ -138,6 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const hubCard = document.querySelector(`.unit-hub-card[onclick*="'${unitKey}'"]`);
     if (hubCard) hubCard.classList.add('active-unit-card');
 
+    // Remove active tier card highlight
+    document.querySelectorAll('.tier-summary-card').forEach(c => c.classList.remove('active-tier-card'));
+
     // Auto-sort into natural question sequence if a unit or mid filter is chosen
     if (unitKey.startsWith('u') || unitKey === 'mid1' || unitKey === 'mid2') {
       if (sortSelect) sortSelect.value = 'unit';
@@ -146,7 +153,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     applyFilters();
   };
-  window.filterByTier = window.filterByUnit;
+
+  window.filterByTier = function(tierKey) {
+    filterChips.forEach(c => c.classList.remove('active'));
+    const targetChip = document.querySelector(`.filter-chip[data-filter="${tierKey}"]`);
+    if (targetChip) {
+      targetChip.classList.add('active');
+      try {
+        targetChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      } catch (e) {}
+    }
+    activeFilter = tierKey;
+
+    // Highlight active tier summary card if any
+    document.querySelectorAll('.tier-summary-card').forEach(c => c.classList.remove('active-tier-card'));
+    const cardMap = { 'tier1': 't1', 'tier2': 't2', 'tier3': 't3', 'tier4': 't4' };
+    if (cardMap[tierKey]) {
+      const tCard = document.querySelector(`.tier-summary-card.${cardMap[tierKey]}`);
+      if (tCard) tCard.classList.add('active-tier-card');
+    }
+
+    // Remove active unit card highlight
+    document.querySelectorAll('.unit-hub-card').forEach(c => c.classList.remove('active-unit-card'));
+
+    // Auto-sort to rank 1-40 order whenever a tier or fasttrack is selected
+    if (tierKey === 'fasttrack' || tierKey.startsWith('tier') || tierKey.startsWith('t')) {
+      if (sortSelect) sortSelect.value = 'rank';
+      sortCards('rank');
+    }
+
+    applyFilters();
+  };
 
   filterChips.forEach(chip => {
     chip.addEventListener('click', () => {
@@ -159,8 +196,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const hubCard = document.querySelector(`.unit-hub-card[onclick*="'${activeFilter}'"]`);
       if (hubCard) hubCard.classList.add('active-unit-card');
 
-      // Auto-sort into natural question sequence if a unit or mid filter is chosen
-      if (activeFilter.startsWith('u') || activeFilter === 'mid1' || activeFilter === 'mid2') {
+      // Highlight active tier card if any
+      document.querySelectorAll('.tier-summary-card').forEach(c => c.classList.remove('active-tier-card'));
+      const cardMap = { 'tier1': 't1', 'tier2': 't2', 'tier3': 't3', 'tier4': 't4' };
+      if (cardMap[activeFilter]) {
+        const tCard = document.querySelector(`.tier-summary-card.${cardMap[activeFilter]}`);
+        if (tCard) tCard.classList.add('active-tier-card');
+      }
+
+      // Auto-sort to rank if fasttrack or tier chosen
+      if (activeFilter === 'fasttrack' || activeFilter.startsWith('tier')) {
+        if (sortSelect) sortSelect.value = 'rank';
+        sortCards('rank');
+      } else if (activeFilter.startsWith('u') || activeFilter === 'mid1' || activeFilter === 'mid2') {
         if (sortSelect) sortSelect.value = 'unit';
         sortCards('unit');
       }
@@ -188,10 +236,15 @@ document.addEventListener('DOMContentLoaded', () => {
       const mid = card.getAttribute('data-mid');
       const unit = card.getAttribute('data-unit');
       const marks = card.getAttribute('data-marks');
+      const tier = card.getAttribute('data-tier');
       const text = card.textContent.toLowerCase();
 
       let matchesFilter = false;
-      if (activeFilter === 'all' || activeFilter === 'keypoints') matchesFilter = true;
+      if (activeFilter === 'all' || activeFilter === 'fasttrack' || activeFilter === 'keypoints') matchesFilter = true;
+      else if (activeFilter === 'tier1' && tier === 'tier1') matchesFilter = true;
+      else if (activeFilter === 'tier2' && tier === 'tier2') matchesFilter = true;
+      else if (activeFilter === 'tier3' && tier === 'tier3') matchesFilter = true;
+      else if (activeFilter === 'tier4' && tier === 'tier4') matchesFilter = true;
       else if (activeFilter === 'mid1' && mid === 'mid1') matchesFilter = true;
       else if (activeFilter === 'mid2' && mid === 'mid2') matchesFilter = true;
       else if (activeFilter === '5m' && marks === '5m') matchesFilter = true;

@@ -14,7 +14,8 @@
 # UNIT-1 (CO1)
 
 ## MID1-Q01: Q1. Define the speech production mechanism and identify the roles of excitation source and vocal tract system in speech generation.
-**Mid:** Mid-I | **QNo:** 1 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K1 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 1 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K1 | **Marks:** 05 Marks | **Cramming Rank:** #6 (Tier 1: Free Marks • 4 min)
+> ⚡ **Why Learn This (ROI):** Fundamental definition: Gunnar Fant Source-Filter Model with 4-box diagram
 
 > 🧠 **Core Anchor:** Speech production is like playing a trumpet: your lungs pump air, your vocal cords buzz (source E(z)), your throat and mouth shape the tone (filter H(z)), and your lips blast it into the room (radiation R(z)).
 
@@ -72,7 +73,8 @@ $$S(z) = E(z) \cdot H(z) \cdot R(z)$$
 ---
 
 ## MID1-Q02: Q2. Explain the discrete-time representation of speech signals and interpret the effects of sampling on signal reconstruction
-**Mid:** Mid-I | **QNo:** 2 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 2 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #14 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** Sampling theorem, Nyquist rate fs >= 2fmax, and anti-aliasing sinc reconstruction
 
 > 🧠 **Core Anchor:** Computers can't store infinite continuous waves; they snap digital photos at rate fs. If fs < 2·fmax, high frequencies fold over as fake low frequencies (aliasing distortion) like a backwards-spinning car wheel on video.
 
@@ -133,7 +135,8 @@ Each discrete sample spreads a smooth sinc wave; all the sinc waves add up to re
 ---
 
 ## MID1-Q03: Q3. A discrete-time speech system has transfer function H(z) = [z(z - 0.5)] / [z² - 0.9z + 0.2]. Find its poles and zeros, plot them on the z-plane, and determine if the system is stable.
-**Mid:** Mid-I | **QNo:** 3 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K3 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 3 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K3 | **Marks:** 05 Marks | **Cramming Rank:** #5 (Tier 1: Free Marks • 3 min)
+> ⚡ **Why Learn This (ROI):** Pole-Zero numerical: zeros at 0, 0.5; poles at 0.5, 0.4; stable since |p| < 1
 
 > 🧠 **Core Anchor:** Zeros make the system silent (roots of top = 0, 0.5); Poles make the system resonate (roots of bottom = 0.5, 0.4). Because both poles are strictly inside the unit circle (|p| < 1), the system is BIBO Stable!
 
@@ -191,7 +194,8 @@ When excited by speech impulses, its impulse response $h[n]$ will naturally deca
 ---
 
 ## MID1-Q04: Q4. State the key properties of the Fast Fourier Transform (FFT) and explain their importance in speech spectral analysis.
-**Mid:** Mid-I | **QNo:** 4 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 4 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #12 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** 6 key FFT properties in speech: Linearity, Symmetry, Time-shift, Parseval
 
 > 🧠 **Core Anchor:** The FFT is a supercharged algorithm that calculates the discrete Fourier spectrum in O(N log N) time instead of O(N²); its symmetry, shift invariance, and frequency resolution (Δf = fs/N) make real-time spectrograms possible.
 
@@ -248,7 +252,8 @@ The FFT implicitly assumes the $N$-point frame repeats forever. Abrupt frame cho
 ---
 
 ## MID1-Q05: Q5. Analyze convolution operations in speech processing and examine their role in system response and filtering mechanisms.
-**Mid:** Mid-I | **QNo:** 5 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K4 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 5 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K4 | **Marks:** 10 Marks | **Cramming Rank:** #36 (Tier 4: Deep Dive • 7 min)
+> ⚡ **Why Learn This (ROI):** Convolution in speech: Source-filter cascade, Overlap-Add (OLA) and Overlap-Save (OLS)
 
 > 🧠 **Core Anchor:** Convolution is how the vocal tract tube imprints its resonant formants onto glottal buzz pulses; in real-time DSP, the Overlap-Add (OLA) algorithm uses FFT multiplication to filter continuous speech without lag.
 
@@ -311,7 +316,8 @@ This delivers continuous real-time audio output with zero latency and zero bound
 ---
 
 ## MID1-Q06: Q6. Evaluate the performance of linear and non-linear filter banks in speech signal decomposition with respect to frequency resolution and distortion.
-**Mid:** Mid-I | **QNo:** 6 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K5 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 6 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K5 | **Marks:** 10 Marks | **Cramming Rank:** #35 (Tier 4: Deep Dive • 7 min)
+> ⚡ **Why Learn This (ROI):** Linear (STFT) vs Non-linear (Mel/Bark) filter banks psychoacoustic evaluation
 
 > 🧠 **Core Anchor:** Linear filter banks split sound like an inflexible ruler with equal Hz everywhere (wasting data on highs); non-linear Mel filter banks mimic the human ear cochlea, offering laser-sharp resolution at low formant frequencies and broad pooling at highs.
 
@@ -368,7 +374,8 @@ Mel-scale non-linear filter banks are vastly superior for speech AI because they
 ---
 
 ## MID1-Q07: Q7. A) A short speech frame is given as x[n] = [2, 1, 0, 1]. Compute the 4-point DFT, find the magnitude spectrum, and identify the dominant frequency component. B) A speech signal is sampled at 8 kHz and frame size is 256 samples. Compute frequency resolution and find the frequency corresponding to k = 10.
-**Mid:** Mid-I | **QNo:** 7 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 7 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #11 (Tier 2: Core Scoring • 6 min)
+> ⚡ **Why Learn This (ROI):** High-yield numerical: 4-Point DFT twiddle matrix + Frequency resolution fs/N = 31.25 Hz
 
 > 🧠 **Core Anchor:** Part A: Multiplying by the 4-point DFT matrix gives X = [4, 2, 0, 2], with peak DC energy 4.0 at k=0 and AC energy 2.0 at k=1, 3. Part B: 8000 / 256 = 31.25 Hz per bin, so bin 10 represents 312.5 Hz.
 
@@ -444,7 +451,8 @@ $$f_{10} = 10 \times 31.25\text{ Hz} = \mathbf{312.5\text{ Hz}}$$
 ---
 
 ## MID1-Q08: Q8. Analyze the formulation of Linear Predictive Coding (LPC) equations and evaluate its effectiveness in modeling speech signals for efficient parameter estimation.
-**Mid:** Mid-I | **QNo:** 8 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 8 | **Unit:** Unit-1 | **CO:** CO1 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #27 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** LPC derivation of Yule-Walker normal equations & Levinson-Durbin recursion algorithm
 
 > 🧠 **Core Anchor:** LPC predicts the current speech sample as a weighted sum of the previous p samples; minimizing prediction error leads to Yule-Walker equations solved in O(p²) time by Levinson-Durbin to compress speech 20x.
 
@@ -513,7 +521,8 @@ Normal matrix inversion takes slow $O(p^3)$ time. The **Levinson-Durbin Recursio
 # UNIT-2 (CO2)
 
 ## MID1-Q09: Q9. Identify the key stages of a speech feature extraction pipeline and the purpose of each stage in converting speech signals into feature representations.
-**Mid:** Mid-I | **QNo:** 9 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K1 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 9 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K1 | **Marks:** 05 Marks | **Cramming Rank:** #13 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** Standard 7-stage speech feature extraction pipeline flowchart
 
 > 🧠 **Core Anchor:** The pipeline turns raw audio waveforms into compact 39-D vectors through 6 logical stages: Pre-emphasis -> Framing -> Windowing -> FFT -> Cepstral extraction -> Dynamic Deltas.
 
@@ -578,7 +587,8 @@ The **feature extraction pipeline** cleans the audio, throws away the noise, and
 ---
 
 ## MID1-Q10: Q10. Discuss the role of static and dynamic features in speech processing.
-**Mid:** Mid-I | **QNo:** 10 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 10 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #8 (Tier 1: Free Marks • 4 min)
+> ⚡ **Why Learn This (ROI):** High-scoring concept: 13 static + 13 delta + 13 delta-delta = 39D vector
 
 > 🧠 **Core Anchor:** Static features are a single snapshot of mouth shape at one instant (13 numbers); dynamic features are the speed and acceleration of mouth muscles moving between frames (26 numbers). Concatenating both gives a 39-D vector.
 
@@ -635,7 +645,8 @@ For an AI to transcribe continuous speech, it needs to know two distinct things:
 ---
 
 ## MID1-Q11: Q11. A signal has 1600 samples, frame size = 400 samples, overlap = 200 samples. Find the number of frames.
-**Mid:** Mid-I | **QNo:** 11 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K3 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 11 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K3 | **Marks:** 05 Marks | **Cramming Rank:** #3 (Tier 1: Free Marks • 2 min)
+> ⚡ **Why Learn This (ROI):** Pure numerical: 1600 samples, 400 window, 200 overlap -> exactly 7 frames
 
 > 🧠 **Core Anchor:** Frame shift is S = 400 - 200 = 200 samples. Total frames = floor((1600 - 400)/200) + 1 = 6 + 1 = exactly 7 frames!
 
@@ -693,7 +704,8 @@ $$\mathbf{Total\ Number\ of\ Frames = 7}$$
 ---
 
 ## MID1-Q12: Q12. Compare LPCC and MFCC features in terms of spectral representation and robustness for speech recognition applications.
-**Mid:** Mid-I | **QNo:** 12 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 12 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #7 (Tier 1: Free Marks • 4 min)
+> ⚡ **Why Learn This (ROI):** Crisp comparison table: LPCC (all-pole tube) vs MFCC (human cochlea)
 
 > 🧠 **Core Anchor:** LPCC models speech like a rigid mechanical throat pipe (fragile in background noise); MFCC models speech like the human ear (super robust to noise and the world standard for speech recognition).
 
@@ -752,7 +764,8 @@ In speech AI, researchers tried two completely different paths to represent soun
 ---
 
 ## MID1-Q13: Q13. Discuss different distance measures (Euclidean, Mahalanobis, and DTW) and evaluate their role in speech pattern matching and recognition systems.
-**Mid:** Mid-I | **QNo:** 13 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K4 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 13 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K4 | **Marks:** 10 Marks | **Cramming Rank:** #24 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** Distance measures: Euclidean, Mahalanobis, and Dynamic Time Warping (DTW dynamic programming)
 
 > 🧠 **Core Anchor:** Euclidean is straight-line distance (fast but dumb); Mahalanobis scales by feature spread and correlation (smart but heavy); DTW warps time on a dynamic grid to match fast and slow talkers.
 
@@ -817,7 +830,8 @@ Because human voices have different volumes, correlations, and speaking speeds, 
 ---
 
 ## MID1-Q14: Q14. Evaluate the performance of vector quantization models in speech recognition and justify codebook optimization strategies.
-**Mid:** Mid-I | **QNo:** 14 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K5 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 14 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K5 | **Marks:** 10 Marks | **Cramming Rank:** #37 (Tier 4: Deep Dive • 7 min)
+> ⚡ **Why Learn This (ROI):** Vector Quantization: Voronoi tessellation, LBG centroid splitting algorithm, codebook sizing
 
 > 🧠 **Core Anchor:** VQ compresses millions of continuous feature vectors into a finite dictionary of 256 codewords; the Linde-Buzo-Gray (LBG) centroid-splitting algorithm optimizes this codebook to minimize distortion.
 
@@ -877,7 +891,8 @@ Dynamically update codewords on the fly using running averages as a user speaks,
 ---
 
 ## MID1-Q15: Q15. Design a Gaussian Mixture Model (GMM) for speech feature distribution and explain how the Expectation-Maximization (EM) algorithm is used for parameter estimation.
-**Mid:** Mid-I | **QNo:** 15 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 15 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #26 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** GMM mathematical formulation and full derivation of Expectation-Maximization (EM)
 
 > 🧠 **Core Anchor:** A GMM models complex speech feature distributions as a weighted sum of M smooth Gaussian bell curves; the Expectation-Maximization (EM) algorithm iterates between calculating soft responsibilities (E-step) and updating weights, means, and variances (M-step).
 
@@ -941,7 +956,8 @@ Calculate total log-likelihood $\mathcal{L} = \sum_t \log p(\mathbf{x}_t | \lamb
 ---
 
 ## MID1-Q16: Q16. Construct a Hidden Markov Model (HMM) for continuous speech recognition and assess its capability in modeling temporal variability of speech signals.
-**Mid:** Mid-I | **QNo:** 16 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 16 | **Unit:** Unit-2 | **CO:** CO2 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #25 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** HMM continuous speech: Bakis topology & the 3 problems (Forward, Viterbi, Baum-Welch)
 
 > 🧠 **Core Anchor:** An HMM is a doubly stochastic model: a hidden Markov chain transitions between phonetic mouth states over time, while output GMMs generate acoustic spectra; self-loops absorb fast and slow speech speeds effortlessly.
 
@@ -1009,7 +1025,8 @@ People speak fast when excited and slow when bored. How does an HMM handle this 
 # UNIT-3 (CO3)
 
 ## MID1-Q17: Q17. Interpret the characteristics and representation of multi-dimensional signals and examine their significance in advanced signal processing applications.
-**Mid:** Mid-I | **QNo:** 17 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 17 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #19 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** Multi-D signals taxonomy: 2D image f(x,y), 3D video f(x,y,t), 3D volumetric CT
 
 > 🧠 **Core Anchor:** 1D is audio (amplitude vs time); 2D is a photograph f(x,y); 3D is a video f(x,y,t) or medical CT scan f(x,y,z); M-D signals have non-causal spatial axes, intense pixel correlation, and require massive bandwidth.
 
@@ -1064,7 +1081,8 @@ Without multi-dimensional compression, YouTube and Netflix would crash the globa
 ---
 
 ## MID1-Q18: Q18. Demonstrate the application of multi-dimensional transforms (2D-DFT) for analyzing signal representation in spatial and frequency domains.
-**Mid:** Mid-I | **QNo:** 18 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K3 | **Marks:** 05 Marks
+**Mid:** Mid-I | **QNo:** 18 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K3 | **Marks:** 05 Marks | **Cramming Rank:** #21 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** 2D-DFT separability (row-column algorithm), DC component, and spatial frequency axes
 
 > 🧠 **Core Anchor:** The 2D-DFT turns a spatial image into a 2D frequency grid; its row-column separability lets you compute it using fast 1D-FFTs in O(N² log N) time, packing 90% of image energy into the central DC peak.
 
@@ -1120,7 +1138,8 @@ Moving an object across the camera view shifts its spatial coordinates $(m - m_0
 ---
 
 ## MID1-Q19: Q19. Analyze the formulation of multi-dimensional system models and evaluate their performance in representing complex spatial and spatio-temporal signals.
-**Mid:** Mid-I | **QNo:** 19 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K4 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 19 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K4 | **Marks:** 10 Marks | **Cramming Rank:** #39 (Tier 4: Deep Dive • 7 min)
+> ⚡ **Why Learn This (ROI):** 2D LSI systems: 2D discrete convolution, 2D Z-transform, frequency response, separability
 
 > 🧠 **Core Anchor:** 2D Linear Shift-Invariant (LSI) systems filter images via 2D convolution; BIBO stability requires absolute summability of the impulse response, but 2D stability is uniquely tricky because 2-variable polynomials cannot be factored into simple isolated poles.
 
@@ -1176,7 +1195,8 @@ In 1D systems, checking BIBO stability is trivial: factor the denominator polyno
 ---
 
 ## MID1-Q20: Q20. Construct a multi-dimensional signal processing framework for image and video systems and assess its role in enhancing signal quality.
-**Mid:** Mid-I | **QNo:** 20 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-I | **QNo:** 20 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #33 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** Multi-D processing framework: JPEG/MPEG pipeline and DCT vs DFT justification
 
 > 🧠 **Core Anchor:** An end-to-end framework captures, cleans, transforms, quantizes, and compresses multi-dimensional video; using HVS perceptual models and in-loop deblocking filters, it compresses data by 95% while boosting visual SNR.
 
@@ -1237,7 +1257,8 @@ To stream an HD movie from a Netflix server to your mobile phone over cellular d
 ---
 
 ## MID2-Q01: Q1. Apply multi-dimensional sampling theory to determine minimum sampling rates required to avoid aliasing in spatial and spatio-temporal signals.
-**Mid:** Mid-II | **QNo:** 1 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K3 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 1 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K3 | **Marks:** 05 Marks | **Cramming Rank:** #22 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** Multi-D sampling lattices: Rectangular vs Hexagonal and 2D Nyquist conditions
 
 > 🧠 **Core Anchor:** Multi-dimensional sampling turns continuous scenes f(x,y) into pixel grids via 2D Dirac comb multiplication; to avoid moiré aliasing, the sampling rate must exceed twice the highest frequency in every direction (fsx >= 2fx, fsy >= 2fy, fst >= 2ft).
 
@@ -1296,7 +1317,8 @@ If $f_{sx} < 2 f_x$, high-frequency textures fold into the low frequencies, prod
 ---
 
 ## MID2-Q02: Q2. Illustrate the transformation process in multi-dimensional systems through a block diagram and explain the functional significance of each stage.
-**Mid:** Mid-II | **QNo:** 2 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 2 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #10 (Tier 1: Free Marks • 4 min)
+> ⚡ **Why Learn This (ROI):** Clean 5-box flowchart: Partition -> 2D-DCT -> Quantize -> Zig-zag -> Entropy code
 
 > 🧠 **Core Anchor:** The transformation pipeline converts real-world analog signals into frequency space (DFT/DCT) to make filtering simple, compact energy, and isolate noise before reconstructing the continuous output.
 
@@ -1358,7 +1380,8 @@ The **transformation process** maps signals into the frequency/transform domain 
 ---
 
 ## MID2-Q03: Q3. Evaluate the performance of image and video representations based on human visual system (HVS) characteristics and justify the selection of perceptual models.
-**Mid:** Mid-II | **QNo:** 3 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K5 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 3 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K5 | **Marks:** 10 Marks | **Cramming Rank:** #29 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** HVS properties: Luminance vs Chroma, Contrast Sensitivity Function (CSF), Weber law
 
 > 🧠 **Core Anchor:** Human eyes have 120 million brightness rods but only 6 million color cones, and are blind to high-frequency fine noise; codecs exploit this via YCbCr 4:2:0 chroma subsampling (50% instant savings) and coarse DCT quantization.
 
@@ -1420,7 +1443,8 @@ The secret to modern video codecs (JPEG, H.264, HEVC) is **perceptual transparen
 ---
 
 ## MID2-Q04: Q4. Design and justify a digital video representation system, incorporating sampling theory, frame structure, and temporal redundancy reduction techniques.
-**Mid:** Mid-II | **QNo:** 4 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 4 | **Unit:** Unit-3 | **CO:** CO3 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #28 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** Complete digital video architecture: Progressive scanning, YCbCr 4:2:0, and GOP (I, P, B)
 
 > 🧠 **Core Anchor:** A digital video system treats video as a 3D signal f(x,y,t); it combines 2D spatial sampling, 30 fps capture, an I/P/B GOP frame structure, and motion-compensated prediction to eliminate up to 90% of redundant data.
 
@@ -1505,7 +1529,8 @@ Because motion compensation tracks object movement, the residual $E_t$ is near z
 # UNIT-4 (CO4)
 
 ## MID2-Q05: Q5. Categorize various image formation models and examine their role in motion estimation.
-**Mid:** Mid-II | **QNo:** 5 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 5 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #17 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** Geometric projection (pinhole x=fX/Z) vs Photometric illumination-reflectance
 
 > 🧠 **Core Anchor:** Image formation models describe how a 3D world turns into 2D camera pixels through Geometric, Photometric, Optical, and Sampling models; they stop motion algorithms from confusing a passing shadow or lens blur with real movement.
 
@@ -1560,7 +1585,8 @@ An **image formation model** is the mathematical bridge connecting the 3D physic
 ---
 
 ## MID2-Q06: Q6. Discuss different motion models and the assumptions underlying motion estimation in video processing.
-**Mid:** Mid-II | **QNo:** 6 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 6 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #16 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** Motion models: Translational (2 DOF), Affine (6 DOF), Homography (8 DOF)
 
 > 🧠 **Core Anchor:** Motion models mathematically describe how coordinates move via Translation (2-DOF), Rotation, Affine (6-DOF), and Optical Flow; they rely on 4 physical assumptions: Constant Velocity, Rigidity, Brightness Constancy, and Limited Occlusion.
 
@@ -1624,7 +1650,8 @@ Every motion estimation algorithm relies on 4 fundamental physical assumptions:
 ---
 
 ## MID2-Q07: Q7. A block in Frame 1 is at (20, 25). The best match in Frame 2 is found at (23, 30). 1. Calculate the motion vector. 2. Determine the direction of motion.
-**Mid:** Mid-II | **QNo:** 7 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K3 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 7 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K3 | **Marks:** 05 Marks | **Cramming Rank:** #1 (Tier 1: Free Marks • 2 min)
+> ⚡ **Why Learn This (ROI):** Pure numerical: Block motion vector d=(3,5), mag=5.83, direction=59.04°
 
 > 🧠 **Core Anchor:** Motion vector is MV = (3, 5); positive horizontal displacement u = +3 means moving right, positive vertical displacement v = +5 means moving down in image coordinates, so the block moves diagonally downward and to the right.
 
@@ -1683,7 +1710,8 @@ The block moves **diagonally downward and to the right**.
 ---
 
 ## MID2-Q08: Q8. Evaluate the performance of differential methods for motion estimation and analyze their sensitivity to noise and illumination changes.
-**Mid:** Mid-II | **QNo:** 8 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K4 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 8 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K4 | **Marks:** 05 Marks | **Cramming Rank:** #18 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** Optical flow equation Ix·u + Iy·v + It = 0, Aperture problem, Lucas-Kanade vs Horn-Schunck
 
 > 🧠 **Core Anchor:** Differential optical flow uses intensity slopes via Ix·u + Iy·v + It = 0; Lucas-Kanade solves it in small windows while Horn-Schunck solves global smoothness; both hate noise and lighting flickers, requiring Gaussian smoothing and gradient normalization.
 
@@ -1742,7 +1770,8 @@ Looking through a small window (aperture), you can only see motion perpendicular
 ---
 
 ## MID2-Q09: Q9. Analyze the principles of matching-based motion estimation and compare different search strategies used in block matching algorithms.
-**Mid:** Mid-II | **QNo:** 9 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K4 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 9 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K4 | **Marks:** 10 Marks | **Cramming Rank:** #30 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** Block matching motion estimation: Full search vs Three-Step Search vs Diamond search
 
 > 🧠 **Core Anchor:** Block matching algorithms partition frames into macroblocks and search for the lowest SAD error; Full Search checks all 225 spots (slow but perfect), while Three-Step Search checks only 25 spots (9x faster with 98% quality).
 
@@ -1810,7 +1839,8 @@ For each block, we search a local window of size $\pm p$ in the previous referen
 ---
 
 ## MID2-Q10: Q10. Formulate the nonlinear optimization problem for motion estimation and examine the techniques used to solve it.
-**Mid:** Mid-II | **QNo:** 10 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K5 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 10 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K5 | **Marks:** 10 Marks | **Cramming Rank:** #40 (Tier 4: Deep Dive • 8 min)
+> ⚡ **Why Learn This (ROI):** Nonlinear optimization: Gradient descent, Gauss-Newton, Levenberg-Marquardt damping
 
 > 🧠 **Core Anchor:** Motion estimation is a nonlinear least-squares problem; Gradient Descent takes small safe steps, Gauss-Newton takes fast quadratic leaps, and Levenberg-Marquardt dynamically blends both with an adaptive damping factor λ.
 
@@ -1878,7 +1908,8 @@ where $r_i(\mathbf{p})$ is the intensity residual at pixel $i$.
 ---
 
 ## MID2-Q11: Q11. Design a motion estimation algorithm using transform-domain techniques and justify the optimization techniques used.
-**Mid:** Mid-II | **QNo:** 11 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 11 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #34 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** Phase correlation motion estimation: Fourier shift theorem & cross-power spectrum
 
 > 🧠 **Core Anchor:** Transform-domain motion estimation matches DCT or DWT coefficients rather than raw pixels; DFT phase correlation calculates the normalized cross-power spectrum to produce a razor-sharp Dirac delta spike pointing to the exact motion displacement.
 
@@ -1938,7 +1969,8 @@ Searching for matching blocks in spatial pixel grids takes millions of slide-and
 ---
 
 ## MID2-Q12: Q12. Construct a comprehensive framework for 3D motion and structure estimation from 2D video sequences and assess its performance in real-world scenarios.
-**Mid:** Mid-II | **QNo:** 12 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 12 | **Unit:** Unit-4 | **CO:** CO4 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #38 (Tier 4: Deep Dive • 8 min)
+> ⚡ **Why Learn This (ROI):** 3D Structure from Motion (SfM): Epipolar geometry, Essential Matrix E=[t]xR, 8-Point SVD
 
 > 🧠 **Core Anchor:** The framework reconstructs 3D point clouds and tracks 6-DOF camera trajectories across 8 stages by fusing Geometric models (Essential matrix, Triangulation) with Statistical models (RANSAC outlier rejection, Kalman filtering, Bundle Adjustment).
 
@@ -1996,7 +2028,8 @@ In self-driving cars (Tesla Vision / Waymo):
 # UNIT-5 (CO5)
 
 ## MID2-Q13: Q13. Compare region-based and boundary-based image segmentation methods and analyze their suitability for video processing.
-**Mid:** Mid-II | **QNo:** 13 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 13 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #9 (Tier 1: Free Marks • 4 min)
+> ⚡ **Why Learn This (ROI):** Classic classification: Region-based (growing, split-merge) vs Boundary-based (Canny, snakes)
 
 > 🧠 **Core Anchor:** Region methods group pixels that look alike (filling areas inside lines); Boundary methods trace sharp color changes (drawing outlines); practical video systems combine both so Canny outlines keep region growing from spilling over.
 
@@ -2058,7 +2091,8 @@ In computer vision, there are two fundamentally opposing ways to do this:
 ---
 
 ## MID2-Q14: Q14. Explain the principles of change detection in video sequences and discuss its importance in video surveillance.
-**Mid:** Mid-II | **QNo:** 14 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K2 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 14 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K2 | **Marks:** 05 Marks | **Cramming Rank:** #15 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** Change detection: Frame differencing vs Background subtraction vs MoG model
 
 > 🧠 **Core Anchor:** Change detection spots moving objects by subtracting consecutive frames (D = |I_t - I_{t-1}|) or subtracting a background model (D = |I_t - B|); it's the 24/7 motion sensor that tells security cameras when to record.
 
@@ -2116,7 +2150,8 @@ In video surveillance, cameras record for thousands of hours. Storing empty hall
 ---
 
 ## MID2-Q15: Q15. In a video sequence, global motion is analyzed across three regions with SAD values: Region A = 120, Region B = 45, Region C = 200, Threshold = 100. 1. Identify regions containing motion. 2. Identify regions without motion. 3. Determine the region with the most dominant motion.
-**Mid:** Mid-II | **QNo:** 15 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K3 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 15 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K3 | **Marks:** 05 Marks | **Cramming Rank:** #2 (Tier 1: Free Marks • 2 min)
+> ⚡ **Why Learn This (ROI):** Pure numerical: SAD thresholding (120,45,200 vs 100 -> A & C active, C dominant)
 
 > 🧠 **Core Anchor:** Checking SAD against 100: Regions A (120 > 100) and C (200 > 100) have motion; Region B (45 < 100) is static; Region C has the most dominant motion (max SAD = 200).
 
@@ -2177,7 +2212,8 @@ $$\text{Dominant Motion} = \max(\text{SAD}_A, \text{SAD}_B, \text{SAD}_C) = \max
 ---
 
 ## MID2-Q16: Q16. Illustrate the concept of motion tracking and explain how trajectory calculation is performed across video frames.
-**Mid:** Mid-II | **QNo:** 16 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K3 | **Marks:** 05 Marks
+**Mid:** Mid-II | **QNo:** 16 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K3 | **Marks:** 05 Marks | **Cramming Rank:** #20 (Tier 2: Core Scoring • 5 min)
+> ⚡ **Why Learn This (ROI):** Tracking taxonomy: Point (Kalman), Kernel (Mean-Shift & CamShift), Silhouette
 
 > 🧠 **Core Anchor:** Motion tracking follows objects across frames using Optical Flow, Kalman, or Particle filters; trajectory calculation records the ordered sequence of centroid coordinates T = {P1, P2, P3, P4} to map the object's path.
 
@@ -2236,7 +2272,8 @@ $$\mathcal{T} = \left\{ (10, 20), \ (15, 25), \ (20, 30), \ (25, 35) \right\}$$
 ---
 
 ## MID2-Q17: Q17. Analyze the principles of image and video matting and evaluate the performance of different matting techniques.
-**Mid:** Mid-II | **QNo:** 17 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K4 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 17 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K4 | **Marks:** 10 Marks | **Cramming Rank:** #32 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** Image & video matting: Matting equation I=αF+(1-α)B, Trimap, Levin closed-form Laplacian
 
 > 🧠 **Core Anchor:** Matting calculates soft transparency alpha values (I = αF + (1-α)B, α ∈ [0,1]) to extract hair strands and glass reflections without jagged borders; deep learning and optical flow video matting maintain flicker-free temporal consistency.
 
@@ -2307,7 +2344,8 @@ To keep alpha mattes smooth across time:
 ---
 
 ## MID2-Q18: Q18. A) In a particle filter tracking system, four particles have weights: [0.2, 0.3, 0.1, 0.4]. 1. Check if normalized. 2. Identify the most likely particle. 3. Explain how this choice improves tracking robustness. B) A Kalman filter has predicted position x̂⁻ = 50, measurement z = 60, Kalman gain K = 0.6. 1. Calculate the updated position estimate. 2. Interpret how the Kalman gain influences the updated state.
-**Mid:** Mid-II | **QNo:** 18 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K4 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 18 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K4 | **Marks:** 10 Marks | **Cramming Rank:** #4 (Tier 1: Free Marks • 4 min)
+> ⚡ **Why Learn This (ROI):** Double numerical: Particle weights [0.2,0.3,0.1,0.4] & Kalman state update 50+0.6(10)=56
 
 > 🧠 **Core Anchor:** Part A: Sum = 0.2 + 0.3 + 0.1 + 0.4 = 1.0 (already normalized!); Particle 4 is most likely at 40% (0.4), giving multi-hypothesis safety against occlusion. Part B: Updated position is x̂ = 50 + 0.6(60 - 50) = 56; gain of 0.6 balances 60% measurement trust against 40% predicted model trust.
 
@@ -2381,7 +2419,8 @@ $$\hat{x} = (1 - K) \hat{x}^- + K z = (1 - 0.6)(50) + 0.6(60) = 0.4(50) + 0.6(60
 ---
 
 ## MID2-Q19: Q19. Construct a video segmentation and tracking framework and examine how motion analysis improves tracking accuracy.
-**Mid:** Mid-II | **QNo:** 19 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 19 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #31 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** Real-time video tracking framework: MoG detection + Hungarian matching + Kalman filters
 
 > 🧠 **Core Anchor:** A real-time tracking framework combines Change Detection, Background Subtraction, Morphology, Optical Flow, and Kalman Filtering across 9 stages; motion analysis predicts trajectories through blind spots and stops ID-swaps when objects cross paths.
 
@@ -2444,7 +2483,8 @@ In highway CCTV monitoring:
 ---
 
 ## MID2-Q20: Q20. Design a performance evaluation model for video segmentation and tracking systems and evaluate it using suitable metrics (IoU, Precision, Recall, and F1-Score).
-**Mid:** Mid-II | **QNo:** 20 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K6 | **Marks:** 10 Marks
+**Mid:** Mid-II | **QNo:** 20 | **Unit:** Unit-5 | **CO:** CO5 | **Bloom's:** K6 | **Marks:** 10 Marks | **Cramming Rank:** #23 (Tier 3: High-Value 10M • 8 min)
+> ⚡ **Why Learn This (ROI):** Full 10M answer: Confusion matrix, IoU, Precision, Recall, F1 with worked numerical
 
 > 🧠 **Core Anchor:** The evaluation model compares AI predictions against ground truth using a Confusion Matrix; IoU measures spatial overlap, Precision measures purity (no false alarms), Recall measures completeness (no misses), and F1 balances both.
 
