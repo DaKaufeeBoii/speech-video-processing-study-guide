@@ -187,7 +187,7 @@ def generate_html_handbook():
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Speech &amp; Video Processing • Master Handbook (KGR23 Regulation)</title>
-<link rel="stylesheet" href="style.css?v=20261127_10">
+<link rel="stylesheet" href="style.css?v=20261127_11">
 <!-- KaTeX Native LaTeX Rendering -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -282,7 +282,7 @@ def generate_html_handbook():
   <div class="triage-banner" id="triageBanner">
     <div class="triage-header">
       <div class="triage-title">
-        <span>🚀 High-ROI Exam Triage: Fastest Learning $\rightarrow$ Slowest</span>
+        <span>🚀 High-ROI Exam Triage: Fastest Learning → Slowest</span>
       </div>
       <button class="triage-action-btn" onclick="filterByTier('fasttrack')">
         ▶ Auto-Sort All (Rank 1→40)
@@ -294,29 +294,29 @@ def generate_html_handbook():
     <div class="tier-pills-grid">
       <div class="tier-summary-card t1" onclick="filterByTier('tier1')">
         <div class="tier-summary-title">
-          <span style="color:#6ee7b7;">💎 Tier 1: Free Marks</span>
-          <span style="color:#10b981; font-weight:800;">10 Qs • Top ROI</span>
+          <span class="tier-name" style="color:#6ee7b7;">💎 Tier 1: Free Marks</span>
+          <span class="tier-meta-badge" style="color:#10b981;">10 Qs • Top ROI</span>
         </div>
         <div class="tier-summary-desc">Pure numericals &amp; instant visual models (2–4 min each)</div>
       </div>
       <div class="tier-summary-card t2" onclick="filterByTier('tier2')">
         <div class="tier-summary-title">
-          <span style="color:#93c5fd;">⚡ Tier 2: Core Scoring</span>
-          <span style="color:#3b82f6; font-weight:800;">12 Qs • 5–6 min</span>
+          <span class="tier-name" style="color:#93c5fd;">⚡ Tier 2: Core Scoring</span>
+          <span class="tier-meta-badge" style="color:#3b82f6;">12 Qs • 5–6 min</span>
         </div>
         <div class="tier-summary-desc">Core feature pipelines, optical flow &amp; standard 5M answers</div>
       </div>
       <div class="tier-summary-card t3" onclick="filterByTier('tier3')">
         <div class="tier-summary-title">
-          <span style="color:#c4b5fd;">⚔️ Tier 3: 10M Anchors</span>
-          <span style="color:#8b5cf6; font-weight:800;">12 Qs • 8 min</span>
+          <span class="tier-name" style="color:#c4b5fd;">⚔️ Tier 3: 10M Anchors</span>
+          <span class="tier-meta-badge" style="color:#8b5cf6;">12 Qs • 8 min</span>
         </div>
         <div class="tier-summary-desc">Comprehensive designs, HMM, GMM-EM, DTW &amp; tracking metrics</div>
       </div>
       <div class="tier-summary-card t4" onclick="filterByTier('tier4')">
         <div class="tier-summary-title">
-          <span style="color:#fda4af;">🧠 Tier 4: Deep Dive</span>
-          <span style="color:#f43f5e; font-weight:800;">6 Qs • Slowest</span>
+          <span class="tier-name" style="color:#fda4af;">🧠 Tier 4: Deep Dive</span>
+          <span class="tier-meta-badge" style="color:#f43f5e;">6 Qs • Slowest</span>
         </div>
         <div class="tier-summary-desc">Dense mathematics, SfM 8-point &amp; low-ROI proofs (save for last)</div>
       </div>
@@ -545,8 +545,8 @@ def generate_html_handbook():
 <button id="backToTopBtn" class="fab-top" title="Back to Top" aria-label="Back to Top">↑</button>
 
 <!-- SCRIPTS: Clean separation matching Deep Learning StudyMode -->
-<script src="audio.js?v=20261127_10"></script>
-<script src="app.js?v=20261127_10"></script>
+<script src="audio.js?v=20261127_11"></script>
+<script src="app.js?v=20261127_11"></script>
 </body>
 </html>
 """)
