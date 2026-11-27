@@ -2,9 +2,8 @@
 """
 Unit 4: Image Formation, Motion Models, Motion Estimation & 3D Structure
 Questions: Mid-II Q5 to Q12
-Course Coordinator: Dr. Sandeep Kumar M (CSE AI & ML)
-Regulation: KGR23 | Academic Year: 2026-27 | Course Code: KG23ACM408
-Strictly aligned with unit 4.docx lecture notes and official Question Bank.
+Regulation: KGR23 | Academic Year: 2026-27 | Course Code: KG23ACM408 | Dr. Sandeep Kumar M
+Written in student-friendly, zero-jargon peer-tutor style with complete mathematical rigor.
 """
 
 UNIT4_QUESTIONS = [
@@ -17,65 +16,67 @@ UNIT4_QUESTIONS = [
         "bloom": "K2",
         "marks": "05 Marks",
         "title": "Categorize various image formation models and examine their role in motion estimation.",
-        "punchline": "Image formation models describe how 3D real-world scenes convert into digital pixels through Geometric, Photometric, Optical, and Sampling models; they enable motion estimation to differentiate true physical movement from lighting shifts, blur, and sensor quantization.",
-        "mnemonic": "G-P-O-S: Geometric (projection), Photometric (light), Optical (lens blur), Sampling (pixels).",
-        "analogy": "Like investigating a car accident recorded on a dashcam: you must account for camera angle/perspective (geometric), streetlamp reflections (photometric), windshield rain blur (optical), and camera sensor pixel resolution (sampling) to calculate the car's true speed.",
-        "diagram": """+-------------------------------------------------------------------------------+
-|             IMAGE FORMATION PRINCIPLES & MOTION ESTIMATION PIPELINE           |
-+-------------------------------------------------------------------------------+
+        "punchline": "Image formation models describe how a 3D world turns into 2D camera pixels through Geometric, Photometric, Optical, and Sampling models; they stop motion algorithms from confusing a passing shadow or lens blur with real movement.",
+        "mnemonic": "G-P-O-S: Geometric (perspective), Photometric (lighting), Optical (lens blur), Sampling (pixels).",
+        "analogy": "Like an automated speed-trap camera: it must know the camera angle and distance (geometric), ignore headlight glare and streetlamp flickers (photometric), handle rain on the lens (optical), and account for sensor pixel resolution (sampling) to calculate a speeder's true velocity.",
+        "diagram": """THE 4 IMAGE FORMATION MODELS:
+  1. Geometric Model   ──► 3D-to-2D Perspective: P(X, Y, Z) ──► (x, y) on sensor
+  2. Photometric Model ──► Lighting & Surface Reflectance: I(x, y) = ρ(x, y) · E(x, y)
+  3. Optical Model     ──► Lens distortion, aperture diffraction, and motion blur
+  4. Sampling & Quant  ──► Continuous light ──► Discrete pixel grid & 8-bit values
 
- IMAGE FORMATION MODELS:
-  1. Geometric Model    ──► 3D-to-2D Perspective projection: (X, Y, Z) ──► (x, y)
-  2. Photometric Model  ──► Irradiance & surface reflectance: I(x, y) = R(x, y) · L(x, y)
-  3. Optical Model      ──► Lens focus, depth-of-field, lens distortion, motion blur
-  4. Sampling & Quant   ──► Spatial grid sampling (pixels) + intensity quantization
-
- MOTION ESTIMATION FRAMEWORK:
+ROLE IN MOTION ESTIMATION:
   [ Frame t ] & [ Frame t+1 ]
          │
          ▼
-  [ 1. Image Formation Analysis ] ──► Isolates lighting changes, lens blur & sensor noise
+  [ 1. Image Formation Analysis ] ──► Normalizes lighting shifts & corrects lens blur
          │
          ▼
-  [ 2. Feature Extraction ]       ──► Detects corners, edges, robust keypoints (SIFT/ORB)
+  [ 2. Feature Extraction ]       ──► Detects invariant corners & keypoints (SIFT / ORB)
          │
          ▼
-  [ 3. Correspondence Matching ]  ──► Establishes spatial correspondence between frames
+  [ 3. Correspondence Matching ]  ──► Tracks corresponding points across frames
          │
          ▼
   [ 4. Motion Estimation ]        ──► Block matching / Optical flow calculates displacement
          │
          ▼
-  [ Output Motion Vectors ]       ──► Generates (u, v) trajectory for video compression/tracking""",
-        "content": """### 1. Fundamental Principles of Image Formation Models (Unit 4 Notes)
-An **image formation model** mathematically describes how a physical 3D scene is projected, illuminated, focused, and converted into a 2D digital image matrix by an optical camera system. In video processing, understanding these models is vital for motion estimation algorithms to identify true object displacement between consecutive frames without being deceived by lighting or sensor artifacts.
-
-The four fundamental models are:
-1. **Geometric Model:**
-   - **Principle:** Describes the mathematical 3D-to-2D perspective projection of real-world coordinates $(X, Y, Z)$ onto the 2D camera image plane $(x, y)$. Governed by focal length $f$, camera position, orientation, and vanishing points:
-     $$x = f \\frac{X}{Z}, \\quad y = f \\frac{Y}{Z}$$
-   - **Role:** Explains scale changes and perspective distortions (e.g., an approaching vehicle appears larger as depth $Z$ decreases).
-2. **Photometric / Illumination Model:**
-   - **Principle:** Models how ambient lighting interacts with object surface reflectance properties to produce image irradiance:
-     $$I(x, y) = \\rho(x, y) \\cdot E(x, y)$$
-     where $\\rho$ is surface reflectance and $E$ is incident illumination.
-   - **Role:** Enables motion estimation algorithms to distinguish true object movement from brightness variations caused by passing clouds or shadows.
-3. **Optical Model:**
-   - **Principle:** Accounts for physical lens properties, aperture diffraction, depth-of-field, radial distortion, and optical blur.
-   - **Role:** Fast-moving objects undergo motion blur; optical models allow algorithms to model blurred point spread functions (PSF) rather than failing feature matches.
-4. **Sampling and Quantization Model:**
-   - **Principle:** Converts continuous optical irradiance into discrete spatial pixels $(m \\Delta x, n \\Delta y)$ and quantizes intensity into finite digital levels (e.g., 8-bit integers $0\\dots255$).
-   - **Role:** Accounts for spatial resolution limits and quantization noise that can destabilize gradient calculations in small-displacement motion estimation.
+  [ Output Motion Vectors ]       ──► Generates true (u, v) trajectory vectors!""",
+        "content": """### 1. The Big Picture (How Real Light Becomes Digital Pixels)
+Before a computer can track moving objects in a video, it has to understand how real-world 3D objects turned into a flat 2D grid of numbers in the first place. 
+An **image formation model** is the mathematical bridge connecting the 3D physical world to digital pixels.
 
 ---
 
-### 2. Role of Image Formation Models in Motion Estimation Frameworks
-Motion estimation calculates the displacement vectors $\\mathbf{d} = (u, v)$ between consecutive frames $F_t$ and $F_{t+1}$. Image formation analysis acts as the foundation of the 5-stage motion estimation framework:
-1. **Frame Capture ($F_t, F_{t+1}$):** Ingests sequential video frames separated by temporal interval $\\Delta t$.
-2. **Image Formation Normalization:** Uses photometric models to normalize global illumination changes and optical models to correct for lens radial distortion.
-3. **Feature Extraction & Matching:** Extracts salient, scale-invariant features (corners, edges, SIFT/ORB) that remain invariant under perspective projection.
-4. **Displacement Computation:** Applies Block Matching Algorithms (BMA) or differential Optical Flow to derive spatial displacements $(u, v)$.
-5. **Output Motion Vectors:** Outputs vector fields utilized for temporal motion compensation (H.264/HEVC) or object trajectory tracking."""
+### 2. Categorizing the 4 Fundamental Models (Unit 4 Notes)
+
+#### 1. Geometric Model (Perspective Projection)
+* **What it does:** Describes how 3D real-world coordinates $(X, Y, Z)$ are projected onto the 2D camera sensor plane $(x, y)$ through a lens of focal length $f$:
+  $$x = f \\frac{X}{Z}, \\quad y = f \\frac{Y}{Z}$$
+* **Role in Motion:** Explains perspective scaling and motion parallax (e.g., an approaching car appears to grow larger on screen because depth $Z$ decreases).
+
+#### 2. Photometric / Illumination Model (Light & Color)
+* **What it does:** Models how ambient sunlight or lamps reflect off object surfaces into the camera lens:
+  $$I(x, y) = \\rho(x, y) \\cdot E(x, y)$$
+  where $\\rho(x, y)$ is the surface reflectance (the object's true color) and $E(x, y)$ is the incident light.
+* **Role in Motion:** Helps algorithms separate **true physical movement** from brightness changes caused by clouds passing over the sun or flickering headlights.
+
+#### 3. Optical Model (The Lens & Blur)
+* **What it does:** Accounts for physical glass lens properties: focal depth, aperture diffraction, radial barrel distortion, and motion blur.
+* **Role in Motion:** Fast-moving objects get blurred across several pixels. Optical models allow algorithms to model blurred Point Spread Functions (PSF) rather than failing to match sharp edges.
+
+#### 4. Sampling & Quantization Model (Digital Pixels)
+* **What it does:** Converts continuous optical light into discrete spatial pixels $(m \\Delta x, n \\Delta y)$ and quantizes intensity into finite digital levels (e.g., 8-bit integers $0\\dots255$).
+* **Role in Motion:** Explains resolution limits and quantization noise that can destabilize sub-pixel motion vectors.
+
+---
+
+### 3. Step-by-Step Role in the Motion Estimation Pipeline
+1. **Input Frames ($F_t, F_{t+1}$):** Ingests consecutive frames.
+2. **Image Formation Analysis:** Uses photometric models to normalize global lighting changes and optical models to fix lens distortion.
+3. **Feature Matching:** Extracts scale-invariant features (corners, edges, SIFT/ORB) that survive perspective projection.
+4. **Motion Computation:** Applies block matching or optical flow to calculate spatial displacement vectors $(u, v)$.
+5. **Output Motion Vectors:** Feeds motion trajectories to video encoders (H.264) or autonomous driving systems."""
     },
     {
         "id": "MID2-Q06",
@@ -86,77 +87,72 @@ Motion estimation calculates the displacement vectors $\\mathbf{d} = (u, v)$ bet
         "bloom": "K2",
         "marks": "05 Marks",
         "title": "Discuss different motion models and the assumptions underlying motion estimation in video processing.",
-        "punchline": "Motion models mathematically describe how object coordinates shift across frames via Translation, Rotation, Affine, and Optical Flow models; they rely on assumptions of constant velocity, rigidity, brightness constancy, and limited occlusion.",
-        "mnemonic": "T-R-A-O: Translation, Rotation, Affine, Optical Flow. Assumptions: C-R-B-L (Constant velocity, Rigidity, Brightness constancy, Limited occlusion).",
-        "analogy": "Like predicting the path of a hockey puck across ice: you assume the ice is smooth (constant velocity), the puck stays intact (rigidity), the stadium lights don't flicker (brightness constancy), and other players don't block the camera view (limited occlusion).",
-        "diagram": """+-------------------------------------------------------------------------------+
-|                    MOTION MODELS & PHYSICAL ASSUMPTIONS                       |
-+-------------------------------------------------------------------------------+
+        "punchline": "Motion models mathematically describe how coordinates move via Translation (2-DOF), Rotation, Affine (6-DOF), and Optical Flow; they rely on 4 physical assumptions: Constant Velocity, Rigidity, Brightness Constancy, and Limited Occlusion.",
+        "mnemonic": "Models: T-R-A-O (Translation, Rotation, Affine, Optical Flow). Assumptions: C-R-B-L (Constant velocity, Rigidity, Brightness constancy, Limited occlusion).",
+        "analogy": "Like predicting where a soccer ball lands: you assume the stadium floodlights don't turn off mid-kick (brightness constancy), the ball doesn't deflate or deform into a pancake (rigidity), gravity and wind are steady over half a second (constant velocity), and no other player blocks the camera view (limited occlusion).",
+        "diagram": """1. TRANSLATION (2-DOF):              2. ROTATION:
+   x' = x + u                           x' = x cos θ - y sin θ
+   y' = y + v                           y' = x sin θ + y cos θ
+   (Pure linear shift)                  (In-plane spin)
 
- 1. TRANSLATION MODEL:               2. ROTATION MODEL:
-    x' = x + u                          x' = x cos θ - y sin θ
-    y' = y + v                          y' = x sin θ + y cos θ
-    (Pure 2D shifting)                  (In-plane rotation around center)
+3. AFFINE MODEL (6-DOF):             4. OPTICAL FLOW (Dense):
+   x' = a₁₁ x + a₁₂ y + t_x             I_x · u + I_y · v + I_t = 0
+   y' = a₂₁ x + a₂₂ y + t_y             (Individual vector per pixel)
+   (Translation + Scale + Shear)
 
- 3. AFFINE MODEL (6-Parameters):     4. DIFFERENTIAL OPTICAL FLOW:
-    x' = a₁₁ x + a₁₂ y + t_x            I_x · u + I_y · v + I_t = 0
-    y' = a₂₁ x + a₂₂ y + t_y            (Dense pixel-level velocity field)
-    (Translation + Scale + Shear)
-
- UNDERLYING ASSUMPTIONS IN VIDEO PROCESSING:
-  ┌──────────────────────┬─────────────────────────────────────────────────────┐
-  │ Assumption           │ Physical Meaning & Vulnerability                    │
-  ├──────────────────────┼─────────────────────────────────────────────────────┤
-  │ Constant Velocity    │ Velocity is constant over short Δt (fails on shock) │
-  │ Rigid Objects        │ Shape does not deform (fails for cloth/faces)       │
-  │ Brightness Constancy │ Pixel intensity stays constant (fails in shadows)   │
-  │ Limited Occlusion    │ Object remains visible (fails behind obstacles)     │
-  └──────────────────────┴─────────────────────────────────────────────────────┘""",
-        "content": """### 1. Mathematical Representation of Motion Models (Unit 4 Notes)
-A motion model describes how the spatial coordinates $(x, y)$ of an object at time $t$ map to new coordinates $(x', y')$ in the subsequent frame at time $t+1$:
-
-#### a) Translation Model (2 Parameters)
-- **Equation:**
-  $$x' = x + u, \\quad y' = y + v$$
-  where $\\mathbf{d} = (u, v)$ is the 2D displacement vector.
-- **Characteristics:** Assumes all pixels within an object or block shift by an identical distance without rotation or scale change (e.g., a car driving along a straight highway). Universally used in block-matching video compression (MPEG, H.264).
-
-#### b) Rotation Model
-- **Equation:**
-  $$x' = x \\cos\\theta - y \\sin\\theta$$
-  $$y' = x \\sin\\theta + y \\cos\\theta$$
-  where $\\theta$ is the rotation angle around a reference origin.
-- **Characteristics:** Models in-plane rotational motion (e.g., spinning wheels, rotating drone cameras).
-
-#### c) Affine Motion Model (6 Parameters)
-- **Equation:**
-  $$\\begin{bmatrix} x' \\\\ y' \\end{bmatrix} = \\begin{bmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} + \\begin{bmatrix} t_x \\\\ t_y \\end{bmatrix}$$
-- **Characteristics:** Captures translation, rotation, scaling (zoom), and shear. Highly effective for camera pan/tilt/zoom modeling.
-
-#### d) Optical Flow Model (Dense Pixel Model)
-- **Equation:**
-  $$I_x u + I_y v + I_t = 0$$
-  where $I_x = \\frac{\\partial I}{\\partial x}, I_y = \\frac{\\partial I}{\\partial y}, I_t = \\frac{\\partial I}{\\partial t}$, and $(u, v) = \\left( \\frac{dx}{dt}, \\frac{dy}{dt} \\right)$.
-- **Characteristics:** Provides an individual motion vector for every single pixel in the image.
+THE 4 UNDERLYING ASSUMPTIONS:
+┌──────────────────────┬─────────────────────────────────────────────────────┐
+│ Physical Assumption  │ Meaning & Where It Fails in the Real World          │
+├──────────────────────┼─────────────────────────────────────────────────────┤
+│ Brightness Constancy │ Moving pixels keep constant intensity (Fails in sun)│
+│ Rigid Object         │ Objects don't deform (Fails for faces & clothing)   │
+│ Constant Velocity    │ Speed stays steady over 33 ms (Fails on collisions) │
+│ Limited Occlusion    │ Objects stay visible (Fails behind trees/pillars)   │
+└──────────────────────┴─────────────────────────────────────────────────────┘""",
+        "content": """### 1. The Big Picture (How We Model Motion)
+A **motion model** is a mathematical formula that maps where a pixel was in Frame 1 $(x, y)$ to its new location in Frame 2 $(x', y')$. Depending on how complex the movement is, we choose between simple or high-dimensional models.
 
 ---
 
-### 2. Underlying Assumptions in Real-World Dynamic Scenes (Unit 4 Notes)
-Motion estimation algorithms rely on four foundational physical assumptions:
+### 2. The 4 Major Motion Models (Unit 4 Notes)
 
-1. **Brightness Constancy Assumption:**
-   - *Premise:* The apparent intensity of a moving surface point remains unchanged between consecutive frames:
-     $$I(x + u, y + v, t + \\Delta t) = I(x, y, t)$$
-   - *Real-world Failure:* Breaks down under sudden lighting variations, specular reflections on metallic/glass surfaces, or passing shadows.
-2. **Rigid Object Assumption:**
-   - *Premise:* Objects are structurally rigid; the distance between any two surface points on the object remains constant during motion.
-   - *Real-world Failure:* Breaks down for non-rigid articulated objects (human body movement, flapping clothing, facial expressions, water waves).
-3. **Constant Motion / Velocity Assumption:**
-   - *Premise:* The acceleration of moving objects is negligible over the small time interval $\\Delta t$ between frames (typically $33\\text{ ms}$ at 30 fps). Motion is assumed linear.
-   - *Real-world Failure:* Breaks down during sudden impacts, vibrations, or rapid direction reversals.
-4. **Limited Occlusion Assumption:**
-   - *Premise:* Moving objects remain continuously visible and are not obscured by background elements or foreground obstacles.
-   - *Real-world Failure:* Breaks down when objects pass behind poles, enter tunnels, or exit the camera frame boundary."""
+#### a) Translation Model (2 Parameters / 2-DOF)
+* **Formula:**
+  $$x' = x + u, \\quad y' = y + v$$
+* **What it means:** The simplest model. Assumes all pixels in a block shift by the exact same distance without spinning or changing size (e.g., a car driving along a straight road).
+* **Where it's used:** Universally used in block-matching video compression (MPEG, H.264, HEVC).
+
+#### b) Rotation Model (In-Plane Spin)
+* **Formula:**
+  $$x' = x \\cos\\theta - y \\sin\\theta, \\quad y' = x \\sin\\theta + y \\cos\\theta$$
+* **What it means:** Rotates the image by angle $\\theta$ around a reference center point (e.g., a spinning drone propeller or wheel).
+
+#### c) Affine Motion Model (6 Parameters / 6-DOF)
+* **Formula:**
+  $$\\begin{bmatrix} x' \\\\ y' \\end{bmatrix} = \\begin{bmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{bmatrix} \\begin{bmatrix} x \\\\ y \\end{bmatrix} + \\begin{bmatrix} t_x \\\\ t_y \\end{bmatrix}$$
+* **What it means:** Handles translation ($t_x, t_y$), in-plane rotation, scaling (zoom in/out), and shear all at once. Great for camera pan/tilt/zoom tracking.
+
+#### d) Differential Optical Flow Model (Dense Pixel Model)
+* **Formula:**
+  $$I_x u + I_y v + I_t = 0$$
+* **What it means:** Computes an individual, unique motion vector $(u, v)$ for every single pixel in the video frame.
+
+---
+
+### 3. The 4 Critical Assumptions in Real-World Scenes (Unit 4 Notes)
+Every motion estimation algorithm relies on 4 fundamental physical assumptions:
+1. **Brightness Constancy:** 
+   - *Assumption:* The color/brightness of a surface point does not change as it moves between frames: $I(x + u, y + v, t + \\Delta t) = I(x, y, t)$.
+   - *Real-world Failure:* Fails under sudden cloud cover, metallic surface reflections, or streetlamp glare.
+2. **Rigid Body Assumption:**
+   - *Assumption:* The moving object maintains its physical shape and size.
+   - *Real-world Failure:* Fails for non-rigid articulated objects like human facial expressions, walking pedestrians, or flapping cloth.
+3. **Constant Velocity / Small Motion:**
+   - *Assumption:* Acceleration is negligible over the small interval between frames (33 ms at 30 fps), so speed is constant.
+   - *Real-world Failure:* Fails during sudden impacts, jolts, or rapid sports action.
+4. **Limited Occlusion:**
+   - *Assumption:* The target object remains visible across frames and is not hidden.
+   - *Real-world Failure:* Fails when a car drives behind a tree, enters a tunnel, or passes another vehicle."""
     },
     {
         "id": "MID2-Q07",
@@ -167,80 +163,70 @@ Motion estimation algorithms rely on four foundational physical assumptions:
         "bloom": "K3",
         "marks": "05 Marks",
         "title": "A block in Frame 1 is at (20, 25). The best match in Frame 2 is found at (23, 30). 1. Calculate the motion vector. 2. Determine the direction of motion.",
-        "punchline": "The motion vector is MV = (3, 5); positive horizontal displacement u = +3 indicates motion to the right, and positive vertical displacement v = +5 indicates motion downward in image coordinates, yielding diagonally downward and rightward movement.",
+        "punchline": "Motion vector is MV = (3, 5); positive horizontal displacement u = +3 means moving right, positive vertical displacement v = +5 means moving down in image coordinates, so the block moves diagonally downward and to the right.",
         "mnemonic": "MV = (x2 - x1, y2 - y1) = (23-20, 30-25) = (3, 5). Down & Right.",
-        "analogy": "Like tracking a chess piece moving on a board from square (20, 25) to (23, 30): it shifted 3 squares east and 5 squares south.",
-        "diagram": """+-------------------------------------------------------------------------------+
-|                    BLOCK MOTION VECTOR DISPLACEMENT GRID                      |
-+-------------------------------------------------------------------------------+
+        "analogy": "Like moving a checker on a board: you start on square (20, 25) and land on square (23, 30). You slid 3 squares to the right and 5 squares toward the bottom.",
+        "diagram": """Image Display Coordinate System:
+Origin (0,0) is at TOP-LEFT corner!
+X-axis goes POSITIVE to the RIGHT
+Y-axis goes POSITIVE DOWNWARD
 
-  Standard Image Coordinates: Origin (0,0) at Top-Left
-  X-axis: Increases to the Right (Horizontal)
-  Y-axis: Increases Downward     (Vertical)
+   x = 20           x = 23
+   ┌────────────────┬────────────────► X (Horizontal)
+   │
+y=25   • (20, 25) [Frame 1 Block]
+   │    \\
+   │     \\  u = +3 pixels (Right)
+   │      \\
+   │       \\  v = +5 pixels (Down)
+   │        \\
+y=30         ▼ (23, 30) [Frame 2 Best Match]
+   │
+   ▼
+   Y (Vertical)
 
-  x = 20           x = 23
-  ┌────────────────┬────────────────► X (Horizontal)
-  │
-y=25  • (20, 25) [Frame 1 Block]
-  │    \\
-  │     \\  u = +3 pixels (Right)
-  │      \\
-  │       \\  v = +5 pixels (Down)
-  │        \\
-y=30        ▼ (23, 30) [Frame 2 Best Match]
-  │
-  ▼
-  Y (Vertical)
-
-  Motion Vector: MV = (Δx, Δy) = (23 - 20, 30 - 25) = (3, 5)
-  Magnitude    : ||MV|| = √(3² + 5²) = √34 ≈ 5.83 pixels
-  Angle        : θ = arctan(5/3) ≈ 59.04° below positive X-axis""",
-        "content": """### 1. Problem Statement & Given Coordinates (Unit 4 Notes)
-In Block-Based Motion Estimation (BMA), the displacement of an image block between two consecutive video frames is tracked across the spatial coordinate grid.
-- **Reference position in Frame 1 ($F_1$):**
-  $$(x_1, y_1) = (20, 25)$$
-- **Best matching position in Frame 2 ($F_2$):**
-  $$(x_2, y_2) = (23, 30)$$
+Displacement: MV = (Δx, Δy) = (23 - 20, 30 - 25) = (3, 5)
+Magnitude   : ||MV|| = √(3² + 5²) = √34 ≈ 5.83 pixels
+Angle       : θ = arctan(5/3) ≈ 59.04° below horizontal""",
+        "content": """### 1. The Given Coordinates (Unit 4 Notes)
+In Block Motion Estimation (BMA), we track a macroblock across consecutive video frames:
+* **Position in Frame 1 ($F_1$):** $(x_1, y_1) = (20, 25)$
+* **Best match in Frame 2 ($F_2$):** $(x_2, y_2) = (23, 30)$
 
 ---
 
-### 2. Part 1: Motion Vector Calculation
-The motion vector $\\mathbf{MV} = (u, v)$ represents the spatial displacement along the horizontal and vertical axes:
+### 2. Task 1: Calculate the Motion Vector
+The motion vector $\\mathbf{MV} = (u, v)$ is the difference in coordinates:
 $$u = \\Delta x = x_2 - x_1$$
 $$v = \\Delta y = y_2 - y_1$$
 
-Substituting the given coordinate values:
-1. **Horizontal Displacement ($u$):**
-   $$u = 23 - 20 = +3\\text{ pixels}$$
-2. **Vertical Displacement ($v$):**
-   $$v = 30 - 25 = +5\\text{ pixels}$$
+Substitute the numbers:
+$$u = 23 - 20 = \\mathbf{+3\\text{ pixels}}$$
+$$v = 30 - 25 = \\mathbf{+5\\text{ pixels}}$$
 
-Therefore, the resulting motion vector is:
-$$\\mathbf{MV} = (u, v) = (3, 5)$$
+Therefore, the motion vector is:
+$$\\mathbf{MV} = (u, v) = \\mathbf{(3, \\ 5)}$$
 
 ---
 
-### 3. Part 2: Determination & Interpretation of Motion Direction
-In standard digital image processing and video display systems:
-- The **origin $(0, 0)$** is located at the **top-left corner** of the display.
-- The **horizontal axis ($x$)** increases positively from **left to right**.
-- The **vertical axis ($y$)** increases positively from **top to bottom**.
+### 3. Task 2: Determine the Direction of Motion
+In digital video and screen coordinate systems:
+* The **origin $(0, 0)$** is at the **top-left corner**.
+* The **horizontal $x$-axis** increases to the **right**.
+* The **vertical $y$-axis** increases **downward**.
 
 #### Directional Analysis:
-1. **Horizontal Component ($u = +3$):**
-   Since $u > 0$, the positive displacement indicates movement to the **right**.
-2. **Vertical Component ($v = +5$):**
-   Since $v > 0$, the positive displacement in image coordinates indicates movement **downward**.
+1. **Horizontal Component ($u = +3$):** Because $u > 0$, the block moved **3 pixels to the right**.
+2. **Vertical Component ($v = +5$):** Because $v > 0$, the block moved **5 pixels downward**.
 
-#### Comprehensive Directional Verdict:
+#### Final Directional Verdict:
 The block moves **diagonally downward and to the right**.
 
-#### Vector Magnitude and Angle (Additional Rigor):
-- **Displacement Magnitude:**
-  $$\\|\\mathbf{MV}\\| = \\sqrt{u^2 + v^2} = \\sqrt{3^2 + 5^2} = \\sqrt{9 + 25} = \\sqrt{34} \\approx 5.831\\text{ pixels}$$
-- **Displacement Angle:**
-  $$\\theta = \\arctan\\left(\\frac{v}{u}\\right) = \\arctan\\left(\\frac{5}{3}\\right) = \\arctan(1.6667) \\approx 59.04^\\circ$$
-  *(oriented at $59.04^\\circ$ below the horizontal axis towards the bottom-right).*"""
+#### Magnitude & Angle (Bonus Exam Points):
+* **Distance traveled (Magnitude):**
+  $$\\|\\mathbf{MV}\\| = \\sqrt{u^2 + v^2} = \\sqrt{3^2 + 5^2} = \\sqrt{9 + 25} = \\sqrt{34} \\approx \\mathbf{5.83\\text{ pixels}}$$
+* **Angle of trajectory:**
+  $$\\theta = \\arctan\\left(\\frac{v}{u}\\right) = \\arctan\\left(\\frac{5}{3}\\right) \\approx \\mathbf{59.04^\\circ}\\text{ below the positive x-axis}$$"""
     },
     {
         "id": "MID2-Q08",
@@ -251,69 +237,62 @@ The block moves **diagonally downward and to the right**.
         "bloom": "K4",
         "marks": "05 Marks",
         "title": "Evaluate the performance of differential methods for motion estimation and analyze their sensitivity to noise and illumination changes.",
-        "punchline": "Differential methods estimate dense motion via the Optical Flow Constraint equation (Ix·u + Iy·v + It = 0); Lucas-Kanade uses local constancy while Horn-Schunck imposes global smoothness; both are highly sensitive to noise and lighting shifts, requiring Gaussian pre-smoothing and gradient normalization.",
-        "mnemonic": "OFC: Ix u + Iy v + It = 0. LK = Local least squares; HS = Global smoothness.",
-        "analogy": "Like estimating wind speed by observing how clouds shift: differential methods measure how fast cloud brightness changes across small distances, but if a lightning flash occurs (illumination change) or the camera shakes (noise), the formula falsely reports hurricane-force winds.",
-        "diagram": """+-------------------------------------------------------------------------------+
-|               DIFFERENTIAL MOTION ESTIMATION & THE APERTURE PROBLEM           |
-+-------------------------------------------------------------------------------+
+        "punchline": "Differential optical flow uses intensity slopes via Ix·u + Iy·v + It = 0; Lucas-Kanade solves it in small windows while Horn-Schunck solves global smoothness; both hate noise and lighting flickers, requiring Gaussian smoothing and gradient normalization.",
+        "mnemonic": "OFC: Ix·u + Iy·v + It = 0. LK = Local least squares; HS = Global smoothness.",
+        "analogy": "Like trying to guess how fast a white cloud is drifting across the sky by measuring how its brightness changes: if the cloud moves smoothly, your formula works; but if a lightning bolt flashes (illumination change) or raindrops hit your camera (noise), the formula screams that the cloud is traveling at supersonic speed!",
+        "diagram": """THE OPTICAL FLOW CONSTRAINT (OFC):
+  I_x · u + I_y · v + I_t = 0
+  [ 1 equation, 2 unknowns (u, v) ==> APERTURE PROBLEM! ]
+  (Can only measure motion perpendicular to object edge)
 
- OPTICAL FLOW CONSTRAINT EQUATION:
-   I_x · u + I_y · v + I_t = 0
-   [ 1 equation, 2 unknowns (u, v) ==> APERTURE PROBLEM! ]
-   (Can only measure motion perpendicular to object edge)
+LUCAS-KANADE (Local):                    HORN-SCHUNCK (Global):
+Assumes (u, v) is constant in a          Minimizes total global error energy:
+small 3x3 local window Ω                 E = ∬ [(I_x u + I_y v + I_t)² + α² (|∇u|² + |∇v|²)] dx dy
+(Aᵀ A) [u; v] = Aᵀ b                     Dense, smooth optical flow across full image!
+Fast, but needs textured corners.
 
- 1. LUCAS-KANADE METHOD (Local):        2. HORN-SCHUNCK METHOD (Global):
-    Assumes (u, v) is constant in           Minimizes global energy functional:
-    small local window Ω (e.g., 3x3)        E = ∬ [(I_x u + I_y v + I_t)²
-    A^T A [u; v] = A^T b                       + α² (|∇u|² + |∇v|²)] dx dy
-    Solved via 2x2 matrix inversion         Solved iteratively across full image
-
- SENSITIVITY & MITIGATION:
-  • Sensor Noise ──────► Gaussian smoothing filter G_σ * I
-  • Lighting Shifts ───► Illumination normalization / Gradient-based matching
-  • Flat Regions ──────► Eigenvalue thresholding (Harris corner check: λ₂ > τ)""",
-        "content": """### 1. Principles of Differential Motion Estimation (Unit 4 Notes)
-Differential methods (optical flow) estimate motion between consecutive frames by analyzing spatial and temporal image intensity gradients. They are based on the **Brightness Constancy Assumption**:
+SENSITIVITY & MITIGATION:
+• Sensor Noise     ──► Pre-filter with 2D Gaussian smoothing kernel (G_σ * I)
+• Lighting Shifts  ──► Illumination normalization / Gradient matching
+• Flat Surfaces    ──► Track only Harris corners where structure tensor has 2 large eigenvalues""",
+        "content": """### 1. The Big Picture (What are Differential Methods?)
+Differential methods (optical flow) calculate motion by looking at how pixel brightness changes over time and space.
+They start from the **Brightness Constancy Assumption**:
 $$I(x + u, y + v, t + 1) = I(x, y, t)$$
 
-Applying a first-order Taylor series expansion:
-$$I(x, y, t) + \\frac{\\partial I}{\\partial x} u + \\frac{\\partial I}{\\partial y} v + \\frac{\\partial I}{\\partial t} \\approx I(x, y, t)$$
-Subtracting $I(x, y, t)$ yields the fundamental **Optical Flow Constraint (OFC) Equation**:
+Taking a first-order Taylor series expansion yields the famous **Optical Flow Constraint (OFC) Equation**:
 $$I_x u + I_y v + I_t = 0$$
-where $I_x = \\frac{\\partial I}{\\partial x}, I_y = \\frac{\\partial I}{\\partial y}$ are spatial gradients, $I_t = \\frac{\\partial I}{\\partial t}$ is the temporal gradient, and $(u, v)$ is the motion vector.
+where $I_x, I_y$ are spatial brightness gradients, $I_t$ is temporal frame change, and $(u, v)$ is the pixel velocity.
 
-#### The Aperture Problem
-The OFC provides only **one linear equation for two unknowns $(u, v)$** at each pixel. It can compute motion only in the direction perpendicular to local edge contours (normal flow). Motion parallel to the edge is fundamentally ambiguous.
-
----
-
-### 2. Differential Methods: Lucas-Kanade vs Horn-Schunck
-
-#### a) Lucas-Kanade Method (Local Technique)
-- **Principle:** Assumes that the motion vector $\\mathbf{u} = [u, v]^T$ is constant across a small local spatial neighborhood $\\Omega$ of size $N \\times N$ (e.g., $3 \\times 3$ or $5 \\times 5$ pixels).
-- **Formulation:** For $n$ pixels in $\\Omega$:
-  $$\\begin{bmatrix} I_{x1} & I_{y1} \\\\ I_{x2} & I_{y2} \\\\ \\vdots & \\vdots \\\\ I_{xn} & I_{yn} \\end{bmatrix} \\begin{bmatrix} u \\\\ v \\end{bmatrix} = - \\begin{bmatrix} I_{t1} \\\\ I_{t2} \\\\ \\vdots \\\\ I_{tn} \\end{bmatrix} \\implies \\mathbf{A} \\mathbf{u} = \\mathbf{b}$$
-- **Least-Squares Solution:**
-  $$\\mathbf{u} = (\\mathbf{A}^T \\mathbf{A})^{-1} \\mathbf{A}^T \\mathbf{b}$$
-- **Condition for Solvability:** The structure tensor $\\mathbf{A}^T \\mathbf{A} = \\begin{bmatrix} \\sum I_x^2 & \\sum I_x I_y \\\\ \\sum I_x I_y & \\sum I_y^2 \\end{bmatrix}$ must be invertible, requiring two large eigenvalues (i.e., the region must be a corner or textured keypoint).
-
-#### b) Horn-Schunck Method (Global Technique)
-- **Principle:** Imposes a **global smoothness constraint** across the entire image plane, formulating motion estimation as an energy minimization problem:
-  $$E = \\iint \\left[ (I_x u + I_y v + I_t)^2 + \\alpha^2 \\left( \\left(\\frac{\\partial u}{\\partial x}\\right)^2 + \\left(\\frac{\\partial u}{\\partial y}\\right)^2 + \\left(\\frac{\\partial v}{\\partial x}\\right)^2 + \\left(\\frac{\\partial v}{\\partial y}\\right)^2 \\right) \\right] dx \\, dy$$
-  where $\\alpha^2$ is a regularization weight controlling flow smoothness.
-- **Solution:** Solved iteratively using Gauss-Seidel relaxation. Yields a dense, smooth motion field across all pixels.
+#### The Aperture Problem (Why One Equation Isn't Enough):
+We have **1 equation but 2 unknowns $(u, v)$** at every pixel! 
+Looking through a small window (aperture), you can only see motion perpendicular to an edge (normal flow). Motion parallel to the edge is completely invisible.
 
 ---
 
-### 3. Sensitivity Analysis to Noise and Illumination Variations (Unit 4 Notes)
+### 2. Lucas-Kanade vs Horn-Schunck
+* **Lucas-Kanade (Local Method):**
+  - Assumes all pixels in a small $3 \\times 3$ window have the exact same motion vector $(u, v)$.
+  - Stacks the equations into a matrix $\\mathbf{A} \\mathbf{u} = \\mathbf{b}$ and solves via least squares:
+    $$\\mathbf{u} = (\\mathbf{A}^T \\mathbf{A})^{-1} \\mathbf{A}^T \\mathbf{b}$$
+  - *Pros:* Fast and simple. Works great at sharp corners.
+  - *Cons:* Fails on flat untextured surfaces where gradients are zero.
+* **Horn-Schunck (Global Method):**
+  - Adds a **global smoothness constraint** that forces neighboring pixels across the whole image to have similar motion:
+    $$E = \\iint \\left[ (I_x u + I_y v + I_t)^2 + \\alpha^2 (\\|\\nabla u\\|^2 + \\|\\nabla v\\|^2) \\right] dx \\, dy$$
+  - *Pros:* Generates a dense, beautiful vector field for every single pixel.
+  - *Cons:* Computationally heavy; smooths over sharp object boundaries.
 
-| Environmental Factor | Effect on Motion Estimation | Algorithmic Solution / Mitigation |
+---
+
+### 3. Sensitivity to Noise and Illumination Variations (Unit 4 Notes)
+
+| Real-World Challenge | Bad Effect on Optical Flow | Engineering Solution |
 | :--- | :--- | :--- |
-| **Image Noise (Sensor Grain)** | Numerical derivative operators amplify high-frequency noise, creating corrupt gradients $I_x, I_y$ and erroneous vectors. | Pre-filter frames using a **2D Gaussian smoothing kernel** ($G_\\sigma * I$). |
-| **Illumination Changes** | Violates the core Brightness Constancy assumption, generating large artificial temporal gradients $I_t$ and false motion. | Apply **illumination normalization** (histogram equalization) or evaluate gradients of gradient/Laplacian fields. |
-| **Low-Texture / Flat Regions** | Spatial gradients $I_x \\approx 0, I_y \\approx 0$, making $\\mathbf{A}^T \\mathbf{A}$ singular and motion undetermined. | Use **spatial regularization** (Horn-Schunck smoothness) or track only Harris corner features. |
-| **Large Displacements** | Taylor series approximation fails when object displacement exceeds 1–2 pixels between frames. | Implement **Hierarchical Coarse-to-Fine Gaussian Image Pyramids**. |"""
+| **Image Sensor Noise** | Derivative operators amplify noise, producing wild, erratic vectors. | Apply a **2D Gaussian smoothing filter** ($G_\\sigma * I$) before calculating gradients. |
+| **Illumination Changes** | Shadows or sun flashes violate brightness constancy, creating fake motion. | Apply **illumination normalization** (histogram equalization) or use gradient-based matching. |
+| **Flat / Untextured Regions** | Gradients $I_x = 0, I_y = 0$, making $\\mathbf{A}^T \\mathbf{A}$ singular and dividing by zero! | Track only **Harris corner features** where both eigenvalues $\\lambda_1, \\lambda_2$ are large. |
+| **Large Displacements** | Taylor approximation fails if motion is $>1$ pixel. | Build **Hierarchical Coarse-to-Fine Gaussian Pyramids** to track large moves."""
     },
     {
         "id": "MID2-Q09",
@@ -324,91 +303,78 @@ The OFC provides only **one linear equation for two unknowns $(u, v)$** at each 
         "bloom": "K4",
         "marks": "10 Marks",
         "title": "Analyze the principles of matching-based motion estimation and compare different search strategies used in block matching algorithms.",
-        "punchline": "Matching-based motion estimation tracks macroblocks by minimizing matching criteria like SAD; while Full Search tests all (2p+1)² candidates for optimal accuracy at extreme computational cost, fast search algorithms like TSS and Diamond Search prune evaluations by up to 90%.",
+        "punchline": "Block matching algorithms partition frames into macroblocks and search for the lowest SAD error; Full Search checks all 225 spots (slow but perfect), while Three-Step Search checks only 25 spots (9x faster with 98% quality).",
         "mnemonic": "BMA: Full Search (Exhaustive), TSS (Coarse-to-fine), Diamond Search (Shape-adaptive). Cost: SAD, MAD, MSE.",
-        "analogy": "Finding a lost shoe in a stadium: Full Search inspects every single seat one by one; Three-Step Search checks seat clusters at major aisles and zooms in; Diamond Search checks immediate neighbors in a diamond pattern until the shoe is spotted.",
-        "diagram": """+-------------------------------------------------------------------------------+
-|               BLOCK MATCHING ALGORITHMS & SEARCH STRATEGIES                   |
-+-------------------------------------------------------------------------------+
+        "analogy": "Looking for your lost car in a massive parking lot: Full Search walks down every single row and checks every single parking spot (slow, exhausting, but guaranteed); Three-Step Search checks the main 4 corners of the lot, spots the right color cluster, and zooms into that sub-section in 3 quick hops.",
+        "diagram": """CURRENT FRAME (Frame t)                     REFERENCE FRAME (Frame t-1)
+┌──────────────────────┐                     ┌───────────────────────────┐
+│                      │                     │      Search Window (±p)   │
+│   ┌──────┐           │                     │      ┌─────────────┐      │
+│   │Block │           │ ──────────────────► │      │  •   •   •  │      │
+│   │16x16 │ (x, y)    │                     │      │  • [Match] •│      │
+│   └──────┘           │                     │      │  •   •   •  │      │
+└──────────────────────┘                     └──────┴─────────────┴──────┘
+                                               Motion Vector: MV = (dx, dy)
 
- CURRENT FRAME (Frame t)                     REFERENCE FRAME (Frame t-1)
- ┌──────────────────────┐                     ┌───────────────────────────┐
- │                      │                     │      Search Window (±p)   │
- │   ┌──────┐           │                     │      ┌─────────────┐      │
- │   │Block │           │                     │      │  •   •   •  │      │
- │   │16x16 │           │ ──────────────────► │      │  • [Match] •│      │
- │   └──────┘           │                     │      │  •   •   •  │      │
- │    (x, y)            │                     │      └─────────────┘      │
- └──────────────────────┘                     └───────────────────────────┘
-                                                Motion Vector: (dx, dy)
- SEARCH STRATEGIES COMPARED:
- 1. FULL SEARCH (Exhaustive):
-    Tests all (2p+1)² grid points ──► Optimal accuracy, O((2p+1)²) cost.
+SEARCH STRATEGIES COMPARED:
+1. FULL SEARCH (Exhaustive):
+   Evaluates all (2p + 1)² candidates ──► 225 evaluations for p=7 (Slow!)
 
- 2. THREE-STEP SEARCH (TSS):
-    Step 1: Check 9 points at step size S=4  ──► Best point becomes center
-    Step 2: Check 8 points at step size S=2  ──► Best point becomes center
-    Step 3: Check 8 points at step size S=1  ──► Best point is final MV!
+2. THREE-STEP SEARCH (TSS):
+   Step 1: Test 9 points at step S=4  ──► Find best minimum center
+   Step 2: Test 8 points at step S=2  ──► Find best minimum center
+   Step 3: Test 8 points at step S=1  ──► Best point is final MV! (Total: 25 points!)
 
- 3. DIAMOND SEARCH (DS):
-    Large Diamond Pattern (LDSP, 9 points) until center is minimum ──► Small Diamond (SDSP, 5 points)""",
-        "content": """### 1. Principles of Matching-Based Motion Estimation (Unit 4 Notes)
-Matching-based motion estimation assumes that a moving image region in current frame $F_t$ retains similar pixel intensity in reference frame $F_{t-1}$. In **Block Matching Algorithms (BMA)**, the current frame is partitioned into non-overlapping macroblocks of size $N \\times N$ (typically $8 \\times 8$ or $16 \\times 16$ pixels). For each block at $(x, y)$, the algorithm searches a defined displacement window of size $\\pm p$ in the reference frame to locate candidate position $(x + dx, y + dy)$ that minimizes a distortion cost metric.
+3. DIAMOND SEARCH (DS):
+   Large Diamond Pattern (9 points) ──► Shifts until center is minimum ──► Small Diamond (5 points)""",
+        "content": """### 1. The Big Picture (How Block Matching Works)
+In video compression (MPEG, H.264), we divide the current frame into non-overlapping squares called **macroblocks** (typically $16 \\times 16$ pixels).
+For each block, we search a local window of size $\\pm p$ in the previous reference frame to find the best matching block that minimizes a distortion cost metric.
 
-#### Matching Distortion Criteria:
+#### Matching Distortion Criteria (The Scorecards):
 1. **Sum of Absolute Differences (SAD):**
-   $$\\text{SAD}(dx, dy) = \\sum_{m=0}^{N-1} \\sum_{n=0}^{N-1} |F_t(x+m, y+n) - F_{t-1}(x+m+dx, y+n+dy)|$$
-   *(Preferred in hardware codecs because it requires only additions and subtractions, zero multiplications).*
-2. **Mean Absolute Difference (MAD):**
-   $$\\text{MAD}(dx, dy) = \\frac{1}{N^2} \\text{SAD}(dx, dy)$$
-3. **Mean Squared Error (MSE):**
-   $$\\text{MSE}(dx, dy) = \\frac{1}{N^2} \\sum_{m=0}^{N-1} \\sum_{n=0}^{N-1} [F_t(x+m, y+n) - F_{t-1}(x+m+dx, y+n+dy)]^2$$
+   $$\\text{SAD}(dx, dy) = \\sum_{m=0}^{15} \\sum_{n=0}^{15} |F_t(x+m, y+n) - F_{t-1}(x+m+dx, y+n+dy)|$$
+   *Why codecs love it:* Uses only additions and subtractions. Zero costly multiplications!
+2. **Mean Squared Error (MSE):**
+   $$\\text{MSE}(dx, dy) = \\frac{1}{256} \\sum_{m=0}^{15} \\sum_{n=0}^{15} [F_t - F_{t-1}]^2$$
+   *Why it's slower:* Requires 256 hardware multiplications per candidate block.
 
 ---
 
-### 2. Analysis of Search Strategies (Unit 4 Notes)
+### 2. Search Strategies (How We Find the Match Fast)
 
 #### a) Full Search (Exhaustive Search - FS)
-- **Mechanism:** Evaluates the distortion cost at **every single integer candidate location** within the $(2p + 1) \\times (2p + 1)$ search window.
-- **Computational Complexity:**
-  $$C_{\\text{FS}} = (2p + 1)^2 \\text{ block comparisons per macroblock}$$
-  For search parameter $p = 7$, each block requires $(2(7) + 1)^2 = 15^2 = 225$ block evaluations.
-- **Performance:** Guarantees locating the **global minimum distortion** within the search window. However, computational latency is prohibitive for real-time HD encoding.
+* **How it works:** Tests **every single possible integer location** in the $(2p + 1) \\times (2p + 1)$ search window.
+* **Cost for $p = 7$:**
+  $$N_{\\text{points}} = (2p + 1)^2 = (2(7) + 1)^2 = 15^2 = \\mathbf{225\\text{ block evaluations}}$$
+* **Verdict:** Guarantees finding the absolute best global match. But doing 225 checks for thousands of blocks in 4K video melts CPU/battery in seconds!
 
 #### b) Three-Step Search (TSS)
-- **Mechanism:** A coarse-to-fine search strategy relying on the unimodal error surface assumption:
-  - **Step 1:** Set initial step size $S = \\lfloor p/2 \\rfloor = 4$. Test the center $(0,0)$ and 8 surrounding points at distance $S$. Locate candidate with minimum SAD.
-  - **Step 2:** Center a new $3 \\times 3$ grid on the best candidate, halve step size ($S = 2$), and test 8 surrounding points.
-  - **Step 3:** Halve step size again ($S = 1$), test 8 surrounding points. The minimum point is the final motion vector.
-- **Computational Complexity:**
-  $$C_{\\text{TSS}} = 9 + 8 + 8 = 25\\text{ block evaluations}$$
-  *(Achieves an $89\\%$ reduction in computation compared to Full Search).*
+* **How it works (Coarse-to-Fine):**
+  - **Step 1:** Set initial step size $S = 4$. Check the center $(0,0)$ and 8 surrounding points at distance 4. Pick the winner.
+  - **Step 2:** Center a new grid on the winner, halve step size ($S = 2$), test 8 surrounding points. Pick the winner.
+  - **Step 3:** Halve step size again ($S = 1$), test 8 surrounding points. The winner is your final motion vector!
+* **Cost:** $9 + 8 + 8 = \\mathbf{25\\text{ evaluations}}$ (**$89\\%$ computational savings** over Full Search!).
 
 #### c) Diamond Search (DS)
-- **Mechanism:** Uses diamond-shaped search patterns matching the circular/isotropic distribution of real-world motion vectors:
-  - **Large Diamond Search Pattern (LDSP):** Consists of 9 candidate points (1 center + 8 perimeter points at distance 2). The pattern is shifted until the minimum SAD point occurs at the center point.
-  - **Small Diamond Search Pattern (SDSP):** Once the center is selected in LDSP, switch to SDSP (5 points: 1 center + 4 perimeter points at distance 1). The best point in SDSP is the final motion vector.
-- **Performance:** Highly efficient; converges in 15–20 evaluations for typical video motion.
+* **How it works:** Uses a diamond-shaped search pattern that matches the natural circular spread of real-world motion. Uses a Large Diamond (LDSP, 9 points) until the center wins, then switches to a Small Diamond (SDSP, 5 points) for final fine-tuning.
+* **Cost:** Typically converges in **13 to 21 evaluations**, making it the modern standard for fast video encoders.
 
 ---
 
-### 3. Comprehensive Comparison Table of Search Strategies (Unit 4 Notes)
+### 3. Cheat Sheet Comparison Table (Unit 4 Notes)
 
-| Search Method | Computational Complexity | Number of Search Points ($p=7$) | Accuracy / Matching Quality | Risk of Local Minima |
-| :--- | :--- | :--- | :--- | :--- |
-| **Full Search (FS)** | High ($O((2p+1)^2)$) | Exactly **225 points** | **Optimal** (Global minimum) | **None** (Exhaustive check) |
-| **Three-Step Search (TSS)** | Low ($O(\\log p)$) | Exactly **25 points** | Good for moderate, linear motion | Moderate (trapped if error non-monotonic) |
-| **Diamond Search (DS)** | Very Low | Typically **13 to 21 points** | Superior to TSS for small-to-medium motion | Low for small motion |
-| **Hierarchical Search** | Moderate | Multiresolution pyramid | Excellent for large displacements | Low |
+| Search Method | Search Points ($p=7$) | Computational Complexity | Matching Accuracy | Risk of Local Trap |
+| :--- | :---: | :--- | :--- | :--- |
+| **Full Search (FS)** | **225 points** | High ($O((2p+1)^2)$) | **$100\\%$ Optimal** (Global minimum) | None (Checks all) |
+| **Three-Step Search (TSS)**| **25 points** | Low ($O(\\log p)$) | Very good for smooth linear motion | Moderate |
+| **Diamond Search (DS)** | **13–21 points** | Very Low | Excellent for small-to-medium motion | Low |
 
 ---
 
-### 4. Accuracy and Complexity Trade-Offs (Unit 4 Notes)
-1. **Block Size Trade-off:**
-   - *Small blocks ($4 \\times 4$ or $8 \\times 8$):* Higher prediction accuracy and sharp motion boundary preservation, but multiplies the number of motion vectors transmitted (high bitrate overhead).
-   - *Large blocks ($16 \\times 16$ or $32 \\times 32$):* Low motion vector overhead, but causes prediction errors along moving object boundaries.
-2. **Sub-Pixel Motion Precision (Half-Pel / Quarter-Pel):**
-   - Real-world motion is not quantized to integer pixel grids. Modern codecs (H.264/HEVC) interpolate reference frames using FIR filters to test half-pel and quarter-pel positions, improving prediction accuracy by $2\\text{ to }3\\text{ dB}$ PSNR at the cost of additional interpolation complexity."""
+### 4. Accuracy vs Complexity Trade-Offs
+* **Block Size:** Smaller blocks ($4 \\times 4$) capture detailed motion but create millions of motion vectors that eat up bitrate. Larger blocks ($16 \\times 16$) save bitrate but fail around moving object boundaries.
+* **Sub-Pixel Estimation (Half-Pel & Quarter-Pel):** Real objects don't move in integer pixel steps! Modern codecs interpolate reference frames with digital filters to test half-pixel and quarter-pixel offsets, boosting PSNR by $2\\text{ to }3\\text{ dB}$ at the cost of additional interpolation math."""
     },
     {
         "id": "MID2-Q10",
@@ -419,95 +385,67 @@ Matching-based motion estimation assumes that a moving image region in current f
         "bloom": "K5",
         "marks": "10 Marks",
         "title": "Formulate the nonlinear optimization problem for motion estimation and examine the techniques used to solve it.",
-        "punchline": "Motion estimation is formulated as a nonlinear least-squares problem minimizing intensity residuals; Gradient Descent provides low-cost first-order updates, Gauss-Newton accelerates quadratic convergence, and Levenberg-Marquardt adaptively damps updates to balance speed and global stability.",
+        "punchline": "Motion estimation is a nonlinear least-squares problem; Gradient Descent takes small safe steps, Gauss-Newton takes fast quadratic leaps, and Levenberg-Marquardt dynamically blends both with an adaptive damping factor λ.",
         "mnemonic": "G-G-L-N: Gradient Descent, Gauss-Newton, Levenberg-Marquardt, Newton's Method.",
-        "analogy": "Like hiking down a foggy mountain to find the lowest valley: Gradient Descent takes small steps straight downhill; Newton's method calculates the 3D bowl shape of the valley; Levenberg-Marquardt acts like an experienced guide who takes careful small steps on steep cliffs (damping) and sprints when entering the smooth valley floor.",
-        "diagram": """+-------------------------------------------------------------------------------+
-|             NONLINEAR OPTIMIZATION FOR PARAMETRIC MOTION ESTIMATION           |
-+-------------------------------------------------------------------------------+
+        "analogy": "Hiking down a mountain in thick fog to find the lowest valley: Gradient Descent takes slow baby steps in the steepest downhill direction; Gauss-Newton calculates the 3D bowl shape and tries to jump straight to the bottom; Levenberg-Marquardt uses small cautious steps when the cliff is steep, and sprints directly to the bottom when the ground becomes smooth.",
+        "diagram": """OBJECTIVE FUNCTION (Sum of Squared Residuals):
+  E(p) = Σ [ I₂(x_i + u(x_i; p)) - I₁(x_i) ]² = Σ r_i(p)²
+         i                                       i
+  Find optimal motion parameters p = [t_x, t_y, θ, s]ᵀ that minimize E(p)!
 
- OBJECTIVE FUNCTION:
-   E(p) = Σ [ I₂(x_i + u(x_i; p)) - I₁(x_i) ]² = Σ r_i(p)²
-          i                                       i
-   Nonlinear with respect to motion parameter vector p = [t_x, t_y, θ, s]ᵀ
-
- OPTIMIZATION TECHNIQUES COMPARED:
- ┌──────────────────────┬─────────────────────────────────────────────────────┐
- │ Method               │ Parameter Update Equation                           │
- ├──────────────────────┼─────────────────────────────────────────────────────┤
- │ Gradient Descent     │ p^(k+1) = p^(k) - α ∇E(p)                           │
- │ Gauss-Newton         │ Δp = - (Jᵀ J)⁻¹ Jᵀ r                                │
- │ Levenberg-Marquardt  │ Δp = - (Jᵀ J + λ I)⁻¹ Jᵀ r                          │
- │ Newton's Method      │ Δp = - H⁻¹ ∇E(p)                                    │
- └──────────────────────┴─────────────────────────────────────────────────────┘
-
- CONVERGENCE BEHAVIOR OF LEVENBERG-MARQUARDT:
-   Large λ (Far from optimum)  ──► Behaves like Gradient Descent (Guaranteed descent)
-   Small λ (Near optimum)      ──► Behaves like Gauss-Newton (Fast quadratic convergence)""",
-        "content": """### 1. Mathematical Formulation of Nonlinear Motion Estimation (Unit 4 Notes)
-In parametric motion estimation (such as affine camera tracking, optical flow, and direct image registration), the displacement of pixel $\\mathbf{x}_i = (x_i, y_i)^T$ is governed by a parameter vector $\\mathbf{p} = [p_1, p_2, \\dots, p_K]^T$ (e.g., translation, rotation angle, scaling factors):
-$$\\mathbf{x}'_i = \\mathbf{x}_i + \\mathbf{u}(\\mathbf{x}_i; \\mathbf{p})$$
-
-The objective is to estimate optimal parameters $\\mathbf{p}^*$ that minimize the nonlinear sum of squared intensity residuals (SSD) between reference frame $I_1$ and transformed current frame $I_2$:
+THE LEVENBERG-MARQUARDT (LM) ADAPTIVE UPDATE:
+  ( Jᵀ J + λ I ) Δp = - Jᵀ r
+        ▲
+        │
+        ├── Large λ (Cliff edge / bad guess) ──► Behaves like Gradient Descent (Safe descent!)
+        └── Small λ (Smooth valley floor)    ──► Behaves like Gauss-Newton (Fast quadratic sprint!)""",
+        "content": """### 1. Formulating the Nonlinear Motion Problem (Unit 4 Notes)
+In advanced video tracking (like estimating camera rotation or drone velocity), motion is controlled by a vector of parameters $\\mathbf{p} = [p_1, p_2, \\dots, p_K]^T$ (e.g., translation $t_x, t_y$, rotation angle $\\theta$, scale $s$).
+We want to find optimal parameters $\\mathbf{p}^*$ that minimize the sum of squared intensity residuals between Frame 1 and Frame 2:
 $$E(\\mathbf{p}) = \\sum_{i=1}^N \\left[ I_2(\\mathbf{x}_i + \\mathbf{u}(\\mathbf{x}_i; \\mathbf{p})) - I_1(\\mathbf{x}_i) \\right]^2 = \\sum_{i=1}^N r_i(\\mathbf{p})^2 = \\|\\mathbf{r}(\\mathbf{p})\\|_2^2$$
-where $r_i(\\mathbf{p}) = I_2(\\mathbf{x}_i + \\mathbf{u}(\\mathbf{x}_i; \\mathbf{p})) - I_1(\\mathbf{x}_i)$ is the intensity residual at pixel $i$.
+where $r_i(\\mathbf{p})$ is the intensity residual at pixel $i$.
 
-Because the image intensity function $I_2(\\cdot)$ is a complex, non-convex spatial surface, $E(\\mathbf{p})$ is inherently **nonlinear with respect to $\\mathbf{p}$**, requiring iterative nonlinear optimization.
+**Why It's Nonlinear:** Because pixel values $I_2(\\cdot)$ jump around with complex textures, $E(\\mathbf{p})$ is a bumpy, non-convex mathematical landscape filled with local valleys.
 
 ---
 
-### 2. Examination of Optimization Techniques (Unit 4 Notes)
+### 2. The 4 Optimization Techniques Compared
 
-#### a) Gradient Descent Method (First-Order)
-- **Update Rule:** Updates motion parameters in the negative direction of the cost gradient:
+#### 1. Gradient Descent (First-Order Method)
+* **Update Rule:**
   $$\\mathbf{p}^{(k+1)} = \\mathbf{p}^{(k)} - \\alpha \\nabla E(\\mathbf{p}^{(k)})$$
-  where $\\nabla E(\\mathbf{p}) = 2 \\mathbf{J}^T \\mathbf{r}$, and $\\mathbf{J} = \\frac{\\partial \\mathbf{r}}{\\partial \\mathbf{p}}$ is the $N \\times K$ Jacobian matrix.
-- **Evaluation:**
-  - *Advantages:* Low computational complexity per iteration; requires minimal memory; guaranteed descent for sufficiently small learning rate $\\alpha$.
-  - *Limitations:* Exhibits slow linear convergence near the minimum; prone to zigzagging in narrow error valleys; highly sensitive to step size $\\alpha$.
+* **Evaluation:**
+  - *Pros:* Super cheap per step. Always goes downhill if step size $\\alpha$ is small.
+  - *Cons:* Painfully slow linear convergence. Zigzags endlessly in narrow valleys.
 
-#### b) Gauss-Newton Method (Nonlinear Least Squares)
-- **Principle:** Linearizes the residual vector via first-order Taylor expansion: $\\mathbf{r}(\\mathbf{p} + \\Delta \\mathbf{p}) \\approx \\mathbf{r}(\\mathbf{p}) + \\mathbf{J} \\Delta \\mathbf{p}$.
-- **Update Rule:**
+#### 2. Gauss-Newton Method (Nonlinear Least Squares)
+* **Update Rule:** Linearizes residuals via first-order Taylor series (approximating Hessian $\\mathbf{H} \\approx 2 \\mathbf{J}^T \\mathbf{J}$):
   $$\\Delta \\mathbf{p} = -(\\mathbf{J}^T \\mathbf{J})^{-1} \\mathbf{J}^T \\mathbf{r}$$
-  $$\\mathbf{p}^{(k+1)} = \\mathbf{p}^{(k)} + \\Delta \\mathbf{p}$$
-  *(Approximates the true Hessian as $\\mathbf{H} \\approx 2 \\mathbf{J}^T \\mathbf{J}$, avoiding costly second derivatives).*
-- **Evaluation:**
-  - *Advantages:* Achieves fast quadratic convergence near the optimum when residuals are small.
-  - *Limitations:* Fails or diverges if $\\mathbf{J}^T \\mathbf{J}$ is ill-conditioned or rank-deficient (e.g., in low-texture image regions).
+* **Evaluation:**
+  - *Pros:* Fast quadratic convergence near the minimum.
+  - *Cons:* If $\\mathbf{J}^T \\mathbf{J}$ is ill-conditioned (like in low-texture images), the matrix inversion blows up and optimization diverges!
 
-#### c) Levenberg-Marquardt (LM) Algorithm (Damped Least Squares)
-- **Principle:** Dynamically bridges Gradient Descent and Gauss-Newton by introducing an adaptive damping parameter $\\lambda$:
+#### 3. Levenberg-Marquardt (LM) Algorithm (The Gold Standard)
+* **Update Rule:** Damps the matrix with adaptive parameter $\\lambda$:
   $$(\\mathbf{J}^T \\mathbf{J} + \\lambda \\mathbf{I}) \\Delta \\mathbf{p} = -\\mathbf{J}^T \\mathbf{r}$$
-- **Adaptive Damping Strategy:**
-  1. If an iteration reduces error $E(\\mathbf{p} + \\Delta \\mathbf{p}) < E(\\mathbf{p})$: Accept update $\\mathbf{p} \\leftarrow \\mathbf{p} + \\Delta \\mathbf{p}$, and decrease damping $\\lambda \\leftarrow \\lambda / 10$ (moves toward fast Gauss-Newton).
-  2. If error increases: Reject update, increase damping $\\lambda \\leftarrow \\lambda \\times 10$ (moves toward robust Gradient Descent), and resolve.
-- **Evaluation:** The industry standard for optical flow, camera pose tracking, and bundle adjustment due to its unmatched balance of speed and stability.
+* **How the Adaptive Damping Works:**
+  - If a step successfully lowers the error: Accept update, and **decrease $\\lambda$ by $10\\times$** (shifts toward fast Gauss-Newton).
+  - If a step increases the error: Reject update, and **increase $\\lambda$ by $10\\times$** (shifts toward safe Gradient Descent).
+* **Verdict:** The undisputed industry champion for 3D camera tracking and optical flow!
 
-#### d) Newton's Method (Full Second-Order)
-- **Update Rule:**
-  $$\\Delta \\mathbf{p} = -\\mathbf{H}^{-1} \\nabla E(\\mathbf{p})$$
-  where $\\mathbf{H} = \\nabla^2 E(\\mathbf{p})$ is the full $K \\times K$ Hessian matrix.
-- **Evaluation:** Quadratic convergence, but computing and inverting the exact second-derivative Hessian is computationally prohibitive for high-dimensional models.
+#### 4. Newton's Method (Full Second-Order)
+* **Update Rule:** $\\Delta \\mathbf{p} = -\\mathbf{H}^{-1} \\nabla E(\\mathbf{p})$.
+* **Evaluation:** Calculating the exact second-derivative Hessian matrix $\\mathbf{H}$ for thousands of pixels is computationally prohibitive.
 
 ---
 
-### 3. Critical Comparison of Optimization Techniques (Unit 4 Notes)
-
-| Optimization Technique | Convergence Speed | Computational Cost per Iteration | Robustness to Poor Initialization | Primary Application in Vision |
-| :--- | :--- | :--- | :--- | :--- |
-| **Gradient Descent** | Slow (Linear) | Very Low ($O(NK)$) | Moderate (slowly descends) | Neural network optical flow training |
-| **Gauss-Newton** | Fast near optimum | Medium ($O(NK^2 + K^3)$) | Poor (diverges if initial guess is far) | Direct image alignment (Lucas-Kanade) |
-| **Levenberg-Marquardt**| Fast & Stable | Medium-to-High | **Excellent** (Adaptive damping) | 3D Camera tracking, Bundle Adjustment |
-| **Newton's Method** | Very Fast | High (Computes exact $\\nabla^2 E$) | Sensitive to non-positive definite $\\mathbf{H}$ | Offline parametric surface registration |
-
----
-
-### 4. Justification of Convergence Behavior (Unit 4 Notes)
-The convergence behavior of nonlinear motion estimation depends directly on:
-1. **Initial Parameter Estimate:** A coarse initial match (from feature matching or image pyramids) prevents trapping in false local minima.
-2. **Error Surface Smoothness:** Well-textured scenes create convex error basins; untextured regions produce flat eigenvalues and divergence.
-3. **Adaptive Damping:** The Levenberg-Marquardt algorithm is justified as the superior technique because its dynamic damping factor guarantees monotonic error reduction $\\Delta E \\le 0$ at every step."""
+### 3. Cheat Sheet Comparison Table (Unit 4 Notes)
+| Technique | Convergence Speed | Computational Cost | Stability & Robustness |
+| :--- | :--- | :--- | :--- |
+| **Gradient Descent** | Slow (Linear) | Low | Depends heavily on learning rate |
+| **Gauss-Newton** | Fast near minimum | Medium | Fragile (Diverges if initial guess is poor) |
+| **Levenberg-Marquardt**| **Fast & Stable** | Medium-to-High | **Extremely Robust** (Guaranteed descent) |
+| **Newton's Method** | Very Fast | Very High (Exact $\\nabla^2 E$) | Sensitive to non-positive definite Hessian |"""
     },
     {
         "id": "MID2-Q11",
@@ -518,85 +456,64 @@ The convergence behavior of nonlinear motion estimation depends directly on:
         "bloom": "K6",
         "marks": "10 Marks",
         "title": "Design a motion estimation algorithm using transform-domain techniques and justify the optimization techniques used.",
-        "punchline": "Transform-domain motion estimation operates directly on DCT, DFT, or DWT coefficients; DFT phase correlation isolates global translation via cross-power Dirac delta peaks, while DWT multiresolution wavelet search prunes candidate comparisons across subbands.",
-        "mnemonic": "D-D-D: DCT coefficient matching, DFT Phase Correlation, DWT Multiresolution search.",
-        "analogy": "Instead of comparing two photos by inspecting millions of individual blades of grass (spatial pixels), you compare the frequency histogram peaks (transform domain); shifting an image simply shifts the phase angles without changing frequencies.",
-        "diagram": """+-------------------------------------------------------------------------------+
-|             TRANSFORM-DOMAIN MOTION ESTIMATION ARCHITECTURE                   |
-+-------------------------------------------------------------------------------+
-
- Current Frame F_t                    Reference Frame F_{t-1}
-        │                                     │
-        ▼                                     ▼
- [ 2D-DFT / DCT / DWT ]               [ 2D-DFT / DCT / DWT ]
-        │                                     │
-   F_t(u, v)                            F_{t-1}(u, v)
-        │                                     │
-        └──────────────────┬──────────────────┘
-                           │
-                           ▼
-          [ 1. DFT PHASE CORRELATION ]
-          Normalized Cross-Power Spectrum:
-          R(u, v) = [ F_t · F*_{t-1} ] / | F_t · F*_{t-1} | = e^(-j 2π (u dx + v dy))
-                           │
-                           ▼
-          [ 2. 2D Inverse Fourier Transform ]
-          r(x, y) = IDFT{ R(u, v) } = δ(x - dx, y - dy)
-                           │
-                           ▼
-          [ 3. Peak Detection ] ──► Sharp Delta Peak Location = Motion Vector (dx, dy)!""",
-        "content": """### 1. Architectural Design of Transform-Domain Motion Estimation (Unit 4 Notes)
-Transform-domain motion estimation estimates the displacement between consecutive video frames using transformed mathematical coefficients (frequency/wavelet subbands) rather than spatial pixel arrays.
-**Core Objectives:**
-1. Drastically reduce computational complexity by eliminating spatial pixel loops.
-2. Exploit transform energy compaction to match low-dimensional coefficient subsets.
-3. Decouple illumination variations from spatial motion.
+        "punchline": "Transform-domain motion estimation matches DCT or DWT coefficients rather than raw pixels; DFT phase correlation calculates the normalized cross-power spectrum to produce a razor-sharp Dirac delta spike pointing to the exact motion displacement.",
+        "mnemonic": "D-D-D: DCT energy matching, DFT Phase Correlation, DWT Multiresolution.",
+        "analogy": "Comparing two songs: instead of comparing millions of raw microphone voltage samples, you look at the musical chord notes (transform domain). Shifting an entire photo simply changes the phase angle of the frequencies without changing the chord notes!",
+        "diagram": """DFT-BASED PHASE CORRELATION ARCHITECTURE:
+Frame 1 f₁(x, y) ──► [ 2D-FFT ] ──► F₁(u, v)
+                                        │
+                                        ├──► Cross-Power Spectrum R(u, v) = [ F₁ · F₂* ] / | F₁ · F₂* |
+                                        │    (All magnitude stripped; only pure phase shift e^-j2π(udx+vdy)!)
+Frame 2 f₂(x, y) ──► [ 2D-FFT ] ──► F₂(u, v)
+                                        │
+                                        ▼
+                                 [ 2D-IFFT ]
+                                        │
+                                        ▼
+                  Correlation Surface r(x, y) = δ(x - dx, y - dy)
+                                        │
+                                        ▼
+                  Peak Location (x, y) = Exact Motion Vector (dx, dy)!""",
+        "content": """### 1. The Big Picture (Why Estimate Motion in Transform Domain?)
+Searching for matching blocks in spatial pixel grids takes millions of slide-and-compare operations. 
+**Transform-domain motion estimation** operates directly on mathematical transform coefficients (DCT, DFT, or Wavelets), slashing computation and offering built-in immunity to lighting variations.
 
 ---
 
-### 2. Design of the Three Core Transform Algorithms (Unit 4 Notes)
+### 2. Design of the 3 Transform-Domain Algorithms (Unit 4 Notes)
 
-#### A. DFT-Based Phase Correlation (Global Translation Estimation)
-- **Theoretical Basis (Fourier Shift Property):**
-  If Frame 2 is a shifted version of Frame 1:
-  $$f_2(x, y) = f_1(x - d_x, y - d_y)$$
-  Their 2D-DFTs satisfy:
+#### A. DFT-Based Phase Correlation (Global Camera Motion)
+* **The Fourier Shift Principle:**
+  If Frame 2 is a shifted version of Frame 1: $f_2(x, y) = f_1(x - d_x, y - d_y)$, their Fourier transforms satisfy:
   $$F_2(u, v) = F_1(u, v) \\, e^{-j 2\\pi \\left( \\frac{u d_x}{M} + \\frac{v d_y}{N} \\right)}$$
-- **Algorithm Steps:**
-  1. Compute 2D-FFT of current frame $F_2(u, v)$ and reference frame $F_1(u, v)$.
+* **The Step-by-Step Algorithm:**
+  1. Compute 2D-FFT of Frame 1 and Frame 2.
   2. Compute the **Normalized Cross-Power Spectrum**:
      $$R(u, v) = \\frac{F_2(u, v) \\cdot F_1^*(u, v)}{|F_2(u, v) \\cdot F_1^*(u, v)|} = e^{-j 2\\pi \\left( \\frac{u d_x}{M} + \\frac{v d_y}{N} \\right)}$$
-     *(Normalizing by magnitude removes all image structural content, retaining only pure phase displacement information).*
+     *(Dividing by magnitude strips away all image content and illumination bias, leaving pure phase!)*
   3. Compute the 2D Inverse FFT of $R(u, v)$:
      $$r(x, y) = \\mathcal{F}^{-1}\\{R(u, v)\\} = \\delta(x - d_x, y - d_y)$$
-  4. **Peak Detection:** Locate the single prominent Dirac delta peak in the correlation surface $r(x, y)$:
-     $$(d_x, d_y) = \\arg\\max_{(x, y)} r(x, y)$$
-- **Advantage:** Computes exact global camera translation with $O(N^2 \\log N)$ complexity, completely independent of displacement distance $p$.
+  4. **Find the Spike:** The correlation surface $r(x, y)$ forms a razor-sharp Dirac delta impulse peak. The coordinate of that peak is your exact global motion vector $(d_x, d_y)$!
+* **Advantage:** Runs in $O(N^2 \\log N)$ time, completely independent of how far the object moved!
 
-#### B. DCT-Based Motion Estimation (Local Block Matching)
-- **Algorithm Steps:**
-  1. Partition frames into $8 \\times 8$ macroblocks and apply 2D-DCT.
-  2. Because the 2D-DCT compacts $>90\\%$ of block energy into the top-left low-frequency coefficients, discard high-frequency coefficients.
-  3. Compute coefficient matching error over reduced frequency set $\\mathcal{S}$:
-     $$E_{\\text{DCT}}(dx, dy) = \\sum_{(u, v) \\in \\mathcal{S}} |C_t(u, v) - C_{t-1}(u, v; dx, dy)|$$
-- **Advantage:** Evaluates only 8–10 DCT coefficients instead of 64 spatial pixels, speeding up matching by $80\\%$.
+#### B. DCT-Based Motion Estimation (Fast Macroblock Matching)
+* **How it works:** Apply 2D-DCT on $8 \\times 8$ blocks. Because DCT compacts $>90\\%$ of energy into the top-left low frequencies, we evaluate matching error on **only 8 to 10 low-frequency coefficients** and discard the rest.
+* **Advantage:** Cuts matching calculations by $75\\%$.
 
-#### C. DWT-Based Multiresolution Wavelet Motion Estimation
-- **Algorithm Steps:**
-  1. Apply 2-level 2D Discrete Wavelet Transform (DWT), decomposing frames into $LL_2, LH_2, HL_2, HH_2$ subbands.
-  2. **Coarse Scale Search:** Estimate large displacements in the low-resolution $LL_2$ subband (search space is decimated by $16\\times$).
-  3. **Fine Scale Refinement:** Propagate vectors down to higher-resolution detail subbands ($LH_1, HL_1$), searching only small $\\pm 1$ refinement windows.
+#### C. DWT-Based Multiresolution Wavelet Search
+* **How it works:** Decomposes frames into Wavelet octave subbands ($LL, LH, HL, HH$).
+  - Search coarse motion in the low-resolution $LL$ subband ($16\\times$ smaller search grid).
+  - Propagate the vector down to full resolution and refine within a tiny $\\pm 1$ pixel window.
 
 ---
 
-### 3. Performance Optimization Techniques & Justifications (Unit 4 Notes)
-
-| Optimization Technique | Performance Benefit | Mathematical Justification |
+### 3. Optimization Techniques & Justifications Table
+| Technique | Performance Benefit | Engineering Justification |
 | :--- | :--- | :--- |
-| **FFT Phase Correlation** | Ultra-fast global motion estimation | Replaces spatial search with point-wise spectral multiplications ($O(N^2 \\log N)$). |
-| **Low-Frequency DCT Selection** | Reduces matching operations by $>75\\%$ | Exploits DCT energy compaction; high frequencies contain negligible motion energy. |
-| **Multiresolution Wavelet Search** | Eliminates local minima for large motion | Hierarchical search bounds large motion vectors at coarse scales before local refinement. |
-| **Rate-Distortion Optimization (RDO)**| Optimizes video compression quality | Minimizes combined cost $J = D + \\lambda_{\\text{mode}} R$, balancing prediction error $D$ against bitrate $R$. |"""
+| **FFT Phase Correlation** | Ultra-fast global pan/tilt estimation | Replaces spatial search with point-wise multiplications |
+| **Low-Frequency DCT Selection**| $75\\%$ reduction in matching operations | High frequencies contain negligible motion energy |
+| **Multiresolution Wavelet Search**| Prevents local traps during huge motion | Coarse subband bounds large shifts before local tuning |
+| **Rate-Distortion Optimization (RDO)**| Balances video quality against file size | Minimizes Lagrangian cost $J = D + \\lambda R$ |"""
     },
     {
         "id": "MID2-Q12",
@@ -607,103 +524,71 @@ Transform-domain motion estimation estimates the displacement between consecutiv
         "bloom": "K6",
         "marks": "10 Marks",
         "title": "Construct a comprehensive framework for 3D motion and structure estimation from 2D video sequences and assess its performance in real-world scenarios.",
-        "punchline": "The framework integrates geometric models (camera projection, epipolar geometry, triangulation) with statistical models (Kalman filter, RANSAC, Bundle Adjustment) across 8 sequential stages to reconstruct metric 3D point clouds and track 6-DOF camera trajectories.",
+        "punchline": "The framework reconstructs 3D point clouds and tracks 6-DOF camera trajectories across 8 stages by fusing Geometric models (Essential matrix, Triangulation) with Statistical models (RANSAC outlier rejection, Kalman filtering, Bundle Adjustment).",
         "mnemonic": "A-F-M-C-S-M-O-R: Acquisition, Features, Matching, Calibration, Structure, Motion, Optimization, Reconstruction.",
-        "analogy": "Like human stereo vision and brain processing: your two eyes take flat 2D pictures from slightly different angles (geometric projection); your brain matches corresponding landmarks (epipolar triangulation), filters out optical illusions and blinks (RANSAC/Kalman filter), and perceives a solid 3D world in which you navigate safely.",
+        "analogy": "Like human stereo vision: your two eyes take flat 2D pictures from slightly different angles (geometric projection); your brain matches landmarks (epipolar geometry), ignores optical illusions (RANSAC), and calculates 3D depth so you can catch a baseball without missing.",
         "diagram": """+-------------------------------------------------------------------------------+
 |         3D MOTION AND STRUCTURE ESTIMATION FRAMEWORK (SfM / SLAM)             |
 +-------------------------------------------------------------------------------+
 
- [ Input 2D Video Frames ] ──► Monocular / Stereo Video Stream (F_t, F_{t+1})
+ [ Input 2D Video Stream ] ──► Sequential frames (F_t, F_{t+1})
            │
            ▼
- [ 1. Feature Extraction ] ──► Detects scale-invariant keypoints (SIFT, ORB)
+ [ 1. Feature Extraction ] ──► Detects scale-invariant keypoints (SIFT / ORB)
            │
            ▼
  [ 2. Correspondence Match]──► Matches descriptors across frames
            │
            ▼
- [ 3. Epipolar & RANSAC ]  ──► Robust Essential Matrix E = [t]_x R (Rejects outliers!)
+ [ 3. Epipolar & RANSAC ]  ──► Essential Matrix E = [t]× R (Rejects false feature outliers!)
            │
            ▼
- [ 4. Triangulation ]      ──► 3D Point Reconstruction: X = (X, Y, Z)^T
+ [ 4. Triangulation ]      ──► 3D Point Reconstruction: X = (X, Y, Z)ᵀ
            │
            ▼
- [ 5. 3D Motion Estimation]──► 6-DOF Camera Pose: Rotation R and Translation t
+ [ 5. 3D Motion Estimation]──► Recovers 6-DOF Camera Pose: Rotation R and Translation t
            │
            ▼
  [ 6. Kalman Filter ]      ──► Predicts & smooths dynamic object velocities over time
            │
            ▼
- [ 7. Bundle Adjustment ]  ──► Joint nonlinear minimization: min Σ ||x_ij - π(K, R_i, t_i, X_j)||²
+ [ 7. Bundle Adjustment ]  ──► Minimizes total 2D reprojection error: min Σ ||x_ij - π(K, R, t, X_j)||²
            │
            ▼
- [ 8. 3D Scene Output ]    ──► Metric 3D Point Cloud + Camera Trajectory for Self-Driving""",
-        "content": """### 1. Conceptual Framework Architecture (Unit 4 Notes)
-**3D Motion and Structure Estimation (Structure from Motion - SfM / Visual SLAM)** is an advanced computer vision technique that reconstructs the three-dimensional (3D) geometric structure of a scene and tracks the 6-Degrees-of-Freedom (6-DOF) trajectory of a camera or moving objects from 2D video sequences.
-
-Reliable real-world estimation requires a seamless fusion of:
-1. **Geometric Models:** Enforce rigid mathematical projection constraints between 3D world points and 2D camera images.
-2. **Statistical Models:** Filter out sensor noise, resolve correspondence outliers, and track dynamic states over time.
+ [ 8. 3D Scene Output ]    ──► Metric 3D Point Cloud + Vehicle Trajectory for Autonomous Driving""",
+        "content": """### 1. The Big Picture (Structure from Motion / Visual SLAM)
+How does a Tesla self-driving car or an augmented reality headset (Apple Vision Pro) look at flat 2D video frames and understand a 3D world with depth, buildings, and moving cars?
+**3D Motion and Structure Estimation (Structure from Motion - SfM)** fuses rigid **Geometric Models** with noise-filtering **Statistical Models** across 8 sequential stages.
 
 ---
 
 ### 2. The 8 Stages of the Comprehensive Framework (Unit 4 Notes)
-
-#### Stage 1: Video Ingestion & Camera Calibration
-- Captures sequential frames $F_1, F_2, \\dots, F_T$.
-- Determines the **Intrinsic Camera Matrix $\\mathbf{K}$** (focal length $f_x, f_y$, principal point $c_x, c_y$):
-  $$\\mathbf{K} = \\begin{bmatrix} f_x & 0 & c_x \\\\ 0 & f_y & c_y \\\\ 0 & 0 & 1 \\end{bmatrix}$$
-
-#### Stage 2: Feature Detection & Extraction
-- Detects salient, illumination-invariant visual keypoints using SIFT, SURF, or ORB detectors.
-
-#### Stage 3: Feature Matching & Epipolar Geometry
-- Establishes correspondence between point $\\mathbf{x}$ in Frame 1 and point $\\mathbf{x}'$ in Frame 2.
-- The two views are constrained by the **Fundamental Matrix $\\mathbf{F}$** and **Essential Matrix $\\mathbf{E}$**:
-  $$\\mathbf{x}'^T \\mathbf{F} \\mathbf{x} = 0, \\quad \\mathbf{E} = \\mathbf{K}^T \\mathbf{F} \\mathbf{K} = [\\mathbf{t}]_\\times \\mathbf{R}$$
-- **RANSAC (Statistical):** Selects random 8-point subsets to fit $\\mathbf{E}$ while discarding false feature matches (outliers caused by reflections or moving pedestrians).
-
-#### Stage 4: 3D Motion Estimation (Camera Pose Recovery)
-- Decomposes the Essential Matrix $\\mathbf{E}$ using Singular Value Decomposition (SVD) into the camera's relative 3D rotation matrix $\\mathbf{R} \\in SO(3)$ and translation vector $\\mathbf{t} \\in \\mathbb{R}^3$.
-
-#### Stage 5: 3D Structure Estimation (Triangulation)
-- Given camera poses and corresponding rays, triangulates the 3D world coordinates $\\mathbf{X} = (X, Y, Z)^T$ by minimizing the geometric intersection distance.
-
-#### Stage 6: Dynamic Object Tracking via Kalman Filtering
-- Models moving dynamic objects in the scene using a linear state-space Kalman Filter:
-  - *State Prediction:* $\\hat{\\mathbf{x}}_k^- = \\mathbf{A} \\hat{\\mathbf{x}}_{k-1} + \\mathbf{B} \\mathbf{u}_k$
-  - *Measurement Update:* $\\hat{\\mathbf{x}}_k = \\hat{\\mathbf{x}}_k^- + \\mathbf{K}_k (\\mathbf{z}_k - \\mathbf{H} \\hat{\\mathbf{x}}_k^-)$
-- Tracks velocity and predicts object trajectories during momentary occlusions.
-
-#### Stage 7: Statistical Optimization (Bundle Adjustment)
-- Refines all camera poses $(\\mathbf{R}_i, \\mathbf{t}_i)$ and 3D point coordinates $\\mathbf{X}_j$ simultaneously by minimizing the total non-linear **reprojection error**:
-  $$\\min_{\\{\\mathbf{R}_i, \\mathbf{t}_i, \\mathbf{X}_j\\}} \\sum_{i=1}^M \\sum_{j=1}^N v_{ij} \\left\\| \\mathbf{x}_{ij} - \\pi\\left(\\mathbf{K}, \\mathbf{R}_i, \\mathbf{t}_i, \\mathbf{X}_j\\right) \\right\\|^2$$
-  where $\\pi(\\cdot)$ is the perspective projection function, and $v_{ij} = 1$ if point $j$ is visible in frame $i$.
-
-#### Stage 8: 3D Scene Reconstruction & Output
-- Outputs a dense 3D metric point cloud map and continuous 6-DOF camera trajectory.
+1. **Video Ingestion & Calibration:** Ingests video and determines the **Intrinsic Camera Matrix $\\mathbf{K}$** (focal length $f$, optical center $c_x, c_y$).
+2. **Feature Detection:** Detects sharp, illumination-proof keypoints (SIFT, ORB).
+3. **Feature Matching & Epipolar Geometry:** Matches keypoints between frames. Constrained by the **Essential Matrix $\\mathbf{E} = [\\mathbf{t}]_\\times \\mathbf{R}$** ($x'^T E x = 0$).
+4. **RANSAC (Statistical Outlier Rejection):** Randomly samples 8-point sets to fit the Essential matrix while discarding false matches (like passing shadows or reflections).
+5. **3D Motion Estimation (Pose Recovery):** Decomposes $\\mathbf{E}$ via SVD into the camera's 6-DOF 3D rotation $\\mathbf{R}$ and translation vector $\\mathbf{t}$.
+6. **3D Structure Triangulation:** Intersects light rays from multiple camera poses to calculate exact 3D coordinates $(X, Y, Z)$ for every feature point.
+7. **Kalman Filtering:** Smooths trajectory jitter and predicts moving vehicle positions during occlusions.
+8. **Bundle Adjustment (Global Optimization):** Uses the Levenberg-Marquardt algorithm to refine all 3D points and camera angles simultaneously, minimizing total reprojection error:
+   $$\\min_{\\{\\mathbf{R}_i, \\mathbf{t}_i, \\mathbf{X}_j\\}} \\sum_{i} \\sum_{j} \\|\\mathbf{x}_{ij} - \\pi(\\mathbf{K}, \\mathbf{R}_i, \\mathbf{t}_i, \\mathbf{X}_j)\\|^2$$
 
 ---
 
-### 3. Integration Matrix of Geometric and Statistical Models (Unit 4 Notes)
-
-| Geometric Model | Statistical Model Partner | Purpose in the Integrated Framework |
+### 3. Integration Table: Geometric vs Statistical Models
+| Geometric Model | Statistical Model Partner | Purpose in Framework |
 | :--- | :--- | :--- |
-| **Perspective Camera Projection** | **Maximum Likelihood Estimation (MLE)** | Estimates 3D point coordinates under Gaussian sensor noise. |
-| **Epipolar Geometry ($x'^T F x = 0$)**| **RANSAC Algorithm** | Identifies true inlier matches; rejects up to $50\\%$ false correspondence outliers. |
-| **Multi-View Triangulation** | **Extended Kalman Filter (EKF)** | Filters depth jitter; tracks 3D velocities of moving vehicles. |
-| **6-DOF Camera Motion Model** | **Bundle Adjustment (Levenberg-Marquardt)** | Eliminates cumulative drift error over extended video sequences. |
+| **Perspective Camera Projection** | **Maximum Likelihood Estimation (MLE)** | Reconstructs 3D coordinates under sensor noise |
+| **Epipolar Constraint ($x'^T E x = 0$)**| **RANSAC Algorithm** | Rejects up to $50\\%$ false correspondence outliers |
+| **Multi-View Triangulation** | **Kalman Filter** | Tracks 3D velocities of moving vehicles over time |
+| **6-DOF Camera Motion Model** | **Bundle Adjustment (LM)** | Eliminates cumulative drift error over long routes |
 
 ---
 
-### 4. Real-World Autonomous Vehicle Performance Assessment (Unit 4 Notes)
-In self-driving vehicle systems (e.g., Tesla Vision, Waymo):
-- **Scenario:** The vehicle navigates an urban street with moving traffic, stationary lampposts, and pedestrians.
-- **Performance:**
-  1. *Ego-Motion Estimation:* Front-facing cameras compute the car's millimeter-accurate velocity and steering heading without GPS.
-  2. *Obstacle Depth Mapping:* Triangulates distances to leading vehicles and lane barriers.
-  3. *Kalman Trajectory Prediction:* Predicts whether a crossing pedestrian will intersect the car's braking path within 2.5 seconds.
-  4. *Robustness:* RANSAC prevents passing shadows from corrupting the vehicle's spatial map, enabling safe, autonomous collision-free navigation."""
+### 4. Real-World Autonomous Vehicle Assessment (Unit 4 Notes)
+In self-driving cars (Tesla Vision / Waymo):
+- **Ego-Motion Recovery:** Front cameras calculate the car's millimeter-accurate speed and steering angle without needing wheel sensors or GPS.
+- **3D Obstacle Mapping:** Triangulates distance to leading vehicles, curbs, and road debris.
+- **Safety Tracking:** Kalman filtering predicts whether a pedestrian will cross into the car's braking path in the next 2.0 seconds, enabling collision-free navigation."""
     }
 ]
