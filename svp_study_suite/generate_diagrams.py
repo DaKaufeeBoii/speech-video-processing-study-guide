@@ -9,7 +9,7 @@ import os, re, html
 DIAGRAMS = {}
 
 def svg_doc(w, h, inner):
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="auto" style="max-width: {w}px; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="100%" height="{h}" style="max-width: {w}px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -1235,12 +1235,14 @@ DIAGRAMS['MID2-Q20'] = svg_doc(720, 280, f'''
 ''')
 
 def generate_all_diagrams():
-    os.makedirs(r'svp_study_suite\diagrams', exist_ok=True)
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    diag_dir = os.path.join(base_dir, 'diagrams')
+    os.makedirs(diag_dir, exist_ok=True)
     for qid, svg in DIAGRAMS.items():
-        filepath = os.path.join(r'svp_study_suite\diagrams', f'{qid}.svg')
+        filepath = os.path.join(diag_dir, f'{qid}.svg')
         with open(filepath, 'w', encoding='utf-8') as f:
             f.write(svg)
-    print(f"Generated {len(DIAGRAMS)} SVG diagrams in svp_study_suite/diagrams/")
+    print(f"Generated {len(DIAGRAMS)} SVG diagrams in {diag_dir}")
 
     # Generate diagrams_data.py
     data_lines = [
@@ -1252,13 +1254,13 @@ def generate_all_diagrams():
         "DIAGRAMS_SVG = {"
     ]
     for qid, svg in DIAGRAMS.items():
-        escaped_svg = svg.replace('\\', '\\\\').replace('"', '\\"')
         data_lines.append(f'    "{qid}": """{svg}""",')
     data_lines.append("}\n")
 
-    with open(r'svp_study_suite\diagrams_data.py', 'w', encoding='utf-8') as f:
+    out_file = os.path.join(base_dir, 'diagrams_data.py')
+    with open(out_file, 'w', encoding='utf-8') as f:
         f.write('\n'.join(data_lines))
-    print("Generated svp_study_suite/diagrams_data.py successfully!")
+    print(f"Generated {out_file} successfully!")
 
 if __name__ == "__main__":
     generate_all_diagrams()
