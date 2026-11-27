@@ -1045,7 +1045,11 @@ kbd {{
   }}
   .prompt-tip {{
     font-size: 0.78rem;
-    padding: 6px 10px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }}
   .reveal-curtain {{
     padding: 24px 16px;
@@ -1091,16 +1095,26 @@ kbd {{
     line-height: 1.25;
   }}
   .katex-display {{
+    display: block !important;
     max-width: 100% !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
+    text-align: left !important;
     -webkit-overflow-scrolling: touch;
-    padding: 4px 0;
+    padding: 6px 0 !important;
+  }}
+  .katex-display > .katex {{
+    text-align: left !important;
+    max-width: none !important;
   }}
   .answer-content {{
     max-height: none !important;
     overflow-y: visible !important;
     padding-right: 0 !important;
+  }}
+  .answer-content p, .answer-content li {{
+    word-break: break-word;
+    overflow-wrap: break-word;
   }}
   .answer-content table {{
     display: block !important;
@@ -1388,7 +1402,7 @@ kbd {{
       <button class="btn-icon" id="btnCloseModal">✕ Close [Esc]</button>
     </div>
     <div class="modal-search">
-      <input type="text" id="cheatSearchInput" placeholder="🔍 Search: MFCC, LPC, Kalman, Motion Vector, Pole-Zero, 5 Marks, 10 Marks...">
+      <input type="text" id="cheatSearchInput" placeholder="🔍 Search formulas, algorithms, topics...">
     </div>
     <div class="modal-body">
       <table class="cheat-table">
@@ -1886,12 +1900,14 @@ document.querySelectorAll('.filter-btn').forEach(btn => {{
 
 function openModal() {{
   modalCheatSheet.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
   renderCheatTable();
   cheatSearchInput.focus();
 }}
 
 function closeModal() {{
   modalCheatSheet.style.display = 'none';
+  document.body.style.overflow = '';
 }}
 
 btnCheatSheet.addEventListener('click', openModal);

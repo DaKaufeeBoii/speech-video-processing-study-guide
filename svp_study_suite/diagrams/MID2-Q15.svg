@@ -70,20 +70,20 @@
   <!-- Right: Decisions -->
     <g filter="url(#shadow)">
     <rect x="390" y="55" width="280" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="530.0" y="81.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Region A: MOTION DETECTED</text>
-    <text x="530.0" y="98.0" font-size="11" fill="#94a3b8" text-anchor="middle">120 > 100 -> Active object displacement</text>
+    <text x="530.0" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Region A: MOTION DETECTED</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="530.0" y="87">120 &gt; 100 -&gt; Active object displacement</tspan></text>
     <rect x="595" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="630" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Active</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="390" y="125" width="280" height="60" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1.5"/>
-    <text x="530.0" y="151.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Region B: NO MOTION (STATIC)</text>
-    <text x="530.0" y="168.0" font-size="11" fill="#94a3b8" text-anchor="middle">45 ≤ 100 -> Sensor noise / background</text>
+    <text x="530.0" y="142" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Region B: NO MOTION (STATIC)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="530.0" y="157">45 ≤ 100 -&gt; Sensor noise / background</tspan></text>
     <rect x="595" y="116" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="630" y="129" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Static</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="390" y="195" width="280" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="530.0" y="223.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Region C: DOMINANT REGION</text>
-    <text x="530.0" y="240.5" font-size="11" fill="#94a3b8" text-anchor="middle">200 > 100 -> MAXIMUM ACTIVITY!\nRank 1 Dominant Motion Region</text>
+    <text x="530.0" y="212" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Region C: DOMINANT REGION</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="530.0" y="227">200 &gt; 100 -&gt; MAXIMUM ACTIVITY!</tspan><tspan x="530.0" y="240">Rank 1 Dominant Motion Region</tspan></text>
     <rect x="595" y="186" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="630" y="199" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">DOMINANT</text>
   </g>
 

@@ -67,22 +67,22 @@
 
   <!-- Right: Computations -->
     <g filter="url(#shadow)">
-    <rect x="380" y="55" width="290" height="65" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="525.0" y="83.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Task 1: Motion Vector d</text>
-    <text x="525.0" y="100.5" font-size="11" fill="#94a3b8" text-anchor="middle">Δx = 23 - 20 = +3 pixels (Right)\nΔy = 30 - 25 = +5 pixels (Down)\nd = (3, 5)</text>
-    <rect x="595" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="630" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Vector</text>
+    <rect x="370" y="50" width="310" height="68" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
+    <text x="525.0" y="67" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Task 1: Motion Vector d</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="525.0" y="82">Δx = 23 - 20 = +3 (Right)</tspan><tspan x="525.0" y="95">Δy = 30 - 25 = +5 (Down)</tspan><tspan x="525.0" y="108">d = (3, 5)</tspan></text>
+    <rect x="605" y="41" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="640" y="54" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Vector</text>
   </g>
     <g filter="url(#shadow)">
-    <rect x="380" y="130" width="290" height="65" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="525.0" y="158.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Task 2: Magnitude ||d||</text>
-    <text x="525.0" y="175.5" font-size="11" fill="#94a3b8" text-anchor="middle">||d|| = √(3² + 5²) = √34\n||d|| ≈ 5.831 pixels</text>
-    <rect x="595" y="121" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="630" y="134" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Length</text>
+    <rect x="370" y="122" width="310" height="64" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="525.0" y="139" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Task 2: Magnitude ||d||</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="525.0" y="154">||d|| = √(3² + 5²) = √34</tspan><tspan x="525.0" y="167">||d|| ≈ 5.831 pixels</tspan></text>
+    <rect x="605" y="113" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="640" y="126" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Length</text>
   </g>
     <g filter="url(#shadow)">
-    <rect x="380" y="205" width="290" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="525.0" y="233.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Task 3: Direction θ</text>
-    <text x="525.0" y="250.5" font-size="11" fill="#94a3b8" text-anchor="middle">θ = arctan(5/3) = arctan(1.667)\nθ ≈ 59.04° (Down-Right)</text>
-    <rect x="595" y="196" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="630" y="209" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Angle</text>
+    <rect x="370" y="192" width="310" height="64" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="525.0" y="209" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Task 3: Direction θ</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="525.0" y="224">θ = arctan(5/3) = arctan(1.667)</tspan><tspan x="525.0" y="237">θ ≈ 59.04° (Down-Right)</tspan></text>
+    <rect x="605" y="183" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="640" y="196" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Angle</text>
   </g>
 
 </svg>

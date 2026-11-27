@@ -53,12 +53,24 @@ def svg_doc(w, h, inner):
 </svg>'''
 
 def box(x, y, w, h, title, sub="", stroke="#38bdf8", fill="#1e293b", badge="", badge_color="#38bdf8"):
-    sub_text = f'<text x="{x + w/2}" y="{y + h/2 + 13}" font-size="11" fill="#94a3b8" text-anchor="middle">{sub}</text>' if sub else ''
-    y_title = y + h/2 - (4 if sub else -4)
+    sub_lines = []
+    if sub:
+        raw_lines = sub.split('\\n') if '\\n' in sub else sub.split('\n')
+        sub_lines = [l.strip() for l in raw_lines if l.strip()]
+
+    if sub_lines:
+        y_title = y + 17
+        start_y = y_title + 15
+        tspans = [f'<tspan x="{x + w/2}" y="{start_y + idx * 13}">{html.escape(l)}</tspan>' for idx, l in enumerate(sub_lines)]
+        sub_text = f'<text font-size="9.5" fill="#94a3b8" text-anchor="middle">{"".join(tspans)}</text>'
+    else:
+        y_title = y + h / 2 + 5
+        sub_text = ''
+
     badge_markup = f'<rect x="{x + w - 75}" y="{y - 9}" width="70" height="18" rx="9" fill="{badge_color}" fill-opacity="0.2" stroke="{badge_color}" stroke-width="1"/><text x="{x + w - 40}" y="{y + 4}" font-size="9" font-weight="bold" fill="{badge_color}" text-anchor="middle">{badge}</text>' if badge else ''
     return f'''  <g filter="url(#shadow)">
     <rect x="{x}" y="{y}" width="{w}" height="{h}" rx="8" fill="{fill}" stroke="{stroke}" stroke-width="1.5"/>
-    <text x="{x + w/2}" y="{y_title}" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">{title}</text>
+    <text x="{x + w/2}" y="{y_title}" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">{html.escape(title)}</text>
     {sub_text}
     {badge_markup}
   </g>'''
@@ -840,9 +852,9 @@ DIAGRAMS['MID2-Q07'] = svg_doc(700, 290, f'''
   </g>
 
   <!-- Right: Computations -->
-  {box(380, 55, 290, 65, "Task 1: Motion Vector d", "Δx = 23 - 20 = +3 pixels (Right)\\nΔy = 30 - 25 = +5 pixels (Down)\\nd = (3, 5)", "#fbbf24", badge="Vector")}
-  {box(380, 130, 290, 65, "Task 2: Magnitude ||d||", "||d|| = √(3² + 5²) = √34\\n||d|| ≈ 5.831 pixels", "#38bdf8", badge="Length")}
-  {box(380, 205, 290, 65, "Task 3: Direction θ", "θ = arctan(5/3) = arctan(1.667)\\nθ ≈ 59.04° (Down-Right)", "#34d399", badge="Angle")}
+  {box(370, 50, 310, 68, "Task 1: Motion Vector d", "Δx = 23 - 20 = +3 (Right)\\nΔy = 30 - 25 = +5 (Down)\\nd = (3, 5)", "#fbbf24", badge="Vector")}
+  {box(370, 122, 310, 64, "Task 2: Magnitude ||d||", "||d|| = √(3² + 5²) = √34\\n||d|| ≈ 5.831 pixels", "#38bdf8", badge="Length")}
+  {box(370, 192, 310, 64, "Task 3: Direction θ", "θ = arctan(5/3) = arctan(1.667)\\nθ ≈ 59.04° (Down-Right)", "#34d399", badge="Angle")}
 ''')
 
 DIAGRAMS['MID2-Q08'] = svg_doc(720, 270, f'''

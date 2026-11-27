@@ -58,20 +58,20 @@
   <!-- Right: Matting Equation & Laplacian -->
     <g filter="url(#shadow)">
     <rect x="375" y="55" width="310" height="65" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="530.0" y="83.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">The Fundamental Matting Equation</text>
-    <text x="530.0" y="100.5" font-size="11" fill="#94a3b8" text-anchor="middle">I = α·F + (1 - α)·B\n3 Known RGB Equations vs 7 Unknowns (Ill-posed!)</text>
+    <text x="530.0" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">The Fundamental Matting Equation</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="530.0" y="87">I = α·F + (1 - α)·B</tspan><tspan x="530.0" y="100">3 Known RGB Equations vs 7 Unknowns (Ill-posed!)</tspan></text>
     <rect x="610" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Equation</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="375" y="125" width="310" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="530.0" y="151.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Closed-Form Matting (Levin)</text>
-    <text x="530.0" y="168.0" font-size="11" fill="#94a3b8" text-anchor="middle">Minimizes αᵀ L α via Matting Laplacian\nExact global sparse linear solution</text>
+    <text x="530.0" y="142" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Closed-Form Matting (Levin)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="530.0" y="157">Minimizes αᵀ L α via Matting Laplacian</tspan><tspan x="530.0" y="170">Exact global sparse linear solution</tspan></text>
     <rect x="610" y="116" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="129" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Laplacian</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="375" y="190" width="310" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="530.0" y="216.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Video Matting & Coherence</text>
-    <text x="530.0" y="233.0" font-size="11" fill="#94a3b8" text-anchor="middle">Optical flow consistency penalty prevents alpha flickering across frames</text>
+    <text x="530.0" y="207" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Video Matting &amp; Coherence</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="530.0" y="222">Optical flow consistency penalty prevents alpha flickering across frames</tspan></text>
     <rect x="610" y="181" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="194" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Video</text>
   </g>
 
