@@ -21,6 +21,7 @@ for q in ALL_QUESTIONS:
         'diff': 'Moderate', 'time': '4 min', 'prio': 'Medium', 'reason': ''
     })
     q.update(t_data)
+    q['important'] = (q.get('tier') == 1)
 
 ALL_QUESTIONS.sort(key=lambda x: x['rank'])
 
@@ -49,11 +50,7 @@ def md_to_html_simple(md_text):
         txt = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', txt)
         txt = re.sub(r'\*(.+?)\*', r'<em>\1</em>', txt)
         txt = re.sub(r'`(.+?)`', r'<code>\1</code>', txt)
-        txt = txt.replace(r'\mu', 'µ').replace(r'\text{', '').replace(r'}', '')
-        txt = txt.replace(r'\times', '×').replace(r'\approx', '≈').replace(r'\le', '≤')
-        txt = txt.replace(r'\ge', '≥').replace(r'\phi', 'φ').replace(r'\lambda', 'λ')
-        txt = txt.replace(r'\nu', 'ν').replace(r'\circ', '°').replace(r'\\', '')
-        txt = txt.replace('$', '')
+        txt = txt.replace(r'(\\to)', r'($\rightarrow$)').replace(r'\\to', r'\rightarrow')
         return txt
 
     i = 0
@@ -79,12 +76,16 @@ def md_to_html_simple(md_text):
             i += 1
             continue
 
-        if trimmed.startswith('### '):
+        if trimmed.startswith('#### '):
+            out.append(f'<h5>{inline_md(trimmed[5:])}</h5>')
+        elif trimmed.startswith('### '):
             out.append(f'<h4>{inline_md(trimmed[4:])}</h4>')
         elif trimmed.startswith('## '):
             out.append(f'<h3>{inline_md(trimmed[3:])}</h3>')
         elif trimmed.startswith('# '):
             out.append(f'<h2>{inline_md(trimmed[2:])}</h2>')
+        elif trimmed.startswith('---'):
+            out.append('<hr class="divider"/>')
         elif trimmed.startswith('* ') or trimmed.startswith('- '):
             list_items = []
             while i < len(lines) and (lines[i].strip().startswith('* ') or lines[i].strip().startswith('- ')):
@@ -128,6 +129,10 @@ html_template = f'''<!DOCTYPE html>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>SVP Speedrun Drill • Simple Human Notes (5M & 10M Ranked)</title>
+<!-- KaTeX Native Math Rendering -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="if(window.renderMath){{window.renderMath();}}"></script>
 <style>
 :root {{
   --sat: env(safe-area-inset-top, 0px);
@@ -1205,6 +1210,7 @@ kbd {{
     </div>
 
     <div class="controls-top">
+      <a href="index.html" class="btn-icon" style="text-decoration:none; color:#38bdf8; border:1px solid #0284c7; background:rgba(2,132,199,0.15);" title="Back to Master Handbook">📖 Handbook</a>
       <button class="btn-icon" id="btnSoundToggle" title="Audio Sound Effects">🔊 Sound</button>
       <button class="btn-icon" id="btnTimerToggle" title="Card Timer">⏱️ 45s</button>
       <button class="btn-icon" id="btnCheatSheet" title="Cheat Sheet">📋 Sheet</button>
@@ -1215,15 +1221,15 @@ kbd {{
 <div class="filter-strip">
   <div class="filter-strip-inner">
     <button class="filter-btn active" data-filter="all">All 40 (Ranked)</button>
-    <button class="filter-btn filter-btn-important" data-filter="important">🔥 Most Important (Passing Gun)</button>
-    <button class="filter-btn" data-filter="5m">⚡ 5M Quick Hits (40)</button>
-    <button class="filter-btn" data-filter="10m">⚔️ 10M Big Guns (20)</button>
-    <button class="filter-btn" data-filter="tier1">⚡ Tier 1: Free Marks (16)</button>
-    <button class="filter-btn" data-filter="tier2">⚔️ Tier 2: Heavy Hitters (23)</button>
-    <button class="filter-btn" data-filter="tier3">🛡️ Tier 3: Standard (18)</button>
-    <button class="filter-btn" data-filter="tier4">🧩 Tier 4: Technical (3)</button>
-    <button class="filter-btn" data-filter="mid1">Mid-I (30)</button>
-    <button class="filter-btn" data-filter="mid2">Mid-II (30)</button>
+    <button class="filter-btn filter-btn-important" data-filter="important">🔥 Free Marks (10)</button>
+    <button class="filter-btn" data-filter="5m">⚡ 5M Questions (20)</button>
+    <button class="filter-btn" data-filter="10m">⚔️ 10M Questions (20)</button>
+    <button class="filter-btn" data-filter="tier1">⚡ Tier 1: Free Marks (10)</button>
+    <button class="filter-btn" data-filter="tier2">⚔️ Tier 2: Core Scoring (12)</button>
+    <button class="filter-btn" data-filter="tier3">🛡️ Tier 3: High-Value 10M (12)</button>
+    <button class="filter-btn" data-filter="tier4">🧩 Tier 4: Deep Dive (6)</button>
+    <button class="filter-btn" data-filter="mid1">Mid-I (20)</button>
+    <button class="filter-btn" data-filter="mid2">Mid-II (20)</button>
     <button class="filter-btn" data-filter="missed" id="btnFilterMissed" style="display:none; border-color:#f43f5e; color:#fda4af;">Weak Spots (0)</button>
   </div>
 </div>
@@ -1332,7 +1338,7 @@ kbd {{
       <button class="btn-icon" id="btnCloseModal">✕ Close [Esc]</button>
     </div>
     <div class="modal-search">
-      <input type="text" id="cheatSearchInput" placeholder="🔍 Search keyword: Active/Passive, Raster, Tier 1, UTM, 5 Marks, 10 Marks...">
+      <input type="text" id="cheatSearchInput" placeholder="🔍 Search: MFCC, LPC, Kalman, Motion Vector, Pole-Zero, 5 Marks, 10 Marks...">
     </div>
     <div class="modal-body">
       <table class="cheat-table">
@@ -1500,12 +1506,24 @@ const btnCloseModal = document.getElementById('btnCloseModal');
 const cheatSearchInput = document.getElementById('cheatSearchInput');
 const cheatTableBody = document.getElementById('cheatTableBody');
 
+function renderMath() {{
+  if (window.renderMathInElement) {{
+    window.renderMathInElement(document.body, {{
+      delimiters: [
+        {{left: '$$', right: '$$', display: true}},
+        {{left: '$', right: '$', display: false}}
+      ],
+      throwOnError: false
+    }});
+  }}
+}}
+
 function buildDeck(filter) {{
   let list = [];
   if (filter === 'all') {{
     list = [...RAW_QUESTIONS];
   }} else if (filter === 'important') {{
-    list = RAW_QUESTIONS.filter(q => q.important);
+    list = RAW_QUESTIONS.filter(q => q.important || q.tier === 1);
   }} else if (filter === 'tier1') {{
     list = RAW_QUESTIONS.filter(q => q.tier === 1);
   }} else if (filter === 'tier2') {{
@@ -1615,6 +1633,7 @@ function renderCurrentCard() {{
   gradingBar.style.display = 'none';
 
   hudProgress.textContent = `${{currentIndex + 1}} / ${{deck.length}}`;
+  renderMath();
   startTimer();
 }}
 
@@ -1628,6 +1647,7 @@ function revealAnswer() {{
   revealedContent.style.display = 'block';
   gradingBar.style.display = 'grid';
   cardFullContent.scrollTop = 0;
+  renderMath();
 }}
 
 function handleGrade(grade) {{
