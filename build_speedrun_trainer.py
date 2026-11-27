@@ -840,6 +840,11 @@ kbd {{
 }}
 
 /* Cheat Sheet Modal */
+html.modal-open, body.modal-open {{
+  overflow: hidden !important;
+  height: 100vh !important;
+}}
+
 .modal-overlay {{
   display: none;
   position: fixed;
@@ -1900,14 +1905,16 @@ document.querySelectorAll('.filter-btn').forEach(btn => {{
 
 function openModal() {{
   modalCheatSheet.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
+  document.documentElement.classList.add('modal-open');
+  document.body.classList.add('modal-open');
   renderCheatTable();
   cheatSearchInput.focus();
 }}
 
 function closeModal() {{
   modalCheatSheet.style.display = 'none';
-  document.body.style.overflow = '';
+  document.documentElement.classList.remove('modal-open');
+  document.body.classList.remove('modal-open');
 }}
 
 btnCheatSheet.addEventListener('click', openModal);
