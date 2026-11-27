@@ -42,32 +42,32 @@
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">MULTI-DIMENSIONAL SIGNALS TAXONOMY &amp; PROPERTIES</text>
     <g filter="url(#shadow)">
     <rect x="25" y="60" width="150" height="85" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="100.0" y="98.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">1D Signal: Speech</text>
-    <text x="100.0" y="115.5" font-size="11" fill="#94a3b8" text-anchor="middle">s(t) = Amplitude vs Time\nStrictly Causal\nBandwidth: ~64 kbps</text>
+    <text x="100.0" y="77" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">1D Signal: Speech</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="100.0" y="92">s(t) = Amplitude vs Time</tspan><tspan x="100.0" y="105">Strictly Causal</tspan><tspan x="100.0" y="118">Bandwidth: ~64 kbps</tspan></text>
     
   </g>
     <line x1="175" y1="102" x2="205" y2="102" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
   
     <g filter="url(#shadow)">
     <rect x="205" y="60" width="150" height="85" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="280.0" y="98.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2D Signal: Image</text>
-    <text x="280.0" y="115.5" font-size="11" fill="#94a3b8" text-anchor="middle">f(x, y) = 2D Spatial Grid\nNon-causal in space\nBandwidth: ~5 MB/img</text>
+    <text x="280.0" y="77" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">2D Signal: Image</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="280.0" y="92">f(x, y) = 2D Spatial Grid</tspan><tspan x="280.0" y="105">Non-causal in space</tspan><tspan x="280.0" y="118">Bandwidth: ~5 MB/img</tspan></text>
     
   </g>
     <line x1="355" y1="102" x2="385" y2="102" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
   
     <g filter="url(#shadow)">
     <rect x="385" y="60" width="150" height="85" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="460.0" y="98.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">3D Signal: Video</text>
-    <text x="460.0" y="115.5" font-size="11" fill="#94a3b8" text-anchor="middle">f(x, y, t) = Space + Time\nTemporal correlation\nBandwidth: ~3.0 Gbps</text>
+    <text x="460.0" y="77" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">3D Signal: Video</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="460.0" y="92">f(x, y, t) = Space + Time</tspan><tspan x="460.0" y="105">Temporal correlation</tspan><tspan x="460.0" y="118">Bandwidth: ~3.0 Gbps</tspan></text>
     
   </g>
     <line x1="535" y1="102" x2="565" y2="102" stroke="#c084fc" stroke-width="2" marker-end="url(#arrAmber)"/>
   
     <g filter="url(#shadow)">
     <rect x="565" y="60" width="130" height="85" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="630.0" y="98.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">3D/4D Medical</text>
-    <text x="630.0" y="115.5" font-size="11" fill="#94a3b8" text-anchor="middle">f(x, y, z, t)\nVolumetric CT/MRI</text>
+    <text x="630.0" y="77" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">3D/4D Medical</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="630.0" y="92">f(x, y, z, t)</tspan><tspan x="630.0" y="105">Volumetric CT/MRI</tspan></text>
     
   </g>
 

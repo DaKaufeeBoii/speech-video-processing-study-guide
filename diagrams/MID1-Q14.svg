@@ -64,32 +64,32 @@
   <!-- LBG Flowchart -->
     <g filter="url(#shadow)">
     <rect x="350" y="55" width="335" height="45" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="517.5" y="73.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Initial Global Centroid (K=1)</text>
-    <text x="517.5" y="90.5" font-size="11" fill="#94a3b8" text-anchor="middle">Average of all training speech vectors</text>
+    <text x="517.5" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Initial Global Centroid (K=1)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="517.5" y="87">Average of all training speech vectors</tspan></text>
     
   </g>
     <line x1="517" y1="100" x2="517" y2="115" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
   
     <g filter="url(#shadow)">
     <rect x="350" y="115" width="335" height="45" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="517.5" y="133.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. Centroid Splitting (K ──► 2K)</text>
-    <text x="517.5" y="150.5" font-size="11" fill="#94a3b8" text-anchor="middle">y+ = y(1 + ε), y- = y(1 - ε)</text>
+    <text x="517.5" y="132" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. Centroid Splitting (K ──► 2K)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="517.5" y="147">y+ = y(1 + ε), y- = y(1 - ε)</tspan></text>
     <rect x="610" y="106" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="119" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Split</text>
   </g>
     <line x1="517" y1="160" x2="517" y2="175" stroke="#c084fc" stroke-width="2" marker-end="url(#arrAmber)"/>
   
     <g filter="url(#shadow)">
     <rect x="350" y="175" width="335" height="45" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="517.5" y="193.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. K-Means Nearest Assignment</text>
-    <text x="517.5" y="210.5" font-size="11" fill="#94a3b8" text-anchor="middle">Classify vectors into Voronoi cells R_i</text>
+    <text x="517.5" y="192" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. K-Means Nearest Assignment</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="517.5" y="207">Classify vectors into Voronoi cells R_i</tspan></text>
     
   </g>
     <line x1="517" y1="220" x2="517" y2="235" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
   
     <g filter="url(#shadow)">
     <rect x="350" y="235" width="335" height="45" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="517.5" y="253.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">4. Iterate until Distortion Converges</text>
-    <text x="517.5" y="270.5" font-size="11" fill="#94a3b8" text-anchor="middle">Generates optimal codebook (K=64-256)</text>
+    <text x="517.5" y="252" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">4. Iterate until Distortion Converges</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="517.5" y="267">Generates optimal codebook (K=64-256)</tspan></text>
     <rect x="610" y="226" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="239" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Done</text>
   </g>
 

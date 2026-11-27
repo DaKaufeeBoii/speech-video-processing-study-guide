@@ -62,20 +62,20 @@
   <!-- Right: 3 Measures Comparison -->
     <g filter="url(#shadow)">
     <rect x="330" y="55" width="335" height="65" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="497.5" y="83.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Euclidean Distance d_E</text>
-    <text x="497.5" y="100.5" font-size="11" fill="#94a3b8" text-anchor="middle">d = √Σ(xi - yi)² | Assumes equal variance & no correlation</text>
+    <text x="497.5" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Euclidean Distance d_E</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="497.5" y="87">d = √Σ(xi - yi)² | Assumes equal variance &amp; no correlation</tspan></text>
     <rect x="590" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="625" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Fast O(D)</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="330" y="135" width="335" height="65" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="497.5" y="163.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. Mahalanobis Distance d_M</text>
-    <text x="497.5" y="180.5" font-size="11" fill="#94a3b8" text-anchor="middle">d = √[(x - y)ᵀ Σ⁻¹ (x - y)] | Accounts for feature covariance</text>
+    <text x="497.5" y="152" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. Mahalanobis Distance d_M</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="497.5" y="167">d = √[(x - y)ᵀ Σ⁻¹ (x - y)] | Accounts for feature covariance</tspan></text>
     <rect x="590" y="126" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="625" y="139" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Scale-Inv</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="330" y="215" width="335" height="65" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="497.5" y="243.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. Dynamic Time Warping (DTW)</text>
-    <text x="497.5" y="260.5" font-size="11" fill="#94a3b8" text-anchor="middle">D(i,j) = d + min{D(i-1,j), D(i,j-1), D(i-1,j-1)}</text>
+    <text x="497.5" y="232" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. Dynamic Time Warping (DTW)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="497.5" y="247">D(i,j) = d + min{D(i-1,j), D(i,j-1), D(i-1,j-1)}</tspan></text>
     <rect x="590" y="206" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="625" y="219" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Temporal</text>
   </g>
 

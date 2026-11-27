@@ -44,16 +44,16 @@
   <text x="130" y="78" font-size="12" font-weight="bold" fill="#fbbf24" text-anchor="middle">EXCITATION SOURCE E(z)</text>
     <g filter="url(#shadow)">
     <rect x="40" y="95" width="180" height="50" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="130.0" y="116.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Lungs & Trachea</text>
-    <text x="130.0" y="133.0" font-size="11" fill="#94a3b8" text-anchor="middle">Subglottal Air Pressure</text>
+    <text x="130.0" y="112" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Lungs &amp; Trachea</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="130.0" y="127">Subglottal Air Pressure</tspan></text>
     
   </g>
     <line x1="130" y1="145" x2="130" y2="185" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
   <text x="130.0" y="159.0" font-size="10" fill="#fbbf24" font-weight="600" text-anchor="middle">Airflow</text>
     <g filter="url(#shadow)">
     <rect x="40" y="185" width="180" height="85" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="130.0" y="223.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. Glottis / Vocal Cords</text>
-    <text x="130.0" y="240.5" font-size="11" fill="#94a3b8" text-anchor="middle">Voiced: Pulses (Pitch F0)\nUnvoiced: Turbulent Noise</text>
+    <text x="130.0" y="202" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. Glottis / Vocal Cords</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="130.0" y="217">Voiced: Pulses (Pitch F0)</tspan><tspan x="130.0" y="230">Unvoiced: Turbulent Noise</tspan></text>
     <rect x="145" y="176" width="70" height="18" rx="9" fill="#fbbf24" fill-opacity="0.2" stroke="#fbbf24" stroke-width="1"/><text x="180" y="189" font-size="9" font-weight="bold" fill="#fbbf24" text-anchor="middle">Source</text>
   </g>
 
@@ -64,20 +64,20 @@
   <text x="405" y="78" font-size="12" font-weight="bold" fill="#38bdf8" text-anchor="middle">VOCAL TRACT FILTER H(z)</text>
     <g filter="url(#shadow)">
     <rect x="295" y="95" width="220" height="50" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="405.0" y="116.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Pharynx (Throat Cavity)</text>
-    <text x="405.0" y="133.0" font-size="11" fill="#94a3b8" text-anchor="middle">Cross-section ~17.5 cm</text>
+    <text x="405.0" y="112" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Pharynx (Throat Cavity)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="405.0" y="127">Cross-section ~17.5 cm</tspan></text>
     
   </g>
     <g filter="url(#shadow)">
     <rect x="295" y="155" width="220" height="55" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="405.0" y="178.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Oral & Nasal Cavities</text>
-    <text x="405.0" y="195.5" font-size="11" fill="#94a3b8" text-anchor="middle">Resonances = Formants (F1, F2, F3)</text>
+    <text x="405.0" y="172" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Oral &amp; Nasal Cavities</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="405.0" y="187">Resonances = Formants (F1, F2, F3)</tspan></text>
     <rect x="440" y="146" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="475" y="159" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Filter</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="295" y="220" width="220" height="50" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="405.0" y="241.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Articulators (Tongue/Lips)</text>
-    <text x="405.0" y="258.0" font-size="11" fill="#94a3b8" text-anchor="middle">Shaping Vowels & Consonants</text>
+    <text x="405.0" y="237" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Articulators (Tongue/Lips)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="405.0" y="252">Shaping Vowels &amp; Consonants</tspan></text>
     
   </g>
 
@@ -88,14 +88,14 @@
   <text x="645" y="78" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">OUTPUT s(t)</text>
     <g filter="url(#shadow)">
     <rect x="580" y="115" width="130" height="60" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
-    <text x="645.0" y="141.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Lip Radiation</text>
-    <text x="645.0" y="158.0" font-size="11" fill="#94a3b8" text-anchor="middle">R(z) ≈ 1 - z^-1</text>
+    <text x="645.0" y="132" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Lip Radiation</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="645.0" y="147">R(z) ≈ 1 - z^-1</tspan></text>
     
   </g>
     <g filter="url(#shadow)">
     <rect x="580" y="195" width="130" height="75" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5"/>
-    <text x="645.0" y="228.5" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Radiated Speech</text>
-    <text x="645.0" y="245.5" font-size="11" fill="#94a3b8" text-anchor="middle">S(z) = E·H·R\nAudio Waveform</text>
+    <text x="645.0" y="212" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Radiated Speech</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="645.0" y="227">S(z) = E·H·R</tspan><tspan x="645.0" y="240">Audio Waveform</tspan></text>
     <rect x="635" y="186" width="70" height="18" rx="9" fill="#34d399" fill-opacity="0.2" stroke="#34d399" stroke-width="1"/><text x="670" y="199" font-size="9" font-weight="bold" fill="#34d399" text-anchor="middle">Speech</text>
   </g>
 

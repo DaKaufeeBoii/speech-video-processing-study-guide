@@ -64,20 +64,20 @@
     <text x="155" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">Luminance vs. Chrominance (4:2:0)</text>
       <g filter="url(#shadow)">
     <rect x="20" y="38" width="270" height="42" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="155.0" y="55.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Rods (120M) vs Cones (6M)</text>
-    <text x="155.0" y="72.0" font-size="11" fill="#94a3b8" text-anchor="middle">Eye is far more sensitive to Light than Color</text>
+    <text x="155.0" y="55" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Rods (120M) vs Cones (6M)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="155.0" y="70">Eye is far more sensitive to Light than Color</tspan></text>
     
   </g>
       <g filter="url(#shadow)">
     <rect x="20" y="90" width="270" height="48" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="155.0" y="110.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">YCbCr Color Transform</text>
-    <text x="155.0" y="127.0" font-size="11" fill="#94a3b8" text-anchor="middle">Y = Luminance (Keep high bandwidth)\nCb, Cr = Chroma (Downsample by 2)</text>
+    <text x="155.0" y="107" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">YCbCr Color Transform</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="155.0" y="122">Y = Luminance (Keep high bandwidth)</tspan><tspan x="155.0" y="135">Cb, Cr = Chroma (Downsample by 2)</tspan></text>
     
   </g>
       <g filter="url(#shadow)">
     <rect x="20" y="148" width="270" height="48" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="155.0" y="168.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">4:2:0 Chroma Subsampling</text>
-    <text x="155.0" y="185.0" font-size="11" fill="#94a3b8" text-anchor="middle">Discards 50% raw video data with ZERO visible loss!</text>
+    <text x="155.0" y="165" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">4:2:0 Chroma Subsampling</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="155.0" y="180">Discards 50% raw video data with ZERO visible loss!</tspan></text>
     <rect x="215" y="139" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="250" y="152" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">50% Save</text>
   </g>
   </g>

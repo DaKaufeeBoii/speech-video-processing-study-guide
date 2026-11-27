@@ -65,15 +65,15 @@
     <text x="157" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">2. Photometric / Radiometric Model</text>
       <g filter="url(#shadow)">
     <rect x="25" y="40" width="265" height="42" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="157.5" y="57.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Illumination L(x, y)</text>
-    <text x="157.5" y="74.0" font-size="11" fill="#94a3b8" text-anchor="middle">Light from Sun / Lamp source</text>
+    <text x="157.5" y="57" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Illumination L(x, y)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="157.5" y="72">Light from Sun / Lamp source</tspan></text>
     
   </g>
     <text x="157" y="98" font-size="14" fill="#94a3b8" font-weight="bold" text-anchor="middle">×</text>
       <g filter="url(#shadow)">
     <rect x="25" y="105" width="265" height="42" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="157.5" y="122.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">Surface Reflectance R(x, y)</text>
-    <text x="157.5" y="139.0" font-size="11" fill="#94a3b8" text-anchor="middle">Material properties (0 ≤ R ≤ 1)</text>
+    <text x="157.5" y="122" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Surface Reflectance R(x, y)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="157.5" y="137">Material properties (0 ≤ R ≤ 1)</tspan></text>
     
   </g>
     <text x="157" y="162" font-size="14" fill="#94a3b8" font-weight="bold" text-anchor="middle">=</text>

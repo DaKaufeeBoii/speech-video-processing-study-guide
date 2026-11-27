@@ -254,7 +254,7 @@ def generate_html_handbook():
   </div>
   <div class="search-box">
     <span class="search-icon">🔍</span>
-    <input type="text" id="searchInput" class="search-input" placeholder="Search: Source-Filter, MFCC, LPC, DTW, HMM, 2D-DCT, Optical Flow, Kalman, 5 Marks, 10 Marks..." autocomplete="off">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search formulas, algorithms, topics (e.g. MFCC, LPC, Kalman)..." autocomplete="off">
   </div>
 </header>
 

@@ -42,20 +42,20 @@
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">PARAMETRIC 2D MOTION MODELS (2, 6, AND 8 DEGREES OF FREEDOM)</text>
     <g filter="url(#shadow)">
     <rect x="20" y="55" width="210" height="110" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="125.0" y="106.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. TRANSLATIONAL (2 DOF)</text>
-    <text x="125.0" y="123.0" font-size="11" fill="#94a3b8" text-anchor="middle">[x'] = [x] + [dx]\n[y']   [y]   [dy]\nRigid shift; standard in Block Matching Algorithms</text>
+    <text x="125.0" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. TRANSLATIONAL (2 DOF)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="125.0" y="87">[x&#x27;] = [x] + [dx]</tspan><tspan x="125.0" y="100">[y&#x27;]   [y]   [dy]</tspan><tspan x="125.0" y="113">Rigid shift; standard in Block Matching Algorithms</tspan></text>
     <rect x="155" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="190" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">2 DOF</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="255" y="55" width="210" height="110" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="360.0" y="106.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. AFFINE MODEL (6 DOF)</text>
-    <text x="360.0" y="123.0" font-size="11" fill="#94a3b8" text-anchor="middle">[x'] = [a11 a12][x] + [dx]\n[y']   [a21 a22][y]   [dy]\nRotation, Scale, Shear, Translation; Parallel lines preserved</text>
+    <text x="360.0" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. AFFINE MODEL (6 DOF)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="360.0" y="87">[x&#x27;] = [a11 a12][x] + [dx]</tspan><tspan x="360.0" y="100">[y&#x27;]   [a21 a22][y]   [dy]</tspan><tspan x="360.0" y="113">Rotation, Scale, Shear, Translation; Parallel lines preserved</tspan></text>
     <rect x="390" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="425" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">6 DOF</text>
   </g>
     <g filter="url(#shadow)">
     <rect x="490" y="55" width="210" height="110" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="595.0" y="106.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. HOMOGRAPHY (8 DOF)</text>
-    <text x="595.0" y="123.0" font-size="11" fill="#94a3b8" text-anchor="middle">x' = (h11x + h12y + h13) / D\ny' = (h21x + h22y + h23) / D\nFull 3D planar tilt & perspective projection</text>
+    <text x="595.0" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. HOMOGRAPHY (8 DOF)</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="595.0" y="87">x&#x27; = (h11x + h12y + h13) / D</tspan><tspan x="595.0" y="100">y&#x27; = (h21x + h22y + h23) / D</tspan><tspan x="595.0" y="113">Full 3D planar tilt &amp; perspective projection</tspan></text>
     <rect x="625" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="660" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">8 DOF</text>
   </g>
 

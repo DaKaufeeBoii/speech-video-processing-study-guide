@@ -42,48 +42,48 @@
   <text x="370" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">REAL-TIME VIDEO SEGMENTATION &amp; TRACKING FRAMEWORK</text>
     <g filter="url(#shadow)">
     <rect x="15" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="62.5" y="81.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Video In</text>
-    <text x="62.5" y="98.0" font-size="11" fill="#94a3b8" text-anchor="middle">30 fps Camera</text>
+    <text x="62.5" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Video In</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="62.5" y="87">30 fps Camera</tspan></text>
     
   </g>
     <line x1="110" y1="85" x2="130" y2="85" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
   
     <g filter="url(#shadow)">
     <rect x="130" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="177.5" y="81.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. MoG2 Detect</text>
-    <text x="177.5" y="98.0" font-size="11" fill="#94a3b8" text-anchor="middle">Background Sub</text>
+    <text x="177.5" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. MoG2 Detect</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="177.5" y="87">Background Sub</tspan></text>
     
   </g>
     <line x1="225" y1="85" x2="245" y2="85" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
   
     <g filter="url(#shadow)">
     <rect x="245" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="292.5" y="81.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. Morphology</text>
-    <text x="292.5" y="98.0" font-size="11" fill="#94a3b8" text-anchor="middle">Open / Close</text>
+    <text x="292.5" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. Morphology</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="292.5" y="87">Open / Close</tspan></text>
     
   </g>
     <line x1="340" y1="85" x2="360" y2="85" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
   
     <g filter="url(#shadow)">
     <rect x="360" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="407.5" y="81.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">4. Features</text>
-    <text x="407.5" y="98.0" font-size="11" fill="#94a3b8" text-anchor="middle">Centroid, Hist</text>
+    <text x="407.5" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">4. Features</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="407.5" y="87">Centroid, Hist</tspan></text>
     
   </g>
     <line x1="455" y1="85" x2="475" y2="85" stroke="#c084fc" stroke-width="2" marker-end="url(#arrAmber)"/>
   
     <g filter="url(#shadow)">
     <rect x="475" y="55" width="95" height="60" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1.5"/>
-    <text x="522.5" y="81.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">5. Hungarian</text>
-    <text x="522.5" y="98.0" font-size="11" fill="#94a3b8" text-anchor="middle">Data Assoc O(N³)</text>
+    <text x="522.5" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">5. Hungarian</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="522.5" y="87">Data Assoc O(N³)</tspan></text>
     <rect x="495" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="530" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Match</text>
   </g>
     <line x1="570" y1="85" x2="590" y2="85" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrAmber)"/>
   
     <g filter="url(#shadow)">
     <rect x="590" y="55" width="135" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="657.5" y="81.0" font-size="13" font-weight="bold" fill="#f8fafc" text-anchor="middle">6. Kalman Track</text>
-    <text x="657.5" y="98.0" font-size="11" fill="#94a3b8" text-anchor="middle">Predict & Smooth</text>
+    <text x="657.5" y="72" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">6. Kalman Track</text>
+    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="657.5" y="87">Predict &amp; Smooth</tspan></text>
     <rect x="650" y="46" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="685" y="59" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Tracks</text>
   </g>
 
