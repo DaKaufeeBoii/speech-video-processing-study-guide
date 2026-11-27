@@ -80,6 +80,12 @@
 
 <div class="filter-bar" id="filterBar">
   <button class="filter-chip active" data-filter="all">All (40 Questions)</button>
+  <button class="filter-chip chip-fasttrack" data-filter="fasttrack" style="border-color:#38bdf8; color:#38bdf8; font-weight:700;">🚀 Fastest First (Rank 1→40)</button>
+  <button class="filter-chip chip-tier1" data-filter="tier1" style="border-color:#10b981; color:#6ee7b7;">💎 Tier 1: Free Marks (10)</button>
+  <button class="filter-chip chip-tier2" data-filter="tier2" style="border-color:#3b82f6; color:#93c5fd;">⚡ Tier 2: Core Scoring (12)</button>
+  <button class="filter-chip chip-tier3" data-filter="tier3" style="border-color:#8b5cf6; color:#c4b5fd;">⚔️ Tier 3: 10M Anchors (12)</button>
+  <button class="filter-chip chip-tier4" data-filter="tier4" style="border-color:#f43f5e; color:#fda4af;">🧠 Tier 4: Deep Dive (6)</button>
+  <span class="filter-sep" style="display:inline-block; width:1px; height:20px; background:#334155; margin:0 4px; vertical-align:middle;"></span>
   <button class="filter-chip chip-unit" data-filter="u1">📚 Unit 1 (8)</button>
   <button class="filter-chip chip-unit" data-filter="u2">📚 Unit 2 (8)</button>
   <button class="filter-chip chip-unit" data-filter="u3">📚 Unit 3 (8)</button>
@@ -92,6 +98,51 @@
 </div>
 
 <div class="container">
+  <!-- Fast-Track High-ROI Exam Triage Hub -->
+  <div class="triage-banner" id="triageBanner">
+    <div class="triage-header">
+      <div class="triage-title">
+        <span>🚀 High-ROI Exam Triage: Fastest Learning $ightarrow$ Slowest</span>
+      </div>
+      <button class="filter-chip chip-fasttrack" onclick="filterByTier('fasttrack')" style="font-size:0.75rem; padding:4px 12px; border-color:#38bdf8; color:#38bdf8; background:rgba(56,189,248,0.12); cursor:pointer; font-weight:700;">
+        ▶ Auto-Sort All (Rank 1→40)
+      </button>
+    </div>
+    <div class="triage-desc">
+      Prioritized strictly by marks-per-minute: Pure numericals and high-contrast tables first (free marks in 2–4 min), followed by standard 5M algorithms, 10M design anchors, and deep theoretical proofs.
+    </div>
+    <div class="tier-pills-grid">
+      <div class="tier-summary-card t1" onclick="filterByTier('tier1')">
+        <div class="tier-summary-title">
+          <span style="color:#6ee7b7;">💎 Tier 1: Free Marks</span>
+          <span style="color:#10b981; font-weight:800;">10 Qs • Top ROI</span>
+        </div>
+        <div class="tier-summary-desc">Pure numericals &amp; instant visual models (2–4 min each)</div>
+      </div>
+      <div class="tier-summary-card t2" onclick="filterByTier('tier2')">
+        <div class="tier-summary-title">
+          <span style="color:#93c5fd;">⚡ Tier 2: Core Scoring</span>
+          <span style="color:#3b82f6; font-weight:800;">12 Qs • 5–6 min</span>
+        </div>
+        <div class="tier-summary-desc">Core feature pipelines, optical flow &amp; standard 5M answers</div>
+      </div>
+      <div class="tier-summary-card t3" onclick="filterByTier('tier3')">
+        <div class="tier-summary-title">
+          <span style="color:#c4b5fd;">⚔️ Tier 3: 10M Anchors</span>
+          <span style="color:#8b5cf6; font-weight:800;">12 Qs • 8 min</span>
+        </div>
+        <div class="tier-summary-desc">Comprehensive designs, HMM, GMM-EM, DTW &amp; tracking metrics</div>
+      </div>
+      <div class="tier-summary-card t4" onclick="filterByTier('tier4')">
+        <div class="tier-summary-title">
+          <span style="color:#fda4af;">🧠 Tier 4: Deep Dive</span>
+          <span style="color:#f43f5e; font-weight:800;">6 Qs • Slowest</span>
+        </div>
+        <div class="tier-summary-desc">Dense mathematics, SfM 8-point &amp; low-ROI proofs (save for last)</div>
+      </div>
+    </div>
+  </div>
+
   <!-- Unit-Wise Preparation Hub -->
   <div class="unit-hub-container" id="unitHubContainer" style="margin-bottom: 18px;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
@@ -145,7 +196,8 @@
     <div class="sort-group">
       <span>Sort Order:</span>
       <select id="sortSelect" class="sort-select">
-        <option value="unit" selected>📚 Syllabus Order (Unit 1 to 5)</option>
+        <option value="rank" selected>🚀 Fastest Learning (Rank 1 → 40 • High ROI)</option>
+        <option value="unit">📚 Syllabus Order (Unit 1 to 5)</option>
         <option value="marks">⭐ Marks (10M First)</option>
         <option value="mid">📝 Exam Order (Mid-I then Mid-II)</option>
       </select>
@@ -161,10 +213,16 @@
          data-mid="mid1"
          data-unit="u1"
          data-marks="5m"
+         data-tier="tier1"
+         data-rank="6"
+         data-diff="Easy"
+         data-time="4 min"
          data-qno="1"
          data-orig="Mid-I-01">
       <div class="card-header" onclick="toggleCard('MID1-Q01')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #6</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 4 min</span>
           <span class="badge badge-unit">Unit-1</span>
           <span class="badge badge-mid">Mid-I • Q1</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -179,8 +237,15 @@
       <div class="card-body" id="body-MID1-Q01">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 4 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-1 • Mid-I • CO1</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Fundamental definition: Gunnar Fant Source-Filter Model with 4-box diagram
+        </div>
+
 
         
         <div class="eli5-box">
@@ -374,10 +439,16 @@
          data-mid="mid1"
          data-unit="u1"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="14"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="2"
          data-orig="Mid-I-02">
       <div class="card-header" onclick="toggleCard('MID1-Q02')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #14</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-1</span>
           <span class="badge badge-mid">Mid-I • Q2</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -392,8 +463,15 @@
       <div class="card-body" id="body-MID1-Q02">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-1 • Mid-I • CO1</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Sampling theorem, Nyquist rate fs &gt;= 2fmax, and anti-aliasing sinc reconstruction
+        </div>
+
 
         
         <div class="eli5-box">
@@ -582,10 +660,16 @@
          data-mid="mid1"
          data-unit="u1"
          data-marks="5m"
+         data-tier="tier1"
+         data-rank="5"
+         data-diff="Easy"
+         data-time="3 min"
          data-qno="3"
          data-orig="Mid-I-03">
       <div class="card-header" onclick="toggleCard('MID1-Q03')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #5</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 3 min</span>
           <span class="badge badge-unit">Unit-1</span>
           <span class="badge badge-mid">Mid-I • Q3</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -600,8 +684,15 @@
       <div class="card-body" id="body-MID1-Q03">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 3 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-1 • Mid-I • CO1</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Pole-Zero numerical: zeros at 0, 0.5; poles at 0.5, 0.4; stable since |p| &lt; 1
+        </div>
+
 
         
         <div class="eli5-box">
@@ -773,10 +864,16 @@
          data-mid="mid1"
          data-unit="u1"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="12"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="4"
          data-orig="Mid-I-04">
       <div class="card-header" onclick="toggleCard('MID1-Q04')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #12</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-1</span>
           <span class="badge badge-mid">Mid-I • Q4</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -791,8 +888,15 @@
       <div class="card-body" id="body-MID1-Q04">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-1 • Mid-I • CO1</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> 6 key FFT properties in speech: Linearity, Symmetry, Time-shift, Parseval
+        </div>
+
 
         
         <div class="eli5-box">
@@ -969,10 +1073,16 @@
          data-mid="mid1"
          data-unit="u1"
          data-marks="10m"
+         data-tier="tier4"
+         data-rank="36"
+         data-diff="Challenging"
+         data-time="7 min"
          data-qno="5"
          data-orig="Mid-I-05">
       <div class="card-header" onclick="toggleCard('MID1-Q05')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #36</span>
+          <span class="badge badge-tier4">Tier 4: Deep Dive • 7 min</span>
           <span class="badge badge-unit">Unit-1</span>
           <span class="badge badge-mid">Mid-I • Q5</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -987,8 +1097,15 @@
       <div class="card-body" id="body-MID1-Q05">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 7 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-1 • Mid-I • CO1</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Convolution in speech: Source-filter cascade, Overlap-Add (OLA) and Overlap-Save (OLS)
+        </div>
+
 
         
         <div class="eli5-box">
@@ -1181,10 +1298,16 @@
          data-mid="mid1"
          data-unit="u1"
          data-marks="10m"
+         data-tier="tier4"
+         data-rank="35"
+         data-diff="Challenging"
+         data-time="7 min"
          data-qno="6"
          data-orig="Mid-I-06">
       <div class="card-header" onclick="toggleCard('MID1-Q06')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #35</span>
+          <span class="badge badge-tier4">Tier 4: Deep Dive • 7 min</span>
           <span class="badge badge-unit">Unit-1</span>
           <span class="badge badge-mid">Mid-I • Q6</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -1199,8 +1322,15 @@
       <div class="card-body" id="body-MID1-Q06">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 7 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-1 • Mid-I • CO1</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Linear (STFT) vs Non-linear (Mel/Bark) filter banks psychoacoustic evaluation
+        </div>
+
 
         
         <div class="eli5-box">
@@ -1355,10 +1485,16 @@
          data-mid="mid1"
          data-unit="u1"
          data-marks="10m"
+         data-tier="tier2"
+         data-rank="11"
+         data-diff="Moderate"
+         data-time="6 min"
          data-qno="7"
          data-orig="Mid-I-07">
       <div class="card-header" onclick="toggleCard('MID1-Q07')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #11</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 6 min</span>
           <span class="badge badge-unit">Unit-1</span>
           <span class="badge badge-mid">Mid-I • Q7</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -1373,8 +1509,15 @@
       <div class="card-body" id="body-MID1-Q07">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 6 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-1 • Mid-I • CO1</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> High-yield numerical: 4-Point DFT twiddle matrix + Frequency resolution fs/N = 31.25 Hz
+        </div>
+
 
         
         <div class="eli5-box">
@@ -1567,10 +1710,16 @@
          data-mid="mid1"
          data-unit="u1"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="27"
+         data-diff="Challenging"
+         data-time="8 min"
          data-qno="8"
          data-orig="Mid-I-08">
       <div class="card-header" onclick="toggleCard('MID1-Q08')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #27</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-1</span>
           <span class="badge badge-mid">Mid-I • Q8</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -1585,8 +1734,15 @@
       <div class="card-body" id="body-MID1-Q08">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-1 • Mid-I • CO1</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> LPC derivation of Yule-Walker normal equations &amp; Levinson-Durbin recursion algorithm
+        </div>
+
 
         
         <div class="eli5-box">
@@ -1791,10 +1947,16 @@
          data-mid="mid1"
          data-unit="u2"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="13"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="9"
          data-orig="Mid-I-09">
       <div class="card-header" onclick="toggleCard('MID1-Q09')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #13</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-2</span>
           <span class="badge badge-mid">Mid-I • Q9</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -1809,8 +1971,15 @@
       <div class="card-body" id="body-MID1-Q09">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-2 • Mid-I • CO2</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Standard 7-stage speech feature extraction pipeline flowchart
+        </div>
+
 
         
         <div class="eli5-box">
@@ -2030,10 +2199,16 @@
          data-mid="mid1"
          data-unit="u2"
          data-marks="5m"
+         data-tier="tier1"
+         data-rank="8"
+         data-diff="Easy"
+         data-time="4 min"
          data-qno="10"
          data-orig="Mid-I-10">
       <div class="card-header" onclick="toggleCard('MID1-Q10')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #8</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 4 min</span>
           <span class="badge badge-unit">Unit-2</span>
           <span class="badge badge-mid">Mid-I • Q10</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -2048,8 +2223,15 @@
       <div class="card-body" id="body-MID1-Q10">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 4 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-2 • Mid-I • CO2</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> High-scoring concept: 13 static + 13 delta + 13 delta-delta = 39D vector
+        </div>
+
 
         
         <div class="eli5-box">
@@ -2241,10 +2423,16 @@
          data-mid="mid1"
          data-unit="u2"
          data-marks="5m"
+         data-tier="tier1"
+         data-rank="3"
+         data-diff="Easy"
+         data-time="2 min"
          data-qno="11"
          data-orig="Mid-I-11">
       <div class="card-header" onclick="toggleCard('MID1-Q11')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #3</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 2 min</span>
           <span class="badge badge-unit">Unit-2</span>
           <span class="badge badge-mid">Mid-I • Q11</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -2259,8 +2447,15 @@
       <div class="card-body" id="body-MID1-Q11">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 2 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-2 • Mid-I • CO2</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Pure numerical: 1600 samples, 400 window, 200 overlap -&gt; exactly 7 frames
+        </div>
+
 
         
         <div class="eli5-box">
@@ -2430,10 +2625,16 @@
          data-mid="mid1"
          data-unit="u2"
          data-marks="5m"
+         data-tier="tier1"
+         data-rank="7"
+         data-diff="Easy"
+         data-time="4 min"
          data-qno="12"
          data-orig="Mid-I-12">
       <div class="card-header" onclick="toggleCard('MID1-Q12')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #7</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 4 min</span>
           <span class="badge badge-unit">Unit-2</span>
           <span class="badge badge-mid">Mid-I • Q12</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -2448,8 +2649,15 @@
       <div class="card-body" id="body-MID1-Q12">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 4 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-2 • Mid-I • CO2</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Crisp comparison table: LPCC (all-pole tube) vs MFCC (human cochlea)
+        </div>
+
 
         
         <div class="eli5-box">
@@ -2664,10 +2872,16 @@
          data-mid="mid1"
          data-unit="u2"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="24"
+         data-diff="Challenging"
+         data-time="8 min"
          data-qno="13"
          data-orig="Mid-I-13">
       <div class="card-header" onclick="toggleCard('MID1-Q13')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #24</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-2</span>
           <span class="badge badge-mid">Mid-I • Q13</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -2682,8 +2896,15 @@
       <div class="card-body" id="body-MID1-Q13">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-2 • Mid-I • CO2</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Distance measures: Euclidean, Mahalanobis, and Dynamic Time Warping (DTW dynamic programming)
+        </div>
+
 
         
         <div class="eli5-box">
@@ -2862,10 +3083,16 @@
          data-mid="mid1"
          data-unit="u2"
          data-marks="10m"
+         data-tier="tier4"
+         data-rank="37"
+         data-diff="Challenging"
+         data-time="7 min"
          data-qno="14"
          data-orig="Mid-I-14">
       <div class="card-header" onclick="toggleCard('MID1-Q14')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #37</span>
+          <span class="badge badge-tier4">Tier 4: Deep Dive • 7 min</span>
           <span class="badge badge-unit">Unit-2</span>
           <span class="badge badge-mid">Mid-I • Q14</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -2880,8 +3107,15 @@
       <div class="card-body" id="body-MID1-Q14">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 7 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-2 • Mid-I • CO2</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Vector Quantization: Voronoi tessellation, LBG centroid splitting algorithm, codebook sizing
+        </div>
+
 
         
         <div class="eli5-box">
@@ -3067,10 +3301,16 @@
          data-mid="mid1"
          data-unit="u2"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="26"
+         data-diff="Challenging"
+         data-time="8 min"
          data-qno="15"
          data-orig="Mid-I-15">
       <div class="card-header" onclick="toggleCard('MID1-Q15')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #26</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-2</span>
           <span class="badge badge-mid">Mid-I • Q15</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -3085,8 +3325,15 @@
       <div class="card-body" id="body-MID1-Q15">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-2 • Mid-I • CO2</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> GMM mathematical formulation and full derivation of Expectation-Maximization (EM)
+        </div>
+
 
         
         <div class="eli5-box">
@@ -3260,10 +3507,16 @@
          data-mid="mid1"
          data-unit="u2"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="25"
+         data-diff="Challenging"
+         data-time="8 min"
          data-qno="16"
          data-orig="Mid-I-16">
       <div class="card-header" onclick="toggleCard('MID1-Q16')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #25</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-2</span>
           <span class="badge badge-mid">Mid-I • Q16</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -3278,8 +3531,15 @@
       <div class="card-body" id="body-MID1-Q16">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-2 • Mid-I • CO2</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> HMM continuous speech: Bakis topology &amp; the 3 problems (Forward, Viterbi, Baum-Welch)
+        </div>
+
 
         
         <div class="eli5-box">
@@ -3477,10 +3737,16 @@
          data-mid="mid1"
          data-unit="u3"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="19"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="17"
          data-orig="Mid-I-17">
       <div class="card-header" onclick="toggleCard('MID1-Q17')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #19</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-3</span>
           <span class="badge badge-mid">Mid-I • Q17</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -3495,8 +3761,15 @@
       <div class="card-body" id="body-MID1-Q17">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-3 • Mid-I • CO3</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Multi-D signals taxonomy: 2D image f(x,y), 3D video f(x,y,t), 3D volumetric CT
+        </div>
+
 
         
         <div class="eli5-box">
@@ -3669,10 +3942,16 @@
          data-mid="mid1"
          data-unit="u3"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="21"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="18"
          data-orig="Mid-I-18">
       <div class="card-header" onclick="toggleCard('MID1-Q18')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #21</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-3</span>
           <span class="badge badge-mid">Mid-I • Q18</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -3687,8 +3966,15 @@
       <div class="card-body" id="body-MID1-Q18">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-3 • Mid-I • CO3</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> 2D-DFT separability (row-column algorithm), DC component, and spatial frequency axes
+        </div>
+
 
         
         <div class="eli5-box">
@@ -3873,10 +4159,16 @@
          data-mid="mid1"
          data-unit="u3"
          data-marks="10m"
+         data-tier="tier4"
+         data-rank="39"
+         data-diff="Challenging"
+         data-time="7 min"
          data-qno="19"
          data-orig="Mid-I-19">
       <div class="card-header" onclick="toggleCard('MID1-Q19')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #39</span>
+          <span class="badge badge-tier4">Tier 4: Deep Dive • 7 min</span>
           <span class="badge badge-unit">Unit-3</span>
           <span class="badge badge-mid">Mid-I • Q19</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -3891,8 +4183,15 @@
       <div class="card-body" id="body-MID1-Q19">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 7 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-3 • Mid-I • CO3</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> 2D LSI systems: 2D discrete convolution, 2D Z-transform, frequency response, separability
+        </div>
+
 
         
         <div class="eli5-box">
@@ -4061,10 +4360,16 @@
          data-mid="mid1"
          data-unit="u3"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="33"
+         data-diff="Moderate"
+         data-time="8 min"
          data-qno="20"
          data-orig="Mid-I-20">
       <div class="card-header" onclick="toggleCard('MID1-Q20')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #33</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-3</span>
           <span class="badge badge-mid">Mid-I • Q20</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -4079,8 +4384,15 @@
       <div class="card-body" id="body-MID1-Q20">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-3 • Mid-I • CO3</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Multi-D processing framework: JPEG/MPEG pipeline and DCT vs DFT justification
+        </div>
+
 
         
         <div class="eli5-box">
@@ -4268,10 +4580,16 @@
          data-mid="mid2"
          data-unit="u3"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="22"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="1"
          data-orig="Mid-II-01">
       <div class="card-header" onclick="toggleCard('MID2-Q01')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #22</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-3</span>
           <span class="badge badge-mid">Mid-II • Q1</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -4286,8 +4604,15 @@
       <div class="card-body" id="body-MID2-Q01">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-3 • Mid-II • CO3</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Multi-D sampling lattices: Rectangular vs Hexagonal and 2D Nyquist conditions
+        </div>
+
 
         
         <div class="eli5-box">
@@ -4449,10 +4774,16 @@
          data-mid="mid2"
          data-unit="u3"
          data-marks="5m"
+         data-tier="tier1"
+         data-rank="10"
+         data-diff="Easy"
+         data-time="4 min"
          data-qno="2"
          data-orig="Mid-II-02">
       <div class="card-header" onclick="toggleCard('MID2-Q02')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #10</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 4 min</span>
           <span class="badge badge-unit">Unit-3</span>
           <span class="badge badge-mid">Mid-II • Q2</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -4467,8 +4798,15 @@
       <div class="card-body" id="body-MID2-Q02">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 4 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-3 • Mid-II • CO3</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Clean 5-box flowchart: Partition -&gt; 2D-DCT -&gt; Quantize -&gt; Zig-zag -&gt; Entropy code
+        </div>
+
 
         
         <div class="eli5-box">
@@ -4648,10 +4986,16 @@
          data-mid="mid2"
          data-unit="u3"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="29"
+         data-diff="Moderate"
+         data-time="8 min"
          data-qno="3"
          data-orig="Mid-II-03">
       <div class="card-header" onclick="toggleCard('MID2-Q03')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #29</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-3</span>
           <span class="badge badge-mid">Mid-II • Q3</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -4666,8 +5010,15 @@
       <div class="card-body" id="body-MID2-Q03">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-3 • Mid-II • CO3</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> HVS properties: Luminance vs Chroma, Contrast Sensitivity Function (CSF), Weber law
+        </div>
+
 
         
         <div class="eli5-box">
@@ -4847,10 +5198,16 @@
          data-mid="mid2"
          data-unit="u3"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="28"
+         data-diff="Moderate"
+         data-time="8 min"
          data-qno="4"
          data-orig="Mid-II-04">
       <div class="card-header" onclick="toggleCard('MID2-Q04')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #28</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-3</span>
           <span class="badge badge-mid">Mid-II • Q4</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -4865,8 +5222,15 @@
       <div class="card-body" id="body-MID2-Q04">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-3 • Mid-II • CO3</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Complete digital video architecture: Progressive scanning, YCbCr 4:2:0, and GOP (I, P, B)
+        </div>
+
 
         
         <div class="eli5-box">
@@ -5086,10 +5450,16 @@
          data-mid="mid2"
          data-unit="u4"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="17"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="5"
          data-orig="Mid-II-05">
       <div class="card-header" onclick="toggleCard('MID2-Q05')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #17</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-4</span>
           <span class="badge badge-mid">Mid-II • Q5</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -5104,8 +5474,15 @@
       <div class="card-body" id="body-MID2-Q05">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-4 • Mid-II • CO4</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Geometric projection (pinhole x=fX/Z) vs Photometric illumination-reflectance
+        </div>
+
 
         
         <div class="eli5-box">
@@ -5273,10 +5650,16 @@
          data-mid="mid2"
          data-unit="u4"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="16"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="6"
          data-orig="Mid-II-06">
       <div class="card-header" onclick="toggleCard('MID2-Q06')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #16</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-4</span>
           <span class="badge badge-mid">Mid-II • Q6</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -5291,8 +5674,15 @@
       <div class="card-body" id="body-MID2-Q06">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-4 • Mid-II • CO4</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Motion models: Translational (2 DOF), Affine (6 DOF), Homography (8 DOF)
+        </div>
+
 
         
         <div class="eli5-box">
@@ -5459,10 +5849,16 @@
          data-mid="mid2"
          data-unit="u4"
          data-marks="5m"
+         data-tier="tier1"
+         data-rank="1"
+         data-diff="Easy"
+         data-time="2 min"
          data-qno="7"
          data-orig="Mid-II-07">
       <div class="card-header" onclick="toggleCard('MID2-Q07')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #1</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 2 min</span>
           <span class="badge badge-unit">Unit-4</span>
           <span class="badge badge-mid">Mid-II • Q7</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -5477,8 +5873,15 @@
       <div class="card-body" id="body-MID2-Q07">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 2 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-4 • Mid-II • CO4</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Pure numerical: Block motion vector d=(3,5), mag=5.83, direction=59.04°
+        </div>
+
 
         
         <div class="eli5-box">
@@ -5659,10 +6062,16 @@
          data-mid="mid2"
          data-unit="u4"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="18"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="8"
          data-orig="Mid-II-08">
       <div class="card-header" onclick="toggleCard('MID2-Q08')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #18</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-4</span>
           <span class="badge badge-mid">Mid-II • Q8</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -5677,8 +6086,15 @@
       <div class="card-body" id="body-MID2-Q08">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-4 • Mid-II • CO4</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Optical flow equation Ix·u + Iy·v + It = 0, Aperture problem, Lucas-Kanade vs Horn-Schunck
+        </div>
+
 
         
         <div class="eli5-box">
@@ -5844,10 +6260,16 @@
          data-mid="mid2"
          data-unit="u4"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="30"
+         data-diff="Moderate"
+         data-time="8 min"
          data-qno="9"
          data-orig="Mid-II-09">
       <div class="card-header" onclick="toggleCard('MID2-Q09')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #30</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-4</span>
           <span class="badge badge-mid">Mid-II • Q9</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -5862,8 +6284,15 @@
       <div class="card-body" id="body-MID2-Q09">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-4 • Mid-II • CO4</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Block matching motion estimation: Full search vs Three-Step Search vs Diamond search
+        </div>
+
 
         
         <div class="eli5-box">
@@ -6036,10 +6465,16 @@
          data-mid="mid2"
          data-unit="u4"
          data-marks="10m"
+         data-tier="tier4"
+         data-rank="40"
+         data-diff="Challenging"
+         data-time="8 min"
          data-qno="10"
          data-orig="Mid-II-10">
       <div class="card-header" onclick="toggleCard('MID2-Q10')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #40</span>
+          <span class="badge badge-tier4">Tier 4: Deep Dive • 8 min</span>
           <span class="badge badge-unit">Unit-4</span>
           <span class="badge badge-mid">Mid-II • Q10</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -6054,8 +6489,15 @@
       <div class="card-body" id="body-MID2-Q10">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-4 • Mid-II • CO4</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Nonlinear optimization: Gradient descent, Gauss-Newton, Levenberg-Marquardt damping
+        </div>
+
 
         
         <div class="eli5-box">
@@ -6228,10 +6670,16 @@
          data-mid="mid2"
          data-unit="u4"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="34"
+         data-diff="Challenging"
+         data-time="8 min"
          data-qno="11"
          data-orig="Mid-II-11">
       <div class="card-header" onclick="toggleCard('MID2-Q11')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #34</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-4</span>
           <span class="badge badge-mid">Mid-II • Q11</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -6246,8 +6694,15 @@
       <div class="card-body" id="body-MID2-Q11">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-4 • Mid-II • CO4</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Phase correlation motion estimation: Fourier shift theorem &amp; cross-power spectrum
+        </div>
+
 
         
         <div class="eli5-box">
@@ -6438,10 +6893,16 @@
          data-mid="mid2"
          data-unit="u4"
          data-marks="10m"
+         data-tier="tier4"
+         data-rank="38"
+         data-diff="Challenging"
+         data-time="8 min"
          data-qno="12"
          data-orig="Mid-II-12">
       <div class="card-header" onclick="toggleCard('MID2-Q12')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #38</span>
+          <span class="badge badge-tier4">Tier 4: Deep Dive • 8 min</span>
           <span class="badge badge-unit">Unit-4</span>
           <span class="badge badge-mid">Mid-II • Q12</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -6456,8 +6917,15 @@
       <div class="card-body" id="body-MID2-Q12">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-4 • Mid-II • CO4</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> 3D Structure from Motion (SfM): Epipolar geometry, Essential Matrix E=[t]xR, 8-Point SVD
+        </div>
+
 
         
         <div class="eli5-box">
@@ -6640,10 +7108,16 @@
          data-mid="mid2"
          data-unit="u5"
          data-marks="5m"
+         data-tier="tier1"
+         data-rank="9"
+         data-diff="Easy"
+         data-time="4 min"
          data-qno="13"
          data-orig="Mid-II-13">
       <div class="card-header" onclick="toggleCard('MID2-Q13')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #9</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 4 min</span>
           <span class="badge badge-unit">Unit-5</span>
           <span class="badge badge-mid">Mid-II • Q13</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -6658,8 +7132,15 @@
       <div class="card-body" id="body-MID2-Q13">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 4 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-5 • Mid-II • CO5</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Classic classification: Region-based (growing, split-merge) vs Boundary-based (Canny, snakes)
+        </div>
+
 
         
         <div class="eli5-box">
@@ -6830,10 +7311,16 @@
          data-mid="mid2"
          data-unit="u5"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="15"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="14"
          data-orig="Mid-II-14">
       <div class="card-header" onclick="toggleCard('MID2-Q14')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #15</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-5</span>
           <span class="badge badge-mid">Mid-II • Q14</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -6848,8 +7335,15 @@
       <div class="card-body" id="body-MID2-Q14">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-5 • Mid-II • CO5</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Change detection: Frame differencing vs Background subtraction vs MoG model
+        </div>
+
 
         
         <div class="eli5-box">
@@ -7004,10 +7498,16 @@
          data-mid="mid2"
          data-unit="u5"
          data-marks="5m"
+         data-tier="tier1"
+         data-rank="2"
+         data-diff="Easy"
+         data-time="2 min"
          data-qno="15"
          data-orig="Mid-II-15">
       <div class="card-header" onclick="toggleCard('MID2-Q15')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #2</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 2 min</span>
           <span class="badge badge-unit">Unit-5</span>
           <span class="badge badge-mid">Mid-II • Q15</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -7022,8 +7522,15 @@
       <div class="card-body" id="body-MID2-Q15">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 2 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-5 • Mid-II • CO5</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Pure numerical: SAD thresholding (120,45,200 vs 100 -&gt; A &amp; C active, C dominant)
+        </div>
+
 
         
         <div class="eli5-box">
@@ -7207,10 +7714,16 @@
          data-mid="mid2"
          data-unit="u5"
          data-marks="5m"
+         data-tier="tier2"
+         data-rank="20"
+         data-diff="Moderate"
+         data-time="5 min"
          data-qno="16"
          data-orig="Mid-II-16">
       <div class="card-header" onclick="toggleCard('MID2-Q16')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #20</span>
+          <span class="badge badge-tier2">Tier 2: Core Scoring • 5 min</span>
           <span class="badge badge-unit">Unit-5</span>
           <span class="badge badge-mid">Mid-II • Q16</span>
           <span class="badge badge-marks">05 Marks</span>
@@ -7225,8 +7738,15 @@
       <div class="card-body" id="body-MID2-Q16">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 05 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 5 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-5 • Mid-II • CO5</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Tracking taxonomy: Point (Kalman), Kernel (Mean-Shift &amp; CamShift), Silhouette
+        </div>
+
 
         
         <div class="eli5-box">
@@ -7396,10 +7916,16 @@
          data-mid="mid2"
          data-unit="u5"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="32"
+         data-diff="Challenging"
+         data-time="8 min"
          data-qno="17"
          data-orig="Mid-II-17">
       <div class="card-header" onclick="toggleCard('MID2-Q17')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #32</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-5</span>
           <span class="badge badge-mid">Mid-II • Q17</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -7414,8 +7940,15 @@
       <div class="card-body" id="body-MID2-Q17">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-5 • Mid-II • CO5</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Image &amp; video matting: Matting equation I=αF+(1-α)B, Trimap, Levin closed-form Laplacian
+        </div>
+
 
         
         <div class="eli5-box">
@@ -7597,10 +8130,16 @@
          data-mid="mid2"
          data-unit="u5"
          data-marks="10m"
+         data-tier="tier1"
+         data-rank="4"
+         data-diff="Easy"
+         data-time="4 min"
          data-qno="18"
          data-orig="Mid-II-18">
       <div class="card-header" onclick="toggleCard('MID2-Q18')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #4</span>
+          <span class="badge badge-tier1">Tier 1: Free Marks • 4 min</span>
           <span class="badge badge-unit">Unit-5</span>
           <span class="badge badge-mid">Mid-II • Q18</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -7615,8 +8154,15 @@
       <div class="card-body" id="body-MID2-Q18">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 4 min (Easy)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-5 • Mid-II • CO5</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Double numerical: Particle weights [0.2,0.3,0.1,0.4] &amp; Kalman state update 50+0.6(10)=56
+        </div>
+
 
         
         <div class="eli5-box">
@@ -7813,10 +8359,16 @@
          data-mid="mid2"
          data-unit="u5"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="31"
+         data-diff="Challenging"
+         data-time="8 min"
          data-qno="19"
          data-orig="Mid-II-19">
       <div class="card-header" onclick="toggleCard('MID2-Q19')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #31</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-5</span>
           <span class="badge badge-mid">Mid-II • Q19</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -7831,8 +8383,15 @@
       <div class="card-body" id="body-MID2-Q19">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Challenging)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-5 • Mid-II • CO5</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Real-time video tracking framework: MoG detection + Hungarian matching + Kalman filters
+        </div>
+
 
         
         <div class="eli5-box">
@@ -8023,10 +8582,16 @@
          data-mid="mid2"
          data-unit="u5"
          data-marks="10m"
+         data-tier="tier3"
+         data-rank="23"
+         data-diff="Moderate"
+         data-time="8 min"
          data-qno="20"
          data-orig="Mid-II-20">
       <div class="card-header" onclick="toggleCard('MID2-Q20')">
         <div class="badge-row">
+          <span class="badge badge-rank">🏆 Rank #23</span>
+          <span class="badge badge-tier3">Tier 3: High-Value 10M • 8 min</span>
           <span class="badge badge-unit">Unit-5</span>
           <span class="badge badge-mid">Mid-II • Q20</span>
           <span class="badge badge-marks">10 Marks</span>
@@ -8041,8 +8606,15 @@
       <div class="card-body" id="body-MID2-Q20">
         <div class="notes-meta-bar" style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; align-items: center;">
           <span style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.76rem; font-weight: 700;">📝 10 Marks Exam Notes</span>
+          <span style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem; font-weight: 600;">⚡ Prep Time: 8 min (Moderate)</span>
           <span style="background: rgba(148, 163, 184, 0.12); color: var(--text-muted); padding: 3px 8px; border-radius: 6px; font-size: 0.74rem;">📖 Unit-5 • Mid-II • CO5</span>
         </div>
+
+        
+        <div style="background: rgba(15, 23, 42, 0.6); border: 1px dashed rgba(56, 189, 248, 0.35); border-radius: 6px; padding: 6px 10px; font-size: 0.78rem; color: #bae6fd; margin-bottom: 12px;">
+          <strong>🎯 Why Learn This (ROI):</strong> Full 10M answer: Confusion matrix, IoU, Precision, Recall, F1 with worked numerical
+        </div>
+
 
         
         <div class="eli5-box">
