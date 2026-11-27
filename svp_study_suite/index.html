@@ -83,6 +83,13 @@
 
 <div class="filter-bar" id="filterBar">
   <button class="filter-chip active" data-filter="all">All (40)</button>
+  <button class="filter-chip chip-unit" data-filter="u1">📚 Unit 1 (8)</button>
+  <button class="filter-chip chip-unit" data-filter="u2">📚 Unit 2 (8)</button>
+  <button class="filter-chip chip-unit" data-filter="u3">📚 Unit 3 (8)</button>
+  <button class="filter-chip chip-unit" data-filter="u4">📚 Unit 4 (8)</button>
+  <button class="filter-chip chip-unit" data-filter="u5">📚 Unit 5 (8)</button>
+  <button class="filter-chip" data-filter="mid1">Mid-I (20)</button>
+  <button class="filter-chip" data-filter="mid2">Mid-II (20)</button>
   <button class="filter-chip chip-important" data-filter="important">🔥 Free Marks &amp; Numericals (10)</button>
   <button class="filter-chip chip-keypoints" data-filter="keypoints">🎯 Key Points Only (Shortest)</button>
   <button class="filter-chip" data-filter="5m">⚡ 5 Marks (20)</button>
@@ -91,20 +98,60 @@
   <button class="filter-chip" data-filter="tier2">⚔️ Tier 2: Core Scoring (12)</button>
   <button class="filter-chip" data-filter="tier3">🛡️ Tier 3: High-Value 10M (12)</button>
   <button class="filter-chip" data-filter="tier4">🧩 Tier 4: Deep Dive (6)</button>
-  <button class="filter-chip" data-filter="mid1">Mid-I (20)</button>
-  <button class="filter-chip" data-filter="mid2">Mid-II (20)</button>
-  <button class="filter-chip" data-filter="u1">Unit 1</button>
-  <button class="filter-chip" data-filter="u2">Unit 2</button>
-  <button class="filter-chip" data-filter="u3">Unit 3</button>
-  <button class="filter-chip" data-filter="u4">Unit 4</button>
-  <button class="filter-chip" data-filter="u5">Unit 5</button>
 </div>
 
 <div class="container">
+  <!-- Unit-Wise Preparation Hub -->
+  <div class="unit-hub-container" id="unitHubContainer" style="margin-bottom: 18px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+      <div style="font-size:0.95rem; font-weight:800; color:#38bdf8; display:flex; align-items:center; gap:6px;">
+        <span>📚</span> <span>Syllabus Unit-Wise Preparation (8 Questions Each):</span>
+      </div>
+      <div style="font-size:0.78rem; color:#94a3b8;">Click any unit to isolate its 8 questions in syllabus order (Q1 → Q8)</div>
+    </div>
+    <div class="unit-pills-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap:10px;">
+      <div class="unit-hub-card" onclick="filterByTier('u1')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #38bdf8; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 1</span> <span style="color:#38bdf8; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">Speech Production &amp; Acoustics</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-I Q1 – Q8</div>
+      </div>
+      <div class="unit-hub-card" onclick="filterByTier('u2')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #34d399; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 2</span> <span style="color:#34d399; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">Feature Extraction &amp; MFCC/LPC</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-I Q9 – Q16</div>
+      </div>
+      <div class="unit-hub-card" onclick="filterByTier('u3')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #fbbf24; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 3</span> <span style="color:#fbbf24; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">2D Signals, DFT &amp; 2D-DCT</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-I Q17-20 &amp; Mid-II Q1-4</div>
+      </div>
+      <div class="unit-hub-card" onclick="filterByTier('u4')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #f43f5e; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 4</span> <span style="color:#f43f5e; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">Video Motion &amp; Optical Flow</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-II Q5 – Q12</div>
+      </div>
+      <div class="unit-hub-card" onclick="filterByTier('u5')" style="cursor:pointer; background:#1e293b; border:1px solid #334155; border-left:4px solid #c084fc; border-radius:8px; padding:10px 12px; transition:all 0.15s;">
+        <div style="font-weight:700; font-size:0.86rem; color:#f8fafc; display:flex; justify-content:space-between;">
+          <span>Unit 5</span> <span style="color:#c084fc; font-size:0.75rem; font-weight:bold;">8 Qs</span>
+        </div>
+        <div style="font-size:0.74rem; color:#94a3b8; margin-top:3px;">Segmentation &amp; Video Tracking</div>
+        <div style="font-size:0.68rem; color:#64748b; margin-top:2px;">Mid-II Q13 – Q20</div>
+      </div>
+    </div>
+  </div>
+
   <!-- Emergency Triage Banner -->
   <div class="triage-banner">
     <div class="triage-header">
-      <div class="triage-title">🚀 Cramming Triage: Disregard Units, Follow the Tiers!</div>
+      <div class="triage-title">🚀 Fast Cramming Triage: Score-Ranked Priority Pathway</div>
     </div>
     <div class="triage-desc">
       When short on time, do <strong>NOT</strong> study in syllabus order (Unit 1 to 5). Study in order of <strong>Rank 1 to 40</strong> below.
@@ -174,6 +221,7 @@
          data-marks="5m"
          data-tier="tier1"
          data-rank="1"
+         data-qno="7"
          data-time="2"
          data-orig="Mid-II-07"
          data-important="yes">
@@ -396,6 +444,7 @@ DISPLACEMENT VECTOR CALCULATION:
          data-marks="5m"
          data-tier="tier1"
          data-rank="2"
+         data-qno="15"
          data-time="2"
          data-orig="Mid-II-15"
          data-important="yes">
@@ -634,6 +683,7 @@ DECISION MATRIX:
          data-marks="5m"
          data-tier="tier1"
          data-rank="3"
+         data-qno="11"
          data-time="2"
          data-orig="Mid-I-11"
          data-important="yes">
@@ -854,6 +904,7 @@ Total Frames = 7 (Hop size R = 200 samples, 50% Overlap)</pre>
          data-marks="10m"
          data-tier="tier1"
          data-rank="4"
+         data-qno="18"
          data-time="4"
          data-orig="Mid-II-18"
          data-important="yes">
@@ -1118,6 +1169,7 @@ PART B: KALMAN FILTER STATE UPDATE
          data-marks="5m"
          data-tier="tier1"
          data-rank="5"
+         data-qno="3"
          data-time="3"
          data-orig="Mid-I-03"
          data-important="yes">
@@ -1345,6 +1397,7 @@ PART B: KALMAN FILTER STATE UPDATE
          data-marks="5m"
          data-tier="tier1"
          data-rank="6"
+         data-qno="1"
          data-time="4"
          data-orig="Mid-I-01"
          data-important="yes">
@@ -1587,6 +1640,7 @@ PART B: KALMAN FILTER STATE UPDATE
          data-marks="5m"
          data-tier="tier1"
          data-rank="7"
+         data-qno="12"
          data-time="4"
          data-orig="Mid-I-12"
          data-important="yes">
@@ -1827,6 +1881,7 @@ MFCC PIPELINE (Human Auditory Model):
          data-marks="5m"
          data-tier="tier1"
          data-rank="8"
+         data-qno="10"
          data-time="4"
          data-orig="Mid-I-10"
          data-important="yes">
@@ -2058,6 +2113,7 @@ MFCC PIPELINE (Human Auditory Model):
          data-marks="5m"
          data-tier="tier1"
          data-rank="9"
+         data-qno="13"
          data-time="4"
          data-orig="Mid-II-13"
          data-important="yes">
@@ -2272,6 +2328,7 @@ MFCC PIPELINE (Human Auditory Model):
          data-marks="5m"
          data-tier="tier1"
          data-rank="10"
+         data-qno="2"
          data-time="4"
          data-orig="Mid-II-02"
          data-important="yes">
@@ -2488,6 +2545,7 @@ Compressed Output Bitstream</pre>
          data-marks="10m"
          data-tier="tier2"
          data-rank="11"
+         data-qno="7"
          data-time="6"
          data-orig="Mid-I-07"
          data-important="no">
@@ -2736,6 +2794,7 @@ PART B: FREQUENCY RESOLUTION
          data-marks="5m"
          data-tier="tier2"
          data-rank="12"
+         data-qno="4"
          data-time="5"
          data-orig="Mid-I-04"
          data-important="no">
@@ -2944,6 +3003,7 @@ PART B: FREQUENCY RESOLUTION
          data-marks="5m"
          data-tier="tier2"
          data-rank="13"
+         data-qno="9"
          data-time="5"
          data-orig="Mid-I-09"
          data-important="no">
@@ -3205,6 +3265,7 @@ PART B: FREQUENCY RESOLUTION
          data-marks="5m"
          data-tier="tier2"
          data-rank="14"
+         data-qno="2"
          data-time="5"
          data-orig="Mid-I-02"
          data-important="no">
@@ -3418,6 +3479,7 @@ Reconstructed s(t) ◄── [ Reconstruction Filter ] ◄── [ D/A Converter
          data-marks="5m"
          data-tier="tier2"
          data-rank="15"
+         data-qno="14"
          data-time="5"
          data-orig="Mid-II-14"
          data-important="no">
@@ -3619,6 +3681,7 @@ ADAPTIVE BACKGROUND UPDATE (GMM / Running Average):
          data-marks="5m"
          data-tier="tier2"
          data-rank="16"
+         data-qno="6"
          data-time="5"
          data-orig="Mid-II-06"
          data-important="no">
@@ -3819,6 +3882,7 @@ CORE MOTION ASSUMPTIONS:
          data-marks="5m"
          data-tier="tier2"
          data-rank="17"
+         data-qno="5"
          data-time="5"
          data-orig="Mid-II-05"
          data-important="no">
@@ -4032,6 +4096,7 @@ CORE MOTION ASSUMPTIONS:
          data-marks="5m"
          data-tier="tier2"
          data-rank="18"
+         data-qno="8"
          data-time="5"
          data-orig="Mid-II-08"
          data-important="no">
@@ -4241,6 +4306,7 @@ DIFFERENTIAL METHODS COMPARISON:
          data-marks="5m"
          data-tier="tier2"
          data-rank="19"
+         data-qno="17"
          data-time="5"
          data-orig="Mid-I-17"
          data-important="no">
@@ -4445,6 +4511,7 @@ CORE CHARACTERISTICS:
          data-marks="5m"
          data-tier="tier2"
          data-rank="20"
+         data-qno="16"
          data-time="5"
          data-orig="Mid-II-16"
          data-important="no">
@@ -4654,6 +4721,7 @@ CORE CHARACTERISTICS:
          data-marks="5m"
          data-tier="tier2"
          data-rank="21"
+         data-qno="18"
          data-time="5"
          data-orig="Mid-I-18"
          data-important="no">
@@ -4891,6 +4959,7 @@ SPECTRAL INTERPRETATION (Shifted Spectrum):
          data-marks="5m"
          data-tier="tier2"
          data-rank="22"
+         data-qno="1"
          data-time="5"
          data-orig="Mid-II-01"
          data-important="no">
@@ -5086,6 +5155,7 @@ SPECTRAL REPLICATION &amp; 2D NYQUIST CONDITION:
          data-marks="10m"
          data-tier="tier3"
          data-rank="23"
+         data-qno="20"
          data-time="8"
          data-orig="Mid-II-20"
          data-important="no">
@@ -5328,6 +5398,7 @@ SPECTRAL REPLICATION &amp; 2D NYQUIST CONDITION:
          data-marks="10m"
          data-tier="tier3"
          data-rank="24"
+         data-qno="13"
          data-time="8"
          data-orig="Mid-I-13"
          data-important="no">
@@ -5568,6 +5639,7 @@ LOCAL SLOPE CONSTRAINTS:
          data-marks="10m"
          data-tier="tier3"
          data-rank="25"
+         data-qno="16"
          data-time="8"
          data-orig="Mid-I-16"
          data-important="no">
@@ -5817,6 +5889,7 @@ CONTINUOUS SPEECH: HMMs for phonemes are concatenated into Words, and Words into
          data-marks="10m"
          data-tier="tier3"
          data-rank="26"
+         data-qno="15"
          data-time="8"
          data-orig="Mid-I-15"
          data-important="no">
@@ -6043,6 +6116,7 @@ EM ALGORITHM CYCLE:
          data-marks="10m"
          data-tier="tier3"
          data-rank="27"
+         data-qno="8"
          data-time="8"
          data-orig="Mid-I-08"
          data-important="no">
@@ -6317,6 +6391,7 @@ SYNTHESIS (Decoder):
          data-marks="10m"
          data-tier="tier3"
          data-rank="28"
+         data-qno="4"
          data-time="8"
          data-orig="Mid-II-04"
          data-important="no">
@@ -6581,6 +6656,7 @@ SYNTHESIS (Decoder):
          data-marks="10m"
          data-tier="tier3"
          data-rank="29"
+         data-qno="3"
          data-time="8"
          data-orig="Mid-II-03"
          data-important="no">
@@ -6797,6 +6873,7 @@ COLOR OPPONENT MODEL IN HVS:
          data-marks="10m"
          data-tier="tier3"
          data-rank="30"
+         data-qno="9"
          data-time="8"
          data-orig="Mid-II-09"
          data-important="no">
@@ -7020,6 +7097,7 @@ COLOR OPPONENT MODEL IN HVS:
          data-marks="10m"
          data-tier="tier3"
          data-rank="31"
+         data-qno="19"
          data-time="8"
          data-orig="Mid-II-19"
          data-important="no">
@@ -7283,6 +7361,7 @@ Live Video Stream (30 fps)
          data-marks="10m"
          data-tier="tier3"
          data-rank="32"
+         data-qno="17"
          data-time="8"
          data-orig="Mid-II-17"
          data-important="no">
@@ -7506,6 +7585,7 @@ Live Video Stream (30 fps)
          data-marks="10m"
          data-tier="tier3"
          data-rank="33"
+         data-qno="20"
          data-time="8"
          data-orig="Mid-I-20"
          data-important="no">
@@ -7773,6 +7853,7 @@ Live Video Stream (30 fps)
          data-marks="10m"
          data-tier="tier3"
          data-rank="34"
+         data-qno="11"
          data-time="8"
          data-orig="Mid-II-11"
          data-important="no">
@@ -8006,6 +8087,7 @@ Frame 2: f2(x, y) = f1(x-x0, y-y0) ──► [ 2D-FFT ] ──► F2(u, v)
          data-marks="10m"
          data-tier="tier4"
          data-rank="35"
+         data-qno="6"
          data-time="7"
          data-orig="Mid-I-06"
          data-important="no">
@@ -8209,6 +8291,7 @@ NON-LINEAR FILTER BANK (Mel-Scale / Human Auditory Tonotopy):
          data-marks="10m"
          data-tier="tier4"
          data-rank="36"
+         data-qno="5"
          data-time="7"
          data-orig="Mid-I-05"
          data-important="no">
@@ -8456,6 +8539,7 @@ REAL-TIME CONVOLUTION (Streaming Speech):
          data-marks="10m"
          data-tier="tier4"
          data-rank="37"
+         data-qno="14"
          data-time="7"
          data-orig="Mid-I-14"
          data-important="no">
@@ -8697,6 +8781,7 @@ LBG ALGORITHM (Centroid Splitting):
          data-marks="10m"
          data-tier="tier4"
          data-rank="38"
+         data-qno="12"
          data-time="8"
          data-orig="Mid-II-12"
          data-important="no">
@@ -8958,6 +9043,7 @@ COMPLETE SfM PIPELINE:
          data-marks="10m"
          data-tier="tier4"
          data-rank="39"
+         data-qno="19"
          data-time="7"
          data-orig="Mid-I-19"
          data-important="no">
@@ -9180,6 +9266,7 @@ SEPARABLE 2D CONVOLUTION (Speedup from O(M^2 N^2) to O(2MNK)):
          data-marks="10m"
          data-tier="tier4"
          data-rank="40"
+         data-qno="10"
          data-time="8"
          data-orig="Mid-II-10"
          data-important="no">
