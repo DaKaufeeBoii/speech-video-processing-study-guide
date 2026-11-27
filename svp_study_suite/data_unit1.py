@@ -274,7 +274,7 @@ The FFT implicitly assumes the $N$-point frame repeats forever. Abrupt frame cho
         "title": "Analyze convolution operations in speech processing and examine their role in system response and filtering mechanisms.",
         "punchline": "Convolution is how the vocal tract tube imprints its resonant formants onto glottal buzz pulses; in real-time DSP, the Overlap-Add (OLA) algorithm uses FFT multiplication to filter continuous speech without lag.",
         "mnemonic": "F-S-M-S: Flip, Shift, Multiply, Sum. Time convolution = Frequency multiplication.",
-        "analogy": "Like singing inside an empty tiled bathroom: your vocal cords produce the input sound $x[n]$, the bathroom tiles and walls produce echoes called the impulse response $h[n]$, and what you hear is their convolution $y[n] = x[n] * h[n]$.",
+        "analogy": "Like singing inside an empty tiled bathroom: your vocal cords produce the input sound $x[n]$, the bathroom tiles and walls produce echoes called the impulse response $h[n]$, and what you hear is their convolution $y[n] = x[n] \\ast h[n]$.",
         "diagram": """Lungs & Cords Excitation e[n] ──► [ Vocal Tract LTI System: h[n] ] ──► Speech s[n] = e[n] * h[n]
 (Periodic Pulses or Noise)         (Vocal Tract Impulse Response)
 
@@ -289,7 +289,7 @@ Long Speech ──► Chop into blocks L ──► Zero-pad to N ──► FFT �
         "content": """### 1. The Big Picture (What is Convolution in Speech?)
 In speech processing, **convolution** is the mathematical operation that describes what happens when a sound signal passes through an acoustic filter or physical space.
 Whenever you talk, your vocal cords create raw excitation pulses $e[n]$. As this air travels up your 17.5 cm throat and mouth cavity (which has impulse response $h[n]$), every pulse generates a ringing resonance. The resulting spoken speech $s[n]$ is the **convolution** of excitation and vocal tract:
-$$s[n] = e[n] * h[n] = \\sum_{k=-\\infty}^{\\infty} e[k] \\, h[n - k]$$
+$$s[n] = e[n] \\ast h[n] = \\sum_{k=-\\infty}^{\\infty} e[k] \\, h[n - k]$$
 
 ---
 
@@ -306,7 +306,7 @@ If an examiner asks you to explain the mechanics of convolution, write these 4 m
 
 #### A. The Convolution Theorem (The Magic Shortcut):
 Convolution in the time domain is equivalent to **simple multiplication** in the frequency domain:
-$$y[n] = x[n] * h[n] \\stackrel{\\mathcal{F}}{\\longleftrightarrow} Y(\\omega) = X(\\omega) \\cdot H(\\omega)$$
+$$y[n] = x[n] \\ast h[n] \\stackrel{\\mathcal{F}}{\\longleftrightarrow} Y(\\omega) = X(\\omega) \\cdot H(\\omega)$$
 Instead of doing thousands of slow slide-and-sum additions in Python, we simply take the FFT of the speech, multiply by the filter spectrum, and take the IFFT!
 
 #### B. Pre-Emphasis High-Pass Filtering:
@@ -317,7 +317,7 @@ This boosts high frequencies by $+6\\text{ dB/octave}$, balancing the spectrum a
 
 #### C. Room Reverberation & Echo Modeling:
 When speaking in an auditorium, sound bounces off walls before reaching the microphone:
-$$x_{\\text{mic}}[n] = s[n] * h_{\\text{room}}[n]$$
+$$x_{\\text{mic}}[n] = s[n] \\ast h_{\\text{room}}[n]$$
 Denoising and speech dereverberation algorithms use inverse filtering (deconvolution) to remove room echoes.
 
 ---

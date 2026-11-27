@@ -32,9 +32,9 @@ KEYPOINTS_DATA = {
         "**Periodicity & Windowing:** Rectangular truncation causes spectral leakage; windowing (Hamming) smooths boundaries before FFT."
     ],
     'MID1-Q05': [
-        "**Discrete Convolution:** $y[n] = x[n] * h[n] = \\sum_{k=-\\infty}^\\infty x[k] h[n-k]$, executed via Flip, Shift, Multiply, and Sum.",
-        "**Source-Filter Speech Convolution:** Speech output is glottal pulse $e[n]$ convolved with vocal tract impulse response $v[n]$ and radiation $r[n]$: $s[n] = e[n] * v[n] * r[n]$.",
-        "**Convolution Theorem:** Time-domain convolution equals frequency-domain point-wise multiplication: $\\mathcal{F}\\{x[n] * h[n]\\} = X(\\omega) \\cdot H(\\omega)$.",
+        "**Discrete Convolution:** $y[n] = x[n] \\ast h[n] = \\sum_{k=-\\infty}^\\infty x[k] h[n-k]$, executed via Flip, Shift, Multiply, and Sum.",
+        "**Source-Filter Speech Convolution:** Speech output is glottal pulse $e[n]$ convolved with vocal tract impulse response $v[n]$ and radiation $r[n]$: $s[n] = e[n] \\ast v[n] \\ast r[n]$.",
+        "**Convolution Theorem:** Time-domain convolution equals frequency-domain point-wise multiplication: $\\mathcal{F}\\{x[n] \\ast h[n]\\} = X(\\omega) \\cdot H(\\omega)$.",
         "**Streaming Fast Convolution:** Computed via FFT using **Overlap-Add (OLA)** or **Overlap-Save (OLS)** to filter continuous speech without infinite latency."
     ],
     'MID1-Q06': [
