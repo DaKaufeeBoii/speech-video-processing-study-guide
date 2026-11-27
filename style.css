@@ -992,9 +992,8 @@ header.sticky-header {
   background: #070c18;
   border: 1px solid #1e293b;
   border-radius: 8px;
-  padding: 10px 6px;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  padding: 8px;
+  overflow: hidden;
   margin-bottom: 10px;
   display: flex;
   justify-content: center;
@@ -1008,7 +1007,6 @@ header.sticky-header {
 
 .visual-diagram-wrap svg {
   width: 100%;
-  min-width: 580px;
   max-width: 740px;
   height: auto;
   display: block;
@@ -1175,8 +1173,8 @@ tr:last-child td { border-bottom: none; }
     font-size: 0.86rem;
   }
   .visual-diagram-wrap svg {
-    min-width: 520px;
-    max-height: none;
+    max-width: 100%;
+    height: auto;
   }
 }
 
