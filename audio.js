@@ -206,6 +206,9 @@ class StudyAudioManager {
   }
 
   startCurrentMode() {
+    if (this.currentMode.startsWith('yt_')) {
+      return; // Handled by app.js YouTube player
+    }
     if (this.currentMode.startsWith('stream_')) {
       const station = this.streamStations[this.currentMode];
       if (station) {
