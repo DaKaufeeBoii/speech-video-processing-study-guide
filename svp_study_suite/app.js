@@ -82,9 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!container) return;
     const cards = Array.from(container.children);
     cards.sort((a, b) => {
-      if (mode === 'priority') {
-        return parseInt(a.getAttribute('data-rank') || '99') - parseInt(b.getAttribute('data-rank') || '99');
-      } else if (mode === 'unit') {
+      if (mode === 'unit') {
         const uA = parseInt((a.getAttribute('data-unit') || 'u0').replace('u', '')) || 0;
         const uB = parseInt((b.getAttribute('data-unit') || 'u0').replace('u', '')) || 0;
         if (uA !== uB) return uA - uB;
@@ -93,18 +91,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (midA !== midB) return midA - midB;
         const qA = parseInt(a.getAttribute('data-qno') || '0');
         const qB = parseInt(b.getAttribute('data-qno') || '0');
-        if (qA !== qB) return qA - qB;
-        return (a.getAttribute('data-orig') || '').localeCompare(b.getAttribute('data-orig') || '');
+        return qA - qB;
       } else if (mode === 'marks') {
         const mA = a.getAttribute('data-marks') === '10m' ? 0 : 1;
         const mB = b.getAttribute('data-marks') === '10m' ? 0 : 1;
         if (mA !== mB) return mA - mB;
-        return parseInt(a.getAttribute('data-rank') || '99') - parseInt(b.getAttribute('data-rank') || '99');
-      } else if (mode === 'fastest') {
-        const tA = parseInt(a.getAttribute('data-time') || '10');
-        const tB = parseInt(b.getAttribute('data-time') || '10');
-        if (tA !== tB) return tA - tB;
-        return parseInt(a.getAttribute('data-rank') || '99') - parseInt(b.getAttribute('data-rank') || '99');
+        const uA = parseInt((a.getAttribute('data-unit') || 'u0').replace('u', '')) || 0;
+        const uB = parseInt((b.getAttribute('data-unit') || 'u0').replace('u', '')) || 0;
+        if (uA !== uB) return uA - uB;
+        return parseInt(a.getAttribute('data-qno') || '0') - parseInt(b.getAttribute('data-qno') || '0');
+      } else if (mode === 'mid') {
+        const midA = a.getAttribute('data-mid') === 'mid1' ? 1 : 2;
+        const midB = b.getAttribute('data-mid') === 'mid1' ? 1 : 2;
+        if (midA !== midB) return midA - midB;
+        return parseInt(a.getAttribute('data-qno') || '0') - parseInt(b.getAttribute('data-qno') || '0');
       }
       return 0;
     });
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (sortSelect) {
     sortSelect.addEventListener('change', () => sortCards(sortSelect.value));
-    sortCards(sortSelect.value || 'priority');
+    sortCards(sortSelect.value || 'unit');
   }
 
   // --- 5. SEARCH & FILTER ENGINE ---
@@ -122,30 +122,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterChips = document.querySelectorAll('.filter-chip');
   let activeFilter = 'all';
 
-  window.filterByTier = function(tier) {
+  window.filterByUnit = function(unitKey) {
     filterChips.forEach(c => c.classList.remove('active'));
-    const targetChip = document.querySelector(`.filter-chip[data-filter="${tier}"]`);
+    const targetChip = document.querySelector(`.filter-chip[data-filter="${unitKey}"]`);
     if (targetChip) {
       targetChip.classList.add('active');
       try {
         targetChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       } catch (e) {}
     }
-    activeFilter = tier;
+    activeFilter = unitKey;
 
     // Highlight active unit hub card if any
     document.querySelectorAll('.unit-hub-card').forEach(c => c.classList.remove('active-unit-card'));
-    const hubCard = document.querySelector(`.unit-hub-card[onclick*="'${tier}'"]`);
+    const hubCard = document.querySelector(`.unit-hub-card[onclick*="'${unitKey}'"]`);
     if (hubCard) hubCard.classList.add('active-unit-card');
 
     // Auto-sort into natural question sequence if a unit or mid filter is chosen
-    if (tier.startsWith('u') || tier === 'mid1' || tier === 'mid2') {
+    if (unitKey.startsWith('u') || unitKey === 'mid1' || unitKey === 'mid2') {
       if (sortSelect) sortSelect.value = 'unit';
       sortCards('unit');
     }
 
     applyFilters();
   };
+  window.filterByTier = window.filterByUnit;
 
   filterChips.forEach(chip => {
     chip.addEventListener('click', () => {
@@ -187,16 +188,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const mid = card.getAttribute('data-mid');
       const unit = card.getAttribute('data-unit');
       const marks = card.getAttribute('data-marks');
-      const tier = card.getAttribute('data-tier');
       const text = card.textContent.toLowerCase();
 
       let matchesFilter = false;
       if (activeFilter === 'all' || activeFilter === 'keypoints') matchesFilter = true;
-      else if (activeFilter === 'important' && card.getAttribute('data-important') === 'yes') matchesFilter = true;
-      else if (activeFilter === 'tier1' && tier === 'tier1') matchesFilter = true;
-      else if (activeFilter === 'tier2' && tier === 'tier2') matchesFilter = true;
-      else if (activeFilter === 'tier3' && tier === 'tier3') matchesFilter = true;
-      else if (activeFilter === 'tier4' && tier === 'tier4') matchesFilter = true;
       else if (activeFilter === 'mid1' && mid === 'mid1') matchesFilter = true;
       else if (activeFilter === 'mid2' && mid === 'mid2') matchesFilter = true;
       else if (activeFilter === '5m' && marks === '5m') matchesFilter = true;
