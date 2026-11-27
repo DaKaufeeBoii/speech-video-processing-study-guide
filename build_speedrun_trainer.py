@@ -1874,6 +1874,7 @@ function renderCheatTable(query = '') {{
   }});
 
   cheatTableBody.innerHTML = rows.join('');
+  renderMath();
 }}
 
 cheatSearchInput.addEventListener('input', (e) => {{
