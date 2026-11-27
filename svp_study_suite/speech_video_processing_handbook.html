@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Speech &amp; Video Processing • Master Handbook (KGR23 Regulation)</title>
-<link rel="stylesheet" href="style.css?v=20261127_11">
+<link rel="stylesheet" href="style.css?v=20261128_01">
 <!-- KaTeX Native LaTeX Rendering -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -68,6 +68,7 @@
         <button class="btn-icon" id="themeToggle" title="Toggle Theme">🌓 Theme</button>
         <button class="btn-icon" id="expandToggle" title="Expand / Collapse All Cards">📖 Expand All</button>
         <button class="btn-icon" id="modeToggle" title="Quick Key Points Mode">🎯 Key Points Mode</button>
+        <button class="btn-icon" id="compactToggle" title="Toggle Compact Answer View">📋 Compact Answers</button>
         <button class="btn-icon" onclick="window.print()" title="Print / PDF">🖨️ PDF</button>
       </div>
     </div>
@@ -431,6 +432,10 @@
 <li class="bullet-item">Write the core formula: <strong>$S(z) = E(z) \cdot H(z) \cdot R(z)$</strong>.</li>
 <li class="bullet-item">Contrast <strong>Voiced</strong> (periodic pulses, vowels, pitch $F_0$) vs <strong>Unvoiced</strong> (random noise, fricatives /s/, no pitch).</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Speech production = Source × Filter × Radiation: $S(z) = E(z) \cdot H(z) \cdot R(z)$. Vocal cords vibrate (pitch F₀ ≈ 85–255 Hz for voiced), glottal airflow excites the vocal tract tube, and the tube&#x27;s resonant formants (F₁ F₂ F₃) shape the phoneme&#x27;s spectral envelope. Unvoiced sounds use noise excitation; silence = zero input.</div>
+        </div>
       </div>
     </div>
 
@@ -652,6 +657,10 @@
 <p class="para">$$s_r(t) = \sum_{n=-\infty}^{\infty} s[n] \, \text{sinc}\left( \frac{t - nT}{T} \right), \quad \text{where } \text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$$</p>
 <p class="para">Each discrete sample spreads a smooth sinc wave; all the sinc waves add up to reconstruct the original continuous speech wave without any jagged stair-steps!</p>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Continuous speech → sampled at $f_s$ → discrete sequence $x[n] = x_a(nT)$, $T = 1/f_s$. Nyquist: must have $f_s \ge 2 f_{max}$ (8 kHz for phone, 44.1 kHz for CD). If undersampled, high-frequency aliases fold onto low frequencies (aliasing = distortion). Anti-aliasing LPF at $f_s/2$ applied before ADC to prevent this.</div>
+        </div>
       </div>
     </div>
 
@@ -855,6 +864,10 @@
 <h4 class="sub-heading">Final Verdict:</h4>
 <p class="para">Since both poles ($0.5$ and $0.4$) have magnitude strictly less than $1$, <strong>THE SYSTEM IS BIBO STABLE</strong>.</p>
 <p class="para">When excited by speech impulses, its impulse response $h[n]$ will naturally decay to zero rather than blowing up to infinity.</p>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">$H(z) = \frac{z(z-0.5)}{z^2 - 0.9z + 0.2}$. Zeros: $z = 0, 0.5$ (numerator roots). Poles: factor denominator → $(z-0.5)(z-0.4)$, so poles at $z = 0.5, 0.4$. Both $|p| &lt; 1$ ⟹ system is BIBO Stable. On z-plane: plot 2 zeros (circles) and 2 poles (×) inside the unit circle.</div>
         </div>
       </div>
     </div>
@@ -1064,6 +1077,10 @@
 <div class="spacer"></div>
 <h5 class="sub-sub-heading">6. Periodicity & Windowing:</h5>
 <p class="para">The FFT implicitly assumes the $N$-point frame repeats forever. Abrupt frame chops create artificial edge jumps (spectral leakage). Multiplying by a smooth <strong>Hamming window</strong> fixes this completely.</p>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">FFT computes DFT in $O(N \log N)$ using Cooley-Tukey butterfly decimation-in-time. Key properties: Linearity, Time-shift ($x[n-k] ↔ e^{-j\omega k}X(e^{j\omega})$), Convolution ($x*h ↔ X \cdot H$), Parseval&#x27;s energy conservation. Frequency resolution $\Delta f = f_s / N$; for $N=256$, $f_s=8$ kHz → $\Delta f = 31.25$ Hz.</div>
         </div>
       </div>
     </div>
@@ -1290,6 +1307,10 @@
 <li class="numbered-item"><strong>4.</strong> Because the filter rings out for $M-1$ samples, add the overlapping trailing tails to the next block!</li>
 <p class="para">This delivers continuous real-time audio output with zero latency and zero boundary clicks.</p>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Convolution $y[n] = x[n] * h[n] = \sum_k x[k]\,h[n-k]$ convolves glottal source with vocal tract IR. In frequency domain: $Y(z) = X(z)\cdot H(z)$ — multiplication instead of sum. Overlap-Add (OLA): split long signal into blocks, FFT each, multiply by $H$, IFFT, overlap-add adjacent blocks. Overlap-Save is the dual: saves overlapping input samples instead of output.</div>
+        </div>
       </div>
     </div>
 
@@ -1476,6 +1497,10 @@
 <div class="spacer"></div>
 <h4 class="sub-heading">5. Final Engineering Verdict</h4>
 <p class="para">Mel-scale non-linear filter banks are vastly superior for speech AI because they throw away imperceptible high-frequency variations while maximizing the SNR and resolution of the vocal tract formants that carry human meaning.</p>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Linear filter banks: equal Hz bandwidth, uniform spacing — wastes resolution at low frequencies where ears are sensitive. Non-linear (Mel) filter banks: Mel scale $m = 2595\log_{10}(1 + f/700)$ — triangular filters dense at low freq, sparse at high. Result: Mel spectrum captures perceptually relevant features matching the human cochlea. Non-linear wins for ASR; linear preferred for audio effects (EQ).</div>
         </div>
       </div>
     </div>
@@ -1701,6 +1726,10 @@
 <li class="numbered-item"><strong>2.</strong> <strong>Magnitudes:</strong> $|X| = [4.0, 2.0, 0.0, 2.0]$ (Dominant DC at $k=0$, Dominant AC at $k=1, 3$)</li>
 <li class="numbered-item"><strong>3.</strong> <strong>Frequency Resolution:</strong> $\Delta f = 31.25\text{ Hz/bin}$</li>
 <li class="numbered-item"><strong>4.</strong> <strong>Frequency at $k=10$:</strong> $f_{10} = 312.5\text{ Hz}$</li>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Part A: 4-pt DFT of $x=[2,1,0,1]$: $X[k]=\sum_n x[n]e^{-j2\pi kn/4}$. Result: $X=[4, 2+0j, 0, 2-0j]$; magnitudes $[4, 2, 0, 2]$; dominant = DC ($k=0$, energy=4). Part B: Frequency resolution $\Delta f = 8000/256 = 31.25$ Hz/bin. Bin $k=10$ → $f = 10 \times 31.25 = 312.5$ Hz.</div>
         </div>
       </div>
     </div>
@@ -1938,6 +1967,10 @@
 <li class="numbered-item"><strong>2.</strong> <strong>Accurate Vocal Tract Formant Tracking:</strong> The all-pole synthesis filter $H(z) = \frac{G}{1 - \sum a_k z^{-k}}$ matches the acoustic resonances of the human throat and mouth with near perfection.</li>
 <li class="numbered-item"><strong>3.</strong> <strong>Low Computational Overhead:</strong> Levinson-Durbin recursion runs easily on cheap, battery-powered microcontrollers in real time.</li>
 <li class="numbered-item"><strong>4.</strong> <strong>Limitation:</strong> LPC assumes speech is purely all-pole. It struggles to model nasal sounds (/m/, /n/) and unvoiced fricatives (/s/) that have acoustic zeros (spectral valleys).</li>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">LPC predicts $\hat{x}[n] = \sum_{k=1}^{p} a_k x[n-k]$; residual error $e[n] = x[n] - \hat{x}[n]$. Minimise $\sum e^2[n]$ → Yule-Walker equations: $Ra = r$ (Toeplitz system). Solve with Levinson-Durbin recursion in $O(p^2)$ — far cheaper than direct inversion. LPC-10: $p=10$ coefficients compress speech to 2.4 kbps with ~20× compression ratio.</div>
         </div>
       </div>
     </div>
@@ -2191,6 +2224,10 @@
 <tr><td><strong>6. Dynamics</strong></td><td>Delta ($\Delta$) and Delta-Delta ($\Delta^2$)</td><td>Adds speed and acceleration of vocal articulators</td></tr>
 </tbody></table></div>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">6-stage speech feature pipeline: (1) Pre-emphasis: $y[n]=x[n]-0.97x[n-1]$ — boost high-freq; (2) Framing: 20–30 ms frames at 10 ms shift; (3) Windowing: Hamming window $w[n]=0.54-0.46\cos(2\pi n/N)$; (4) FFT → magnitude spectrum; (5) Mel filter bank + log → MFCC via DCT; (6) Delta + Delta-delta (velocity + acceleration) appended.</div>
+        </div>
       </div>
     </div>
 
@@ -2415,6 +2452,10 @@
 <tr><td><strong>Combined Total</strong></td><td>\multicolumn{2}{c</td><td>}{\textbf{13 Static + 13 Velocity + 13 Acceleration = 39-D Acoustic Vector}}</td></tr>
 </tbody></table></div>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Static features: 13 MFCCs capturing vocal tract shape at one frame (snapshot). Dynamic features: $\Delta$(delta) = frame-to-frame MFCC velocity; $\Delta^2$ = acceleration of motion. $\Delta c_i = \frac{\sum_{k=1}^{K} k(c_{i+k}-c_{i-k})}{2\sum k^2}$ over context window. Concatenating [static|Δ|ΔΔ] gives 39-D vector — dramatically improves HMM/ASR accuracy.</div>
+        </div>
       </div>
     </div>
 
@@ -2616,6 +2657,10 @@
 <div class="spacer"></div>
 <h4 class="sub-heading">Final Answer:</h4>
 <p class="para">$$\mathbf{Total\ Number\ of\ Frames = 7}$$</p>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Frame shift $S = \text{Frame size} - \text{Overlap} = 400 - 200 = 200$ samples. Total frames $= \lfloor (N - L)/S \rfloor + 1 = \lfloor (1600-400)/200 \rfloor + 1 = 6 + 1 = \mathbf{7}$ frames. Each frame is 400 samples long, shifted by 200, covering the full 1600-sample signal.</div>
         </div>
       </div>
     </div>
@@ -2864,6 +2909,10 @@
 <tr><td><strong>Primary Use Today</strong></td><td>Low-bitrate vocoders & speech synthesis</td><td><strong>Modern Speech Recognition (ASR), Alexa, Siri</strong></td></tr>
 </tbody></table></div>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">LPCC: derived from LPC coefficients via cepstral recursion — models vocal tract as all-pole IIR; sensitive to channel noise and microphone mismatch. MFCC: Mel filter bank + DCT — perceptually motivated, decorrelated coefficients; robust to additive noise and spectral tilt. MFCC dominates ASR (GMM-HMM, DNN); LPCC used in low-bit-rate vocoders.</div>
+        </div>
       </div>
     </div>
 
@@ -3074,6 +3123,10 @@
 <tr><td><strong>Complexity</strong></td><td>$O(D)$ — Fastest</td><td>$O(D^2)$ to $O(D^3)$</td><td>$O(I \cdot J \cdot D)$ — Computationally heavy</td></tr>
 <tr><td><strong>Best Speech Use</strong></td><td>VQ codebook clustering</td><td>GMM acoustic modeling</td><td>Isolated voice commands & word matching</td></tr>
 </tbody></table></div>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Euclidean: $d = \sqrt{\sum (x_i - y_i)^2}$ — fast, assumes equal feature variance. Mahalanobis: $d = \sqrt{(\mathbf{x}-\mathbf{y})^T \Sigma^{-1}(\mathbf{x}-\mathbf{y})}$ — accounts for feature correlations. DTW: warps the time axis by finding minimum-cost alignment path through the matrix — handles speed variation. DTW constraint: Sakoe-Chiba band limits warp path width for speed and monotonicity.</div>
         </div>
       </div>
     </div>
@@ -3293,6 +3346,10 @@
 <h5 class="sub-sub-heading">5. Adaptive Codebooks</h5>
 <p class="para">Dynamically update codewords on the fly using running averages as a user speaks, adapting to microphone drift.</p>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">VQ clusters the feature space into $K$ codewords (codebook) via k-means or LBG algorithm. LBG: initialise 1 centroid → split → iterate until $K$ codewords stabilise; distortion $D = \frac{1}{N}\sum \min_k ||x_i - c_k||^2$. Metrics: Average distortion (lower = better), Codebook utilisation, Hit Rate. Speech recognition maps each frame to its nearest codeword index (discrete observation).</div>
+        </div>
       </div>
     </div>
 
@@ -3498,6 +3555,10 @@
 <h5 class="sub-sub-heading">Step 4: Check Convergence</h5>
 <p class="para">Calculate total log-likelihood $\mathcal{L} = \sum_t \log p(\mathbf{x}_t | \lambda)$. If the improvement $\Delta \mathcal{L} < 10^{-4}$, stop! Otherwise, loop back to the E-Step.</p>
 <p class="para"><em>Dempster, Laird, and Rubin proved mathematically that every EM iteration is guaranteed to increase or maintain likelihood without oscillating!</em></p>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">GMM: $p(x) = \sum_{m=1}^{M} w_m \mathcal{N}(x;\mu_m, \Sigma_m)$, $\sum w_m=1$. EM algorithm: E-step: compute posterior $\gamma_{im} = w_m p_m(x_i) / \sum_k w_k p_k(x_i)$; M-step: update $w_m$, $\mu_m$, $\Sigma_m$ using weighted statistics. Repeat until log-likelihood converges. GMM-HMM models each HMM emission as a GMM — gold standard pre-DNN ASR.</div>
         </div>
       </div>
     </div>
@@ -3729,6 +3790,10 @@
 <li class="numbered-item"><strong>2.</strong> <strong>Non-Linear Viterbi Alignment:</strong> The Viterbi trellis dynamically warps the time axis to find the highest-probability path regardless of speaking speed.</li>
 <li class="numbered-item"><strong>3.</strong> <strong>Triphone Context Modeling:</strong> To handle coarticulation, we build context-dependent triphones ($l-eh+f$ means vowel /eh/ with /l/ on the left and /f/ on the right).</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">HMM: 5-tuple $(S, A, B, \pi, O)$ — States, Transition matrix $A$, Emission $B$, Initial $\pi$, Observations $O$. Three problems: (1) Evaluation → Forward algorithm $P(O|\lambda)$; (2) Decoding → Viterbi algorithm (most likely state path); (3) Learning → Baum-Welch (EM) re-estimation of $A$, $B$, $\pi$. Speech: each phoneme modelled by a 3–5 state left-to-right HMM.</div>
+        </div>
       </div>
     </div>
 
@@ -3933,6 +3998,10 @@
 <li class="bullet-item"><strong>Medical Imaging:</strong> 3D CT/MRI scans allow surgeons to rotate and view internal organs before surgery.</li>
 <li class="bullet-item"><strong>Satellite Remote Sensing:</strong> Multi-spectral satellite cameras ($f(x, y, \lambda)$) monitor crop drought and forest fires from orbit.</li>
 <li class="bullet-item"><strong>Video Streaming:</strong> H.264/HEVC codecs compress video from 1.5 Gbps down to 5 Mbps for seamless mobile playback.</li>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">2D signal $f(x,y)$ sampled at $(x_s, y_s)$ satisfies 2D Nyquist: $f_{sx} \ge 2 f_{x,max}$, $f_{sy} \ge 2 f_{y,max}$. 2D DFT: $F(u,v) = \sum_x \sum_y f(x,y)e^{-j2\pi(ux/M + vy/N)}$. Separable: 2D DFT = row-wise 1D FFT then column-wise 1D FFT → $O(MN\log MN)$. Applications: image filtering, compression, watermarking.</div>
         </div>
       </div>
     </div>
@@ -4151,6 +4220,10 @@
 <li class="bullet-item"><strong>Low-Pass Filtering (Image Smoothing / Denoising):</strong> Multiply $F[u, v]$ by a mask that keeps only central low frequencies and sets outer high frequencies to zero. The reconstructed image is smooth and noise-free.</li>
 <li class="bullet-item"><strong>High-Pass Filtering (Edge Detection):</strong> Zero out the central DC component and pass only outer high frequencies. The reconstructed image shows only sharp object outlines and borders!</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">2D DCT: $F(u,v) = \frac{2}{\sqrt{MN}} C(u)C(v) \sum_x \sum_y f(x,y) \cos\frac{(2x+1)u\pi}{2M}\cos\frac{(2y+1)v\pi}{2N}$. Energy compaction: &gt;95% energy in top-left low-frequency coefficients. JPEG: 8×8 DCT → quantise → zigzag scan → Huffman encode. MPEG video: DCT applied to inter-frame residuals (after motion compensation).</div>
+        </div>
       </div>
     </div>
 
@@ -4351,6 +4424,10 @@
 <li class="numbered-item"><strong>1.</strong> <strong>Camera Defocus & Deblurring:</strong> When a photo is out of focus, the optical lens convolves the scene with a pillbox or Gaussian PSF $h[m, n]$. Image restoration uses Wiener deconvolution to recover sharp detail.</li>
 <li class="numbered-item"><strong>2.</strong> <strong>Medical CT Reconstruction (Radon Transform):</strong> CT scanners project X-ray line integrals through human bodies, reconstructed using 2D filtered backprojection LSI models.</li>
 <li class="numbered-item"><strong>3.</strong> <strong>Motion Compensation in Video:</strong> Video codecs filter previous frames along motion trajectories to predict future frames with near-zero error.</li>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">2D convolution: $y[m,n] = x[m,n] ** h[m,n] = \sum_k \sum_l x[k,l]\,h[m-k,n-l]$. Separable filter: $h[m,n]=h_1[m]\cdot h_2[n]$ → 2D conv = two 1D convolutions → $O(N^2 K)$ not $O(N^2 K^2)$. Applications: Gaussian blur (separable), Sobel edge detection, image sharpening. Frequency domain: 2D DFT multiplication $Y(u,v)=X(u,v)\cdot H(u,v)$.</div>
         </div>
       </div>
     </div>
@@ -4572,6 +4649,10 @@
 <li class="numbered-item"><strong>2.</strong> <strong>Eliminates Compression Artifacts:</strong> Adaptive in-loop deblocking filters prevent blocky pixelation during fast action scenes.</li>
 <li class="numbered-item"><strong>3.</strong> <strong>95% Bandwidth Savings:</strong> Compresses 1.5 Gbps raw video down to 5–10 Mbps with zero noticeable loss in visual clarity!</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">2D DFT of separable image $f(x,y)=f_1(x)\cdot f_2(y)$: $F(u,v) = F_1(u) \cdot F_2(v)$ — product of two 1D DFTs. Properties exploited: Separability, Periodicity ($F(u,v)=F(u+M,v+N)$), Conjugate symmetry for real signals, Convolution theorem, Rotation. Circular shift in frequency ↔ phase ramp in spatial domain.</div>
+        </div>
       </div>
     </div>
 
@@ -4765,6 +4846,10 @@
 <div class="spacer"></div>
 <h4 class="sub-heading">5. What Happens If Sampling Fails? (Moiré Patterns)</h4>
 <p class="para">If $f_{sx} < 2 f_x$, high-frequency textures fold into the low frequencies, producing <strong>Moiré patterns</strong> (wavy rainbow bands on striped shirts or brick walls) and jagged diagonal edges. Cameras place an <strong>optical low-pass filter (OLPF)</strong> in front of the sensor to blur out frequencies above Nyquist before sampling.</p>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Optical flow constraint: $I_x u + I_y v + I_t = 0$ — one equation, two unknowns (aperture problem). Lucas-Kanade assumes constant flow in a local $5\times5$ window → overdetermined $Ax=b$ → solve via least squares. Horn-Schunck adds global smoothness regularisation $\lambda\iint(u_x^2+u_y^2+v_x^2+v_y^2)\,dx\,dy$. LK = sparse (feature points); HS = dense (whole frame).</div>
         </div>
       </div>
     </div>
@@ -4978,6 +5063,10 @@
 <li class="numbered-item"><strong>2.</strong> <strong>Energy Compaction:</strong> DCT packs almost all energy into low frequencies (basis of JPEG/MPEG).</li>
 <li class="numbered-item"><strong>3.</strong> <strong>Selective Filtering:</strong> Separates high-frequency noise spikes from structural image edges.</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Harris corner detector: structure tensor $M = \sum w \begin{bmatrix}I_x^2 &amp; I_xI_y\\ I_xI_y &amp; I_y^2\end{bmatrix}$. Corner response $R = \det(M) - k\cdot\text{tr}(M)^2$; $R&gt;0$ = corner, $R&lt;0$ = edge, $|R|\approx0$ = flat. Shi-Tomasi: $R = \min(\lambda_1, \lambda_2)$ — simpler threshold. SIFT: scale-space DoG, orientation-normalised 128-D descriptor — rotation and scale invariant.</div>
+        </div>
       </div>
     </div>
 
@@ -5189,6 +5278,10 @@
 <tr><td><strong>CSF Quantization Matrix</strong></td><td>Divides high DCT frequencies coarsely</td><td>Zeros out invisible details; drives $10:1$ to $20:1$ compression</td></tr>
 <tr><td><strong>Temporal JND Masking</strong></td><td>Permits higher quantization noise during motion</td><td>Stabilizes bitrate during fast scene transitions</td></tr>
 </tbody></table></div>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Image pyramid: Gaussian pyramid = repeated low-pass filter + down-sample (each level halved). Laplacian pyramid = Gaussian level $i$ − upsample(Gaussian $i+1$) → band-pass residuals. Optical flow pyramid (Bouguet): compute LK at coarsest level, propagate motion estimate upward. Handles large displacements that violate small-motion assumption of standard LK.</div>
         </div>
       </div>
     </div>
@@ -5442,6 +5535,10 @@
 <li class="bullet-item"><strong>GOP Structure:</strong> Enables instant seeking and scrub-bar playback while maximizing compression via B/P frames.</li>
 <li class="bullet-item"><strong>Motion Compensation:</strong> Slashes uncompressed 1.5 Gbps video down to 5–10 Mbps in modern H.264/AVC and H.265/HEVC streaming platforms.</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Kalman filter: 2-step recursive estimator for $\mathbf{x}_k = A\mathbf{x}_{k-1} + B\mathbf{u}_k + \mathbf{w}$ (process noise $Q$). Predict: $\hat{x}^-_k = A\hat{x}_{k-1}$, $P^-_k = AP_{k-1}A^T + Q$. Update: $K = P^-_k H^T(HP^-_k H^T + R)^{-1}$; $\hat{x}_k = \hat{x}^-_k + K(z_k - H\hat{x}^-_k)$. Kalman gain $K$ blends prediction trust vs. measurement trust.</div>
+        </div>
       </div>
     </div>
 
@@ -5642,6 +5739,10 @@
 <li class="numbered-item"><strong>4.</strong> <strong>Motion Computation:</strong> Applies block matching or optical flow to calculate spatial displacement vectors $(u, v)$.</li>
 <li class="numbered-item"><strong>5.</strong> <strong>Output Motion Vectors:</strong> Feeds motion trajectories to video encoders (H.264) or autonomous driving systems.</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Background subtraction: $D(x,y,t)=|I(x,y,t)-B(x,y)|&gt;\theta$ marks foreground. MOG2 (Mixture of Gaussians): each pixel modelled by $K=3$–5 Gaussians updated online. Background update: $\mu_{new} = (1-\alpha)\mu_{old} + \alpha x_t$; $\sigma^2$ similarly. Handles gradual illumination changes, waving trees, and slow-moving objects via adaptive thresholding.</div>
+        </div>
       </div>
     </div>
 
@@ -5840,6 +5941,10 @@
 <li class="numbered-item"><strong>4.</strong> <strong>Limited Occlusion:</strong></li>
 <li class="bullet-item"><em>Assumption:</em> The target object remains visible across frames and is not hidden.</li>
 <li class="bullet-item"><em>Real-world Failure:</em> Fails when a car drives behind a tree, enters a tunnel, or passes another vehicle.</li>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Frame differencing: $D = |I_t - I_{t-1}| &gt; \theta$ — detects regions that changed between consecutive frames. Pros: extremely fast ($O(N)$), simple. Cons: double-contouring (hollow object interiors), misses slow-moving or stopped objects. Chain: Frame diff → Threshold → Morphological open/close → Contour extraction → Bounding box.</div>
         </div>
       </div>
     </div>
@@ -6054,6 +6159,10 @@
 <li class="bullet-item"><strong>Angle of trajectory:</strong></li>
 <p class="para">$$\theta = \arctan\left(\frac{v}{u}\right) = \arctan\left(\frac{5}{3}\right) \approx \mathbf{59.04^\circ}\text{ below the positive x-axis}$$</p>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Full Search block matching: for each $M\times M$ macroblock in frame $t$, search all $(2p+1)^2$ candidate positions in frame $t-1$. Match criterion: $\text{SAD} = \sum |C_A(i,j) - C_B(i+m, j+n)|$; find $\min$ SAD. Full search: $p=7$ → $225$ evaluations (accurate but slow). Three-Step Search: 25 evaluations — coarse-to-fine grid halving; 9× faster, 98% accuracy.</div>
+        </div>
       </div>
     </div>
 
@@ -6251,6 +6360,10 @@
 <tr><td><strong>Flat / Untextured Regions</strong></td><td>Gradients $I_x = 0, I_y = 0$, making $\mathbf{A}^T \mathbf{A}$ singular and dividing by zero!</td><td>Track only <strong>Harris corner features</strong> where both eigenvalues $\lambda_1, \lambda_2$ are large.</td></tr>
 </tbody></table></div>
 <p class="para">| <strong>Large Displacements</strong> | Taylor approximation fails if motion is $>1$ pixel. | Build <strong>Hierarchical Coarse-to-Fine Gaussian Pyramids</strong> to track large moves.</p>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Fundamental matrix $F$: $\mathbf{x}&#x27;^T F \mathbf{x} = 0$ — encodes epipolar constraint for uncalibrated cameras. Essential matrix $E$: $\mathbf{x}&#x27;^T E \mathbf{x} = 0$ — same but for calibrated cameras; $E = K&#x27;^T F K$. 8-point algorithm: stack 8 correspondences → solve $Af=0$ via SVD → enforce rank-2 constraint. RANSAC wrapper rejects outlier matches before 8-point solve.</div>
         </div>
       </div>
     </div>
@@ -6457,6 +6570,10 @@
 <li class="bullet-item"><strong>Block Size:</strong> Smaller blocks ($4 \times 4$) capture detailed motion but create millions of motion vectors that eat up bitrate. Larger blocks ($16 \times 16$) save bitrate but fail around moving object boundaries.</li>
 <li class="bullet-item"><strong>Sub-Pixel Estimation (Half-Pel & Quarter-Pel):</strong> Real objects don't move in integer pixel steps! Modern codecs interpolate reference frames with digital filters to test half-pixel and quarter-pixel offsets, boosting PSNR by $2\text{ to }3\text{ dB}$ at the cost of additional interpolation math.</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Block matching: partition frame into $16\times16$ macroblocks; find best-matching block in search area. Full Search (FS): checks all $(2p+1)^2$ positions — exhaustive but $O(p^2 MN)$. Three-Step Search (TSS): step 1 large grid, halve step, repeat 3 times → 25 evaluations. Diamond Search (DS): large/small diamond patterns; best for MPEG-4 / H.264 encoding.</div>
+        </div>
       </div>
     </div>
 
@@ -6661,6 +6778,10 @@
 <tr><td><strong>Levenberg-Marquardt</strong></td><td><strong>Fast & Stable</strong></td><td>Medium-to-High</td><td><strong>Extremely Robust</strong> (Guaranteed descent)</td></tr>
 <tr><td><strong>Newton's Method</strong></td><td>Very Fast</td><td>Very High (Exact $\nabla^2 E$)</td><td>Sensitive to non-positive definite Hessian</td></tr>
 </tbody></table></div>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Motion estimation = minimise $E(\mathbf{u}) = \sum_i (I(x_i + u, y_i + v, t+1) - I(x_i, y_i, t))^2$. Gradient Descent: $\mathbf{u}_{k+1} = \mathbf{u}_k - \alpha \nabla E$ — slow, safe. Gauss-Newton: $\mathbf{u} \mathrel{+}= -(J^TJ)^{-1}J^T\mathbf{r}$ — quadratic convergence. Levenberg-Marquardt: $(J^TJ + \lambda I)\delta = J^T\mathbf{r}$ — switches between GD and GN adaptively.</div>
         </div>
       </div>
     </div>
@@ -6885,6 +7006,10 @@
 <tr><td><strong>Rate-Distortion Optimization (RDO)</strong></td><td>Balances video quality against file size</td><td>Minimizes Lagrangian cost $J = D + \lambda R$</td></tr>
 </tbody></table></div>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Transform-domain motion estimation: compute DFT/DCT of blocks, match in frequency space. Phase correlation: $\hat{d} = \arg\max \mathcal{F}^{-1}\left[\frac{F_1 \cdot F_2^*}{|F_1 \cdot F_2^*|}\right]$ → Dirac delta at displacement. Advantages: robust to illumination, additive noise suppressed, handles rotational motion. DCT-domain matching avoids full IDCT in MPEG encoders — 30–40% faster than pixel domain.</div>
+        </div>
       </div>
     </div>
 
@@ -7100,6 +7225,10 @@
 <li class="bullet-item"><strong>3D Obstacle Mapping:</strong> Triangulates distance to leading vehicles, curbs, and road debris.</li>
 <li class="bullet-item"><strong>Safety Tracking:</strong> Kalman filtering predicts whether a pedestrian will cross into the car's braking path in the next 2.0 seconds, enabling collision-free navigation.</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">SfM pipeline (8 stages): Feature detection (SIFT) → Matching → RANSAC outlier removal → Essential matrix $E$ → Relative pose $(R,t)$ → Triangulation → Bundle Adjustment (BA) → Dense reconstruction. Bundle Adjustment: minimise reprojection error $\sum_i ||x_i - \pi(P_i X_i)||^2$ jointly over all cameras and points. Kalman filter tracks camera state; RANSAC rejects mismatches.</div>
+        </div>
       </div>
     </div>
 
@@ -7303,6 +7432,10 @@
 <li class="bullet-item"><strong>Boundary-based</strong> is ideal for <strong>rigid object contour tracking</strong>: fast and lightweight for detecting road signs and car silhouettes.</li>
 <li class="bullet-item"><strong>The Modern Hybrid Winner:</strong> Real-time surveillance cameras fuse both! They use Canny edge detectors to outline objects, and use those edges as impenetrable walls to stop region growing from leaking into the background.</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Region-based segmentation: Thresholding, Region Growing, Watershed — groups pixels by intensity similarity. Boundary-based: Sobel/Canny edge detection — traces intensity gradients. Canny: Gaussian smooth → gradient magnitude → NMS → double threshold (high $T_H$, low $T_L$) → hysteresis linking. Hybrid: Canny edges constrain region growing to prevent boundary leakage.</div>
+        </div>
       </div>
     </div>
 
@@ -7489,6 +7622,10 @@
 <li class="bullet-item"><em>Frame 2:</em> A car drives into the stall.</li>
 <li class="bullet-item"><em>Frame 3:</em> Background subtraction flags a huge difference ($D > T$). The system logs the car's arrival and marks the spot as occupied.</li>
 <li class="numbered-item"><strong>3.</strong> <strong>Smart Video Storage:</strong> CCTV cameras record at low 1 fps when nothing is moving, and instantly jump to full 60 fps recording when change detection triggers.</li>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Change detection: $D(x,y,t) = |I(x,y,t) - I(x,y,t-1)| &gt; \theta$ (frame diff) or $|I(x,y,t) - B(x,y)| &gt; \theta$ (BG sub). Applications: intrusion detection, traffic monitoring, crowd analysis. Challenges: illumination changes, shadows (use color ratio models), camera jitter (EIS correction). Statistical BG model (GMM/MOG) adapts slowly to lighting drift while flagging fast-moving objects.</div>
         </div>
       </div>
     </div>
@@ -7706,6 +7843,10 @@
 <tr><td><strong>Region C</strong></td><td>$200$</td><td>$200 > 100$</td><td><strong>Motion Detected</strong></td><td><strong>1st Place (Dominant Winner!)</strong></td></tr>
 </tbody></table></div>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Given: Region A SAD=120, B=45, C=200; threshold $\theta=100$. Motion if SAD $&gt;\theta$: A(120&gt;100)=✓ motion, B(45&lt;100)=✗ static, C(200&gt;100)=✓ motion. Most dominant: Region C with SAD=200 (maximum). Without motion: Region B (SAD=45). Answer: Motion in A and C; static in B; dominant = C.</div>
+        </div>
       </div>
     </div>
 
@@ -7907,6 +8048,10 @@
 <p class="para">$$v = \sqrt{5^2 + 5^2} = \sqrt{50} \approx \mathbf{7.07\text{ pixels/frame}}$$</p>
 <li class="bullet-item"><strong>Heading Direction:</strong></li>
 <p class="para">$$\theta = \arctan\left(\frac{5}{5}\right) = \arctan(1) = \mathbf{45^\circ}\text{ diagonally in positive X and Y}$$</p>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Optical flow tracking: LK sparse features tracked frame-to-frame → trajectory $T = \{P_1, P_2, \ldots, P_k\}$. Kalman tracking: predict next position $\hat{x}^- = A\hat{x}$; update on detection measurement $z$. Trajectory: ordered centroid sequence stored over time; smoothed by Kalman to reduce jitter. SORT algorithm: Hungarian matching of detection bboxes to Kalman tracks each frame.</div>
         </div>
       </div>
     </div>
@@ -8121,6 +8266,10 @@
 <li class="bullet-item"><strong>Sum of Absolute Differences (SAD):</strong> $\text{SAD} = \sum |\alpha - \alpha^*|$ (Lower is better).</li>
 <li class="bullet-item"><strong>Mean Squared Error (MSE):</strong> $\text{MSE} = \frac{1}{N} \sum (\alpha - \alpha^*)^2$.</li>
 <li class="bullet-item"><strong>Gradient Error:</strong> Measures differences in edge sharpness (keeps hair crisp).</li>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Compositing equation: $I = \alpha F + (1-\alpha)B$, $\alpha \in [0,1]$ per pixel. Closed-form matting: solve for $\alpha$ using Matting Laplacian from local colour statistics. Video matting: enforce temporal coherence via optical flow — $\alpha_t$ consistent with $\alpha_{t-1}$. Deep learning matting (IndexNet, MODNet): predict $\alpha$ matte end-to-end from single image.</div>
         </div>
       </div>
     </div>
@@ -8351,6 +8500,10 @@
 <li class="bullet-item"><strong>Trust Allocation:</strong> Because $K = 0.6$, the filter places <strong>$60\%$ trust in the new sensor measurement $z$</strong> and <strong>$40\%$ trust in its internal physics prediction $\hat{x}^-$</strong>.</li>
 <li class="bullet-item"><strong>Motion Correction:</strong> The filter corrects the initial prediction of $50$ by moving $6$ units towards the measured $60$, striking a perfect balance between model inertia and sensor responsiveness!</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Part A: Particle weights $[0.2, 0.3, 0.1, 0.4]$; sum $= 1.0$ → already normalised. Most likely particle: P4 with weight 0.4 → best hypothesis for object location. Part B: Updated position $\hat{x} = \hat{x}^- + K(z - H\hat{x}^-) = 50 + 0.6(60-50) = \mathbf{56}$. Gain $K=0.6$: 60% weight to measurement (60), 40% to prediction (50).</div>
+        </div>
       </div>
     </div>
 
@@ -8573,6 +8726,10 @@
 <li class="bullet-item">Step 4: Optical flow computes speed in km/h.</li>
 <li class="bullet-item">Step 5: Kalman filtering predicts future position to detect lane weavers.</li>
 <li class="bullet-item">Result: Automated red-light violation tickets and traffic congestion warnings in real time!</li>
+        </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">9-stage video tracking framework: Frame input → Change detection → BG subtraction → Morphological cleanup → Contour extraction → Optical flow (LK) → Kalman predict/update → Hungarian data association → Trajectory update. Optical flow provides sub-pixel velocity vectors to predict object location during occlusion frames. Kalman prevents ID swaps when tracks cross by maintaining separate state estimates.</div>
         </div>
       </div>
     </div>
@@ -8801,6 +8958,10 @@
 <li class="numbered-item"><strong>2.</strong> <strong>Morphological Filtering:</strong> Opening removes isolated noise speckles ($FP$), and closing seals interior holes ($FN$), directly boosting IoU.</li>
 <li class="numbered-item"><strong>3.</strong> <strong>GPU Acceleration:</strong> Delivers $>30\text{ fps}$ real-time processing speed required for live autonomous vehicles.</li>
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">Confusion matrix: TP (correct foreground), FP (false alarm), FN (miss), TN (correct background). $\text{Precision} = TP/(TP+FP)$; $\text{Recall} = TP/(TP+FN)$; $F1 = 2 \cdot P \cdot R/(P+R)$; $\text{IoU} = TP/(TP+FP+FN)$. Ideal tracker: IoU → 1, F1 → 1. Example: IoU=0.75 means predicted and ground-truth bboxes overlap 75%.</div>
+        </div>
       </div>
     </div>
 
@@ -8835,7 +8996,7 @@
 <button id="backToTopBtn" class="fab-top" title="Back to Top" aria-label="Back to Top">↑</button>
 
 <!-- SCRIPTS: Clean separation matching Deep Learning StudyMode -->
-<script src="audio.js?v=20261127_11"></script>
-<script src="app.js?v=20261127_11"></script>
+<script src="audio.js?v=20261128_01"></script>
+<script src="app.js?v=20261128_01"></script>
 </body>
 </html>

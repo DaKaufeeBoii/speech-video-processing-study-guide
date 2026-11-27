@@ -528,4 +528,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Run initial filter count
   applyFilters();
+
+  // --- 10. COMPACT ANSWER TOGGLE ---
+  const compactToggle = document.getElementById('compactToggle');
+  let compactMode = false;
+
+  if (compactToggle) {
+    compactToggle.addEventListener('click', () => {
+      compactMode = !compactMode;
+      document.body.classList.toggle('compact-view', compactMode);
+      compactToggle.textContent = compactMode ? '📖 Full Answers' : '📋 Compact Answers';
+      compactToggle.classList.toggle('active-mode', compactMode);
+      // Open all cards so the compact panel is visible
+      if (compactMode) {
+        document.querySelectorAll('.card-body').forEach(b => b.classList.add('open'));
+        document.querySelectorAll('.card-header').forEach(h => h.classList.add('open'));
+      }
+    });
+  }
 });

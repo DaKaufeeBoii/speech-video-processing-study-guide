@@ -10,6 +10,7 @@ from eli5_data import ELI5_DATA
 from keypoints_data import KEYPOINTS_DATA
 from diagrams_data import DIAGRAMS_SVG as SVG_DIAGRAMS
 from tier_data import QUESTION_TIER_DATA
+from short_answers_data import SHORT_ANSWERS
 
 from data_unit1 import UNIT1_QUESTIONS
 from data_unit2 import UNIT2_QUESTIONS
@@ -26,6 +27,7 @@ for q in ALL_QUESTIONS:
     q['key_points'] = KEYPOINTS_DATA.get(qid, [])
     q['svg_diagram'] = SVG_DIAGRAMS.get(qid, '')
     q['draw_guide'] = ELI5_DATA.get(qid, {}).get('draw', '')
+    q['short_answer'] = SHORT_ANSWERS.get(qid, '')
     
     t_info = QUESTION_TIER_DATA.get(qid, {})
     q['rank'] = t_info.get('rank', 99)
@@ -140,6 +142,17 @@ def generate_markdown_guide():
         return (u_num, mid_num, item.get('qno', 0))
 
     for q in sorted(ALL_QUESTIONS, key=sort_key_md):
+        # Generate a concise short version (first paragraph or 200 chars) for compact view
+        if isinstance(q.get('content'), str):
+            # Strip HTML tags to get plain text snippet
+            import re
+            plain = re.sub(r'<[^>]+>', '', q['content'])
+            short = plain.strip().split('\n')[0]
+            if len(short) > 200:
+                short = short[:197] + '...'
+            q['short'] = short
+        else:
+            q['short'] = ''
         if q["unit"] != current_unit:
             current_unit = q["unit"]
             md_parts.append(f"\n# {current_unit.upper()} ({q['co']})\n")
@@ -187,7 +200,7 @@ def generate_html_handbook():
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Speech &amp; Video Processing • Master Handbook (KGR23 Regulation)</title>
-<link rel="stylesheet" href="style.css?v=20261127_11">
+<link rel="stylesheet" href="style.css?v=20261128_01">
 <!-- KaTeX Native LaTeX Rendering -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
@@ -248,6 +261,7 @@ def generate_html_handbook():
         <button class="btn-icon" id="themeToggle" title="Toggle Theme">🌓 Theme</button>
         <button class="btn-icon" id="expandToggle" title="Expand / Collapse All Cards">📖 Expand All</button>
         <button class="btn-icon" id="modeToggle" title="Quick Key Points Mode">🎯 Key Points Mode</button>
+        <button class="btn-icon" id="compactToggle" title="Toggle Compact Answer View">📋 Compact Answers</button>
         <button class="btn-icon" onclick="window.print()" title="Print / PDF">🖨️ PDF</button>
       </div>
     </div>
@@ -509,6 +523,10 @@ def generate_html_handbook():
         <div class="content-section">
           {md_to_html_simple(q['content'])}
         </div>
+        <div class="compact-answer-panel">
+          <div class="compact-answer-label">📋 Compact Answer (Exam-Ready)</div>
+          <div class="compact-answer-body">{html.escape(q.get('short_answer', ''))}</div>
+        </div>
       </div>
     </div>
 """)
@@ -545,8 +563,8 @@ def generate_html_handbook():
 <button id="backToTopBtn" class="fab-top" title="Back to Top" aria-label="Back to Top">↑</button>
 
 <!-- SCRIPTS: Clean separation matching Deep Learning StudyMode -->
-<script src="audio.js?v=20261127_11"></script>
-<script src="app.js?v=20261127_11"></script>
+<script src="audio.js?v=20261128_01"></script>
+<script src="app.js?v=20261128_01"></script>
 </body>
 </html>
 """)
