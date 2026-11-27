@@ -86,14 +86,17 @@ class StudyAudioManager {
 
     // YouTube Live Streams catalog for the Visual Lounge (All verified working embeds)
     this.youtubeStreams = [
-      { id: '5qap5aO4i9A', title: 'Lofi Girl — 24/7 Study Beats', icon: '🎧' },
-      { id: 'nsoEPmdC-t0', title: 'Zelda BOTW — Lofi of the Wild', icon: '🗡️' },
+      { id: 'akD85MNgOFU', title: 'Zelda BOTW — Full Original Soundtrack (OST)', icon: '🗡️' },
+      { id: 'E0IvwhwQEo4', title: 'Zelda BOTW — Relaxing Field & Village Ambient OST', icon: '🍃' },
+      { id: '4ykrl_VfJ_o', title: 'Zelda BOTW — Relaxing OST + Thunderstorm Ambience', icon: '🌧️' },
+      { id: 'X7qeyEHuflk', title: 'Zelda BOTW — Complete 6-Hour Extended OST', icon: '🏰' },
+      { id: 'nsoEPmdC-t0', title: 'Zelda BOTW — Lofi of the Wild', icon: '✨' },
       { id: 'rJlY1uKL87k', title: 'Zelda & Chill 2 — GameChops', icon: '🛡️' },
       { id: '-GAr6XkB35k', title: 'Zelda & Nintendo Piano — 24/7 Live', icon: '🌙' },
-      { id: 'h3AMUun9tHk', title: 'Video Game Study Lounge — 24/7 Live', icon: '📚' },
-      { id: 's_LfS8OaChE', title: 'Nintendo Beats — Lofi Cafe', icon: '☕' },
       { id: '2DVpys50LVE', title: 'Nintendo — Poké & Chill', icon: '🍄' },
       { id: 'Ac5rVi8Gg_k', title: 'Super Nintendo Lofi World — Mario & DK', icon: '🎮' },
+      { id: 'h3AMUun9tHk', title: 'Video Game Study Lounge — 24/7 Live', icon: '📚' },
+      { id: '5qap5aO4i9A', title: 'Lofi Girl — 24/7 Study Beats', icon: '🎧' },
       { id: '4xDzrJKXOOY', title: 'Synthwave Boy — 24/7 Live', icon: '🌆' }
     ];
     
