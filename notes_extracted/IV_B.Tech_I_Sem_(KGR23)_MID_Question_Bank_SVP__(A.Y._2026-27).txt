@@ -1,0 +1,329 @@
+
+
+
+
+MID Question Bank
+
+Year/Sem: B. Tech. IV Year I Semester      Program: B. Tech                         Regulation: KGR23
+Name of the Course: Speech and Video Processing                                     Course Code: KG23ACM408 
+Branch: AI & ML                            Academic Year: 2026-27
+Name & Details of the Course Coordinator: Dr.Sandeep Kumar M 
+
+K1-Remembering; K2-Understanding; K3-Applying; K4-Analyzing; K5-Evaluating; K6-Creating 
+
+Mid-I
+Q.
+No.
+Question
+Course  
+Outcome
+Bloom’s Taxonomy Level
+Marks
+
+1
+Define the speech production mechanism and identify the roles of excitation source and vocal tract system in speech generation. |
+CO1
+K1
+05 Marks
+Unit-1
+2
+Explain the discrete-time representation of speech signals and interpret the effects of sampling on signal reconstruction
+CO1
+K2
+05 Marks
+Unit-1
+3
+A system is described by:
+Find the zeros by solving the numerator. 
+Find the poles by solving the denominator. 
+Comment on stability
+
+Note: Question based on  Pole–Zero Modeling
+CO1
+K3
+05 Marks
+Unit-1
+4
+Explain the properties of the Fast Fourier Transform (FFT) relevant to speech signal analysis and recognition systems.
+CO1
+K2
+05 Marks
+Unit-1
+5
+Analyze convolution operations in speech processing and examine their role in system response and filtering mechanisms.
+CO1
+K4
+10 Marks
+Unit-1
+6
+Evaluate the performance of linear and non-linear filter banks in speech signal decomposition with respect to frequency resolution and distortion.
+CO1
+K5
+10 Marks
+Unit-1
+7
+A)  A short speech frame is given as:
+
+Compute the 4-point DFT . 
+Find the magnitude spectrum . 
+Identify the dominant frequency component. 
+ Note: Problem based on Compute  Discrete Fourier Transform (DFT)
+
+b) A speech signal is sampled at 8 kHz and frame size is 256 samples.
+Compute frequency resolution: 
+Find the frequency corresponding to k = 10.
+Note: Problem based on Frequency Resolution.
+CO1
+K6
+10 Marks
+Unit-1
+8
+Analyze the formulation of Linear Predictive Coding (LPC) equations and evaluate its effectiveness in modeling speech signals for efficient parameter estimation.
+CO1
+K6
+10 Marks
+Unit-1
+9
+Identify the key stages of a speech feature extraction pipeline and the purpose of each stage in converting speech signals into feature representations.
+CO2
+K1
+05 Marks
+Unit-2
+10
+Discuss the role of static and dynamic features in speech processing. 
+CO2
+K2
+05 Marks
+Unit-2
+11
+A signal has 1600 samples, frame size = 400 samples, overlap = 200 samples.
+
+Q1: Find the number of frames
+
+CO2
+K3
+05 Marks
+Unit-2
+12
+Compare LPCC and MFCC features in terms of spectral representation and robustness for speech recognition applications.
+CO2
+K2
+05 Marks
+Unit-2
+13
+Discuss different distance measures (Euclidean, Mahalanobis, and DTW) and evaluate their role in speech pattern matching and recognition systems.
+CO2
+K4
+10 Marks
+Unit-2
+14
+Evaluate the performance of vector quantization models in speech recognition and justify codebook optimization strategies.
+CO2
+K5
+10 Marks
+Unit-2
+15
+Design a Gaussian Mixture Model (GMM) for speech feature distribution and explain how the Expectation-Maximization (EM) algorithm is used for parameter estimation.
+CO2
+K6
+10 Marks
+Unit-2
+16
+Construct a Hidden Markov Model (HMM) for continuous speech recognition and assess its capability in modeling temporal variability of speech signals.
+CO2
+K6
+10 Marks
+Unit-2
+17
+Interpret the characteristics and representation of multi-dimensional signals and examine their significance in advanced signal processing applications.
+CO3
+K2
+05 Marks
+Unit-3
+18
+Demonstrate the application of multi-dimensional transforms (2D-DFT) for analyzing signal representation in spatial and frequency domains.
+CO3
+K3
+05 Marks
+Unit-3
+19
+Evaluate multi-dimensional system models by analyzing their input–output relationships using convolution and transform domain methods.
+CO3
+K5
+10 Marks
+Unit-3
+20
+Design and formulate a multi-dimensional signal processing framework for applications such as image or video systems, and justify the choice of transforms and system models.
+CO3
+K6
+10 Marks
+Unit-3
+
+Mid-II
+Q.
+No.
+Question
+Course  
+Outcome
+Bloom’s Taxonomy Level
+Marks
+
+1
+Explain the concept of multi-dimensional sampling theory.
+CO3
+K2
+05 Marks
+Unit-3
+2
+Illustrate with a block diagram and justify the transformation process.
+CO3
+K3
+05 Marks
+Unit-3
+3
+Evaluate the influence of human visual system properties such as luminance sensitivity, contrast perception, and color interpretation on image representation and compression techniques.
+CO3
+K5
+10 Marks
+Unit-3
+4
+Design and justify a digital video representation system, incorporating sampling theory, frame structure, and temporal redundancy reduction techniques.
+CO3
+K6
+10 Marks
+Unit-3
+5
+Classify the fundamental principles of image formation models and their role in motion estimation frameworks.
+CO4
+K1
+05 Marks
+Unit-4
+6
+Explain the mathematical representation of motion models and interpret their assumptions in real-world dynamic scenes.
+CO4
+K2
+05 Marks
+Unit-4
+7
+By using  Block Motion Estimation
+A block in Frame 1 is at:  (20,25)
+Best match in Frame 2 is at: (23,30)
+Compute motion vector 
+Interpret direction of motion 
+CO4
+K3
+05 Marks
+Unit-4
+8
+Implement differential methods for motion estimation and analyze their sensitivity to noise and illumination variations.
+CO4
+K4
+05 Marks
+Unit-4
+9
+Analyze matching-based motion estimation methods and evaluate their computational complexity and accuracy trade-offs.
+CO4
+K5
+10 Marks
+Unit-4
+10
+Critically evaluate nonlinear optimization techniques used in motion estimation and justify their convergence behavior
+CO4
+K6
+10 Marks
+Unit-4
+11
+Design transform-domain motion estimation algorithms and optimize their performance for video compression applications.
+CO4
+K5
+10 Marks
+Unit-4
+12
+Develop a comprehensive framework for 3D motion and structure estimation integrating geometric and statistical models.
+CO4
+K6
+10 Marks
+Unit-4
+13
+Define image segmentation and classify its major categories based on region-based and boundary-based approaches.
+CO5
+K1
+05 Marks
+Unit-5
+14
+Explain the principles of change detection in video sequences and interpret its role in dynamic scene analysis.
+CO5
+K2
+05 Marks
+Unit-5
+15
+By Using Global Motion Detection
+
+Frame differences (sum of absolute differences):
+Region A = 120 
+Region B = 45 
+Region C = 200 
+Threshold = 100
+
+Identify regions with motion 
+Determine dominant motion region
+
+CO5
+K3
+05 Marks
+Unit-5
+16
+Implement motion tracking algorithms and demonstrate object trajectory estimation in a temporal video sequence.
+CO5
+K4
+05 Marks
+Unit-5
+17
+Analyze image and video matting techniques and evaluate their effectiveness in foreground extraction under complex backgrounds.
+CO5
+K5
+10 Marks
+Unit-5
+18
+A)  Particle Weight Normalization
+Given particle weights:
+Tasks:
+Normalize weights 
+Identify most likely particle 
+Explain robustness to uncertainty
+
+B)  State Update (Kalman Filter)
+Given:
+Predicted state  x−=50
+Measurement  z=60
+Kalman Gain  K=0.6
+
+Compute updated state:  x=x−+K(z−x−)
+Interpret motion correction
+
+
+CO5
+K6
+10 Marks
+Unit-5
+19
+Design a video segmentation and tracking framework by integrating change detection and motion analysis for real-time applications.
+CO5
+K5
+10 Marks
+Unit-5
+20
+Develop and optimize a performance evaluation model for video segmentation and tracking using metrics such as IoU, precision, recall, and F1-score
+CO5
+K6
+10 Marks
+Unit-5
+
+
+
+Name & Signature of Subject Faculty                                             Signature of PAC Coordinator              
+
+
+
+
+Signature of HoD Signature of Dean Academic’s 

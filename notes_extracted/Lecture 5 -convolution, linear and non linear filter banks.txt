@@ -1,0 +1,29 @@
+Convolution, linear and non linear filter banks Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Evaluate the performance of linear and non-linear filter banks in speech signal decomposition with respect to frequency resolution and distortion.  To evaluate the performance of linear vs non-linear filter banks in speech signal decomposition, we mainly compare them using two critical factors: Frequency Resolution  Distortion (Signal Preservation) 
+
+---
+
+Frequency Resolution Linear Filter Banks Provide  well-defined and fixed frequency bands   Designed using  FIR/IIR filters  or perceptual scales (e.g., Mel filter banks)  High control over bandwidth and overlap  Advantages: Accurate separation of speech components (formants, harmonics)  Suitable for  spectral analysis (MFCC- Mel-Frequency Cepstral Coefficients) , STFT- Short-Time Fourier Transform )   Predictable behavior  Limitations: Fixed resolution → cannot adapt to signal variations  Trade-off between  time and frequency resolution  (Heisenberg uncertainty)
+
+---
+
+Frequency Resolution Non-Linear Filter Banks Frequency decomposition is  adaptive and data-dependent   Often based on:  Wavelets  Empirical Mode Decomposition (EMD)  Neural filter banks  Advantages: Multi-resolution capability   Better representation of  non-stationary speech signals   Captures transient features (plosives, bursts)  Limitations: Frequency bands are  not strictly defined   Harder to interpret and standardize
+
+---
+
+Distortion Analysis Linear Filter Banks Distortion mainly due to:  Filter design imperfections  Aliasing (in  subband  processing)  Quantization  Characteristics: Generally  low distortion  if properly designed  Phase distortion possible (especially in IIR filters-  Infinite Impulse Response )  Linear systems preserve signal structure
+
+---
+
+Distortion Analysis Non-Linear Filter Banks Introduce distortion due to:  Non-linear transformations  Adaptive decomposition errors  Mode mixing (in EMD- Empirical Mode Decomposition)  Characteristics: Can  preserve important features  (edges, transients) better  May distort amplitude or phase relationships  Reconstruction may not be perfect
+
+---
+
+Comparative Summary
+
+---
+
+                                                        Thank You 

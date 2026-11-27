@@ -1,0 +1,37 @@
+Distance Measures in Speech Pattern Matching and Recognition Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Distance Measures in Speech Pattern Matching and Recognition Distance measures quantify the similarity between speech feature vectors (e.g., MFCCs).  The choice of distance metric directly affects recognition accuracy, robustness, and computational cost.
+
+---
+
+Euclidean Distance Definition:  The simplest and most commonly used distance measure:
+
+---
+
+Euclidean Distance Role in Speech Recognition Used in  Vector Quantization (VQ)  and simple template matching  Measures straight-line distance between two feature vectors Evaluation Advantages: Simple and fast to compute  Suitable for real-time systems  Works well when features are normalized  Limitations: Assumes all features are  independent and equally important   Sensitive to  scale variations and noise   Ignores correlation between features
+
+---
+
+Mahalanobis Distance Accounts for feature correlation and variance: Where  𝑆   is the covariance matrix.  
+
+---
+
+Mahalanobis Distance Role in Speech Recognition Used in  statistical models  like Gaussian-based classifiers  Helps in modeling  feature distribution more accurately   Evaluation Advantages: Considers  correlation between features   Scale-invariant (handles different variances)  More accurate than Euclidean distance  Limitations: Requires estimation of  covariance matrix   Computationally expensive  Performance depends on quality of training data
+
+---
+
+Dynamic Time Warping (DTW) A time-alignment technique that finds the optimal match between two sequences:
+
+---
+
+Dynamic Time Warping (DTW) Role in Speech Recognition Aligns sequences of  different lengths or speaking speeds   Widely used in  isolated word recognition systems   Evaluation Advantages Handles  time variations  (speed differences)  Effective for  template-based matching   High accuracy for small vocabulary tasks  Limitations Computationally intensive  Not suitable for large-scale systems  Does not model probabilistic variations
+
+---
+
+Comparative Analysis
+
+---
+
+                                                        Thank You 

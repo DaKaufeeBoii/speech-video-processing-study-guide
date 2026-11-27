@@ -1,0 +1,41 @@
+Linear Predictive Coding (LPC): Formulation and Evaluation Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Linear Predictive Coding (LPC): Formulation and Evaluation-Introduction Linear Predictive Coding (LPC) is a widely used speech analysis technique that models a speech signal by  estimating the current sample  as a linear combination of its  past samples .  It provides an efficient representation of speech using a  small number of parameters  and is extensively used in  speech coding, synthesis, and recognition.
+
+---
+
+LPC Formulation
+
+---
+
+LPC Formulation Predicted Speech Signal The current speech sample is  estimated (predicted)  using past speech samples. Remember  : Instead of storing the full speech signal, we predict it using previous values. Example : “Current sound = weighted sum of previous sounds”
+
+---
+
+Prediction Error Equation This equation measures the  difference between actual and predicted speech .
+
+---
+
+Prediction Error Equation If prediction is  good  → error is small  If prediction is  bad  → error is large   So:
+
+---
+
+LPC Coefficient Estimation In LPC, we want the  prediction error to be as small as possible   To achieve this, we use  autocorrelation analysis   This leads to a system of equations called  Yule-Walker equations
+
+---
+
+Evaluation of LPC for Speech Modeling Advantages Provides  efficient speech representation  with fewer parameters  Captures  vocal tract characteristics effectively   Suitable for  speech compression and transmission   Enables  real-time processing due to low complexity   Effective for modeling  voiced speech segments  
+
+---
+
+Limitations Poor modeling of  unvoiced sounds (e.g., fricatives)   Assumes speech is  linear and short-time stationary   Sensitive to  background noise and distortions   Does not capture  non-linear speech behavior
+
+---
+
+Applications Speech coding (e.g., VoIP, mobile communication)  Speech synthesis systems  Speaker recognition systems  Formant analysis and speech enhancement
+
+---
+
+                                                        Thank You 

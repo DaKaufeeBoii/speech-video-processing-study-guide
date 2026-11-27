@@ -1,0 +1,29 @@
+Role of Static and Dynamic Features in Speech Processing Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Role of Static and Dynamic Features in Speech Processing In speech processing, features are extracted from speech signals to represent useful information for tasks like speech recognition and speaker identification.  These features are broadly classified into  static  and  dynamic  features.
+
+---
+
+Static Features Static features represent the  instantaneous characteristics  of the speech signal at a particular time frame. They capture the spectral properties of speech. Examples:  MFCC (Mel-Frequency Cepstral Coefficients), LPC (Linear Predictive Coefficients)  Provide information about  vocal tract shape   Useful for identifying phonemes (basic sound units)
+
+---
+
+Dynamic Features Dynamic features represent the  temporal variations  of speech over time. They are derived from static features. Types:  Delta (Δ) features  – First-order derivative (rate of change)  Delta-Delta (Δ²) features  – Second-order derivative (acceleration)  Capture  speech dynamics and transitions   Improve robustness in continuous speech recognition
+
+---
+
+Role and Importance Static features alone cannot capture speech variations over time  Dynamic features add  contextual and temporal information   Combined use enhances accuracy in systems like  Automatic Speech Recognition (ASR) Both static and dynamic features are essential. Static features describe  what the speech is , while dynamic features describe  how speech changes over time , leading to better performance in speech processing applications.
+
+---
+
+Comparison Table 
+
+---
+
+A signal has 1600 samples, frame size = 400 samples, overlap = 200 samples.   Q1: Find the number of frames
+
+---
+
+                                                        Thank You 

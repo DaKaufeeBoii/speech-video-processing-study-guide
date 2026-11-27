@@ -1,0 +1,49 @@
+Evaluation of Vector Quantization (VQ) Models in Speech Recognition Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Evaluation of Vector Quantization (VQ) Models in Speech Recognition Vector Quantization (VQ) is a classical technique used in speech recognition to compress feature vectors (such as MFCCs) into a finite set of representative vectors called  codewords , forming a  codebook .
+
+---
+
+Performance Evaluation of VQ Models 1. The performance of VQ-based speech recognition systems can be analyzed using the following aspects: a) Recognition Accuracy VQ maps continuous feature space into discrete symbols.  Works reasonably well for  small vocabulary  and  speaker-dependent systems .  However, accuracy decreases for:  Large vocabulary tasks  Speaker-independent systems  Compared to modern methods like HMM or Deep Learning, VQ has  lower accuracy .
+
+---
+
+Performance Evaluation of VQ Models b) Computational Efficiency VQ is  computationally simple and fast .  Matching is done using  distance measures  (e.g., Euclidean distance).  Suitable for  real-time and low-resource systems .  c) Memory Requirement Requires storage of only  codebook vectors , not entire datasets.  Efficient in  memory-constrained environments .  d) Noise Sensitivity VQ is  sensitive to noise and channel variations .  Noise can distort feature vectors, leading to incorrect codeword mapping.  e) Scalability Not scalable for large datasets because:  Codebook size increases  Search complexity grows
+
+---
+
+Limitations of VQ in Speech Recognition 2. Limitations of VQ in Speech Recognition Hard clustering (each vector assigned to one codeword)  Loss of fine spectral details  Poor modeling of temporal variations  Less robust compared to probabilistic models (e.g., HMM, GMM) HMM  – Hidden Markov Model  GMM  – Gaussian Mixture Model
+
+---
+
+Codebook Optimization Strategies 3. Codebook Optimization Strategies Optimizing the codebook is critical for improving VQ performance. a) Linde–Buzo–Gray (LBG) Algorithm Iterative clustering algorithm  Minimizes  quantization error (distortion)   Steps:  Initialize centroid  Split codewords  Recompute centroids  Iterate until convergence  Ensures optimal representation of feature space → improves recognition accuracy.
+
+---
+
+Codebook Optimization Strategies b) Codebook Size Selection Small codebook → high distortion (poor accuracy)  Large codebook → high computation and overfitting  Optimal size balances accuracy and efficiency.
+
+---
+
+Codebook Optimization Strategies c) Training Data Selection Use  diverse and representative speech samples   Include variations in:  Speakers  Accents  Noise conditions  Improves generalization and robustness.
+
+---
+
+Codebook Optimization Strategies d) Distance Measure Optimization Common:  Euclidean distance  Alternatives:  Mahalanobis distance (accounts for variance)  Better similarity measurement → improved classification.
+
+---
+
+Codebook Optimization Strategies e) Split and Merge Techniques Dynamically adjust codewords:  Split high-error clusters  Merge similar clusters  Reduces distortion and improves efficiency.
+
+---
+
+Codebook Optimization Strategies f) Initialization Methods Random initialization may lead to poor convergence  Use:  K-means++  Hierarchical clustering  Leads to faster convergence and better local minima. g) Adaptive Codebooks Update codebook based on new data  Handles speaker and environmental variations dynamically.
+
+---
+
+Overall Evaluation VQ is  simple, fast, and memory-efficient , making it suitable for:  Embedded systems  Small-scale applications  However, due to:  Lower accuracy  Noise sensitivity  Lack of temporal modeling  It is often replaced by advanced techniques like: Hidden Markov Models (HMM)   Gaussian Mixture Models (GMM)   Deep Neural Networks (DNNs)
+
+---
+
+                                                        Thank You 

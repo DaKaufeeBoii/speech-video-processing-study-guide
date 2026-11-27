@@ -1,0 +1,25 @@
+LPCC and MFCC  Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Comparison of LPCC and MFCC Features (Speech Recognition Applications) LPCC captures speech based on the  vocal tract production model , while MFCC captures features based on  human hearing perception . MFCC is generally preferred in speech recognition due to its  better robustness and higher accuracy in real-world conditions .
+
+---
+
+Comparison of LPCC and MFCC Features (Speech Recognition Applications)
+
+---
+
+Comparison of LPCC and MFCC Features (Speech Recognition Applications) LPCC (Linear Predictive Cepstral Coefficients) and MFCC (Mel-Frequency Cepstral Coefficients) are two widely used feature representations in speech processing.  They differ mainly in how they model the speech spectrum and their robustness in real-world conditions.
+
+---
+
+Comparison of LPCC and MFCC Features (Speech Recognition Applications)
+
+---
+
+Comparison of LPCC and MFCC Features (Speech Recognition Applications) LPCC focuses on modeling the  speech production system , while MFCC focuses on modeling the  human perception system .  Due to better noise robustness and perceptual relevance,  MFCC is more widely used in modern speech recognition applications .
+
+---
+
+                                                        Thank You 

@@ -1,0 +1,69 @@
+Pole-Zero modeling of speech Presented By Dr.Sandeep Kumar M Department of Computer Science and Engineering-AI & ML
+
+---
+
+Pole–Zero Modeling of Speech Pole–zero modeling  is a fundamental technique in speech signal processing used to represent the  speech production system  as a digital filter.  It helps explain how raw sound from the vocal cords is shaped into intelligible speech.
+
+---
+
+Pole–Zero Modeling of Speech Overall Flow in the Image Speech = Source (Excitation) → Filter (Vocal Tract) → Output (Speech Signal) Left →  Excitation Generator   Middle →  LTI System (Vocal Tract Filter)   Right →  Final Speech Signal 2. Top Section (Human Vocal System) Source (Excitation) Located at the  vocal cords (larynx)   Produces:  Periodic pulses  → voiced sounds (vowels like “a”, “e”)  Noise-like signals  → unvoiced sounds (like “s”, “f”)   In the diagram: shown as a small source in the throat
+
+---
+
+Pole–Zero Modeling of Speech Filter (Vocal Tract) Includes  throat, mouth, nasal cavity   Acts as an  LTI (Linear Time-Invariant) system   Shapes the sound into meaningful speech  This is where  poles and zeros  come from: Poles → resonances (formants)  Zeros → anti-resonances 
+
+---
+
+Pole–Zero Modeling of Speech 3. Middle Block (Signal Representation)  Excitation Signal  𝑒 𝑡 Input to the system  Shown as a waveform (pulse train)  ✔ LTI System  𝑣 𝑡 Represents the  vocal tract filter   Mathematically:  𝐻 𝑧 = 𝐵 𝑧 𝐴 𝑧 Speech Signal  𝑠 𝑡 Final output after filtering  This is what we hear   
+
+---
+
+Pole–Zero Modeling of Speech 4. Bottom Graphs (Frequency Domain Insight) These are the  most important for understanding pole-zero modeling :  (a)  ∣ 𝐸 𝑗 𝜔 ∣ represents the  frequency spectrum of the excitation signal  (produced by the vocal cords).  — Excitation Spectrum Shows  harmonics  (vertical lines)  Spacing =  1 𝜏 𝑝 → pitch frequency  Period =  𝜏 𝑝 This means the signal repeats every  𝜏 𝑝 seconds Energy decreases at higher frequencies  Raw sound has many frequencies but  no clear speech structure yet  
+
+---
+
+Pole–Zero Modeling of Speech (b)  ∣ 𝑉 𝑗 𝜔 ∣ — Vocal Tract Response Smooth curve with  peaks   These peaks are  formants (F1, F2, F3)     Interpretation: These peaks =  POLES   They define vowel identity  
+
+---
+
+Pole–Zero Modeling of Speech (c)  ∣ 𝑆 𝑗 𝜔 ∣ — Final Speech Spectrum Combination of:  Excitation harmonics  Filter shaping   Result: Harmonics get  amplified at formant frequencies   Produces intelligible speech  
+
+---
+
+Connecting to Pole–Zero Model
+
+---
+
+Poles and Zeros In digital signal processing, a system is represented by a transfer function: 𝐻 𝑧 = 𝐵 𝑧 𝐴 𝑧 = Zeros Poles B(z) →  Numerator  → gives  zeros   𝐴 𝑧 →  Denominator  → gives  poles   H(z)=Poles/ Zeros​  
+
+---
+
+Poles Poles 1. Represent resonances (formants) of the vocal tract  Resonance A  resonance  is a frequency where the system naturally vibrates strongly. In speech: The  vocal tract (throat + mouth cavity)  behaves like a  resonant tube   Certain frequencies get  amplified naturally  2.  Cause  peaks in the frequency spectrum   Poles come from the denominator: 𝐴 𝑧 =0⇒ Pole At these points →  𝐻 𝑧 becomes very large  This creates  peaks in frequency response Physical Interpretation  Air column inside the vocal tract vibrates  Shape of tongue, lips, jaw → changes cavity length  This changes  resonant frequencies (formants)  
+
+---
+
+Poles Why Poles Create Peaks? When frequency is near a pole: Denominator becomes very small  Output becomes large   Result:  sharp peak in spectrum Poles = Energy Concentration Points They  define vowel identity
+
+---
+
+Zeros 1. Represent  anti-resonances   An  anti-resonance  is a frequency where energy is  cancelled or blocked . Mathematical Meaning Zeros come from the numerator:  𝐵 𝑧 =0⇒ 𝐻 𝑧 =0 Output becomes zero at that frequency  Produces  deep dips (notches)    
+
+---
+
+Zeros Physical Interpretation Occurs when: Sound waves  interfere destructively   Or airflow splits (oral + nasal paths)   Especially important in: Nasal sounds  (/m/, /n/)  Some consonants  Example: Nasal Sound “/m/” Part of sound goes through  nose   Part through  mouth   These paths  interfere    Result: Some frequencies cancel →  zeros   Spectrum shows  dips (anti-formants) Why Zeros Create Dips? At zero: Numerator = 0  Output = 0   Result:  frequency completely suppressed Zeros = Energy Cancellation Points They  refine and modify speech quality
+
+---
+
+Physical Interpretation The  vocal tract (mouth, tongue, throat)  behaves like a tube  Different shapes → different resonances → different speech sounds  These resonances are mathematically  modeled  as  poles   Airflow restrictions (like nasal coupling) introduce  zeros
+
+---
+
+Why It Matters Pole-zero modeling is widely used in: 🎤 Speech synthesis (text-to-speech)  🧠 Speech recognition systems  📡 Speech compression (e.g., LPC codecs)  🎧 Voice transformation and enhancement
+
+---
+
+Simple Intuition Think of it like: Poles = Amplifiers (boost certain frequencies)   Zeros = Suppressors (reduce certain frequencies)   Together, they shape raw sound into recognizable speech.
+
+---
+
+                                                        Thank You 
