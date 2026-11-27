@@ -8,6 +8,7 @@ Compiles complete SVP study guide:
 import os, re, html, shutil
 from eli5_data import ELI5_DATA
 from keypoints_data import KEYPOINTS_DATA
+from diagrams_data import DIAGRAMS_SVG as SVG_DIAGRAMS
 
 from data_unit1 import UNIT1_QUESTIONS
 from data_unit2 import UNIT2_QUESTIONS
@@ -22,6 +23,8 @@ for q in ALL_QUESTIONS:
     qid = q['id']
     q['eli5'] = ELI5_DATA.get(qid, {})
     q['key_points'] = KEYPOINTS_DATA.get(qid, [])
+    q['svg_diagram'] = SVG_DIAGRAMS.get(qid, '')
+    q['draw_guide'] = ELI5_DATA.get(qid, {}).get('draw', '')
 
 def inline_md(txt):
     if not txt:
@@ -139,6 +142,10 @@ def generate_markdown_guide():
         if eli5:
             md_parts.append(f"> 🐣 **In Plain English:** {eli5.get('plain', '')}")
             md_parts.append(f"> 🔑 **Key Exam Terms:** `{eli5.get('keywords', '')}`\n")
+
+        draw_guide = q.get('draw_guide', '')
+        if draw_guide:
+            md_parts.append(f"> 📐 **Flowchart & Diagram Blueprint:** {draw_guide}\n")
 
         kps = q.get('key_points', [])
         if kps:
@@ -355,6 +362,35 @@ def generate_html_handbook():
         </div>
 """
 
+        # Diagram markup
+        diagram_svg = q.get('svg_diagram', '')
+        draw_guide = q.get('draw_guide', '')
+        diagram_html = ""
+        if diagram_svg:
+            draw_guide_html = f"""
+        <div class="diagram-exam-notes">
+          <span class="exam-notes-label">✏️ Quick-Draw Blueprint:</span>
+          <span class="exam-notes-text">{html.escape(draw_guide)}</span>
+        </div>
+""" if draw_guide else ""
+
+            diagram_html = f"""
+        <div class="diagram-box">
+          <div class="diagram-header">
+            <div class="diagram-title">
+              <span>📐 Visual Architecture &amp; Flowchart</span>
+            </div>
+            <span class="diagram-scroll-hint">↔ Scroll horizontally on mobile</span>
+          </div>
+
+          <div class="visual-diagram-wrap">
+            {diagram_svg}
+          </div>
+
+          {draw_guide_html}
+        </div>
+"""
+
         html_parts.append(f"""
     <div class="question-card"
          id="{q['id']}"
@@ -391,6 +427,8 @@ def generate_html_handbook():
           </ul>
         </div>
 
+        {diagram_html}
+
         <div class="content-section">
           {md_to_html_simple(q['content'])}
         </div>
@@ -425,8 +463,8 @@ def generate_html_handbook():
 <button id="backToTopBtn" class="fab-top" title="Back to Top" aria-label="Back to Top">↑</button>
 
 <!-- SCRIPTS: Clean separation matching Deep Learning StudyMode -->
-<script src="audio.js?v=20261127_03"></script>
-<script src="app.js?v=20261127_03"></script>
+<script src="audio.js?v=20261127_04"></script>
+<script src="app.js?v=20261127_04"></script>
 </body>
 </html>
 """)

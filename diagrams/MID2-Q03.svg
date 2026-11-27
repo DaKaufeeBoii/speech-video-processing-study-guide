@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="290" style="max-width: 720px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; min-width: 580px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -37,7 +37,7 @@
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
     </marker>
   </defs>
-  <rect width="720" height="290" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+  <rect width="720" height="290" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">HUMAN VISUAL SYSTEM (HVS) PROPERTIES &amp; COMPRESSION</text>
   
@@ -48,7 +48,7 @@
     <!-- Axis -->
     <line x1="30" y1="180" x2="280" y2="180" stroke="#64748b" stroke-width="1.5"/>
     <line x1="30" y1="180" x2="30" y2="40" stroke="#64748b" stroke-width="1.5"/>
-    <text x="155" y="198" font-size="9" fill="#94a3b8" text-anchor="middle">Spatial Frequency (cycles/degree)</text>
+    <text x="155" y="198" font-size="9" fill="#cbd5e1" text-anchor="middle">Spatial Frequency (cycles/degree)</text>
     <!-- CSF Bandpass curve -->
     <path d="M 35 150 C 60 70 85 45 110 50 C 145 60 200 130 270 178" fill="none" stroke="#38bdf8" stroke-width="3"/>
     <text x="110" y="40" font-size="9" fill="#fbbf24" font-weight="bold" text-anchor="middle">Peak (3-5 cpd)</text>
@@ -64,21 +64,21 @@
     <text x="155" y="22" font-size="12" font-weight="bold" fill="#34d399" text-anchor="middle">Luminance vs. Chrominance (4:2:0)</text>
       <g filter="url(#shadow)">
     <rect x="20" y="38" width="270" height="42" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="155.0" y="55" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Rods (120M) vs Cones (6M)</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="155.0" y="70">Eye is far more sensitive to Light than Color</tspan></text>
+    <text x="155.0" y="56" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Rods (120M) vs Cones (6M)</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="155.0" y="72">Eye is far more sensitive to Light than Color</tspan></text>
     
   </g>
       <g filter="url(#shadow)">
     <rect x="20" y="90" width="270" height="48" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="155.0" y="107" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">YCbCr Color Transform</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="155.0" y="122">Y = Luminance (Keep high bandwidth)</tspan><tspan x="155.0" y="135">Cb, Cr = Chroma (Downsample by 2)</tspan></text>
+    <text x="155.0" y="108" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">YCbCr Color Transform</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="155.0" y="124">Y = Luminance (Keep high bandwidth)</tspan><tspan x="155.0" y="138">Cb, Cr = Chroma (Downsample by 2)</tspan></text>
     
   </g>
       <g filter="url(#shadow)">
     <rect x="20" y="148" width="270" height="48" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="155.0" y="165" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">4:2:0 Chroma Subsampling</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="155.0" y="180">Discards 50% raw video data with ZERO visible loss!</tspan></text>
-    <rect x="215" y="139" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="250" y="152" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">50% Save</text>
+    <text x="155.0" y="166" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4:2:0 Chroma Subsampling</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="155.0" y="182">Discards 50% raw video data with ZERO visible loss!</tspan></text>
+    <rect x="215" y="139" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="250" y="152" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">50% Save</text>
   </g>
   </g>
 

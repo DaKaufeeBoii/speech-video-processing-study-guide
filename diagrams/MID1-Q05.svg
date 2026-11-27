@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="100%" height="300" style="max-width: 720px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; min-width: 580px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -37,64 +37,64 @@
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
     </marker>
   </defs>
-  <rect width="720" height="300" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+  <rect width="720" height="300" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="30" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">CONVOLUTION OPERATIONS &amp; REAL-TIME OVERLAP-ADD (OLA)</text>
     <g filter="url(#shadow)">
     <rect x="25" y="60" width="150" height="60" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="100.0" y="77" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Glottal Excitation e[n]</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="100.0" y="92">Pulse train / Noise source</tspan></text>
+    <text x="100.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Glottal Excitation e[n]</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="100.0" y="94">Pulse train / Noise source</tspan></text>
     
   </g>
-    <line x1="175" y1="90" x2="230" y2="90" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrAmber)"/>
-  <text x="202.5" y="84.0" font-size="10" fill="#fbbf24" font-weight="600" text-anchor="middle">Input</text>
+    <line x1="175" y1="90" x2="230" y2="90" stroke="#fbbf24" stroke-width="2.5" marker-end="url(#arrAmber)"/>
+  <text x="202.5" y="84.0" font-size="11" fill="#fbbf24" font-weight="700" text-anchor="middle">Input</text>
     <g filter="url(#shadow)">
     <rect x="230" y="60" width="200" height="60" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="330.0" y="77" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Vocal Tract Filter h[n]</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="330.0" y="92">Resonances (Formants v[n] * r[n])</tspan></text>
-    <rect x="355" y="51" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="390" y="64" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">LTI System</text>
+    <text x="330.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Vocal Tract Filter h[n]</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="330.0" y="94">Resonances (Formants v[n] * r[n])</tspan></text>
+    <rect x="355" y="51" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="390" y="64" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">LTI System</text>
   </g>
-    <line x1="430" y1="90" x2="485" y2="90" stroke="#34d399" stroke-width="2" marker-end="url(#arrEmerald)"/>
-  <text x="457.5" y="84.0" font-size="10" fill="#34d399" font-weight="600" text-anchor="middle">Convolution</text>
+    <line x1="430" y1="90" x2="485" y2="90" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
+  <text x="457.5" y="84.0" font-size="11" fill="#34d399" font-weight="700" text-anchor="middle">Convolution</text>
     <g filter="url(#shadow)">
     <rect x="485" y="60" width="200" height="60" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="585.0" y="77" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">Radiated Speech s[n]</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="585.0" y="92">s[n] = e[n] * h[n] = Σ e[k]h[n-k]</tspan></text>
-    <rect x="610" y="51" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="645" y="64" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Output</text>
+    <text x="585.0" y="78" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Radiated Speech s[n]</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="585.0" y="94">s[n] = e[n] * h[n] = Σ e[k]h[n-k]</tspan></text>
+    <rect x="610" y="51" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="645" y="64" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Output</text>
   </g>
 
   <rect x="25" y="140" width="665" height="145" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="45" y="162" font-size="12" font-weight="bold" fill="#38bdf8">Real-Time Streaming Speech Convolution (Overlap-Add Method):</text>
     <g filter="url(#shadow)">
     <rect x="45" y="175" width="150" height="50" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="120.0" y="192" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">1. Split Stream</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="120.0" y="207">Blocks of length L</tspan></text>
+    <text x="120.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">1. Split Stream</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="120.0" y="209">Blocks of length L</tspan></text>
     
   </g>
-    <line x1="195" y1="200" x2="230" y2="200" stroke="#c084fc" stroke-width="2" marker-end="url(#arrAmber)"/>
+    <line x1="195" y1="200" x2="230" y2="200" stroke="#c084fc" stroke-width="2.5" marker-end="url(#arrAmber)"/>
   
     <g filter="url(#shadow)">
     <rect x="230" y="175" width="150" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
-    <text x="305.0" y="192" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">2. Fast FFT &amp; Mult</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="305.0" y="207">Y_i[k] = X_i[k] · H[k]</tspan></text>
+    <text x="305.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">2. Fast FFT &amp; Mult</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="305.0" y="209">Y_i[k] = X_i[k] · H[k]</tspan></text>
     
   </g>
-    <line x1="380" y1="200" x2="415" y2="200" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrCyan)"/>
+    <line x1="380" y1="200" x2="415" y2="200" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrCyan)"/>
   
     <g filter="url(#shadow)">
     <rect x="415" y="175" width="140" height="50" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="485.0" y="192" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">3. Inverse IFFT</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="485.0" y="207">Length L + M - 1</tspan></text>
+    <text x="485.0" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">3. Inverse IFFT</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="485.0" y="209">Length L + M - 1</tspan></text>
     
   </g>
-    <line x1="555" y1="200" x2="580" y2="200" stroke="#34d399" stroke-width="2" marker-end="url(#arrEmerald)"/>
+    <line x1="555" y1="200" x2="580" y2="200" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrEmerald)"/>
   
     <g filter="url(#shadow)">
     <rect x="580" y="175" width="95" height="50" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="627.5" y="192" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">4. Overlap &amp; Add</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="627.5" y="207">Stream Assembly</tspan></text>
+    <text x="627.5" y="193" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">4. Overlap &amp; Add</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="627.5" y="209">Stream Assembly</tspan></text>
     
   </g>
-  <text x="45" y="265" font-size="11" fill="#94a3b8">Avoids time-aliasing by zero-padding to N ≥ L + M - 1 | Eliminates infinite convolution latency</text>
+  <text x="45" y="265" font-size="11" fill="#cbd5e1">Avoids time-aliasing by zero-padding to N ≥ L + M - 1 | Eliminates infinite convolution latency</text>
 
 </svg>

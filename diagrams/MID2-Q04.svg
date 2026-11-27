@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="290" style="max-width: 720px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 290" width="100%" height="auto" class="flowchart-svg" style="max-width: 720px; min-width: 580px; height: auto; display: block; margin: 0 auto; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
   <defs>
     <linearGradient id="gradCard" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1e293b"/>
@@ -37,7 +37,7 @@
       <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24"/>
     </marker>
   </defs>
-  <rect width="720" height="290" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="2"/>
+  <rect width="720" height="290" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1.5"/>
 
   <text x="360" y="28" font-size="15" font-weight="bold" fill="#38bdf8" text-anchor="middle">DIGITAL VIDEO REPRESENTATION &amp; GROUP OF PICTURES (GOP)</text>
   
@@ -49,45 +49,45 @@
     <!-- Frames -->
       <g filter="url(#shadow)">
     <rect x="30" y="40" width="75" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="67.5" y="57" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">I-Frame</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="67.5" y="72">Intra (Key)</tspan></text>
-    <rect x="30" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="65" y="44" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Anchor</text>
+    <text x="67.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">I-Frame</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="67.5" y="74">Intra (Key)</tspan></text>
+    <rect x="30" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="65" y="44" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Anchor</text>
   </g>
       <g filter="url(#shadow)">
     <rect x="130" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="162.5" y="57" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">B1</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="162.5" y="72">Bi-dir</tspan></text>
+    <text x="162.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">B1</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="162.5" y="74">Bi-dir</tspan></text>
     
   </g>
       <g filter="url(#shadow)">
     <rect x="215" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="247.5" y="57" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">B2</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="247.5" y="72">Bi-dir</tspan></text>
+    <text x="247.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">B2</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="247.5" y="74">Bi-dir</tspan></text>
     
   </g>
       <g filter="url(#shadow)">
     <rect x="300" y="40" width="75" height="55" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5"/>
-    <text x="337.5" y="57" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">P-Frame</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="337.5" y="72">Forward</tspan></text>
-    <rect x="300" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="335" y="44" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Pred</text>
+    <text x="337.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">P-Frame</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="337.5" y="74">Forward</tspan></text>
+    <rect x="300" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="335" y="44" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Pred</text>
   </g>
       <g filter="url(#shadow)">
     <rect x="395" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="427.5" y="57" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">B3</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="427.5" y="72">Bi-dir</tspan></text>
+    <text x="427.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">B3</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="427.5" y="74">Bi-dir</tspan></text>
     
   </g>
       <g filter="url(#shadow)">
     <rect x="480" y="40" width="65" height="55" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1.5"/>
-    <text x="512.5" y="57" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">B4</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="512.5" y="72">Bi-dir</tspan></text>
+    <text x="512.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">B4</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="512.5" y="74">Bi-dir</tspan></text>
     
   </g>
       <g filter="url(#shadow)">
     <rect x="565" y="40" width="75" height="55" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
-    <text x="602.5" y="57" font-size="12" font-weight="bold" fill="#f8fafc" text-anchor="middle">I-Frame</text>
-    <text font-size="9.5" fill="#94a3b8" text-anchor="middle"><tspan x="602.5" y="72">Next GOP</tspan></text>
-    <rect x="565" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/><text x="600" y="44" font-size="9" font-weight="bold" fill="#38bdf8" text-anchor="middle">Anchor</text>
+    <text x="602.5" y="58" font-size="12.5" font-weight="700" fill="#f8fafc" text-anchor="middle">I-Frame</text>
+    <text font-size="11" fill="#cbd5e1" text-anchor="middle"><tspan x="602.5" y="74">Next GOP</tspan></text>
+    <rect x="565" y="31" width="70" height="18" rx="9" fill="#38bdf8" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1"/><text x="600" y="44" font-size="9.5" font-weight="700" fill="#38bdf8" text-anchor="middle">Anchor</text>
   </g>
 
     <!-- Prediction arrows -->
@@ -100,9 +100,9 @@
 
   <rect x="30" y="195" width="660" height="75" rx="8" fill="#1e293b" stroke="#334155"/>
   <text x="50" y="218" font-size="11" font-weight="bold" fill="#34d399">Video Redundancy Reduction Mechanics:</text>
-  <text x="50" y="238" font-size="10" fill="#cbd5e1">1. Progressive Scan: 1080p60 avoids interlaced comb distortion</text>
-  <text x="50" y="254" font-size="10" fill="#cbd5e1">2. YCbCr 4:2:0: Cuts raw uncompressed pixels from 24 bpp to 12 bpp</text>
-  <text x="380" y="238" font-size="10" fill="#cbd5e1">3. Motion Vectors: Transmits displacement (dx, dy) instead of pixels</text>
-  <text x="380" y="254" font-size="10" fill="#cbd5e1">4. 100:1 Compression: Only small residuals e[x, y] are coded</text>
+  <text x="50" y="238" font-size="11" fill="#cbd5e1">1. Progressive Scan: 1080p60 avoids interlaced comb distortion</text>
+  <text x="50" y="254" font-size="11" fill="#cbd5e1">2. YCbCr 4:2:0: Cuts raw uncompressed pixels from 24 bpp to 12 bpp</text>
+  <text x="380" y="238" font-size="11" fill="#cbd5e1">3. Motion Vectors: Transmits displacement (dx, dy) instead of pixels</text>
+  <text x="380" y="254" font-size="11" fill="#cbd5e1">4. 100:1 Compression: Only small residuals e[x, y] are coded</text>
 
 </svg>
